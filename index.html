@@ -18,445 +18,431 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 
+<!-- GSAP loaded SYNCHRONOUSLY so inline script can use it -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
 <style>
 /* ─── RESET ─── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --blue:#2563EB;--blue-l:#5B8EFF;--cyan:#00D4FF;
-  --dark:#060A12;--dark2:#080D18;
-  --text:rgba(255,255,255,.55);
-  --border:rgba(255,255,255,.07);
-  --ease-expo:cubic-bezier(0.16,1,0.3,1);
+  --blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;
+  --dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);
+  --expo:cubic-bezier(0.16,1,0.3,1);
 }
 html{overflow-x:hidden;}
 body{
-  font-family:'Noto Sans',sans-serif;
-  background:var(--dark);color:#fff;
-  overflow-x:hidden;cursor:none;
-  -webkit-font-smoothing:antialiased;
+  font-family:'Noto Sans',sans-serif;background:var(--dark);color:#fff;
+  overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;
 }
 ::selection{background:var(--blue);color:#fff;}
 a{text-decoration:none;color:inherit;}
-img{max-width:100%;display:block;}
 
-/* ─── CUSTOM CURSOR ─── */
+/* ─── PRELOADER ─── */
+#preloader{
+  position:fixed;inset:0;z-index:9000;background:var(--dark);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+#preloader-logo{
+  display:flex;align-items:center;gap:12px;
+  opacity:0;transform:translateY(20px);
+}
+#preloader-bar{
+  position:absolute;bottom:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  width:0;
+}
+
+/* ─── CURSOR ─── */
 #cur{
-  position:fixed;width:8px;height:8px;border-radius:50%;
-  background:#fff;pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:width .3s var(--ease-expo),height .3s var(--ease-expo),background .3s,opacity .2s;
-  mix-blend-mode:difference;will-change:transform;
+  position:fixed;width:8px;height:8px;border-radius:50%;background:#fff;
+  pointer-events:none;z-index:8999;mix-blend-mode:difference;
+  transform:translate(-50%,-50%);will-change:transform;
+  transition:width .35s var(--expo),height .35s var(--expo);
 }
 #cur-ring{
-  position:fixed;width:36px;height:36px;border-radius:50%;
-  border:1.5px solid rgba(255,255,255,.4);
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  will-change:transform;
-  transition:width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s,opacity .2s;
+  position:fixed;width:40px;height:40px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.35);pointer-events:none;z-index:8998;
+  transform:translate(-50%,-50%);will-change:transform;
+  transition:width .4s var(--expo),height .4s var(--expo),border-color .3s;
 }
-.cur-grow #cur{width:5px;height:5px;}
-.cur-grow #cur-ring{width:56px;height:56px;border-color:rgba(91,142,255,.7);}
-body:not(.cur-on) #cur,body:not(.cur-on) #cur-ring{opacity:0;}
+body.hovered #cur{width:5px;height:5px;}
+body.hovered #cur-ring{width:58px;height:58px;border-color:rgba(91,142,255,.65);}
 
-/* ─── LENIS SMOOTH SCROLL ─── */
-html.lenis{height:auto;}
-.lenis.lenis-smooth{scroll-behavior:auto;}
-.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain;}
-.lenis.lenis-stopped{overflow:hidden;}
+/* ─── SCROLL PROGRESS ─── */
+#prog{position:fixed;top:0;left:0;height:2px;z-index:600;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));pointer-events:none;will-change:width;}
 
 /* ─── NAV ─── */
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
-  padding:0 48px;
+  padding:0 60px;
+  border-bottom:1px solid transparent;
   transition:background .5s,border-color .5s;
 }
-#nav.stuck{background:rgba(6,10,18,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
-.nav-inner{
-  max-width:1320px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  height:72px;
-}
+#nav.stuck{background:rgba(6,10,18,.9);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-inner{max-width:1340px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;}
 .logo{display:flex;align-items:center;gap:10px;}
-.logo svg.mark{width:32px;height:32px;}
-.logo-name{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.3px;}
-.logo-name em{color:var(--blue-l);font-style:normal;}
+.logo svg.lm{width:30px;height:30px;}
+.logo-txt{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.3px;}
+.logo-txt em{color:var(--blue-l);font-style:normal;}
 .nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.5);transition:color .25s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s var(--ease-expo);}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s var(--expo);}
 .nav-links a:hover,.nav-links a.active{color:#fff;}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 .nav-cta{
   background:var(--blue);color:#fff!important;
   padding:10px 22px;border-radius:50px;
   font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;
-  transition:transform .3s var(--ease-expo),box-shadow .3s;
-  box-shadow:0 0 0 0 rgba(37,99,235,.4);
   display:inline-block;position:relative;overflow:hidden;
+  transition:transform .3s var(--expo),box-shadow .3s;
 }
-.nav-cta::before{content:'';position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .3s;}
-.nav-cta:hover::before{opacity:.08;}
-.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
 .nav-cta::after{display:none!important;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .3s;}
+.nav-cta:hover::before{background:rgba(255,255,255,.1);}
+.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px;}
-.burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
+.burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .35s;}
 .mob-menu{
   display:none;position:fixed;top:72px;left:0;right:0;bottom:0;
   background:rgba(6,10,18,.98);backdrop-filter:blur(24px);
-  flex-direction:column;padding:40px 48px;z-index:499;gap:4px;
+  flex-direction:column;padding:40px 60px;z-index:499;
 }
 .mob-menu.open{display:flex;}
-.mob-menu a{font-size:32px;font-family:'Manrope',sans-serif;font-weight:700;color:rgba(255,255,255,.5);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s;}
-.mob-menu a:hover{color:#fff;}
+.mob-menu a{
+  font-family:'Manrope',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:700;
+  color:rgba(255,255,255,.4);padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:color .25s,padding-left .3s var(--expo);
+}
+.mob-menu a:hover{color:#fff;padding-left:8px;}
 .mob-menu a:last-child{border:none;margin-top:24px;background:var(--blue);color:#fff!important;font-size:16px;text-align:center;padding:16px;border-radius:50px;}
-
-/* ─── SCROLL PROGRESS ─── */
-#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));z-index:600;width:0;pointer-events:none;}
 
 /* ─── HERO ─── */
 .hero{
-  min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 48px 80px;position:relative;overflow:hidden;
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 60px 90px;
 }
 .hero-bg{
   position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 70% 55% at 75% 35%,rgba(37,99,235,.14),transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 75%,rgba(0,212,255,.07),transparent 65%),
+    radial-gradient(ellipse 60% 50% at 70% 30%,rgba(37,99,235,.15),transparent 65%),
+    radial-gradient(ellipse 45% 40% at 15% 80%,rgba(56,189,248,.07),transparent 60%),
     var(--dark);
 }
-/* Fine grain noise */
+/* Grain texture */
 .hero-bg::after{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity:.4;pointer-events:none;
+  content:'';position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
 }
 .hero-grid{
   position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 30%,transparent 90%);
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:88px 88px;
+  mask-image:radial-gradient(ellipse 85% 75% at 50% 50%,black 20%,transparent 90%);
 }
+.hero-inner{position:relative;z-index:2;max-width:1340px;margin:0 auto;width:100%;}
 
-.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;}
-
-/* Big editorial hero text */
-.hero-tag{
-  font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
-  color:var(--blue-l);margin-bottom:28px;
+/* Eyebrow */
+.hero-eyebrow{
   display:flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:32px;
   overflow:hidden;
 }
-.hero-tag::before{content:'';width:32px;height:1px;background:var(--blue-l);}
+.hero-eyebrow span{display:block;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.25);flex-shrink:0;}
 
+/* GIANT headline */
 .hero-h1{
   font-family:'Manrope',sans-serif;
-  font-size:clamp(52px,9vw,128px);
+  font-size:clamp(64px,11vw,160px);
   font-weight:900;
-  line-height:.95;
-  letter-spacing:-3px;
-  margin-bottom:48px;
+  line-height:.93;
+  letter-spacing:-4px;
+  margin-bottom:56px;
 }
-.hero-h1 .line{overflow:hidden;display:block;}
-.hero-h1 .line-inner{display:block;}
-.hero-h1 .grad{
-  background:linear-gradient(125deg,var(--blue-l) 0%,var(--cyan) 55%,var(--blue-l) 100%);
+.h1-line{overflow:hidden;display:block;}
+.h1-inner{display:block;will-change:transform;}
+
+.grad-text{
+  background:linear-gradient(115deg,var(--blue-l) 0%,var(--cyan) 50%,var(--blue-l) 100%);
   background-size:200%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:gshift 5s ease-in-out infinite;
 }
 @keyframes gshift{0%,100%{background-position:0%;}50%{background-position:100%;}}
 
-.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-.hero-sub{font-size:16px;color:var(--text);line-height:1.85;max-width:380px;}
-.hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
-.btn-main{
+/* Hero bottom row */
+.hero-foot{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+  border-top:1px solid rgba(255,255,255,.07);padding-top:36px;
+}
+.hero-desc{font-size:16px;color:var(--text);line-height:1.85;max-width:380px;}
+.hero-ctas{display:flex;gap:12px;align-items:center;}
+.btn-fill{
   background:var(--blue);color:#fff;
-  padding:16px 32px;border-radius:50px;
+  padding:15px 32px;border-radius:50px;
   font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;
   position:relative;overflow:hidden;display:inline-block;
-  transition:transform .4s var(--ease-expo),box-shadow .4s;
+  transition:transform .4s var(--expo),box-shadow .4s;
 }
-.btn-main::before{content:'';position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .3s;}
-.btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(37,99,235,.55);}
-.btn-main:hover::before{opacity:.08;}
-.btn-out{
-  color:rgba(255,255,255,.65);
-  padding:16px 32px;border-radius:50px;
+.btn-fill:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(37,99,235,.55);}
+.btn-stroke{
+  color:rgba(255,255,255,.55);
+  padding:15px 32px;border-radius:50px;
   font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;
-  border:1px solid rgba(255,255,255,.18);display:inline-block;
-  transition:all .4s var(--ease-expo);
+  border:1px solid rgba(255,255,255,.16);display:inline-block;
+  transition:all .4s var(--expo);
 }
-.btn-out:hover{color:#fff;border-color:rgba(255,255,255,.45);transform:translateY(-2px);}
+.btn-stroke:hover{color:#fff;border-color:rgba(255,255,255,.4);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:48px;}
+.hs-v{font-family:'Manrope',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:900;letter-spacing:-1px;display:block;line-height:1;}
+.hs-l{font-size:12px;color:rgba(255,255,255,.35);margin-top:5px;display:block;}
 
-/* Magnetic button wrapper */
-.mag-wrap{display:inline-block;position:relative;}
-
-.hero-scroll{
-  font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;
-  writing-mode:vertical-rl;position:absolute;right:48px;bottom:80px;
-  display:flex;align-items:center;gap:10px;z-index:3;
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:36px;right:60px;z-index:3;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.22);display:flex;align-items:center;gap:10px;
 }
-.hero-scroll::before{content:'';width:1px;height:40px;background:rgba(255,255,255,.15);}
+.scroll-hint::before{content:'';width:1px;height:44px;background:rgba(255,255,255,.15);}
 
 /* ─── MARQUEE ─── */
-.marquee-section{
-  padding:20px 0;
+.marquee-wrap{
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  overflow:hidden;background:rgba(255,255,255,.013);
+  overflow:hidden;padding:16px 0;background:rgba(255,255,255,.012);
 }
-.marquee-track{display:flex;width:max-content;animation:mq 25s linear infinite;}
-.marquee-track:hover{animation-play-state:paused;}
-.mq-item{
-  display:flex;align-items:center;gap:12px;
-  padding:0 40px;font-family:'Manrope',sans-serif;
-  font-size:13px;font-weight:600;color:rgba(255,255,255,.28);
-  border-right:1px solid rgba(255,255,255,.06);
-  white-space:nowrap;transition:color .3s;
+.mq-track{display:flex;width:max-content;animation:mq 28s linear infinite;}
+.mq-track:hover{animation-play-state:paused;}
+.mq-i{
+  display:flex;align-items:center;gap:10px;padding:0 40px;
+  font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;
+  color:rgba(255,255,255,.25);border-right:1px solid rgba(255,255,255,.05);
+  white-space:nowrap;transition:color .25s;
 }
-.mq-item:hover{color:rgba(255,255,255,.65);}
-.mq-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-l);flex-shrink:0;}
-@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mq-i:hover{color:rgba(255,255,255,.6);}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--blue-l);}
+@keyframes mq{to{transform:translateX(-50%);}}
 
-/* ─── GENERIC SECTION ─── */
-section{padding:140px 48px;}
-.s-inner{max-width:1320px;margin:0 auto;}
+/* ─── SECTIONS ─── */
+section{padding:130px 60px;}
+.s-inner{max-width:1340px;margin:0 auto;}
 .s-tag{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.35);margin-bottom:24px;
+  display:flex;align-items:center;gap:10px;
+  font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-bottom:20px;
 }
-.s-tag::before{content:'';width:24px;height:1px;background:rgba(255,255,255,.25);}
+.s-tag::before{content:'';width:22px;height:1px;background:rgba(255,255,255,.2);}
+/* Big section title */
 .s-title{
   font-family:'Manrope',sans-serif;
-  font-size:clamp(36px,5vw,72px);
-  font-weight:900;line-height:1;letter-spacing:-2px;
-  margin-bottom:0;
+  font-size:clamp(40px,6vw,80px);
+  font-weight:900;line-height:.97;letter-spacing:-2.5px;
 }
-.s-divider{width:100%;height:1px;background:var(--border);margin:64px 0;}
+.s-rule{width:100%;height:1px;background:var(--border);margin:64px 0;}
 
 /* ─── SERVICES ─── */
-.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
 .svc-list{border-right:1px solid var(--border);}
 .svc-item{
-  border-bottom:1px solid var(--border);padding:36px 40px 36px 0;
-  display:grid;grid-template-columns:40px 1fr auto;gap:20px;align-items:start;
-  cursor:none;transition:background .3s;position:relative;overflow:hidden;
+  padding:32px 40px 32px 0;
+  border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:36px 1fr 24px;gap:18px;align-items:start;
+  cursor:none;position:relative;overflow:hidden;
 }
-.svc-item::before{content:'';position:absolute;inset:0;background:rgba(37,99,235,.05);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-expo);}
-.svc-item:hover::before{transform:scaleX(1);}
-.svc-item:hover{background:transparent;}
-.svc-num{font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,.2);margin-top:4px;position:relative;z-index:1;}
-.svc-content{position:relative;z-index:1;}
-.svc-content h3{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;transition:color .3s;}
-.svc-item:hover .svc-content h3{color:var(--blue-l);}
-.svc-content p{font-size:14px;color:var(--text);line-height:1.75;}
-.svc-arrow{
-  font-size:20px;color:rgba(255,255,255,.2);margin-top:4px;
-  transition:color .3s,transform .4s var(--ease-expo);
-  position:relative;z-index:1;
+.svc-item::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(37,99,235,.06),transparent);
+  transform:translateX(-100%);
+  transition:transform .6s var(--expo);
 }
-.svc-item:hover .svc-arrow{color:var(--blue-l);transform:translate(4px,-4px);}
-.svc-visual{padding-left:64px;display:flex;flex-direction:column;justify-content:center;gap:16px;}
-.svc-stat-card{
-  background:rgba(255,255,255,.04);border:1px solid var(--border);
-  border-radius:16px;padding:24px;transition:all .4s var(--ease-expo);
-}
-.svc-stat-card:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.08);transform:translateX(-6px);}
-.ss-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.ss-label{font-size:12px;color:rgba(255,255,255,.4);font-weight:600;}
-.ss-badge{font-size:11px;background:rgba(37,99,235,.2);color:#7AA8FF;padding:3px 10px;border-radius:50px;}
-.ss-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.ss-v{font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;display:block;color:#fff;letter-spacing:-.5px;}
-.ss-l{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px;display:block;}
-.ss-g{font-size:10px;color:#4ade80;margin-top:2px;display:block;}
+.svc-item:hover::before{transform:translateX(0);}
+.svc-n{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.18);margin-top:5px;position:relative;}
+.svc-body{position:relative;}
+.svc-body h3{font-family:'Manrope',sans-serif;font-size:21px;font-weight:800;margin-bottom:7px;transition:color .3s;}
+.svc-item:hover .svc-body h3{color:var(--blue-l);}
+.svc-body p{font-size:14px;color:var(--text);line-height:1.72;}
+.svc-arr{font-size:18px;color:rgba(255,255,255,.2);margin-top:5px;position:relative;transition:color .3s,transform .4s var(--expo);}
+.svc-item:hover .svc-arr{color:var(--blue-l);transform:translate(3px,-3px);}
+.svc-cards{padding-left:60px;display:flex;flex-direction:column;gap:12px;}
+.sc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .4s var(--expo);}
+.sc:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.07);transform:translateX(-5px);}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sc-name{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);}
+.sc-badge{font-size:10px;background:rgba(37,99,235,.2);color:#7BAEFF;padding:2px 10px;border-radius:50px;}
+.sc-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sc-v{font-family:'Manrope',sans-serif;font-size:20px;font-weight:900;color:#fff;display:block;letter-spacing:-.5px;}
+.sc-l{font-size:10px;color:rgba(255,255,255,.28);margin-top:2px;display:block;}
+.sc-g{font-size:10px;color:#4ade80;display:block;}
 
 /* ─── NUMBERS ─── */
-.numbers-section{
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:80px 48px;
-}
-.numbers-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
-.num-item{
-  padding:40px 48px;border-right:1px solid var(--border);text-align:center;
-  transition:background .3s;
-}
-.num-item:last-child{border-right:none;}
-.num-item:hover{background:rgba(255,255,255,.02);}
-.num-val{font-family:'Manrope',sans-serif;font-size:clamp(42px,5vw,68px);font-weight:900;letter-spacing:-2px;display:block;line-height:1;}
-.num-lbl{font-size:13px;color:rgba(255,255,255,.4);margin-top:8px;display:block;}
+.nums-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 60px;}
+.nums-grid{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.num-cell{padding:64px 48px;border-right:1px solid var(--border);text-align:center;transition:background .3s;}
+.num-cell:last-child{border-right:none;}
+.num-cell:hover{background:rgba(255,255,255,.02);}
+.nv{font-family:'Manrope',sans-serif;font-size:clamp(44px,5.5vw,72px);font-weight:900;letter-spacing:-3px;line-height:1;display:block;}
+.nl{font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;display:block;}
 
-/* ─── PROCESS — horizontal scrolling cards ─── */
-.proc-section{overflow:hidden;padding:140px 0;}
-.proc-header{padding:0 48px;max-width:1320px;margin:0 auto 72px;}
-.proc-scroller{
-  display:flex;gap:2px;padding:0 48px;
-  /* will be driven by GSAP horizontal scroll on desktop */
+/* ─── PROCESS (horizontal cards) ─── */
+.proc-wrap{padding:130px 0;overflow:hidden;}
+.proc-head{padding:0 60px;max-width:1340px;margin:0 auto 64px;}
+.proc-row{
+  display:flex;gap:2px;padding:0 60px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
 }
+.proc-row::-webkit-scrollbar{display:none;}
 .proc-card{
-  min-width:340px;background:rgba(255,255,255,.035);border:1px solid var(--border);
-  border-radius:20px;padding:40px;flex-shrink:0;
-  transition:border-color .4s,background .4s;position:relative;overflow:hidden;
+  min-width:320px;flex-shrink:0;scroll-snap-align:start;
+  background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:20px;
+  padding:40px;position:relative;overflow:hidden;cursor:none;
+  transition:border-color .4s,background .4s,transform .4s var(--expo);
 }
-.proc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease-expo);}
-.proc-card:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.05);}
+.proc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--expo);
+}
+.proc-card:hover{border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.05);transform:translateY(-6px);}
 .proc-card:hover::after{transform:scaleX(1);}
-.pc-num{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.2);letter-spacing:2px;margin-bottom:32px;}
-.pc-title{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;margin-bottom:12px;}
-.pc-desc{font-size:14px;color:var(--text);line-height:1.75;}
+.pc-n{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:2px;margin-bottom:36px;}
+.pc-t{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;margin-bottom:12px;}
+.pc-d{font-size:14px;color:var(--text);line-height:1.75;}
 
 /* ─── TESTIMONIALS ─── */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.tcard{
-  background:rgba(255,255,255,.035);border:1px solid var(--border);
-  border-radius:20px;padding:32px;
-  transition:all .45s var(--ease-expo);position:relative;overflow:hidden;
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.tc{
+  background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:20px;
+  padding:32px;position:relative;overflow:hidden;
+  transition:all .45s var(--expo);cursor:none;
 }
-.tcard::before{content:'"';position:absolute;top:-14px;right:20px;font-size:80px;font-family:'Manrope',sans-serif;font-weight:900;color:rgba(37,99,235,.08);line-height:1;pointer-events:none;}
-.tcard:hover{border-color:rgba(37,99,235,.35);transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.3);}
-.t-stars{display:flex;gap:2px;margin-bottom:14px;}
-.t-star{width:13px;height:13px;fill:#FBBF24;}
-.tcard p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.85;font-style:italic;margin-bottom:20px;position:relative;z-index:1;}
-.t-auth{display:flex;align-items:center;gap:12px;}
-.t-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;}
-.t-name{font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;}
-.t-co{font-size:12px;color:rgba(255,255,255,.35);}
+.tc::before{content:'"';position:absolute;top:-10px;right:18px;font-size:78px;font-family:'Manrope',sans-serif;font-weight:900;color:rgba(37,99,235,.07);line-height:1;}
+.tc:hover{border-color:rgba(37,99,235,.35);transform:translateY(-7px);box-shadow:0 24px 56px rgba(0,0,0,.3);}
+.tc-stars{display:flex;gap:2px;margin-bottom:14px;}
+.tc-star{width:12px;height:12px;fill:#FBBF24;}
+.tc p{font-size:14px;color:rgba(255,255,255,.58);line-height:1.85;font-style:italic;margin-bottom:20px;position:relative;z-index:1;}
+.tc-auth{display:flex;align-items:center;gap:12px;}
+.tc-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;}
+.tc-name{font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;}
+.tc-co{font-size:12px;color:rgba(255,255,255,.32);}
 
 /* ─── FAQ ─── */
-.faq-wrap{max-width:760px;margin:0 auto;}
+.faq-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.faq-list{max-width:100%;}
 .faq-item{border-bottom:1px solid var(--border);}
-.faq-item:last-child{border-bottom:none;}
-.faq-q{
-  padding:24px 0;display:flex;align-items:center;justify-content:space-between;
-  cursor:none;gap:20px;
-}
-.faq-q span{font-family:'Manrope',sans-serif;font-size:17px;font-weight:600;color:#fff;}
-.faq-icon{
-  width:28px;height:28px;min-width:28px;border:1px solid rgba(255,255,255,.15);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;transition:all .4s var(--ease-expo);
-}
-.faq-item.open .faq-icon{background:var(--blue);border-color:var(--blue);transform:rotate(45deg);}
-.faq-icon svg{width:12px;height:12px;stroke:rgba(255,255,255,.6);fill:none;transition:stroke .3s;}
-.faq-item.open .faq-icon svg{stroke:#fff;}
-.faq-a{font-size:15px;color:var(--text);line-height:1.85;max-height:0;overflow:hidden;transition:max-height .5s var(--ease-expo),padding .4s;}
+.faq-q{padding:22px 0;display:flex;align-items:center;justify-content:space-between;cursor:none;gap:18px;}
+.faq-q span{font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;color:#fff;}
+.faq-ico{width:28px;height:28px;min-width:28px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .4s var(--expo);}
+.faq-item.open .faq-ico{background:var(--blue);border-color:var(--blue);transform:rotate(45deg);}
+.faq-ico svg{width:12px;height:12px;stroke:rgba(255,255,255,.5);fill:none;}
+.faq-item.open .faq-ico svg{stroke:#fff;}
+.faq-a{font-size:15px;color:var(--text);line-height:1.85;max-height:0;overflow:hidden;transition:max-height .5s var(--expo),padding .4s;}
 .faq-item.open .faq-a{max-height:320px;padding-bottom:22px;}
 
 /* ─── BLOG ─── */
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.bcard{
-  background:rgba(255,255,255,.035);border:1px solid var(--border);
-  border-radius:20px;overflow:hidden;display:block;
-  transition:all .45s var(--ease-expo);
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.bc{
+  background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;display:block;transition:all .45s var(--expo);
 }
-.bcard:hover{border-color:rgba(37,99,235,.35);transform:translateY(-6px);box-shadow:0 20px 44px rgba(37,99,235,.1);}
-.b-thumb{height:180px;background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(0,212,255,.07));display:flex;align-items:center;justify-content:center;font-size:42px;border-bottom:1px solid var(--border);}
-.b-body{padding:24px;}
-.b-cat{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px;display:block;}
-.bcard h3{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.45;margin-bottom:10px;}
-.bcard p{font-size:13px;color:var(--text);line-height:1.72;margin-bottom:14px;}
-.b-read{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--blue-l);transition:gap .25s;}
-.bcard:hover .b-read{gap:9px;}
+.bc:hover{border-color:rgba(37,99,235,.35);transform:translateY(-7px);box-shadow:0 22px 48px rgba(37,99,235,.1);}
+.bc-thumb{height:180px;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(56,189,248,.07));display:flex;align-items:center;justify-content:center;font-size:40px;border-bottom:1px solid var(--border);}
+.bc-body{padding:24px;}
+.bc-cat{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px;display:block;}
+.bc h3{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#fff;line-height:1.45;margin-bottom:10px;}
+.bc p{font-size:13px;color:var(--text);line-height:1.72;margin-bottom:14px;}
+.bc-read{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--blue-l);transition:gap .25s;}
+.bc:hover .bc-read{gap:9px;}
 
 /* ─── PRICING ─── */
-.price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
-.pcard{
-  background:rgba(255,255,255,.035);border:1.5px solid var(--border);
-  border-radius:20px;padding:36px 28px;position:relative;
-  transition:all .45s var(--ease-expo);
-}
-.pcard:hover{transform:translateY(-8px);border-color:rgba(37,99,235,.4);box-shadow:0 32px 64px rgba(0,0,0,.35),0 0 32px rgba(37,99,235,.1);}
-.pcard.feat{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 18px 54px rgba(37,99,235,.2);}
-.feat-pill{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap;}
-.p-tier{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;display:block;}
-.p-amt{font-family:'Manrope',sans-serif;font-size:44px;font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1;}
-.p-amt sub{font-size:16px;font-weight:500;color:rgba(255,255,255,.3);font-family:'Noto Sans',sans-serif;letter-spacing:0;}
-.p-cycle{font-size:12px;color:rgba(255,255,255,.28);margin:6px 0 24px;display:block;}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
+.pc2{background:rgba(255,255,255,.035);border:1.5px solid var(--border);border-radius:20px;padding:36px 28px;position:relative;transition:all .45s var(--expo);}
+.pc2:hover{transform:translateY(-8px);border-color:rgba(37,99,235,.4);box-shadow:0 32px 64px rgba(0,0,0,.35);}
+.pc2.feat{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 18px 54px rgba(37,99,235,.2);}
+.feat-lbl{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;padding:4px 16px;border-radius:50px;white-space:nowrap;}
+.p-tier{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:10px;display:block;}
+.p-amt{font-family:'Manrope',sans-serif;font-size:48px;font-weight:900;letter-spacing:-2px;color:#fff;line-height:1;}
+.p-amt sub{font-size:16px;font-weight:500;color:rgba(255,255,255,.28);font-family:'Noto Sans',sans-serif;letter-spacing:0;vertical-align:baseline;}
+.p-cycle{font-size:12px;color:rgba(255,255,255,.26);margin:6px 0 24px;display:block;}
 .p-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;}
-.p-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.65);}
-.pcheck{width:17px;height:17px;min-width:17px;background:rgba(37,99,235,.18);border:1px solid rgba(37,99,235,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.pcheck svg{width:8px;height:8px;stroke:#6B9FFF;fill:none;}
-.p-btn{
-  width:100%;padding:14px;border-radius:50px;font-family:'Manrope',sans-serif;
-  font-size:14px;font-weight:700;border:none;cursor:none;
-  transition:all .35s var(--ease-expo);text-align:center;display:block;
-}
+.p-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.62);}
+.p-chk{width:17px;height:17px;min-width:17px;background:rgba(37,99,235,.16);border:1px solid rgba(37,99,235,.32);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.p-chk svg{width:8px;height:8px;stroke:#6B9FFF;fill:none;}
+.p-btn{width:100%;padding:14px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;border:none;cursor:none;transition:all .35s var(--expo);text-align:center;display:block;}
 .p-btn.pr{background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;}
 .p-btn.pr:hover{box-shadow:0 0 32px rgba(37,99,235,.6);transform:translateY(-2px);}
-.p-btn.gh{background:transparent;color:var(--blue-l);border:1.5px solid rgba(37,99,235,.3);}
+.p-btn.gh{background:transparent;color:var(--blue-l);border:1.5px solid rgba(37,99,235,.28);}
 .p-btn.gh:hover{background:rgba(37,99,235,.1);}
 
 /* ─── CTA ─── */
-.cta-section{
-  padding:160px 48px;text-align:center;position:relative;overflow:hidden;
-}
-.cta-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(37,99,235,.18),transparent 70%);
-  animation:cta-breath 5s ease-in-out infinite;
-}
-@keyframes cta-breath{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
-.cta-section h2{
-  font-family:'Manrope',sans-serif;
-  font-size:clamp(36px,6vw,88px);
-  font-weight:900;letter-spacing:-2.5px;line-height:.95;
-  margin-bottom:24px;position:relative;z-index:1;
-}
-.cta-section p{font-size:17px;color:var(--text);margin-bottom:40px;position:relative;z-index:1;}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.cta-sec{padding:160px 60px;text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 50%,rgba(37,99,235,.18),transparent 70%);animation:breath 5s ease-in-out infinite;}
+@keyframes breath{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+.cta-sec h2{font-family:'Manrope',sans-serif;font-size:clamp(40px,7vw,100px);font-weight:900;letter-spacing:-3px;line-height:.95;margin-bottom:28px;position:relative;z-index:1;}
+.cta-sec p{font-size:17px;color:var(--text);margin-bottom:44px;position:relative;z-index:1;}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
 
 /* ─── FOOTER ─── */
-footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64px 48px 32px;}
-.ft-inner{max-width:1320px;margin:0 auto;}
+footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64px 60px 32px;}
+.ft{max-width:1340px;margin:0 auto;}
 .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-.ft-brand p{font-size:13px;line-height:1.85;color:rgba(255,255,255,.28);margin-top:14px;max-width:220px;}
-.ft-col h5{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;}
-.ft-col a{display:block;font-size:13.5px;color:rgba(255,255,255,.28);margin-bottom:10px;transition:all .25s;}
+.ft-brand p{font-size:13px;line-height:1.85;color:rgba(255,255,255,.26);margin-top:14px;max-width:220px;}
+.ft-col h5{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;}
+.ft-col a{display:block;font-size:13.5px;color:rgba(255,255,255,.25);margin-bottom:10px;transition:all .25s;}
 .ft-col a:hover{color:#fff;padding-left:6px;}
-.ft-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
-.ft-bottom a{color:var(--blue-l);}
+.ft-btm{border-top:1px solid rgba(255,255,255,.05);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
+.ft-btm a{color:var(--blue-l);}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1024px){
-  body{cursor:auto;}
-  #cur,#cur-ring{display:none;}
-  #nav,section,.hero,.cta-section,.numbers-section,footer{padding-left:24px;padding-right:24px;}
-  .hero{padding-bottom:60px;}
-  .svc-layout{grid-template-columns:1fr;}
-  .svc-visual{padding-left:0;padding-top:48px;}
-  .numbers-grid{grid-template-columns:1fr 1fr;}
-  .num-item:nth-child(2){border-right:none;}
-  .proc-scroller{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .proc-card{min-width:280px;}
-  .testi-grid,.blog-grid{grid-template-columns:1fr;}
-  .price-row{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
-  .ft-top{grid-template-columns:1fr 1fr;gap:28px;}
+  body{cursor:auto;}#cur,#cur-ring{display:none;}
+  #nav,.hero,.cta-sec,section,.nums-section,footer,.proc-head,.proc-row{padding-left:28px;padding-right:28px;}
+  .hero{padding-bottom:64px;}
+  .hero-h1{font-size:clamp(48px,14vw,100px);letter-spacing:-2.5px;}
   .nav-links{display:none;}.burger{display:flex;}
-  .hero-h1{font-size:clamp(40px,12vw,72px);letter-spacing:-2px;}
-  .s-title{font-size:clamp(32px,8vw,56px);}
-  .cta-section h2{font-size:clamp(32px,9vw,60px);}
+  .svc-layout{grid-template-columns:1fr;}
+  .svc-cards{padding-left:0;padding-top:40px;}
+  .nums-grid{grid-template-columns:1fr 1fr;}
+  .num-cell:nth-child(2){border-right:none;}
+  .tgrid,.bgrid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
+  .ft-top{grid-template-columns:1fr 1fr;gap:28px;}
+  .faq-split{grid-template-columns:1fr;}
+  .mob-menu{padding:32px 28px;}
 }
 @media(max-width:600px){
-  .hero-bottom{flex-direction:column;align-items:flex-start;}
-  .hero-btns{flex-direction:column;width:100%;}
-  .btn-main,.btn-out{text-align:center;width:100%;}
-  .hero-scroll{display:none;}
-  .numbers-grid{grid-template-columns:1fr;border:none;}
-  .num-item{border-right:none;border-bottom:1px solid var(--border);}
+  .hero-foot{flex-direction:column;align-items:flex-start;}
+  .hero-stats{gap:28px;}
+  .hero-ctas{flex-direction:column;width:100%;}
+  .btn-fill,.btn-stroke{text-align:center;width:100%;}
+  .nums-grid{grid-template-columns:1fr;}
+  .num-cell{border-right:none;border-bottom:1px solid var(--border);}
   .ft-top{grid-template-columns:1fr;}
-  section{padding:80px 24px;}
-  .proc-header{padding:0 24px;}
-  .proc-scroller{padding:0 24px;}
+  .scroll-hint{display:none;}
+  section{padding:80px 28px;}
+  .proc-card{min-width:270px;}
+  .cta-sec h2{letter-spacing:-2px;}
 }
-
-/* ─── GSAP INIT STATES ─── */
-.gs-hide{opacity:0;}
-.gs-up{opacity:0;transform:translateY(40px);}
-.gs-left{opacity:0;transform:translateX(-40px);}
-.gs-right{opacity:0;transform:translateX(40px);}
-.h1-line .line-inner{transform:translateY(110%);}
 </style>
 </head>
 <body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div id="preloader-logo">
+    <svg width="32" height="32" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg>
+    <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:20px;"><em style="color:#5B8EFF;font-style:normal;">Ads</em>OnUs</span>
+  </div>
+  <div id="preloader-bar"></div>
+</div>
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
@@ -466,11 +452,8 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
 <nav id="nav">
   <div class="nav-inner">
     <a class="logo" href="/">
-      <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/>
-        <circle cx="50" cy="48" r="12" fill="#060A12"/>
-      </svg>
-      <span class="logo-name"><em>Ads</em>OnUs</span>
+      <svg class="lm" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg>
+      <span class="logo-txt"><em>Ads</em>OnUs</span>
     </a>
     <div class="nav-links">
       <a href="/" class="active">Ana Səhifə</a>
@@ -478,7 +461,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
       <a href="/pages/qiymetler.html">Qiymətlər</a>
       <a href="/blog/">Blog</a>
       <a href="/pages/haqqimizda.html">Haqqımızda</a>
-      <a href="https://wa.me/994773698929" class="nav-cta mag-wrap" rel="noopener">Pulsuz Sınaq →</a>
+      <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a>
     </div>
     <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
@@ -492,151 +475,114 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
   </div>
 </nav>
 
-<main>
+<main id="site-main" style="opacity:0;">
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-inner">
-    <div class="hero-tag gs-hide">Azərbaycanda #1 Reklam Agentliyi</div>
+    <div class="hero-eyebrow"><span>Azərbaycanda #1 Reklam Agentliyi</span></div>
     <h1 class="hero-h1">
-      <span class="line h1-line"><span class="line-inner">Reklam Xərcini</span></span>
-      <span class="line h1-line"><span class="line-inner">Azalt,</span></span>
-      <span class="line h1-line"><span class="line-inner grad">Satışlarını</span></span>
-      <span class="line h1-line"><span class="line-inner grad">Artır.</span></span>
+      <span class="h1-line"><span class="h1-inner">Reklam</span></span>
+      <span class="h1-line"><span class="h1-inner">Xərcini Azalt,</span></span>
+      <span class="h1-line"><span class="h1-inner grad-text">Satışlarını</span></span>
+      <span class="h1-line"><span class="h1-inner grad-text">Artır.</span></span>
     </h1>
-    <div class="hero-bottom">
-      <p class="hero-sub gs-up">Meta, Google, TikTok və LinkedIn reklamlarınızı peşəkar idarə edin — Azərbaycanda nəticəyə yönümlü yeganə tam platforma agentliyi.</p>
-      <div class="hero-btns gs-up">
-        <a href="https://wa.me/994773698929" class="btn-main mag-wrap" rel="noopener">2 Həftəlik Pulsuz Sınaq →</a>
-        <a href="/pages/qiymetler.html" class="btn-out mag-wrap">Qiymətlərə Bax</a>
+    <div class="hero-foot">
+      <p class="hero-desc">Meta, Google, TikTok və LinkedIn reklamlarınızı peşəkar idarə edin — Azərbaycanda nəticəyə yönümlü yeganə tam platforma agentliyi.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/994773698929" class="btn-fill" rel="noopener">2 Həftəlik Pulsuz Sınaq →</a>
+        <a href="/pages/qiymetler.html" class="btn-stroke">Qiymətlərə Bax</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="hs-v" data-count="150" data-suf="+">150+</span><span class="hs-l">Aktiv Müştəri</span></div>
+        <div><span class="hs-v" data-count="3" data-suf="×">3×</span><span class="hs-l">Ortalama ROAS</span></div>
+        <div><span class="hs-v">5</span><span class="hs-l">Platforma</span></div>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
+  <div class="scroll-hint">Scroll</div>
 </section>
 
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="mq-item"><span class="mq-dot"></span>Meta Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>Google Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>TikTok Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>LinkedIn Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>SMM</div>
-    <div class="mq-item"><span class="mq-dot"></span>Facebook Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>Instagram Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>WhatsApp Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>Remarketing</div>
-    <div class="mq-item"><span class="mq-dot"></span>Analitika</div>
-    <div class="mq-item"><span class="mq-dot"></span>Meta Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>Google Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>TikTok Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>LinkedIn Ads</div>
-    <div class="mq-item"><span class="mq-dot"></span>SMM</div>
-    <div class="mq-item"><span class="mq-dot"></span>Facebook Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>Instagram Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>WhatsApp Reklamı</div>
-    <div class="mq-item"><span class="mq-dot"></span>Remarketing</div>
-    <div class="mq-item"><span class="mq-dot"></span>Analitika</div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="mq-track">
+    <div class="mq-i"><span class="mq-dot"></span>Meta Ads</div><div class="mq-i"><span class="mq-dot"></span>Google Ads</div><div class="mq-i"><span class="mq-dot"></span>TikTok Ads</div><div class="mq-i"><span class="mq-dot"></span>LinkedIn Ads</div><div class="mq-i"><span class="mq-dot"></span>SMM</div><div class="mq-i"><span class="mq-dot"></span>Facebook Reklamı</div><div class="mq-i"><span class="mq-dot"></span>Instagram Reklamı</div><div class="mq-i"><span class="mq-dot"></span>WhatsApp Reklamı</div><div class="mq-i"><span class="mq-dot"></span>Remarketing</div><div class="mq-i"><span class="mq-dot"></span>Analitika</div>
+    <div class="mq-i"><span class="mq-dot"></span>Meta Ads</div><div class="mq-i"><span class="mq-dot"></span>Google Ads</div><div class="mq-i"><span class="mq-dot"></span>TikTok Ads</div><div class="mq-i"><span class="mq-dot"></span>LinkedIn Ads</div><div class="mq-i"><span class="mq-dot"></span>SMM</div><div class="mq-i"><span class="mq-dot"></span>Facebook Reklamı</div><div class="mq-i"><span class="mq-dot"></span>Instagram Reklamı</div><div class="mq-i"><span class="mq-dot"></span>WhatsApp Reklamı</div><div class="mq-i"><span class="mq-dot"></span>Remarketing</div><div class="mq-i"><span class="mq-dot"></span>Analitika</div>
   </div>
 </div>
 
 <!-- ═══ SERVICES ═══ -->
 <section id="services">
   <div class="s-inner">
-    <div class="s-tag gs-hide">Xidmətlər</div>
-    <h2 class="s-title gs-up">Bütün platformalar,<br>bir agentlik.</h2>
-    <div class="s-divider gs-hide" style="transform:scaleX(0);transform-origin:left;"></div>
+    <div class="s-tag anim-tag">Xidmətlər</div>
+    <h2 class="s-title anim-title">Bütün platformalar,<br>bir agentlik.</h2>
+    <div class="s-rule anim-rule"></div>
     <div class="svc-layout">
       <div class="svc-list">
-        <div class="svc-item gs-up">
-          <span class="svc-num">01</span>
-          <div class="svc-content"><h3>Meta Reklamları</h3><p>Facebook, Instagram, WhatsApp. Click-to-Message, Remarketing, Lead Generation.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
-        <div class="svc-item gs-up">
-          <span class="svc-num">02</span>
-          <div class="svc-content"><h3>Google Ads</h3><p>Axtarış, Display, YouTube. Hazır müştəriləri hədəfləyin.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
-        <div class="svc-item gs-up">
-          <span class="svc-num">03</span>
-          <div class="svc-content"><h3>TikTok Ads</h3><p>Gənc auditoriyaya çatın. Viral video reklamlar ilə nəticə.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
-        <div class="svc-item gs-up">
-          <span class="svc-num">04</span>
-          <div class="svc-content"><h3>LinkedIn Ads</h3><p>B2B satış üçün ideal. Rəhbərlər, müdirlər, peşəkarlara çatın.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
-        <div class="svc-item gs-up">
-          <span class="svc-num">05</span>
-          <div class="svc-content"><h3>SMM</h3><p>Hər iş günü 1 post. Caption, hashtag, hesab idarəetməsi.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
-        <div class="svc-item gs-up">
-          <span class="svc-num">06</span>
-          <div class="svc-content"><h3>Analitika &amp; Hesabat</h3><p>Hər platformadan ətraflı KPI izləmə, A/B testlər.</p></div>
-          <span class="svc-arrow">↗</span>
-        </div>
+        <div class="svc-item anim-up"><span class="svc-n">01</span><div class="svc-body"><h3>Meta Reklamları</h3><p>Facebook, Instagram, WhatsApp. Click-to-Message, Remarketing, Lead Gen.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item anim-up"><span class="svc-n">02</span><div class="svc-body"><h3>Google Ads</h3><p>Axtarış, Display, YouTube. Hazır müştəriləri hədəfləyin.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item anim-up"><span class="svc-n">03</span><div class="svc-body"><h3>TikTok Ads</h3><p>Gənc auditoriyaya çatın. Kreativ video reklamlar ilə nəticə.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item anim-up"><span class="svc-n">04</span><div class="svc-body"><h3>LinkedIn Ads</h3><p>B2B satış üçün ideal. Rəhbərlər, müdirlər, peşəkarlara çatın.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item anim-up"><span class="svc-n">05</span><div class="svc-body"><h3>SMM</h3><p>Hər iş günü 1 post. Caption, hashtag, hesab idarəetməsi.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item anim-up"><span class="svc-n">06</span><div class="svc-body"><h3>Analitika</h3><p>Hər platformadan KPI izləmə, A/B testlər, aylıq hesabat.</p></div><span class="svc-arr">↗</span></div>
       </div>
-      <div class="svc-visual gs-right">
-        <div class="svc-stat-card"><div class="ss-top"><span class="ss-label">Geyim Mağazası · Bakı</span><span class="ss-badge">Meta</span></div><div class="ss-nums"><div><span class="ss-v">312%</span><span class="ss-l">Satış Artımı</span><span class="ss-g">↑</span></div><div><span class="ss-v">₼1.80</span><span class="ss-l">Lider xərci</span><span class="ss-g">↓ 28%</span></div><div><span class="ss-v">5.2×</span><span class="ss-l">ROAS</span><span class="ss-g">↑</span></div></div></div>
-        <div class="svc-stat-card"><div class="ss-top"><span class="ss-label">Restoran · Bakı</span><span class="ss-badge">Google + Meta</span></div><div class="ss-nums"><div><span class="ss-v">890</span><span class="ss-l">Aylıq Lider</span><span class="ss-g">↑ 67%</span></div><div><span class="ss-v">₼0.95</span><span class="ss-l">Lider xərci</span><span class="ss-g">↓</span></div><div><span class="ss-v">4.1×</span><span class="ss-l">ROI</span><span class="ss-g">↑</span></div></div></div>
-        <div class="svc-stat-card"><div class="ss-top"><span class="ss-label">Gözəllik Salonu · Sumqayıt</span><span class="ss-badge">TikTok + Meta</span></div><div class="ss-nums"><div><span class="ss-v">247%</span><span class="ss-l">Rezervasiya</span><span class="ss-g">↑</span></div><div><span class="ss-v">₼1.20</span><span class="ss-l">Lider xərci</span><span class="ss-g">↓</span></div><div><span class="ss-v">6.8×</span><span class="ss-l">ROAS</span><span class="ss-g">↑</span></div></div></div>
+      <div class="svc-cards anim-right">
+        <div class="sc"><div class="sc-top"><span class="sc-name">Geyim Mağazası · Bakı</span><span class="sc-badge">Meta</span></div><div class="sc-nums"><div><span class="sc-v">312%</span><span class="sc-l">Satış Artımı</span><span class="sc-g">↑</span></div><div><span class="sc-v">₼1.80</span><span class="sc-l">Lider xərci</span><span class="sc-g">↓ 28%</span></div><div><span class="sc-v">5.2×</span><span class="sc-l">ROAS</span><span class="sc-g">↑</span></div></div></div>
+        <div class="sc"><div class="sc-top"><span class="sc-name">Restoran · Bakı</span><span class="sc-badge">Google + Meta</span></div><div class="sc-nums"><div><span class="sc-v">890</span><span class="sc-l">Aylıq Lider</span><span class="sc-g">↑ 67%</span></div><div><span class="sc-v">₼0.95</span><span class="sc-l">Lider xərci</span><span class="sc-g">↓</span></div><div><span class="sc-v">4.1×</span><span class="sc-l">ROI</span><span class="sc-g">↑</span></div></div></div>
+        <div class="sc"><div class="sc-top"><span class="sc-name">Gözəllik Salonu · Sumqayıt</span><span class="sc-badge">TikTok + Meta</span></div><div class="sc-nums"><div><span class="sc-v">247%</span><span class="sc-l">Rezervasiya</span><span class="sc-g">↑</span></div><div><span class="sc-v">₼1.20</span><span class="sc-l">Lider xərci</span><span class="sc-g">↓</span></div><div><span class="sc-v">6.8×</span><span class="sc-l">ROAS</span><span class="sc-g">↑</span></div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ NUMBERS ═══ -->
-<div class="numbers-section">
-  <div class="numbers-grid">
-    <div class="num-item gs-up"><span class="num-val" data-count="150" data-suf="+">0+</span><span class="num-lbl">Aktiv Müştəri</span></div>
-    <div class="num-item gs-up"><span class="num-val" data-count="3" data-suf="×">0×</span><span class="num-lbl">Ortalama ROAS Artımı</span></div>
-    <div class="num-item gs-up"><span class="num-val" data-count="5" data-suf="">0</span><span class="num-lbl">Reklam Platforması</span></div>
-    <div class="num-item gs-up"><span class="num-val" data-count="2" data-suf=" həftə">0</span><span class="num-lbl">Pulsuz Sınaq</span></div>
+<div class="nums-section">
+  <div class="nums-grid">
+    <div class="num-cell anim-up"><span class="nv" data-count="150" data-suf="+">0+</span><span class="nl">Aktiv Müştəri</span></div>
+    <div class="num-cell anim-up"><span class="nv" data-count="3" data-suf="×">0×</span><span class="nl">Ortalama ROAS</span></div>
+    <div class="num-cell anim-up"><span class="nv" data-count="5">0</span><span class="nl">Reklam Platforması</span></div>
+    <div class="num-cell anim-up"><span class="nv">2 həftə</span><span class="nl">Pulsuz Sınaq</span></div>
   </div>
 </div>
 
 <!-- ═══ PROCESS ═══ -->
-<div class="proc-section" id="proc-section">
-  <div class="proc-header">
-    <div class="s-tag gs-hide">Necə İşləyirik</div>
-    <h2 class="s-title gs-up">Sadə 4 addımda<br>nəticə.</h2>
+<div class="proc-wrap">
+  <div class="proc-head">
+    <div class="s-tag anim-tag">Necə İşləyirik</div>
+    <h2 class="s-title anim-title">Sadə 4 addımda<br>nəticə.</h2>
   </div>
-  <div class="proc-scroller" id="proc-scroller">
-    <div class="proc-card gs-up"><div class="pc-num">01 — ADDIM</div><div class="pc-title">Pulsuz Konsultasiya</div><p class="pc-desc">Biznesinizi, hədəflərinizi, rəqiblərinizi analiz edirik. Ən uyğun platformanı birlikdə müəyyənləşdiririk.</p></div>
-    <div class="proc-card gs-up"><div class="pc-num">02 — ADDIM</div><div class="pc-title">Strategiya Qurulur</div><p class="pc-desc">Fərdi kampaniya planı, auditoriya profilləri, kreativ brief hazırlayırıq. Büdcə optimallaşdırması.</p></div>
-    <div class="proc-card gs-up"><div class="pc-num">03 — ADDIM</div><div class="pc-title">Reklamlar Yayımlanır</div><p class="pc-desc">2 həftəlik pulsuz sınaq ilə başlayırıq. Kreativlər hazırlanır, hədəflər qurulur, reklamlar yayımlanır.</p></div>
-    <div class="proc-card gs-up"><div class="pc-num">04 — ADDIM</div><div class="pc-title">Optimallaşdırma</div><p class="pc-desc">A/B testlər, gündəlik izləmə, aylıq hesabat. Hər ay daha yaxşı nəticə üçün daimi təkmilləşdirmə.</p></div>
+  <div class="proc-row">
+    <div class="proc-card anim-up"><div class="pc-n">01 — ADDIM</div><div class="pc-t">Pulsuz Konsultasiya</div><p class="pc-d">Biznesinizi, hədəflərinizi, rəqiblərinizi analiz edirik. Ən uyğun platformanı birlikdə müəyyənləşdiririk.</p></div>
+    <div class="proc-card anim-up"><div class="pc-n">02 — ADDIM</div><div class="pc-t">Strategiya Qurulur</div><p class="pc-d">Fərdi kampaniya planı, auditoriya profilləri, kreativ brief hazırlayırıq. Büdcə optimallaşdırması.</p></div>
+    <div class="proc-card anim-up"><div class="pc-n">03 — ADDIM</div><div class="pc-t">Reklamlar Yayımlanır</div><p class="pc-d">2 həftəlik pulsuz sınaq ilə başlayırıq. Kreativlər hazırlanır, hədəflər qurulur, reklamlar yayımlanır.</p></div>
+    <div class="proc-card anim-up"><div class="pc-n">04 — ADDIM</div><div class="pc-t">Daimi Optimallaşdırma</div><p class="pc-d">A/B testlər, gündəlik izləmə, aylıq hesabat. Hər ay daha yaxşı nəticə üçün daimi təkmilləşdirmə.</p></div>
   </div>
 </div>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section id="testimonials">
+<section>
   <div class="s-inner">
-    <div class="s-tag gs-hide">Müştəri Rəyləri</div>
-    <h2 class="s-title gs-up" style="margin-bottom:56px;">Müştərilərimiz<br>nə deyir?</h2>
-    <div class="testi-grid stagger-gs">
-      <article class="tcard"><div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"AdsOnUs ilə işə başladıqdan 3 ay sonra online satışlarımız 3 dəfə artdı. Pulsuz sınaq dövründə özü nəticə gördük."</p><div class="t-auth"><div class="t-av" style="background:#2563EB;">NM</div><div><div class="t-name">Nigar Məmmədova</div><div class="t-co">Geyim Boutique, Bakı</div></div></div></article>
-      <article class="tcard"><div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"Google Ads ilə bizə gələn müştərilər daha ciddi oldu. Satış dövrümüz qısaldı. Tövsiyə edirəm."</p><div class="t-auth"><div class="t-av" style="background:#1040A0;">RH</div><div><div class="t-name">Rauf Həsənov</div><div class="t-co">İnşaat Şirkəti, Bakı</div></div></div></article>
-      <article class="tcard"><div class="t-stars"><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="t-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"TikTok reklamları ilə gənc müştərilərə çatdıq. Salon rezervasiyalarımız 2 ay içində 2 dəfə artdı."</p><div class="t-auth"><div class="t-av" style="background:#0D6E50;">LA</div><div><div class="t-name">Leyla Ağayeva</div><div class="t-co">Beauty Studio, Sumqayıt</div></div></div></article>
+    <div class="s-tag anim-tag">Müştəri Rəyləri</div>
+    <h2 class="s-title anim-title" style="margin-bottom:52px;">Müştərilərimiz<br>nə deyir?</h2>
+    <div class="tgrid">
+      <article class="tc anim-up"><div class="tc-stars"><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"AdsOnUs ilə işə başladıqdan 3 ay sonra online satışlarımız 3 dəfə artdı. Pulsuz sınaq dövründə özü nəticə gördük."</p><div class="tc-auth"><div class="tc-av" style="background:#2563EB;">NM</div><div><div class="tc-name">Nigar Məmmədova</div><div class="tc-co">Geyim Boutique, Bakı</div></div></div></article>
+      <article class="tc anim-up"><div class="tc-stars"><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"Google Ads ilə bizə gələn müştərilər daha ciddi oldu. Satış dövrümüz qısaldı. Tövsiyə edirəm."</p><div class="tc-auth"><div class="tc-av" style="background:#1040A0;">RH</div><div><div class="tc-name">Rauf Həsənov</div><div class="tc-co">İnşaat Şirkəti, Bakı</div></div></div></article>
+      <article class="tc anim-up"><div class="tc-stars"><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"TikTok reklamları ilə gənc müştərilərə çatdıq. Salon rezervasiyalarımız 2 ay içində 2 dəfə artdı."</p><div class="tc-auth"><div class="tc-av" style="background:#0D6E50;">LA</div><div><div class="tc-name">Leyla Ağayeva</div><div class="tc-co">Beauty Studio, Sumqayıt</div></div></div></article>
     </div>
   </div>
 </section>
 
 <!-- ═══ PRICING ═══ -->
-<section id="pricing" style="background:rgba(255,255,255,.012);">
+<section style="background:rgba(255,255,255,.012);">
   <div class="s-inner">
-    <div class="s-tag gs-hide">Qiymətlər</div>
-    <h2 class="s-title gs-up" style="margin-bottom:56px;">Şəffaf qiymətlər.</h2>
-    <div class="price-row stagger-gs">
-      <article class="pcard"><span class="p-tier">Starter</span><div class="p-amt">300 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>2 kampaniya</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook &amp; Instagram</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylıq hesabat</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>WhatsApp dəstək</li></ul><a href="https://wa.me/994773698929" class="p-btn gh" rel="noopener">Pulsuz Başla</a></article>
-      <article class="pcard feat"><div class="feat-pill">Ən Populyar</div><span class="p-tier">Growth</span><div class="p-amt">600 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>5 kampaniya</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook, Instagram, WhatsApp</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Həftəlik hesabat</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Remarketing</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>A/B testlər</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>7/24 dəstək</li></ul><a href="https://wa.me/994773698929" class="p-btn pr" rel="noopener">Pulsuz Başla</a></article>
-      <article class="pcard"><span class="p-tier">Pro</span><div class="p-amt">1000 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Limitsiz kampaniyalar</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Tam platforma idarəetməsi</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Gündəlik hesabat</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Fərdi strategist</li><li><div class="pcheck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylıq strateji görüş</li></ul><a href="https://wa.me/994773698929" class="p-btn gh" rel="noopener">Pulsuz Başla</a></article>
+    <div class="s-tag anim-tag">Qiymətlər</div>
+    <h2 class="s-title anim-title" style="margin-bottom:52px;">Şəffaf qiymətlər.</h2>
+    <div class="pgrid">
+      <article class="pc2 anim-up"><span class="p-tier">Starter</span><div class="p-amt">300 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>2 kampaniya</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook &amp; Instagram</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylıq hesabat</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>WhatsApp dəstək</li></ul><a href="https://wa.me/994773698929" class="p-btn gh" rel="noopener">Pulsuz Başla</a></article>
+      <article class="pc2 feat anim-up"><div class="feat-lbl">Ən Populyar</div><span class="p-tier">Growth</span><div class="p-amt">600 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>5 kampaniya</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook, Instagram, WhatsApp</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Həftəlik hesabat</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Remarketing</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>A/B testlər</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>7/24 dəstək</li></ul><a href="https://wa.me/994773698929" class="p-btn pr" rel="noopener">Pulsuz Başla</a></article>
+      <article class="pc2 anim-up"><span class="p-tier">Pro</span><div class="p-amt">1000 <sub>AZN</sub></div><span class="p-cycle">/ ay · 2 həftə pulsuz</span><ul class="p-list"><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Limitsiz kampaniyalar</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Tam platforma idarəetməsi</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Gündəlik hesabat</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Fərdi strategist</li><li><div class="p-chk"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylıq strateji görüş</li></ul><a href="https://wa.me/994773698929" class="p-btn gh" rel="noopener">Pulsuz Başla</a></article>
     </div>
   </div>
 </section>
@@ -644,19 +590,19 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
 <!-- ═══ FAQ ═══ -->
 <section id="faq">
   <div class="s-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+    <div class="faq-split">
       <div>
-        <div class="s-tag gs-hide">FAQ</div>
-        <h2 class="s-title gs-up">Suallarınız<br>var?</h2>
-        <p style="margin-top:24px;font-size:15px;color:var(--text);line-height:1.85;" class="gs-up">Cavab tapa bilmədiyiniz sual varsa, WhatsApp-dan yazın — 5 dəqiqə içində cavab veririk.</p>
-        <a href="https://wa.me/994773698929" class="btn-main mag-wrap" rel="noopener" style="margin-top:28px;display:inline-block;">WhatsApp ilə Yazın →</a>
+        <div class="s-tag anim-tag">FAQ</div>
+        <h2 class="s-title anim-title">Suallarınız<br>var?</h2>
+        <p style="margin-top:22px;font-size:16px;color:var(--text);line-height:1.85;max-width:340px;" class="anim-up">Cavab tapa bilmədiyiniz sual varsa, WhatsApp-dan yazın — 5 dəqiqə içində cavab veririk.</p>
+        <a href="https://wa.me/994773698929" class="btn-fill anim-up" rel="noopener" style="display:inline-block;margin-top:28px;">WhatsApp ilə Yazın →</a>
       </div>
-      <div class="faq-wrap gs-up">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>2 həftəlik pulsuz sınaq necə işləyir?</span><div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk görüşdən sonra kampaniyalar qururuq, 14 gün tam xidmət göstəririk. Ödəniş yoxdur.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Hansı platformalarda işləyirsiniz?</span><div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Facebook, Instagram, WhatsApp, Google, TikTok, LinkedIn. Həmçinin SMM xidməti göstəririk.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Reklam büdcəsi qiymətə daxildirmi?</span><div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Xeyr. Aylıq ödəniş yalnız idarəetmə xərcidir. Büdcəni siz birbaşa platformaya ödəyirsiniz.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Nəticəni nə vaxt görərəm?</span><div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk nəticələr 3–7 gün ərzində görünür, tam optimallaşma 2–4 həftə alır.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>SMM nə əhatə edir?</span><div class="faq-icon"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Hər iş günü 1 post. Foto/video sizdən, caption, hashtag, rəy cavablandırma bizdən.</div></div>
+      <div class="faq-list anim-up">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>2 həftəlik pulsuz sınaq necə işləyir?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk görüşdən sonra kampaniyalar qururuq, 14 gün tam xidmət göstəririk. Ödəniş yoxdur.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Hansı platformalarda işləyirsiniz?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Facebook, Instagram, WhatsApp, Google, TikTok, LinkedIn. Həmçinin SMM xidməti göstəririk.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Reklam büdcəsi qiymətə daxildirmi?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Xeyr. Aylıq ödəniş yalnız idarəetmə xərcidir. Büdcəni siz birbaşa platforma ödəyirsiniz.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Nəticəni nə vaxt görərəm?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk nəticələr 3–7 gün ərzində görünür, tam optimallaşma 2–4 həftə alır.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>SMM nə əhatə edir?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Hər iş günü 1 post. Foto/video sizdən, caption, hashtag, rəy cavablandırma bizdən.</div></div>
       </div>
     </div>
   </div>
@@ -665,40 +611,37 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
 <!-- ═══ BLOG ═══ -->
 <section style="background:rgba(255,255,255,.012);">
   <div class="s-inner">
-    <div class="s-tag gs-hide">Blog</div>
-    <h2 class="s-title gs-up" style="margin-bottom:56px;">Son məqalələr.</h2>
-    <div class="blog-grid stagger-gs">
-      <a href="/blog/facebook-reklam-necedir.html" class="bcard"><div class="b-thumb">📱</div><div class="b-body"><span class="b-cat">Meta Reklam</span><h3>Facebook Reklam Nədir? 2025-ci İldə Azərbaycanda Necə İşləyir?</h3><p>Facebook reklamlarının Azərbaycan bazarında necə işlədiyini öyrənin.</p><div style="font-size:11px;color:rgba(255,255,255,.28);">5 dəq oxu · Yanvar 2025</div><span class="b-read" style="margin-top:12px;">Oxu →</span></div></a>
-      <a href="/blog/google-ads-vs-meta-ads.html" class="bcard"><div class="b-thumb">🔍</div><div class="b-body"><span class="b-cat">Google Ads</span><h3>Google Ads vs Meta Ads: Azərbaycanda Hansını Seçməli?</h3><p>Hər iki platformanın üstünlüklərini müqayisə edirik.</p><div style="font-size:11px;color:rgba(255,255,255,.28);">7 dəq oxu · Yanvar 2025</div><span class="b-read" style="margin-top:12px;">Oxu →</span></div></a>
-      <a href="/blog/tiktok-reklam-azerbaycan.html" class="bcard"><div class="b-thumb">🎵</div><div class="b-body"><span class="b-cat">TikTok Ads</span><h3>TikTok Reklamı Azərbaycanda: 2025-ci İldə İmkanlar</h3><p>TikTok-da reklam verməyin faydaları haqqında.</p><div style="font-size:11px;color:rgba(255,255,255,.28);">6 dəq oxu · Fevral 2025</div><span class="b-read" style="margin-top:12px;">Oxu →</span></div></a>
+    <div class="s-tag anim-tag">Blog</div>
+    <h2 class="s-title anim-title" style="margin-bottom:52px;">Son məqalələr.</h2>
+    <div class="bgrid">
+      <a href="/blog/facebook-reklam-necedir.html" class="bc anim-up"><div class="bc-thumb">📱</div><div class="bc-body"><span class="bc-cat">Meta Reklam</span><h3>Facebook Reklam Nədir? 2025-ci İldə Azərbaycanda Necə İşləyir?</h3><p>Azərbaycan bazarında necə işlədiyini öyrənin.</p><span class="bc-read">Oxu →</span></div></a>
+      <a href="/blog/google-ads-vs-meta-ads.html" class="bc anim-up"><div class="bc-thumb">🔍</div><div class="bc-body"><span class="bc-cat">Google Ads</span><h3>Google Ads vs Meta Ads: Azərbaycanda Hansını Seçməli?</h3><p>Hər iki platformanın üstünlüklərini müqayisə edirik.</p><span class="bc-read">Oxu →</span></div></a>
+      <a href="/blog/tiktok-reklam-azerbaycan.html" class="bc anim-up"><div class="bc-thumb">🎵</div><div class="bc-body"><span class="bc-cat">TikTok Ads</span><h3>TikTok Reklamı Azərbaycanda: 2025-ci İldə İmkanlar</h3><p>TikTok-da reklam verməyin faydaları haqqında.</p><span class="bc-read">Oxu →</span></div></a>
     </div>
-    <div style="text-align:center;margin-top:48px;" class="gs-up"><a href="/blog/" class="btn-out">Bütün Məqalələrə Bax</a></div>
+    <div style="text-align:center;margin-top:48px;" class="anim-up"><a href="/blog/" class="btn-stroke">Bütün Məqalələrə Bax</a></div>
   </div>
 </section>
 
 <!-- ═══ CTA ═══ -->
-<section class="cta-section" id="contact">
-  <div class="cta-bg"></div>
-  <h2 class="gs-up">Bugün pulsuz<br>sınağa başlayın.</h2>
-  <p class="gs-up">Kredit kartı tələb olunmur. Öhdəlik yoxdur. 14 gün tam xidmət.</p>
-  <div class="cta-btns gs-up">
-    <a href="https://wa.me/994773698929" class="btn-main mag-wrap" rel="noopener">WhatsApp ilə Əlaqə →</a>
-    <a href="tel:+994773698929" class="btn-out mag-wrap">Zəng Et</a>
+<section class="cta-sec" id="contact">
+  <div class="cta-glow"></div>
+  <h2 class="anim-title">Bugün pulsuz<br>sınağa başlayın.</h2>
+  <p class="anim-up">Kredit kartı tələb olunmur. Öhdəlik yoxdur. 14 gün tam xidmət.</p>
+  <div class="cta-row anim-up">
+    <a href="https://wa.me/994773698929" class="btn-fill" rel="noopener">WhatsApp ilə Əlaqə →</a>
+    <a href="tel:+994773698929" class="btn-stroke">Zəng Et</a>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="ft-inner">
+  <div class="ft">
     <div class="ft-top">
       <div class="ft-brand">
         <a class="logo" href="/">
-          <svg class="mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px;">
-            <path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/>
-            <circle cx="50" cy="48" r="12" fill="#060A12"/>
-          </svg>
-          <span class="logo-name"><em>Ads</em>OnUs</span>
+          <svg class="lm" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg>
+          <span class="logo-txt"><em>Ads</em>OnUs</span>
         </a>
         <p>Azərbaycanda Meta, Google, TikTok, LinkedIn reklamlarında nəticəyə yönümlü agentlik.</p>
       </div>
@@ -706,225 +649,232 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:64p
       <div class="ft-col"><h5>Şirkət</h5><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="/blog/">Blog</a><a href="/pages/qiymetler.html">Qiymətlər</a></div>
       <div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a><a href="#">Bakı, Azərbaycan</a></div>
     </div>
-    <div class="ft-bottom">
+    <div class="ft-btm">
       <p>© 2025 AdsOnUs. Bütün hüquqlar qorunur.</p>
       <span>Meta &amp; Google Partner · <a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span>
     </div>
   </div>
 </footer>
 
-<!-- GSAP + ScrollTrigger + Lenis — loaded from CDN, all async -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-
 <script>
-/* ─── Run after all scripts load ─── */
-window.addEventListener('load', function() {
+// GSAP and Lenis are already loaded synchronously in <head>
 
-  /* ══ LENIS SMOOTH SCROLL ══ */
-  var lenis = new Lenis({
-    duration: 1.35,
-    easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    smoothWheel: true,
-    wheelMultiplier: 0.9,
-  });
-  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
+// ── 1. REGISTER PLUGIN (critical — was missing before)
+gsap.registerPlugin(ScrollTrigger);
 
-  /* Sync Lenis with GSAP ScrollTrigger */
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
-
-  /* ══ SCROLL PROGRESS BAR ══ */
-  lenis.on('scroll', function(e) {
-    var pct = (e.scroll / (document.body.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('prog').style.width = Math.min(pct, 100) + '%';
-  });
-
-  /* ══ NAV STUCK ══ */
-  ScrollTrigger.create({
-    start: 'top -60',
-    onEnter: function(){ document.getElementById('nav').classList.add('stuck'); },
-    onLeaveBack: function(){ document.getElementById('nav').classList.remove('stuck'); }
-  });
-
-  /* ══ HERO TITLE — line-by-line reveal ══ */
-  gsap.to('.h1-line .line-inner', {
-    y: '0%',
-    opacity: 1,
-    duration: 1.1,
-    ease: 'expo.out',
-    stagger: 0.08,
-    delay: 0.15,
-  });
-  gsap.to('.hero-tag', { opacity: 1, y: 0, duration: 0.8, delay: 0.05, ease: 'expo.out' });
-  gsap.to('.hero-sub', { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: 'expo.out' });
-  gsap.to('.hero-btns', { opacity: 1, y: 0, duration: 1, delay: 0.75, ease: 'expo.out' });
-  gsap.from('.hero-scroll', { opacity: 0, y: 20, duration: 1, delay: 1.2, ease: 'expo.out' });
-
-  /* ══ SCROLL-TRIGGERED REVEALS ══ */
-  /* Generic gs-up */
-  gsap.utils.toArray('.gs-up').forEach(function(el) {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-      y: 0, opacity: 1, duration: 1, ease: 'expo.out',
-    });
-  });
-
-  /* gs-hide (tag lines, dividers) */
-  gsap.utils.toArray('.gs-hide').forEach(function(el) {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 90%' },
-      opacity: 1, duration: 0.8, ease: 'power2.out',
-    });
-  });
-
-  /* gs-right (stat cards) */
-  gsap.utils.toArray('.gs-right').forEach(function(el) {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      x: 0, opacity: 1, duration: 1.1, ease: 'expo.out',
-    });
-  });
-
-  /* s-divider line wipe */
-  gsap.utils.toArray('.s-divider').forEach(function(el) {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 90%' },
-      scaleX: 1, opacity: 1, duration: 1.4, ease: 'expo.out',
-    });
-  });
-
-  /* stagger-gs groups */
-  gsap.utils.toArray('.stagger-gs').forEach(function(container) {
-    var children = container.children;
-    gsap.from(children, {
-      scrollTrigger: { trigger: container, start: 'top 85%' },
-      y: 50, opacity: 0, duration: 0.9, ease: 'expo.out',
-      stagger: 0.1,
-    });
-  });
-
-  /* BIG TEXT — scrub scale/clip on scroll (like the reference site) */
-  gsap.utils.toArray('.s-title').forEach(function(el) {
-    gsap.fromTo(el,
-      { clipPath: 'inset(0 100% 0 0)' },
-      {
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-        clipPath: 'inset(0 0% 0 0)',
-        duration: 1.2, ease: 'expo.out',
-      }
-    );
-  });
-
-  /* ══ COUNTER NUMBERS ══ */
-  document.querySelectorAll('[data-count]').forEach(function(el) {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      onEnter: function() {
-        var target = parseInt(el.dataset.count);
-        var suf = el.dataset.suf || '';
-        var start = performance.now();
-        var dur = 1600;
-        function tick(now) {
-          var p = Math.min((now - start) / dur, 1);
-          var ease = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * ease) + suf;
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      },
-      once: true,
-    });
-  });
-
-  /* ══ MAGNETIC BUTTONS ══ */
-  document.querySelectorAll('.mag-wrap').forEach(function(btn) {
-    btn.addEventListener('mousemove', function(e) {
-      var rect = btn.getBoundingClientRect();
-      var dx = e.clientX - rect.left - rect.width / 2;
-      var dy = e.clientY - rect.top - rect.height / 2;
-      gsap.to(btn, { x: dx * 0.28, y: dy * 0.28, duration: 0.5, ease: 'power2.out' });
-    });
-    btn.addEventListener('mouseleave', function() {
-      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' });
-    });
-  });
-
-  /* ══ CUSTOM CURSOR ══ */
-  if (window.innerWidth > 1024) {
-    var cur = document.getElementById('cur');
-    var ring = document.getElementById('cur-ring');
-    var mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', function(e) {
-      mx = e.clientX; my = e.clientY;
-      document.body.classList.add('cur-on');
-      gsap.to(cur, { x: mx, y: my, duration: 0.05, ease: 'none' });
-    }, { passive: true });
-
-    /* Ring follows with lag */
-    gsap.ticker.add(function() {
-      rx += (mx - rx) * 0.1;
-      ry += (my - ry) * 0.1;
-      gsap.set(ring, { x: rx, y: ry });
-    });
-
-    document.addEventListener('mousedown', function() {
-      gsap.to(cur, { scale: 0.6, duration: 0.15 });
-    });
-    document.addEventListener('mouseup', function() {
-      gsap.to(cur, { scale: 1, duration: 0.3, ease: 'elastic.out(1,0.4)' });
-    });
-
-    document.querySelectorAll('a, button, .svc-item, .pcard, .tcard, .bcard, .faq-q').forEach(function(el) {
-      el.addEventListener('mouseenter', function() { document.body.classList.add('cur-grow'); });
-      el.addEventListener('mouseleave', function() { document.body.classList.remove('cur-grow'); });
-    });
-  }
-
-  /* ══ FAQ ══ */
-  window.toggleFaq = function(el) {
-    var item = el.parentElement;
-    var open = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
-    if (!open) item.classList.add('open');
-  };
-
-  /* ══ NAV MOBILE ══ */
-  window.toggleMenu = function() { document.getElementById('mobMenu').classList.toggle('open'); };
-  window.closeMenu = function() { document.getElementById('mobMenu').classList.remove('open'); };
-
-  /* ══ GSAP INIT STATES fix ══ */
-  /* Make sure initial hidden states are set before first paint */
-  gsap.set('.gs-up', { y: 40, opacity: 0 });
-  gsap.set('.gs-hide', { opacity: 0 });
-  gsap.set('.gs-right', { x: 40, opacity: 0 });
-  gsap.set('.s-divider', { scaleX: 0, opacity: 1, transformOrigin: 'left' });
-  gsap.set('.h1-line .line-inner', { y: '110%' });
-  gsap.set('.hero-tag', { opacity: 0 });
-  gsap.set('.hero-sub', { opacity: 0, y: 20 });
-  gsap.set('.hero-btns', { opacity: 0, y: 20 });
-
-  /* Re-trigger hero anims after states set */
-  gsap.to('.h1-line .line-inner', { y: '0%', duration: 1.1, ease: 'expo.out', stagger: 0.08, delay: 0.1 });
-  gsap.to('.hero-tag', { opacity: 1, duration: 0.8, delay: 0.05 });
-  gsap.to('.hero-sub', { opacity: 1, y: 0, duration: 1, delay: 0.55, ease: 'expo.out' });
-  gsap.to('.hero-btns', { opacity: 1, y: 0, duration: 1, delay: 0.7, ease: 'expo.out' });
-
-  ScrollTrigger.refresh();
+// ── 2. LENIS smooth scroll
+var lenis = new Lenis({
+  duration: 1.4,
+  easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+  smoothWheel: true,
+  wheelMultiplier: 0.85,
 });
 
-/* ─── Fallback if scripts fail: show everything ─── */
-window.addEventListener('error', function() {
-  document.querySelectorAll('.gs-up,.gs-hide,.gs-right,.h1-line .line-inner').forEach(function(el) {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
+// Connect Lenis → GSAP ticker (the right way)
+gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+// Scroll progress bar
+lenis.on('scroll', function(e){
+  var pct = Math.min((e.scroll / Math.max(document.body.scrollHeight - window.innerHeight, 1)) * 100, 100);
+  document.getElementById('prog').style.width = pct + '%';
+});
+
+// ── 3. NAV stuck
+ScrollTrigger.create({
+  start: 'top -80',
+  onEnter: function(){ document.getElementById('nav').classList.add('stuck'); },
+  onLeaveBack: function(){ document.getElementById('nav').classList.remove('stuck'); }
+});
+
+// ── 4. PRELOADER
+var tl = gsap.timeline({
+  onComplete: function(){
+    // Slide preloader up
+    gsap.to('#preloader', {
+      yPercent: -100, duration: 1, ease: 'expo.inOut',
+      onComplete: function(){ document.getElementById('preloader').style.display = 'none'; }
+    });
+    // Reveal site
+    gsap.to('#site-main', { opacity: 1, duration: 0.4, ease: 'none' });
+    // Hero title lines shoot up
+    gsap.to('.h1-inner', {
+      y: '0%', duration: 1.4, ease: 'expo.out',
+      stagger: 0.07, delay: 0.1,
+    });
+    // Hero eyebrow
+    gsap.to('.hero-eyebrow span', { y: 0, opacity: 1, duration: 1, delay: 0.05, ease: 'expo.out' });
+    // Hero bottom
+    gsap.to('.hero-desc', { y: 0, opacity: 1, duration: 1, delay: 0.4, ease: 'expo.out' });
+    gsap.to('.hero-ctas', { y: 0, opacity: 1, duration: 1, delay: 0.5, ease: 'expo.out' });
+    gsap.to('.hero-stats', { y: 0, opacity: 1, duration: 1, delay: 0.6, ease: 'expo.out' });
+    gsap.from('.scroll-hint', { opacity: 0, y: 20, duration: 1, delay: 1.2, ease: 'expo.out' });
+  }
+});
+// Preloader logo pop in
+tl.to('#preloader-logo', { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' });
+// Loading bar
+tl.to('#preloader-bar', { width: '100%', duration: 0.9, ease: 'power2.inOut' }, '+=0.1');
+// Brief pause
+tl.to({}, { duration: 0.2 });
+
+// ── 5. SET INITIAL STATES (before ScrollTrigger registers)
+gsap.set('.h1-inner', { y: '110%' });
+gsap.set('.hero-eyebrow span', { y: 30, opacity: 0 });
+gsap.set('.hero-desc,.hero-ctas,.hero-stats', { y: 30, opacity: 0 });
+
+// All scroll-animated elements start hidden
+gsap.set('.anim-up', { y: 50, opacity: 0 });
+gsap.set('.anim-tag', { opacity: 0, x: -10 });
+gsap.set('.anim-right', { x: 40, opacity: 0 });
+gsap.set('.anim-rule', { scaleX: 0, transformOrigin: 'left', opacity: 1 });
+
+// Section titles: clip-path hidden
+gsap.set('.anim-title', { clipPath: 'inset(0 100% 0 0)', opacity: 1 });
+
+// ── 6. SCROLL TRIGGERS
+
+// anim-title: clip wipe (signature Awwwards effect)
+gsap.utils.toArray('.anim-title').forEach(function(el){
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+    clipPath: 'inset(0 0% 0 0)',
+    duration: 1.3, ease: 'expo.out',
   });
-}, true);
+});
+
+// anim-tag: fade slide
+gsap.utils.toArray('.anim-tag').forEach(function(el){
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+    opacity: 1, x: 0, duration: 0.9, ease: 'expo.out',
+  });
+});
+
+// anim-up: stagger within containers OR individual
+gsap.utils.toArray('.anim-up').forEach(function(el, i){
+  // check if siblings also have anim-up (stagger them together)
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+    y: 0, opacity: 1, duration: 1, ease: 'expo.out',
+    delay: 0, // individual per element
+  });
+});
+
+// anim-right
+gsap.utils.toArray('.anim-right').forEach(function(el){
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+    x: 0, opacity: 1, duration: 1.1, ease: 'expo.out',
+  });
+});
+
+// anim-rule: width wipe
+gsap.utils.toArray('.anim-rule').forEach(function(el){
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+    scaleX: 1, duration: 1.5, ease: 'expo.out',
+  });
+});
+
+// Staggered groups (svc-items, cards, etc.)
+['.svc-list .svc-item', '.tgrid .tc', '.bgrid .bc', '.pgrid .pc2', '.proc-row .proc-card'].forEach(function(sel){
+  var els = gsap.utils.toArray(sel);
+  if(!els.length) return;
+  gsap.from(els, {
+    scrollTrigger: { trigger: els[0].parentElement, start: 'top 88%', once: true },
+    y: 60, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.08,
+  });
+  // Reset the individual anim-up so it doesn't double-animate
+  els.forEach(function(e){ e.style.opacity=''; e.style.transform=''; });
+});
+
+// ── 7. COUNTERS
+document.querySelectorAll('[data-count]').forEach(function(el){
+  ScrollTrigger.create({
+    trigger: el, start: 'top 88%', once: true,
+    onEnter: function(){
+      var t = parseInt(el.dataset.count), s = el.dataset.suf || '';
+      var start = performance.now(), dur = 1600;
+      function tick(now){
+        var p = Math.min((now-start)/dur,1);
+        var e = 1-Math.pow(1-p,3);
+        el.textContent = Math.round(t*e)+s;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  });
+});
+
+// ── 8. MAGNETIC BUTTONS
+document.querySelectorAll('.btn-fill,.btn-stroke,.nav-cta').forEach(function(btn){
+  btn.addEventListener('mousemove', function(e){
+    var r = btn.getBoundingClientRect();
+    var dx = e.clientX - r.left - r.width/2;
+    var dy = e.clientY - r.top - r.height/2;
+    gsap.to(btn, { x: dx*0.3, y: dy*0.3, duration: 0.45, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', function(){
+    gsap.to(btn, { x: 0, y: 0, duration: 0.75, ease: 'elastic.out(1,0.4)' });
+  });
+});
+
+// ── 9. CUSTOM CURSOR (desktop only)
+if(window.innerWidth > 1024){
+  var cur = document.getElementById('cur');
+  var ring = document.getElementById('cur-ring');
+  var mx=0,my=0,rx=0,ry=0;
+
+  document.addEventListener('mousemove', function(e){
+    mx=e.clientX; my=e.clientY;
+    gsap.to(cur, { x:mx, y:my, duration:0.06, ease:'none' });
+  }, { passive:true });
+
+  // Ring lerp via ticker
+  gsap.ticker.add(function(){
+    rx += (mx-rx)*0.1; ry += (my-ry)*0.1;
+    gsap.set(ring, { x:rx, y:ry });
+  });
+
+  var hoverEls = document.querySelectorAll('a,button,.svc-item,.tc,.bc,.pc2,.faq-q,.proc-card,.sc');
+  hoverEls.forEach(function(el){
+    el.addEventListener('mouseenter', function(){ document.body.classList.add('hovered'); });
+    el.addEventListener('mouseleave', function(){ document.body.classList.remove('hovered'); });
+  });
+
+  document.addEventListener('mousedown', function(){ gsap.to(cur, { scale:0.5, duration:0.15 }); });
+  document.addEventListener('mouseup', function(){ gsap.to(cur, { scale:1, duration:0.4, ease:'elastic.out(1,0.4)' }); });
+}
+
+// ── 10. PARALLAX ORBS on hero background
+if(window.innerWidth > 768){
+  lenis.on('scroll', function(e){
+    var y = e.scroll;
+    document.querySelector('.hero-bg') &&
+      gsap.set('.hero-bg', { backgroundPosition: '0 '+(y*0.15)+'px', overwrite: true });
+  });
+}
+
+// ── 11. FAQ
+window.toggleFaq = function(el){
+  var item = el.parentElement;
+  var open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+  if(!open) item.classList.add('open');
+};
+
+// ── 12. NAV mobile
+window.toggleMenu = function(){
+  var m = document.getElementById('mobMenu');
+  m.classList.toggle('open');
+};
+window.closeMenu = function(){
+  document.getElementById('mobMenu').classList.remove('open');
+};
+
+// ── 13. Refresh ScrollTrigger after all setup
+ScrollTrigger.refresh();
 </script>
 </body>
 </html>
