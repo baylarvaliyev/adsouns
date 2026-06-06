@@ -186,3 +186,6 @@ footer{background:rgba(2,5,12,.96);border-top:1px solid rgba(255,255,255,.06);pa
   .ft-top{grid-template-columns:1fr;}
   section{padding:65px 4%;}
 }
+
+/* ── NEW LOGO MARK ── */
+.logo-mark{width:34px;height:34px;flex-shrink:0;}
