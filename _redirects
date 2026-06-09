@@ -1,6 +1,21 @@
+# Language folder shortcuts
 /haqqimizda /pages/haqqimizda.html 301
 /xidmetler /pages/xidmetler.html 301
 /qiymetler /pages/qiymetler.html 301
 /elaqe /pages/elaqe.html 301
 /mexfilik /pages/mexfilik.html 301
-/blog/index /blog/ 301
+
+# English shortcuts
+/en /en/index.html 200
+/en/pricing /en/pricing.html 301
+
+# Russian shortcuts  
+/ru /ru/index.html 200
+/ru/pricing /ru/pricing.html 301
+
+# Turkish shortcuts
+/tr /tr/index.html 200
+/tr/pricing /tr/pricing.html 301
+
+# 404
+/* /404.html 404

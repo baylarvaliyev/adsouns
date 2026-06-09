@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AdsOnUs — Azerbaycan'ın #1 Reklam Ajansı | Meta, Google, TikTok Reklamları</title>
+<meta name="description" content="AdsOnUs — sertifikalı Meta ve Google Partner ajansı. Meta, Google, TikTok, LinkedIn reklamlarında ölçülebilir ROI. Azerbaycan'dan dünyaya hizmet. 2 haftalık ücretsiz deneme başlatın."/>
+<meta name="keywords" content="advertising agency, Meta ads management, Google Ads agency, TikTok ads, social media advertising, performance marketing agency, ROAS optimization"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://adsonus.com/tr/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://adsonus.com/tr/"/>
+<meta property="og:title" content="AdsOnUs — Results-Driven Advertising Agency"/>
+<meta property="og:description" content="Meta, Google, TikTok, LinkedIn ad management. Start your free 2-week trial."/>
+<meta property="og:image" content="https://adsonus.com/og-image.png"/>
+<meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#060A12"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AdsOnUs","description":"Certified Meta & Google Partner agency specializing in performance advertising across Meta, Google, TikTok and LinkedIn.","url":"https://adsonus.com","telephone":"+994773698929","address":{"@type":"PostalAddress","addressLocality":"Baku","addressCountry":"AZ"},"priceRange":"$299-$1199","areaServed":{"@type":"Country","name":"Worldwide"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"87"}}</script>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&display=swap" as="style"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+:root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);--expo:cubic-bezier(0.16,1,0.3,1);}
+/* Language Switcher */
+.lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.07);border-radius:50px;padding:3px;gap:1px;margin-left:4px;}
+.ls-btn{padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;text-decoration:none;background:none;border:none;font-family:'Manrope',sans-serif;}
+.ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
+.ls-btn.active{background:#2563EB;color:#fff;}
+/* Mob menu */
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Manrope',sans-serif;font-size:clamp(24px,6vw,38px);font-weight:700;color:rgba(255,255,255,.45);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;transition:color .25s,padding-left .3s var(--expo);}
+.mob-menu a:hover{color:#fff;padding-left:8px;}
+.mob-menu a:last-child{border:none;background:#2563EB;color:#fff!important;font-size:16px!important;text-align:center;padding:16px!important;border-radius:50px;margin-top:24px;}
+/* Nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(6,10,18,.92);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo svg.lm{width:30px;height:30px;flex-shrink:0;}
+.logo-t{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.3px;}
+.logo-t em{color:var(--blue-l);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s var(--expo);}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue);color:#fff!important;padding:10px 20px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s var(--expo),box-shadow .3s;display:inline-block;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
+/* Hero */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding:100px 48px 80px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 30%,rgba(37,99,235,.15),transparent 65%),radial-gradient(ellipse 45% 40% at 15% 80%,rgba(56,189,248,.07),transparent 60%),var(--dark);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:88px 88px;mask-image:radial-gradient(ellipse 85% 75% at 50% 50%,black 20%,transparent 90%);}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.22),transparent 70%);top:-120px;right:-100px;animation:orbF 14s ease-in-out infinite;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(56,189,248,.12),transparent 70%);bottom:-60px;left:-80px;animation:orbF 9s ease-in-out infinite .5s;}
+@keyframes orbF{0%,100%{transform:translate(0,0);}50%{transform:translate(-25px,30px);}}
+.hero-inner{position:relative;z-index:3;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.h-eye{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px;}
+.h-eye::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.25);flex-shrink:0;}
+.h-eye span{display:block;}
+.hero-h1{font-family:'Manrope',sans-serif;font-size:clamp(38px,5vw,72px);font-weight:900;line-height:1.0;letter-spacing:-2px;margin-bottom:24px;}
+.h1-line{overflow:hidden;display:block;}
+.h1-inner{display:block;will-change:transform;}
+.grad-text{background:linear-gradient(115deg,#5B8EFF,#38BDF8);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gshift 5s ease-in-out infinite;}
+@keyframes gshift{0%,100%{background-position:0%;}50%{background-position:100%;}}
+.hero-desc{font-size:15px;color:var(--text);line-height:1.88;margin-bottom:28px;max-width:420px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-fill{background:var(--blue);color:#fff;padding:14px 28px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;display:inline-block;transition:transform .4s var(--expo),box-shadow .4s;}
+.btn-fill:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(37,99,235,.6);}
+.btn-out{color:rgba(255,255,255,.6);padding:14px 28px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,.18);display:inline-block;transition:all .4s var(--expo);}
+.btn-out:hover{color:#fff;border-color:rgba(255,255,255,.4);transform:translateY(-2px);}
+.hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);}
+.trust-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:rgba(255,255,255,.4);}
+.trust-badge svg{width:16px;height:16px;fill:var(--blue-l);}
+/* Mockup */
+.hero-visual{position:relative;}
+.mkp-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:22px;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(37,99,235,.12),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .1s ease-out;}
+.mkp-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.mkp-t{font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;color:#fff;}
+.mkp-live{display:flex;align-items:center;gap:5px;font-size:10px;color:#4ade80;}
+.mkp-live::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;animation:lpulse 1.5s infinite;flex-shrink:0;}
+@keyframes lpulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.7);}50%{box-shadow:0 0 0 5px rgba(74,222,128,0);}}
+.chart-bars{display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:14px;}
+.bar-w{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.bar{width:100%;border-radius:3px 3px 0 0;background:rgba(91,142,255,.2);}
+.bar.hi{background:linear-gradient(180deg,#6BA3FF,#2563EB);box-shadow:0 0 12px rgba(37,99,235,.45);}
+.m-metrics{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px;}
+.m-v{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;color:#fff;display:block;}
+.m-l{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;display:block;}
+.m-g{font-size:10px;color:#4ade80;display:block;margin-top:1px;}
+.f-pill{position:absolute;background:rgba(8,14,32,.92);border:1px solid rgba(37,99,235,.4);border-radius:50px;padding:9px 15px;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,.4),0 0 20px rgba(37,99,235,.2);backdrop-filter:blur(12px);}
+.pill-a{top:-18px;right:10px;animation:bob 3.5s ease-in-out infinite;}
+.pill-b{bottom:-16px;left:10px;animation:bob 3.5s ease-in-out infinite .7s;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+/* Marquee */
+.mq-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:16px 0;background:rgba(255,255,255,.01);}
+.mq-track{display:flex;width:max-content;animation:mq 26s linear infinite;}
+.mq-i{display:flex;align-items:center;gap:10px;padding:0 36px;font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.25);border-right:1px solid rgba(255,255,255,.05);white-space:nowrap;}
+.mq-d{width:4px;height:4px;border-radius:50%;background:var(--blue-l);}
+@keyframes mq{to{transform:translateX(-50%);}}
+/* Sections */
+section{padding:120px 48px;}
+.si{max-width:1280px;margin:0 auto;}
+.s-tag{display:flex;align-items:center;gap:10px;font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px;}
+.s-tag::before{content:'';width:22px;height:1px;background:rgba(255,255,255,.2);}
+.s-title{font-family:'Manrope',sans-serif;font-size:clamp(34px,5.5vw,64px);font-weight:900;line-height:.97;letter-spacing:-2px;}
+/* Services */
+.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;}
+.svc-list{border-right:1px solid var(--border);}
+.svc-item{padding:28px 36px 28px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:32px 1fr 22px;gap:16px;align-items:start;cursor:pointer;position:relative;overflow:hidden;}
+.svc-item::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,99,235,.07),transparent);transform:translateX(-100%);transition:transform .55s var(--expo);}
+.svc-item:hover::before{transform:translateX(0);}
+.svc-n{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.17);margin-top:4px;position:relative;}
+.svc-body{position:relative;}
+.svc-body h3{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;margin-bottom:5px;transition:color .3s;}
+.svc-item:hover .svc-body h3{color:var(--blue-l);}
+.svc-body p{font-size:13px;color:var(--text);line-height:1.7;}
+.svc-arr{font-size:16px;color:rgba(255,255,255,.18);margin-top:4px;position:relative;transition:color .3s,transform .4s var(--expo);}
+.svc-item:hover .svc-arr{color:var(--blue-l);transform:translate(3px,-3px);}
+.svc-cards{padding-left:56px;display:flex;flex-direction:column;gap:12px;}
+.rc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all .4s var(--expo);}
+.rc:hover{border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.07);transform:translateX(-5px);}
+.rc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.rc-n{font-size:12px;font-weight:600;color:rgba(255,255,255,.5);}
+.rc-b{font-size:10px;background:rgba(37,99,235,.2);color:#7BAEFF;padding:2px 9px;border-radius:50px;}
+.rc-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.rn-v{font-family:'Manrope',sans-serif;font-size:18px;font-weight:900;color:#fff;display:block;}
+.rn-l{font-size:10px;color:rgba(255,255,255,.28);display:block;margin-top:1px;}
+.rn-g{font-size:10px;color:#4ade80;display:block;}
+/* Numbers */
+.nums-s{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 48px;}
+.nums-g{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.n-cell{padding:60px 40px;border-right:1px solid var(--border);text-align:center;transition:background .3s;}
+.n-cell:last-child{border-right:none;}
+.n-cell:hover{background:rgba(255,255,255,.018);}
+.nv{font-family:'Manrope',sans-serif;font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-2.5px;line-height:1;display:block;}
+.nl{font-size:12px;color:rgba(255,255,255,.32);margin-top:8px;display:block;}
+/* Pricing */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
+.pc{background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:18px;padding:32px 24px;position:relative;transition:all .4s var(--expo);}
+.pc:hover{transform:translateY(-7px);border-color:rgba(37,99,235,.4);box-shadow:0 28px 60px rgba(0,0,0,.32);}
+.pc.feat{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),0 16px 50px rgba(37,99,235,.18);}
+.feat-lb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;padding:4px 14px;border-radius:50px;white-space:nowrap;}
+.p-tier{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:9px;display:block;}
+.p-amt{font-family:'Manrope',sans-serif;font-size:46px;font-weight:900;letter-spacing:-2px;color:#fff;line-height:1;}
+.p-amt sub{font-size:15px;font-weight:500;color:rgba(255,255,255,.28);letter-spacing:0;vertical-align:baseline;}
+.p-cyc{font-size:11px;color:rgba(255,255,255,.25);margin:6px 0 22px;display:block;}
+.p-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.p-list li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:rgba(255,255,255,.6);}
+.p-ck{width:16px;height:16px;min-width:16px;background:rgba(37,99,235,.16);border:1px solid rgba(37,99,235,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.p-ck svg{width:8px;height:8px;stroke:#6B9FFF;fill:none;}
+.p-btn{width:100%;padding:13px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .35s var(--expo);text-align:center;display:block;text-decoration:none;}
+.p-btn.pr{background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;}
+.p-btn.pr:hover{box-shadow:0 0 28px rgba(37,99,235,.6);transform:translateY(-2px);}
+.p-btn.gh{background:transparent;color:var(--blue-l);border:1.5px solid rgba(37,99,235,.28);}
+.p-btn.gh:hover{background:rgba(37,99,235,.1);}
+/* Testimonials */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;padding:28px;position:relative;overflow:hidden;transition:all .4s var(--expo);}
+.tc::before{content:'"';position:absolute;top:-8px;right:16px;font-size:72px;font-family:'Manrope',sans-serif;font-weight:900;color:rgba(37,99,235,.07);line-height:1;}
+.tc:hover{border-color:rgba(37,99,235,.32);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.3);}
+.tc-stars{display:flex;gap:2px;margin-bottom:12px;}
+.tc-s{width:12px;height:12px;fill:#FBBF24;}
+.tc p{font-size:13.5px;color:rgba(255,255,255,.57);line-height:1.82;font-style:italic;margin-bottom:18px;position:relative;z-index:1;}
+.tc-a{display:flex;align-items:center;gap:10px;}
+.tc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;flex-shrink:0;}
+.tc-n{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;}
+.tc-c{font-size:11px;color:rgba(255,255,255,.32);}
+/* FAQ */
+.faq-split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{padding:20px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:16px;}
+.faq-q span{font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;color:#fff;}
+.faq-ico{width:27px;height:27px;min-width:27px;border:1px solid rgba(255,255,255,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .4s var(--expo);}
+.faq-item.open .faq-ico{background:var(--blue);border-color:var(--blue);transform:rotate(45deg);}
+.faq-ico svg{width:12px;height:12px;stroke:rgba(255,255,255,.5);fill:none;}
+.faq-item.open .faq-ico svg{stroke:#fff;}
+.faq-a{font-size:14px;color:var(--text);line-height:1.85;max-height:0;overflow:hidden;transition:max-height .45s var(--expo),padding .4s;}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:20px;}
+/* CTA */
+.cta-s{padding:140px 48px;text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50%,rgba(37,99,235,.2),transparent 70%);animation:breath 5s ease-in-out infinite;}
+@keyframes breath{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+.cta-s h2{font-family:'Manrope',sans-serif;font-size:clamp(38px,6vw,88px);font-weight:900;letter-spacing:-2.5px;line-height:.95;margin-bottom:24px;position:relative;z-index:1;}
+.cta-s p{font-size:16px;color:var(--text);margin-bottom:40px;position:relative;z-index:1;}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+/* Footer */
+footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60px 48px 28px;}
+.ft{max-width:1280px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px;}
+.ft-brand p{font-size:13px;line-height:1.85;color:rgba(255,255,255,.25);margin-top:12px;max-width:210px;}
+.ft-col h5{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:14px;}
+.ft-col a{display:block;font-size:13.5px;color:rgba(255,255,255,.24);margin-bottom:9px;transition:all .25s;}
+.ft-col a:hover{color:#fff;padding-left:5px;}
+.ft-btm{border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
+.ft-btm a{color:var(--blue-l);}
+/* Anim states */
+.at{opacity:0;}.au{opacity:0;transform:translateY(44px);}.ar{opacity:0;transform:translateX(36px);}
+.rule-anim{transform:scaleX(0);transform-origin:left;}.title-anim{clip-path:inset(0 100% 0 0);}
+/* Responsive */
+@media(max-width:1000px){
+  body{cursor:auto;}
+  #nav,.hero,.cta-s,section,.nums-s,footer{padding-left:24px;padding-right:24px;}
+  .hero{padding-top:100px;padding-bottom:60px;}
+  .hero-inner{grid-template-columns:1fr;gap:0;}
+  .hero-visual{display:none;}
+  .nav-links{display:none;}.burger{display:flex;}
+  .svc-layout{grid-template-columns:1fr;}.svc-cards{padding-left:0;padding-top:36px;}
+  .nums-g{grid-template-columns:1fr 1fr;}.n-cell:nth-child(2){border-right:none;}
+  .tgrid{grid-template-columns:1fr;}.pgrid{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
+  .ft-top{grid-template-columns:1fr 1fr;gap:24px;}.faq-split{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .hero-btns{flex-direction:column;}.btn-fill,.btn-out{text-align:center;width:100%;}
+  .nums-g{grid-template-columns:1fr;}.n-cell{border-right:none;border-bottom:1px solid var(--border);}
+  .ft-top{grid-template-columns:1fr;}section{padding:80px 24px;}
+}
+</style>
+</head>
+<body>
+<div id="cur" style="position:fixed;width:8px;height:8px;border-radius:50%;background:#fff;pointer-events:none;z-index:8999;mix-blend-mode:difference;transform:translate(-50%,-50%);will-change:transform;"></div>
+<div id="cur-ring" style="position:fixed;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);pointer-events:none;z-index:8998;transform:translate(-50%,-50%);will-change:transform;transition:width .4s,height .4s,border-color .3s;"></div>
+<div id="prog" style="position:fixed;top:0;left:0;height:2px;z-index:600;width:0;background:linear-gradient(90deg,#2563EB,#38BDF8);pointer-events:none;"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/tr/">
+      <svg class="lm" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg>
+      <span class="logo-t"><em>Ads</em>OnUs</span>
+    </a>
+    <div class="nav-links">
+      <a href="/tr/" class="active">Ana Sayfa</a>
+      <a href="/pages/xidmetler.html">Hizmetler</a>
+      <a href="/tr/pricing.html">Fiyatlar</a>
+      <a href="/pages/hesablayici.html">Hesaplayıcı</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Ücretsiz Deneme →</a>
+      <div class="lang-sw">
+        <button class="ls-btn" onclick="switchLang('az')">AZ</button>
+        <button class="ls-btn" onclick="switchLang('en')">EN</button>
+        <button class="ls-btn" onclick="switchLang('ru')">RU</button>
+        <button class="ls-btn active">TR</button>
+      </div>
+    </div>
+    <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="/tr/" onclick="closeMenu()">Ana Sayfa</a>
+    <a href="/pages/xidmetler.html" onclick="closeMenu()">Services</a>
+    <a href="/en/pricing.html" onclick="closeMenu()">Pricing</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Calculator</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <div style="display:flex;gap:8px;margin:16px 0;"><button class="ls-btn" onclick="switchLang('az')">AZ</button><button class="ls-btn" onclick="switchLang('en')">EN</button><button class="ls-btn" onclick="switchLang('ru')">RU</button><button class="ls-btn active">TR</button></div>
+    <a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Ücretsiz Deneme →</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="h-eye"><span>Sertifikalı Meta &amp; Google Partner Ajansı</span></div>
+      <h1 class="hero-h1">
+        <span class="h1-line"><span class="h1-inner">Reklam Maliyetini</span></span>
+        <span class="h1-line"><span class="h1-inner"><span class="grad-text">Düşür, Satışını</span></span></span>
+        <span class="h1-line"><span class="h1-inner"><span class="grad-text">Artır.</span></span></span>
+      </h1>
+      <p class="hero-desc">Meta, Google, TikTok ve LinkedIn reklamlarınızı profesyonelce yönetin. Sonuç odaklı, şeffaf ve Batılı ajanslardan %60 daha uygun — 2 haftalık ücretsiz denemeyle.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/994773698929" class="btn-fill nav-cta" rel="noopener">2 Haftalık Ücretsiz Deneme →</a>
+        <a href="/en/pricing.html" class="btn-out">Fiyatları Gör</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Meta Business Partner</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Google Partner</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>150+ Aktif Müşteri</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Sözleşme Yok, Özgürsünüz</div>
+      </div>
+    </div>
+    <div class="hero-visual" id="hero-visual">
+      <div class="f-pill pill-a">🔥 +247% ROI this month</div>
+      <div class="mkp-card" id="mockup-card">
+        <div class="mkp-hdr"><span class="mkp-t">Campaign Results</span><span class="mkp-live">Live</span></div>
+        <div class="chart-bars">
+          <div class="bar-w"><div class="bar" style="height:44%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Mon</span></div>
+          <div class="bar-w"><div class="bar" style="height:62%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Tue</span></div>
+          <div class="bar-w"><div class="bar hi" style="height:78%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Wed</span></div>
+          <div class="bar-w"><div class="bar" style="height:52%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Thu</span></div>
+          <div class="bar-w"><div class="bar hi" style="height:91%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Fri</span></div>
+          <div class="bar-w"><div class="bar hi" style="height:100%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Sat</span></div>
+          <div class="bar-w"><div class="bar" style="height:85%"></div><span style="font-size:8px;color:rgba(255,255,255,.25);">Sun</span></div>
+        </div>
+        <div class="m-metrics">
+          <div class="metric"><span class="m-v">$18,420</span><span class="m-l">Revenue</span><span class="m-g">↑ 34%</span></div>
+          <div class="metric"><span class="m-v">842</span><span class="m-l">Leads</span><span class="m-g">↑ 67%</span></div>
+          <div class="metric"><span class="m-v">$2.14</span><span class="m-l">Lead Maliyeti</span><span class="m-g">↓ 28%</span></div>
+          <div class="metric"><span class="m-v">4.8×</span><span class="m-l">ROAS</span><span class="m-g">↑ Growing</span></div>
+        </div>
+      </div>
+      <div class="f-pill pill-b">✓ 127 new leads this week</div>
+    </div>
+  </div>
+</section>
+
+<div class="mq-wrap"><div class="mq-track">
+  <div class="mq-i"><span class="mq-d"></span>Meta Ads</div><div class="mq-i"><span class="mq-d"></span>Google Ads</div><div class="mq-i"><span class="mq-d"></span>TikTok Ads</div><div class="mq-i"><span class="mq-d"></span>LinkedIn Ads</div><div class="mq-i"><span class="mq-d"></span>Social Media Management</div><div class="mq-i"><span class="mq-d"></span>Facebook Ads</div><div class="mq-i"><span class="mq-d"></span>Instagram Ads</div><div class="mq-i"><span class="mq-d"></span>WhatsApp Ads</div><div class="mq-i"><span class="mq-d"></span>Remarketing</div><div class="mq-i"><span class="mq-d"></span>Analytics</div>
+  <div class="mq-i"><span class="mq-d"></span>Meta Ads</div><div class="mq-i"><span class="mq-d"></span>Google Ads</div><div class="mq-i"><span class="mq-d"></span>TikTok Ads</div><div class="mq-i"><span class="mq-d"></span>LinkedIn Ads</div><div class="mq-i"><span class="mq-d"></span>Social Media Management</div><div class="mq-i"><span class="mq-d"></span>Facebook Ads</div><div class="mq-i"><span class="mq-d"></span>Instagram Ads</div><div class="mq-i"><span class="mq-d"></span>WhatsApp Ads</div><div class="mq-i"><span class="mq-d"></span>Remarketing</div><div class="mq-i"><span class="mq-d"></span>Analytics</div>
+</div></div>
+
+<section id="services">
+  <div class="si">
+    <div class="s-tag at">Hizmetlerimiz</div>
+    <h2 class="s-title title-anim" style="margin-bottom:56px;">Tüm platformlar,<br>bir ajans.</h2>
+    <div class="svc-layout">
+      <div class="svc-list">
+        <div class="svc-item au"><span class="svc-n">01</span><div class="svc-body"><h3>Meta Reklamları</h3><p>Facebook, Instagram ve WhatsApp reklamları. Click-to-Message, Yeniden Hedefleme, Lead Generation.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item au"><span class="svc-n">02</span><div class="svc-body"><h3>Google Ads</h3><p>Arama, Display ve YouTube kampanyaları. Ürününüzü aktif arayan müşterilere ulaşın.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item au"><span class="svc-n">03</span><div class="svc-body"><h3>TikTok Reklamları</h3><p>Genç kitlelere yaratıcı video kampanyalarıyla ulaşın. Meta'dan daha düşük CPM.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item au"><span class="svc-n">04</span><div class="svc-body"><h3>LinkedIn Reklamları</h3><p>B2B lead generation. Unvan, sektör, şirket büyüklüğüne göre hedefleme.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item au"><span class="svc-n">05</span><div class="svc-body"><h3>Sosyal Medya Yönetimi</h3><p>İş günü başına 1 gönderi. Profesyonel metinler, hashtag stratejisi, hesap yönetimi.</p></div><span class="svc-arr">↗</span></div>
+        <div class="svc-item au"><span class="svc-n">06</span><div class="svc-body"><h3>Analitik ve Raporlama</h3><p>KPI takibi, A/B testleri, tüm platformlarda aylık raporlar.</p></div><span class="svc-arr">↗</span></div>
+      </div>
+      <div class="svc-cards ar">
+        <div class="rc"><div class="rc-top"><span class="rc-n">Moda Butik · Bakü</span><span class="rc-b">Meta</span></div><div class="rc-nums"><div><span class="rn-v">312%</span><span class="rn-l">Satış Artışı</span><span class="rn-g">↑</span></div><div><span class="rn-v">$1.80</span><span class="rn-l">Lead Maliyeti</span><span class="rn-g">↓ 28%</span></div><div><span class="rn-v">5.2×</span><span class="rn-l">ROAS</span><span class="rn-g">↑</span></div></div></div>
+        <div class="rc"><div class="rc-top"><span class="rc-n">Restoran · Bakü</span><span class="rc-b">Google + Meta</span></div><div class="rc-nums"><div><span class="rn-v">890</span><span class="rn-l">Aylık Lead</span><span class="rn-g">↑ 67%</span></div><div><span class="rn-v">$0.95</span><span class="rn-l">Lead Maliyeti</span><span class="rn-g">↓</span></div><div><span class="rn-v">4.1×</span><span class="rn-l">ROI</span><span class="rn-g">↑</span></div></div></div>
+        <div class="rc"><div class="rc-top"><span class="rc-n">Güzellik Salonu · Sumgayıt</span><span class="rc-b">TikTok + Meta</span></div><div class="rc-nums"><div><span class="rn-v">247%</span><span class="rn-l">Rezervasyon</span><span class="rn-g">↑</span></div><div><span class="rn-v">$1.20</span><span class="rn-l">Lead Maliyeti</span><span class="rn-g">↓</span></div><div><span class="rn-v">6.8×</span><span class="rn-l">ROAS</span><span class="rn-g">↑</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="nums-s"><div class="nums-g">
+  <div class="n-cell au"><span class="nv" data-count="150" data-suf="+">0+</span><span class="nl">Aktif Müşteri</span></div>
+  <div class="n-cell au"><span class="nv" data-count="3" data-suf="×">0×</span><span class="nl">Ortalama ROAS</span></div>
+  <div class="n-cell au"><span class="nv" data-count="5">0</span><span class="nl">Reklam Platformu</span></div>
+  <div class="n-cell au"><span class="nv">2 weeks</span><span class="nl">Ücretsiz Deneme</span></div>
+</div></div>
+
+<section id="pricing" style="background:rgba(255,255,255,.012);">
+  <div class="si">
+    <div class="s-tag at">Fiyatlar</div>
+    <h2 class="s-title title-anim" style="margin-bottom:16px;">Şeffaf fiyatlandırma.</h2>
+    <p style="font-size:15px;color:var(--text);margin-bottom:48px;max-width:560px;" class="au">Tüm planlara 2 haftalık ücretsiz deneme dahildir. Sözleşme yok, gizli ücret yok. Aynı sertifika seviyesindeki Batılı ajanslardan %60'a kadar daha uygun.</p>
+    <div class="pgrid">
+      <article class="pc au">
+        <span class="p-tier">Starter</span>
+        <div class="p-amt">9.900 <sub>₺/ay</sub></div>
+        <span class="p-cyc">+ 2 hafta ücretsiz · kart gerekmez</span>
+        <ul class="p-list">
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>2 kampanya yönetimi</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook ve Instagram</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylık performans raporu</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Kitle hedefleme</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>WhatsApp desteği</li>
+        </ul>
+        <a href="https://wa.me/994773698929" class="p-btn gh nav-cta" rel="noopener">Ücretsiz Başla</a>
+      </article>
+      <article class="pc feat au">
+        <div class="feat-lb">En Popüler</div>
+        <span class="p-tier">Growth</span>
+        <div class="p-amt">18.900 <sub>₺/ay</sub></div>
+        <span class="p-cyc">+ 2 hafta ücretsiz · kart gerekmez</span>
+        <ul class="p-list">
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>5 kampanya yönetimi</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Facebook, Instagram ve WhatsApp</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Haftalık raporlar</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Yeniden hedefleme kampanyaları</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>A/B testleri</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Öncelikli 7/24 destek</li>
+        </ul>
+        <a href="https://wa.me/994773698929" class="p-btn pr nav-cta" rel="noopener">Ücretsiz Başla</a>
+      </article>
+      <article class="pc au">
+        <span class="p-tier">Pro</span>
+        <div class="p-amt">29.900 <sub>₺/ay</sub></div>
+        <span class="p-cyc">+ 2 hafta ücretsiz · kart gerekmez</span>
+        <ul class="p-list">
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Sınırsız kampanya</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Tam platform yönetimi</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Günlük raporlama</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Özel stratejist</li>
+          <li><div class="p-ck"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-5" stroke-width="1.5" stroke-linecap="round"/></svg></div>Aylık strateji görüşmesi</li>
+        </ul>
+        <a href="https://wa.me/994773698929" class="p-btn gh nav-cta" rel="noopener">Ücretsiz Başla</a>
+      </article>
+    </div>
+    <div style="margin-top:24px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:12px;" class="au">
+      <span style="font-size:20px;">ℹ️</span>
+      <p style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.65;margin:0;"><strong style="color:var(--blue-l);">Ad spend not included.</strong> The monthly fee is our management cost only. You pay your ad budget directly to Meta, Google, TikTok or LinkedIn. Minimum recommended: $200–500/month.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="si">
+    <div class="s-tag at">Müşteri Yorumları</div>
+    <h2 class="s-title title-anim" style="margin-bottom:48px;">Müşterilerimiz<br>ne diyor?</h2>
+    <div class="tgrid">
+      <article class="tc au"><div class="tc-stars"><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"AdsOnUs ile 3 ay içinde online satışlarımız üç katına çıktı. Ücretsiz deneme döneminde bile gerçek sonuçlar gördük."</p><div class="tc-a"><div class="tc-av" style="background:#2563EB;">NM</div><div><div class="tc-n">Nigar M.</div><div class="tc-c">Moda Butik, Bakü</div></div></div></article>
+      <article class="tc au"><div class="tc-stars"><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"Google Ads bize çok daha nitelikli lead'ler getirdi. Satış döngümüz kısaldı. Kesinlikle tavsiye ederim."</p><div class="tc-a"><div class="tc-av" style="background:#1040A0;">RH</div><div><div class="tc-n">Rauf H.</div><div class="tc-c">İnşaat Şirketi, Bakü</div></div></div></article>
+      <article class="tc au"><div class="tc-stars"><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="tc-s" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p>"TikTok reklamları genç müşterilere ulaşmamıza yardımcı oldu. Salon rezervasyonlarımız 2 ayda ikiye katlandı."</p><div class="tc-a"><div class="tc-av" style="background:#0D6E50;">LA</div><div><div class="tc-n">Leyla A.</div><div class="tc-c">Güzellik Stüdyosu, Sumgayıt</div></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="si">
+    <div class="faq-split">
+      <div>
+        <div class="s-tag at">Sıkça Sorulan Sorular</div>
+        <h2 class="s-title title-anim">Sorularınız mı var?</h2>
+        <p style="margin-top:20px;font-size:15px;color:var(--text);line-height:1.85;max-width:320px;" class="au">Cevabı bulamadınız mı? WhatsApp'tan yazın — 5 dakika içinde cevap veriyoruz.</p>
+        <a href="https://wa.me/994773698929" class="btn-fill au nav-cta" rel="noopener" style="display:inline-block;margin-top:24px;">WhatsApp'tan Yazın →</a>
+      </div>
+      <div class="au" style="margin-top:8px;">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>2 haftalık ücretsiz deneme nasıl çalışır?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk görüşmeden sonra kampanyaları kuruyoruz ve 14 gün ücretsiz yönetiyoruz. Kart gerekmez. Memnun kaldıysanız aylık plana geçiyorsunuz.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Hangi platformları yönetiyorsunuz?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Facebook, Instagram, WhatsApp (Meta), Google Arama, Display, YouTube, TikTok ve LinkedIn. Ayrıca sosyal medya hesabı yönetimi (SMM) hizmeti de sunuyoruz.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Reklam bütçesi fiyata dahil mi?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Hayır. Aylık ücret yalnızca yönetim ücretidir. Reklam bütçenizi doğrudan platforma ödersiniz. Tavsiye edilen minimum: ₺5.000–10.000/ay.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Ne zaman sonuç görürüm?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">İlk sonuçlar genellikle 3–7 gün içinde görünür. Kampanyalar öğrendikçe tam optimizasyon 2–4 hafta alır.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Sözleşme veya zorunluluk var mı?</span><div class="faq-ico"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2v8" stroke-width="1.5" stroke-linecap="round"/></svg></div></div><div class="faq-a">Hayır. Yalnızca aylık ödeme. 30 gün önceden bildirerek istediğiniz zaman iptal edebilirsiniz. Müşterileri sözleşmeyle değil, sonuçlarla tutuyoruz.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-s" id="contact">
+  <div class="cta-glow"></div>
+  <h2 class="title-anim">Bugün ücretsiz<br>denemenizi başlatın.</h2>
+  <p class="au">Kart gerekmez. Zorunluluk yok. 14 gün tam hizmet — tamamen ücretsiz.</p>
+  <div class="cta-row au">
+    <a href="https://wa.me/994773698929" class="btn-fill nav-cta" rel="noopener">WhatsApp'tan İletişime Geçin →</a>
+    <a href="tel:+994773698929" class="btn-out">Arayın</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a class="logo" href="/tr/">
+          <svg class="lm" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg>
+          <span class="logo-t"><em>Ads</em>OnUs</span>
+        </a>
+        <p>Certified Meta &amp; Google Partner agency. Performance advertising across Meta, Google, TikTok and LinkedIn.</p>
+      </div>
+      <div class="ft-col"><h5>Hizmetler</h5><a href="/pages/xidmetler.html#meta">Meta Reklamları</a><a href="/pages/xidmetler.html#google">Google Ads</a><a href="/pages/xidmetler.html#tiktok">TikTok Reklamları</a><a href="/pages/xidmetler.html#linkedin">LinkedIn Reklamları</a><a href="/pages/xidmetler.html#smm">Sosyal Medya Yönetimi</a></div>
+      <div class="ft-col"><h5>Şirket</h5><a href="/pages/haqqimizda.html">Hakkımızda</a><a href="/blog/">Blog</a><a href="/tr/pricing.html">Fiyatlar</a><a href="/pages/hesablayici.html">ROAS Hesaplayıcı</a></div>
+      <div class="ft-col"><h5>İletişim</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a><a href="#">Bakü, Azerbaycan</a></div>
+    </div>
+    <div class="ft-btm">
+      <p>© 2025 AdsOnUs. Tüm hakları saklıdır.</p>
+      <span>Meta &amp; Google Partner · <a href="/pages/mexfilik.html">Gizlilik Politikası</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/shared.js"></script>
+<script src="/js/cta.js"></script>
+<script src="/js/features.js"></script>
+<script src="/js/form.js"></script>
+<script src="/js/analytics.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis = new Lenis({ duration:1.35, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, wheelMultiplier:.88 });
+gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll', function(e){ document.getElementById('prog').style.width=Math.min(e.scroll/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'; });
+ScrollTrigger.create({start:'top -80',onEnter:function(){document.getElementById('nav').classList.add('stuck');},onLeaveBack:function(){document.getElementById('nav').classList.remove('stuck');}});
+gsap.set('.h1-inner',{y:'105%'});
+gsap.set('.h-eye span',{y:20,opacity:0});
+gsap.set('.hero-desc,.hero-btns,.hero-trust',{y:24,opacity:0});
+gsap.set('#hero-visual',{x:40,opacity:0});
+gsap.set('.at',{opacity:0,x:-8});
+gsap.set('.au',{y:44,opacity:0});
+gsap.set('.ar',{x:36,opacity:0});
+gsap.set('.title-anim',{clipPath:'inset(0 100% 0 0)',opacity:1});
+setTimeout(function(){
+  gsap.to('.h1-inner',{y:'0%',duration:1.3,ease:'expo.out',stagger:.07,delay:.1});
+  gsap.to('.h-eye span',{y:0,opacity:1,duration:.9,ease:'expo.out',delay:.05});
+  gsap.to('.hero-desc',{y:0,opacity:1,duration:1,ease:'expo.out',delay:.5});
+  gsap.to('.hero-btns',{y:0,opacity:1,duration:1,ease:'expo.out',delay:.62});
+  gsap.to('.hero-trust',{y:0,opacity:1,duration:1,ease:'expo.out',delay:.74});
+  gsap.to('#hero-visual',{x:0,opacity:1,duration:1.2,ease:'expo.out',delay:.45});
+  gsap.utils.toArray('.title-anim').forEach(function(el){gsap.to(el,{scrollTrigger:{trigger:el,start:'top 88%',once:true},clipPath:'inset(0 0% 0 0)',duration:1.2,ease:'expo.out'});});
+  gsap.utils.toArray('.at').forEach(function(el){gsap.to(el,{scrollTrigger:{trigger:el,start:'top 90%',once:true},opacity:1,x:0,duration:.8,ease:'expo.out'});});
+  ScrollTrigger.batch('.au',{start:'top 90%',onEnter:function(els){gsap.to(els,{y:0,opacity:1,duration:.9,ease:'expo.out',stagger:.07});},once:true});
+  gsap.utils.toArray('.ar').forEach(function(el){gsap.to(el,{scrollTrigger:{trigger:el,start:'top 86%',once:true},x:0,opacity:1,duration:1.1,ease:'expo.out'});});
+  document.querySelectorAll('[data-count]').forEach(function(el){ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){var t=parseInt(el.dataset.count),s=el.dataset.suf||'',st=performance.now(),d=1500;function tick(n){var p=Math.min((n-st)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(t*e)+s;if(p<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);}});});
+  if(window.innerWidth>1000){var mc=document.getElementById('mockup-card'),hv=document.getElementById('hero-visual');if(mc&&hv){hv.addEventListener('mousemove',function(e){var r=mc.getBoundingClientRect();gsap.to(mc,{rotateY:(e.clientX-r.left)/r.width*14-7,rotateX:-((e.clientY-r.top)/r.height*14-7),translateZ:8,duration:.4,ease:'power2.out',transformPerspective:800});},{passive:true});hv.addEventListener('mouseleave',function(){gsap.to(mc,{rotateY:0,rotateX:0,translateZ:0,duration:.7,ease:'elastic.out(1,0.4)'});});}}
+  document.querySelectorAll('.btn-fill,.btn-out,.nav-cta').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.28,y:(e.clientY-r.top-r.height/2)*.28,duration:.4,ease:'power2.out'});});b.addEventListener('mouseleave',function(){gsap.to(b,{x:0,y:0,duration:.7,ease:'elastic.out(1,0.4)'});});});
+  if(window.innerWidth>1000){var cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');var mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;gsap.to(cur,{x:mx,y:my,duration:.06,ease:'none'});},{passive:true});gsap.ticker.add(function(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;gsap.set(ring,{x:rx,y:ry});});document.querySelectorAll('a,button,.svc-item,.tc,.pc,.faq-q').forEach(function(el){el.addEventListener('mouseenter',function(){document.body.classList.add('hov');ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(91,142,255,.65)';});el.addEventListener('mouseleave',function(){document.body.classList.remove('hov');ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='rgba(255,255,255,.3)';});});}
+  ScrollTrigger.refresh();
+}, 200);
+window.toggleFaq=function(el){var it=el.parentElement,op=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});if(!op)it.classList.add('open');};
+</script>
+</body>
+</html>

@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 
+<script src="/js/lang-detect.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -401,6 +402,10 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
 .plat-logo:hover{opacity:.75;}
 @media(max-width:700px){.platforms-strip{padding:16px 24px;}.plat-label{display:none;}.plat-logos{gap:20px;}}
 
+.lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.07);border-radius:50px;padding:3px;gap:1px;margin-left:4px;}
+.ls-btn{padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;text-decoration:none;background:none;border:none;font-family:"Manrope",sans-serif;}
+.ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
+.ls-btn.active{background:#2563EB;color:#fff;}
 /* ── ANIM INIT STATES ── */
 .at{opacity:0;}
 .au{opacity:0;transform:translateY(44px);}
@@ -467,6 +472,12 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
       <a href="/blog/">Blog</a>
       <a href="/pages/haqqimizda.html">Haqqımızda</a>
       <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a>
+      <div class="lang-sw">
+        <button class="ls-btn active">AZ</button>
+        <button class="ls-btn" onclick="switchLang('en')">EN</button>
+        <button class="ls-btn" onclick="switchLang('ru')">RU</button>
+        <button class="ls-btn" onclick="switchLang('tr')">TR</button>
+      </div>
     </div>
     <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
