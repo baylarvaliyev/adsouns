@@ -19,9 +19,12 @@
 @media(max-width:860px){.blog-full-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.blog-full-grid{grid-template-columns:1fr;}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 </head>
 <body>
-<nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div></nav>
+<nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a>
+      <a href="/pages/hesablayici.html">Kalkulyator</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div></nav>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><span style="color:#fff;">Blog</span></div></div>
 <div class="page-hero">
   <span class="tag">Blog &amp; Məqalələr</span>
@@ -31,7 +34,29 @@
 <main>
 <section>
 <div class="s-inner">
-  <div class="cat-filter">
+  <style>
+.blog-search-bar{margin-bottom:24px;}
+.bsb-wrap{position:relative;display:flex;align-items:center;}
+.bsb-ico{position:absolute;left:16px;width:18px;height:18px;pointer-events:none;flex-shrink:0;}
+#blog-search{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:50px;padding:13px 48px 13px 46px;color:#fff;font-size:14px;font-family:"Noto Sans",sans-serif;outline:none;transition:border-color .25s,background .25s;}
+#blog-search:focus{border-color:#2563EB;background:rgba(37,99,235,.07);}
+#blog-search::placeholder{color:rgba(255,255,255,.28);}
+#bsb-clear{position:absolute;right:16px;background:none;border:none;color:rgba(255,255,255,.4);font-size:16px;cursor:pointer;padding:4px;transition:color .2s;line-height:1;}
+#bsb-clear:hover{color:#fff;}
+.blog-card.hidden{display:none!important;}
+.blog-card.search-match{border-color:rgba(37,99,235,.35);}
+.no-results{text-align:center;padding:48px 24px;color:rgba(255,255,255,.35);font-size:15px;display:none;}
+.no-results.show{display:block;}
+</style>
+  <div class="blog-search-bar">
+    <div class="bsb-wrap">
+      <svg class="bsb-ico" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="blog-search" placeholder="Məqalə axtar... (məs: Instagram, Google, SMM)" oninput="searchBlog(this.value)" autocomplete="off"/>
+      <button id="bsb-clear" onclick="clearSearch()" style="display:none;">✕</button>
+    </div>
+    <div id="search-count" style="font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;display:none;"></div>
+  </div>
+<div class="cat-filter">
     <button class="cat-btn active" data-cat="">Hamısı</button>
     <button class="cat-btn" data-cat="Meta Reklam">Meta Reklam</button>
     <button class="cat-btn" data-cat="Google Ads">Google Ads</button>
@@ -51,10 +76,12 @@
     <a href="/blog/linkedin-b2b.html" class="blog-card" data-cat="LinkedIn Ads"><div class="blog-img">💼</div><div class="blog-body"><span class="blog-cat">LinkedIn Ads</span><h3>LinkedIn ilə B2B Satış: Azərbaycanda Korporativ Müştəri Tapın</h3><p>LinkedIn reklamları ilə şirkətlərə, rəhbərlərə çatın.</p><div class="blog-meta">7 dəq oxu · Aprel 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
     <a href="/blog/remarketing-nedir.html" class="blog-card" data-cat="Meta Reklam"><div class="blog-img">🔄</div><div class="blog-body"><span class="blog-cat">Meta Reklam</span><h3>Remarketing Nədir? Saytı Ziyarət Edən Müştəriləri Geri Qazanın</h3><p>Saytınıza gəlib alış etməyən müştərilərə yenidən çatmağın yolu.</p><div class="blog-meta">5 dəq oxu · May 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
   </div>
+<div class="no-results" id="no-results">Axtarışa uyğun məqalə tapılmadı 🔍</div>
 </div>
 </section>
 </main>
-<footer><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><p>Azərbaycanda reklam agentliyi.</p></div><div class="ft-col"><h5>Xidmətlər</h5><a href="/pages/xidmetler.html#meta">Meta Reklam</a><a href="/pages/xidmetler.html#google">Google Ads</a><a href="/pages/xidmetler.html#tiktok">TikTok Ads</a><a href="/pages/xidmetler.html#smm">SMM</a></div><div class="ft-col"><h5>Şirkət</h5><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/pages/elaqe.html">Əlaqə</a></div><div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a></div></div><div class="ft-bottom"><p>© 2025 AdsOnUs.</p><span class="ft-contact"><a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span></div></div></footer>
+<footer><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><p>Azərbaycanda reklam agentliyi.</p></div><div class="ft-col"><h5>Xidmətlər</h5><a href="/pages/xidmetler.html#meta">Meta Reklam</a><a href="/pages/xidmetler.html#google">Google Ads</a><a href="/pages/xidmetler.html#tiktok">TikTok Ads</a><a href="/pages/xidmetler.html#smm">SMM</a></div><div class="ft-col"><h5>Şirkət</h5><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="/pages/qiymetler.html">Qiymətlər</a>
+      <a href="/pages/hesablayici.html">Kalkulyator</a><a href="/pages/elaqe.html">Əlaqə</a></div><div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a></div></div><div class="ft-bottom"><p>© 2025 AdsOnUs.</p><span class="ft-contact"><a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span></div></div></footer>
 <script src="/js/shared.js"></script>
 <script src="/js/cta.js"></script>
 <script>
@@ -68,6 +95,73 @@ document.querySelectorAll('.cat-btn').forEach(function(btn){
     });
   });
 });
+</script>
+<script src="/js/features.js"></script>
+<script src="/js/form.js"></script>
+<script>
+var blogArticles = [
+  {title:'Facebook Reklam Nədir? 2025-ci İldə Azərbaycanda Necə İşləyir?',cat:'Meta Reklam',url:'/blog/facebook-reklam-necedir.html',tags:'facebook meta reklam azerbaijan ads'},
+  {title:'Google Ads vs Meta Ads: Azərbaycanda Hansını Seçməli?',cat:'Google Ads',url:'/blog/google-ads-vs-meta-ads.html',tags:'google ads meta facebook müqayisə'},
+  {title:'TikTok Reklamı Azərbaycanda: 2025-ci İldə İmkanlar',cat:'TikTok Ads',url:'/blog/tiktok-reklam-azerbaycan.html',tags:'tiktok reklam video gənc'},
+  {title:'Instagram Reklamı ilə Satışları Artırmağın 7 Yolu',cat:'Meta Reklam',url:'/blog/instagram-satish-artirma.html',tags:'instagram satış artırma reklam'},
+  {title:'WhatsApp Reklamı: Click-to-WhatsApp ilə Daha Çox Müştəri',cat:'Meta Reklam',url:'/blog/whatsapp-reklam.html',tags:'whatsapp mesaj reklam click müştəri'},
+  {title:'Azərbaycanda SMM Niyə Vacibdir? Sosial Media Strategiyası',cat:'SMM',url:'/blog/smm-azerbaycan.html',tags:'smm sosial media instagram facebook idarəetmə'},
+  {title:'Reklam Büdcəsi Necə Planlaşdırılır? Azərbaycan Bazarı üçün Bələdçi',cat:'Satış Məsləhəti',url:'/blog/reklam-budjesi.html',tags:'büdcə planlaşdırma xərc reklam pul'},
+  {title:'LinkedIn ilə B2B Satış: Azərbaycanda Korporativ Müştəri Tapın',cat:'LinkedIn Ads',url:'/blog/linkedin-b2b.html',tags:'linkedin b2b korporativ satış şirkət'},
+  {title:'Remarketing Nədir? Saytı Ziyarət Edən Müştəriləri Geri Qazanın',cat:'Meta Reklam',url:'/blog/remarketing-nedir.html',tags:'remarketing retargeting pixel sayt ziyarətçi'}
+];
+
+var fuse = new Fuse(blogArticles, {
+  keys:['title','cat','tags'],
+  threshold:0.4,
+  includeScore:true
+});
+
+var activeCat = '';
+
+window.searchBlog = function(q){
+  var cards = document.querySelectorAll('.blog-card');
+  var clear = document.getElementById('bsb-clear');
+  var count = document.getElementById('search-count');
+  var noRes = document.getElementById('no-results');
+
+  q = q.trim();
+  clear.style.display = q ? 'block' : 'none';
+  count.style.display = q ? 'block' : 'none';
+
+  if(!q){
+    cards.forEach(function(c){
+      c.classList.remove('hidden','search-match');
+      if(activeCat) c.style.display = (c.dataset.cat === activeCat) ? '' : 'none';
+      else c.style.display = '';
+    });
+    noRes.classList.remove('show');
+    count.textContent = '';
+    return;
+  }
+
+  var results = fuse.search(q);
+  var matchedUrls = results.map(function(r){return r.item.url;});
+  var shown = 0;
+
+  cards.forEach(function(c){
+    var href = c.getAttribute('href');
+    var match = matchedUrls.some(function(u){return href && href.includes(u.split('/').pop());});
+    if(activeCat && c.dataset.cat !== activeCat) match = false;
+    c.style.display = match ? '' : 'none';
+    c.classList.toggle('hidden', !match);
+    c.classList.toggle('search-match', match);
+    if(match) shown++;
+  });
+
+  noRes.classList.toggle('show', shown === 0);
+  count.textContent = shown + ' məqalə tapıldı';
+};
+
+window.clearSearch = function(){
+  document.getElementById('blog-search').value = '';
+  searchBlog('');
+};
 </script>
 </body>
 </html>

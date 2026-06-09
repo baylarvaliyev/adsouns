@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ROAS Kalkulyatoru — Reklamdan Nə Qədər Qazanacağınızı Hesablayın | AdsOnUs</title>
+<meta name="description" content="Pulsuz ROAS kalkulyatoru: biznes növünüzə uyğun reklam gəlirini hesablayın. Fitness, kosmetika, restoran, geyim mağazası üçün real ROAS göstəriciləri."/>
+<meta name="keywords" content="ROAS kalkulyator Azərbaycan, reklam gəliri hesabla, reklam effektivlik, Meta ROAS, reklam ROI"/>
+<link rel="canonical" href="https://adsonus.com/pages/hesablayici.html"/>
+<meta property="og:title" content="ROAS Kalkulyatoru — Reklamdan Nə Qədər Qazanacağınızı Hesablayın"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+:root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--border:rgba(255,255,255,.07);}
+
+/* ── CALC LAYOUT ── */
+.calc-wrap{max-width:1100px;margin:0 auto;padding:60px 5%;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.calc-left{position:sticky;top:90px;}
+.calc-hero-tag{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.calc-hero-tag::before{content:'';width:20px;height:1px;background:rgba(255,255,255,.2);}
+.calc-left h1{font-family:'Manrope',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px;}
+.calc-left .grad{background:linear-gradient(115deg,#5B8EFF,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.calc-left p{font-size:15px;color:rgba(255,255,255,.48);line-height:1.85;margin-bottom:28px;}
+.biz-showcase{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.biz-pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 13px;display:flex;align-items:center;gap:8px;font-size:12.5px;}
+.biz-pill-ico{font-size:16px;}
+.biz-pill-name{color:rgba(255,255,255,.55);}
+.biz-pill-roas{font-family:'Manrope',sans-serif;font-weight:800;color:var(--blue-l);margin-left:auto;font-size:13px;}
+
+/* ── CALC FORM ── */
+.calc-right{}
+.calc-card{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:16px;}
+.calc-card h2{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;margin-bottom:20px;color:#fff;}
+.cf{margin-bottom:20px;}
+.cf label{display:block;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:8px;}
+.cf select,.cf input[type=number]{
+  width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:13px 16px;color:#fff;font-size:15px;font-family:'Noto Sans',sans-serif;
+  outline:none;transition:border-color .25s,background .25s;appearance:none;-webkit-appearance:none;
+}
+.cf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.cf select:focus,.cf input[type=number]:focus{border-color:var(--blue);background:rgba(37,99,235,.08);}
+.cf select option{background:#0B1020;}
+.cf input[type=number]::-webkit-inner-spin-button,.cf input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;}
+
+/* ── RESULTS ── */
+.result-card{background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.25);border-radius:20px;padding:28px;margin-bottom:16px;}
+.result-card h2{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;margin-bottom:20px;color:#fff;}
+.result-empty{font-size:14px;color:rgba(255,255,255,.32);text-align:center;padding:20px 0;}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.r-cell{background:rgba(0,0,0,.25);border-radius:13px;padding:14px 16px;}
+.r-label{font-size:11px;color:rgba(255,255,255,.38);margin-bottom:5px;}
+.r-value{font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.5px;color:#fff;}
+.r-value.good{color:#4ade80;}
+.r-value.great{background:linear-gradient(115deg,#5B8EFF,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.r-sub{font-size:11px;color:rgba(255,255,255,.28);margin-top:2px;}
+
+/* Comparison bars */
+.comp-bars{margin:16px 0;}
+.comp-bar-row{margin-bottom:12px;}
+.comp-bar-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:12px;color:rgba(255,255,255,.45);}
+.comp-bar-label strong{font-family:'Manrope',sans-serif;font-weight:700;color:#fff;}
+.comp-bar-track{height:9px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden;}
+.comp-bar-fill{height:100%;border-radius:50px;transition:width .8s cubic-bezier(0.16,1,0.3,1);}
+.bar-current{background:rgba(255,255,255,.2);}
+.bar-adsonus{background:linear-gradient(90deg,var(--blue),var(--cyan));}
+
+/* Disclaimer */
+.calc-disclaimer{font-size:12px;color:rgba(255,255,255,.25);line-height:1.7;padding:0 4px;}
+
+/* CTA */
+.calc-cta{background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(56,189,248,.06));border:1px solid rgba(37,99,235,.22);border-radius:18px;padding:24px;text-align:center;}
+.calc-cta h3{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;margin-bottom:8px;}
+.calc-cta p{font-size:13.5px;color:rgba(255,255,255,.5);margin-bottom:18px;line-height:1.65;}
+.cta-btns-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-calc{padding:12px 26px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:all .3s;}
+.btn-calc.pr{background:var(--blue);color:#fff;}
+.btn-calc.pr:hover{box-shadow:0 0 24px rgba(37,99,235,.55);transform:translateY(-2px);}
+.btn-calc.gh{border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);}
+.btn-calc.gh:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+
+/* Sector badges */
+.sector-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);border-radius:50px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--blue-l);margin:2px;}
+
+@media(max-width:900px){
+  .calc-wrap{grid-template-columns:1fr;gap:32px;}
+  .calc-left{position:static;}
+}
+@media(max-width:560px){
+  .r-grid{grid-template-columns:1fr;}
+  .biz-showcase{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/blog/">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div></nav>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><span style="color:#fff;">ROAS Kalkulyatoru</span></div></div>
+
+<main style="padding-top:20px;">
+<div class="calc-wrap">
+
+  <!-- LEFT: Hero text + business types showcase -->
+  <div class="calc-left">
+    <div class="calc-hero-tag">Pulsuz Alət</div>
+    <h1>Reklamınızdan<br>nə qədər <span class="grad">qazanacağınızı</span><br>hesablayın</h1>
+    <p>Biznes növünüzü seçin, büdcənizi daxil edin — AdsOnUs ilə əldə edəcəyiniz gəliri canlı görün.</p>
+
+    <div class="biz-showcase">
+      <div class="biz-pill"><span class="biz-pill-ico">💄</span><span class="biz-pill-name">Kosmetika</span><span class="biz-pill-roas">×30 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">🍰</span><span class="biz-pill-name">Tort/Şirniyyat</span><span class="biz-pill-roas">×22 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">💍</span><span class="biz-pill-name">Zərgərlik</span><span class="biz-pill-roas">×20 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">📚</span><span class="biz-pill-name">Tədris/Kurslar</span><span class="biz-pill-roas">×15 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">👗</span><span class="biz-pill-name">Geyim</span><span class="biz-pill-roas">×12 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">🍦</span><span class="biz-pill-name">Fast Food</span><span class="biz-pill-roas">×11 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">🍕</span><span class="biz-pill-name">Restoran</span><span class="biz-pill-roas">×8 ROAS</span></div>
+      <div class="biz-pill"><span class="biz-pill-ico">🏋️</span><span class="biz-pill-name">Fitness Zalı</span><span class="biz-pill-roas">×7 ROAS</span></div>
+    </div>
+
+    <div style="margin-top:22px;padding:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;">
+      <p style="font-size:12.5px;color:rgba(255,255,255,.38);line-height:1.7;margin:0;">
+        <strong style="color:rgba(255,255,255,.55);">ROAS nədir?</strong> Return on Ad Spend — hər xərclənən ₼1 reklamdan əldə edilən gəlir. ROAS 8× = ₼100 xərcə ₼800 gəlir deməkdir.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT: Calculator -->
+  <div class="calc-right">
+
+    <div class="calc-card">
+      <h2>📊 Məlumatları daxil edin</h2>
+
+      <div class="cf">
+        <label>Biznes növünüz</label>
+        <select id="calc-biz" onchange="calculate()">
+          <option value="">Biznes növü seçin...</option>
+          <option value="kosmetika" data-roas="30">💄 Kosmetika Mağazası — ×30 ROAS</option>
+          <option value="tort" data-roas="22">🍰 Tort / Şirniyyat / Pastacılıq — ×22 ROAS</option>
+          <option value="zergerlik" data-roas="20">💍 Zərgərlik / Aksesuar — ×20 ROAS</option>
+          <option value="usaq" data-roas="18">👶 Uşaq Məhsulları — ×18 ROAS</option>
+          <option value="eczaciliq" data-roas="14">💊 Əczaçılıq / Supplement — ×14 ROAS</option>
+          <option value="kurslar" data-roas="15">📚 Tədris / Kurslar / Akademiya — ×15 ROAS</option>
+          <option value="geyim" data-roas="12">👗 Geyim Mağazası / Butik — ×12 ROAS</option>
+          <option value="fastfood" data-roas="11">🍦 Dondurmacı / Fast Food / Çay Evi — ×11 ROAS</option>
+          <option value="ev-dekor" data-roas="10">🛋️ Ev Dekor / Mebel — ×10 ROAS</option>
+          <option value="toy" data-roas="9">💒 Toy / Şadlıq Sarayı / Törən — ×9 ROAS</option>
+          <option value="guzellik" data-roas="9">💇 Gözəllik Salonu / Spa / Dırnaq — ×9 ROAS</option>
+          <option value="restoran" data-roas="8">🍕 Restoran / Çatdırılma / Kafe — ×8 ROAS</option>
+          <option value="avtomobil" data-roas="8">🚗 Avtomobil Aksesuar / Servis — ×8 ROAS</option>
+          <option value="fitness" data-roas="7">🏋️ Fitness / İdman Zalı / Pilates — ×7 ROAS</option>
+          <option value="turizm" data-roas="7">🏨 Turizm / Mehmanxana / Villa — ×7 ROAS</option>
+          <option value="tibb" data-roas="6">🦷 Tibb / Diş Klinikası — ×6 ROAS</option>
+          <option value="ev-xidmet" data-roas="6">🧹 Ev Xidmətləri / Təmizlik — ×6 ROAS</option>
+          <option value="elektronika" data-roas="5">📱 Elektronika / Texnika — ×5 ROAS</option>
+          <option value="emlak" data-roas="4">🏠 Daşınmaz Əmlak — ×4 ROAS</option>
+          <option value="b2b" data-roas="3">💼 B2B / Korporativ Xidmətlər — ×3 ROAS</option>
+        </select>
+      </div>
+
+      <div class="cf">
+        <label>Aylıq reklam büdcəniz (₼)</label>
+        <input type="number" id="calc-budget" placeholder="Məsələn: 500" min="100" max="99999" oninput="calculate()"/>
+      </div>
+
+      <div class="cf" style="margin-bottom:0;">
+        <label>Hazırkı aylıq reklamdan gəliriniz (₼) <span style="color:rgba(255,255,255,.25);font-size:10px;letter-spacing:0;text-transform:none;font-weight:400;">— Reklam yoxdursa 0 yazın</span></label>
+        <input type="number" id="calc-current" placeholder="Məsələn: 800" min="0" oninput="calculate()"/>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="result-card" id="results-panel">
+      <h2>🎯 Nəticə</h2>
+      <div class="result-empty" id="result-empty">Yuxarıdakı məlumatları daxil edin →</div>
+      <div id="result-content" style="display:none;">
+        <div class="r-grid">
+          <div class="r-cell">
+            <div class="r-label">Hazırkı ROAS-ınız</div>
+            <div class="r-value" id="r-current-roas">–</div>
+            <div class="r-sub" id="r-current-sub">–</div>
+          </div>
+          <div class="r-cell">
+            <div class="r-label">AdsOnUs ilə ROAS</div>
+            <div class="r-value great" id="r-adsonus-roas">–</div>
+            <div class="r-sub" id="r-biz-name">–</div>
+          </div>
+          <div class="r-cell">
+            <div class="r-label">Əlavə aylıq gəlir</div>
+            <div class="r-value good" id="r-extra-monthly">–</div>
+            <div class="r-sub">AdsOnUs olmadan vs ilə</div>
+          </div>
+          <div class="r-cell">
+            <div class="r-label">Əlavə illik gəlir</div>
+            <div class="r-value good" id="r-extra-annual">–</div>
+            <div class="r-sub">12 ay ərzində</div>
+          </div>
+        </div>
+
+        <div class="comp-bars">
+          <div class="comp-bar-row">
+            <div class="comp-bar-label"><span>Hazırkı gəlir</span><strong id="bar-cur-val">₼0</strong></div>
+            <div class="comp-bar-track"><div class="comp-bar-fill bar-current" id="bar-current" style="width:0%"></div></div>
+          </div>
+          <div class="comp-bar-row">
+            <div class="comp-bar-label"><span>AdsOnUs ilə gəlir</span><strong id="bar-new-val">₼0</strong></div>
+            <div class="comp-bar-track"><div class="comp-bar-fill bar-adsonus" id="bar-adsonus" style="width:0%"></div></div>
+          </div>
+        </div>
+
+        <div style="background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.2);border-radius:12px;padding:14px 16px;margin-top:4px;">
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;">
+            <strong style="color:#4ade80;">İlk 2 həftə PULSUZ:</strong> Sınaq dövrü başa çatanadək <span id="r-monthly-cost">₼0</span> idarəetmə xərci ödəmirsiniz. Bu müddətdə aldığınız bütün gəlir sizin xeyrinizədir.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-cta">
+      <h3>Bu nəticəni əldə etmək istəyirsiniz?</h3>
+      <p>2 həftəlik pulsuz sınaq ilə başlayın. Nəticə görməsəniz, heç bir ödəniş yoxdur.</p>
+      <div class="cta-btns-row">
+        <a href="https://wa.me/994773698929" class="btn-calc pr" rel="noopener" id="wa-cta-btn">WhatsApp ilə Başla →</a>
+        <a href="/pages/qiymetler.html" class="btn-calc gh">Qiymətlərə Bax</a>
+      </div>
+    </div>
+
+    <div class="calc-disclaimer">
+      * Göstərilən ROAS dəyərləri AdsOnUs-un Azərbaycandakı müştəriləri üzrə ortalama nəticələrə əsaslanır. Fərdi nəticələr büdcə, kreativ keyfiyyəti, mövsüm və digər amillərdən asılı olaraq dəyişə bilər.
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><p>Azərbaycanda reklam agentliyi.</p></div><div class="ft-col"><h5>Alətlər</h5><a href="/pages/hesablayici.html">ROAS Kalkulyatoru</a><a href="/pages/qiymetler.html">Qiymətlər</a></div><div class="ft-col"><h5>Xidmətlər</h5><a href="/pages/xidmetler.html#meta">Meta Reklam</a><a href="/pages/xidmetler.html#google">Google Ads</a></div><div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a></div></div><div class="ft-bottom"><p>© 2025 AdsOnUs.</p><span class="ft-contact"><a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span></div></div></footer>
+
+<script src="/js/shared.js"></script>
+<script src="/js/cta.js"></script>
+<script src="/js/features.js"></script>
+
+<script>
+// ROAS data
+var ROAS_DATA = {
+  kosmetika:{name:'Kosmetika Mağazası',roas:30},
+  tort:{name:'Tort / Şirniyyat',roas:22},
+  zergerlik:{name:'Zərgərlik / Aksesuar',roas:20},
+  usaq:{name:'Uşaq Məhsulları',roas:18},
+  kurslar:{name:'Tədris / Kurslar',roas:15},
+  eczaciliq:{name:'Əczaçılıq / Supplement',roas:14},
+  geyim:{name:'Geyim Mağazası',roas:12},
+  fastfood:{name:'Fast Food / Dondurmacı',roas:11},
+  'ev-dekor':{name:'Ev Dekor / Mebel',roas:10},
+  toy:{name:'Toy / Şadlıq',roas:9},
+  guzellik:{name:'Gözəllik Salonu',roas:9},
+  restoran:{name:'Restoran / Çatdırılma',roas:8},
+  avtomobil:{name:'Avtomobil Aksesuarları',roas:8},
+  fitness:{name:'Fitness / İdman Zalı',roas:7},
+  turizm:{name:'Turizm / Mehmanxana',roas:7},
+  tibb:{name:'Tibb / Diş Klinikası',roas:6},
+  'ev-xidmet':{name:'Ev Xidmətləri',roas:6},
+  elektronika:{name:'Elektronika / Texnika',roas:5},
+  emlak:{name:'Daşınmaz Əmlak',roas:4},
+  b2b:{name:'B2B / Korporativ',roas:3}
+};
+
+function fmt(n){
+  return '₼' + Math.round(n).toLocaleString('az-AZ');
+}
+
+function calculate(){
+  var biz = document.getElementById('calc-biz').value;
+  var budgetRaw = parseFloat(document.getElementById('calc-budget').value)||0;
+  var currentRaw = parseFloat(document.getElementById('calc-current').value)||0;
+
+  if(!biz || budgetRaw <= 0){
+    document.getElementById('result-empty').style.display='block';
+    document.getElementById('result-content').style.display='none';
+    return;
+  }
+
+  var data = ROAS_DATA[biz];
+  if(!data) return;
+
+  var adsonusROAS = data.roas;
+  var currentROAS = budgetRaw > 0 && currentRaw > 0 ? (currentRaw / budgetRaw).toFixed(1) : 0;
+  var currentRevenue = currentRaw > 0 ? currentRaw : budgetRaw * 1.2; // assumed baseline if no current
+  var adsonusRevenue = budgetRaw * adsonusROAS;
+  var extraMonthly = adsonusRevenue - (currentRaw > 0 ? currentRaw : currentRevenue);
+  var extraAnnual = extraMonthly * 12;
+
+  // Management fee (use Growth plan as default: 600)
+  var mgmtFee = budgetRaw >= 1000 ? 1000 : budgetRaw >= 500 ? 600 : 300;
+
+  document.getElementById('result-empty').style.display='none';
+  document.getElementById('result-content').style.display='block';
+
+  document.getElementById('r-current-roas').textContent = currentROAS > 0 ? currentROAS + '×' : 'Reklam yox';
+  document.getElementById('r-current-sub').textContent = currentROAS > 0 ? 'Hazırkı performans' : 'Hələ reklam verməmisiniz';
+  document.getElementById('r-adsonus-roas').textContent = adsonusROAS + '×';
+  document.getElementById('r-biz-name').textContent = data.name;
+  document.getElementById('r-extra-monthly').textContent = '+' + fmt(extraMonthly);
+  document.getElementById('r-extra-annual').textContent = '+' + fmt(extraAnnual);
+  document.getElementById('r-monthly-cost').textContent = fmt(mgmtFee);
+
+  // Bars
+  var curRev = currentRaw > 0 ? currentRaw : 0;
+  var maxVal = Math.max(adsonusRevenue, curRev, 1);
+  document.getElementById('bar-cur-val').textContent = fmt(curRev);
+  document.getElementById('bar-new-val').textContent = fmt(adsonusRevenue);
+  setTimeout(function(){
+    document.getElementById('bar-current').style.width = Math.max((curRev/maxVal)*100, curRev>0?4:0) + '%';
+    document.getElementById('bar-adsonus').style.width = Math.min((adsonusRevenue/maxVal)*100, 100) + '%';
+  }, 100);
+
+  // Update WA link with context
+  var msg = 'Salam! Hesablayıcıda ' + data.name + ' üçün ×' + adsonusROAS + ' ROAS nəticəsini gördüm. '
+    + 'Aylıq büdcəm ' + fmt(budgetRaw) + '. Pulsuz sınaq haqqında danışmaq istəyirəm.';
+  document.getElementById('wa-cta-btn').href = 'https://wa.me/994773698929?text=' + encodeURIComponent(msg);
+}
+</script>
+<script src="/js/form.js"></script>
+</body>
+</html>
