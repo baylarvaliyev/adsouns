@@ -3,161 +3,69 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Blog — Azərbaycanda Reklam, Digital Marketing Məqalələri | AdsOnUs</title>
-<meta name="description" content="AdsOnUs blogu — Azərbaycanda Facebook reklam, Google Ads, TikTok, Instagram, digital marketing haqqında peşəkar məqalələr. Biznesinizi böyütmək üçün faydalı məsləhətlər."/>
-<meta name="keywords" content="Facebook reklam məqalə, Google Ads Azərbaycan, TikTok reklam, digital marketing Azərbaycan, SMM məsləhət, reklam blog"/>
+<meta name="description" content="AdsOnUs blogu — Facebook reklam, Google Ads, TikTok, Instagram, WhatsApp reklamı, SMM haqqında peşəkar Azərbaycan dilində məqalələr. Biznesinizi böyütmək üçün faydalı məsləhətlər."/>
+<meta name="keywords" content="Facebook reklam, Google Ads Azərbaycan, TikTok reklam, Instagram reklam, digital marketing Azərbaycan, SMM, reklam blog"/>
 <link rel="canonical" href="https://adsonus.com/blog/"/>
-<meta property="og:title" content="Blog — AdsOnUs Digital Marketing"/><meta property="og:description" content="Azərbaycanda reklam ve digital marketing haqqında peşəkar məqalələr."/><meta property="og:url" content="https://adsonus.com/blog/"/>
+<meta property="og:title" content="Blog — AdsOnUs Digital Marketing"/><meta property="og:url" content="https://adsonus.com/blog/"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"AdsOnUs Blog","url":"https://adsonus.com/blog/","description":"Azərbaycanda reklam və digital marketing haqqında peşəkar məqalələr","publisher":{"@type":"Organization","name":"AdsOnUs","url":"https://adsonus.com"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/style.css"/>
 <style>
-.blog-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.cat-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
-.cat-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.6);cursor:pointer;transition:all .25s;}
-.cat-btn:hover,.cat-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.blog-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cat-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.cat-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:8px 18px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.55);cursor:pointer;transition:all .25s;font-family:'Noto Sans',sans-serif;}
+.cat-btn:hover,.cat-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 @media(max-width:860px){.blog-full-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:540px){.blog-full-grid{grid-template-columns:1fr;}}
+@media(max-width:560px){.blog-full-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2B5EF7"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a>
-    <div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div>
-    <button class="burger" onclick="toggleMenu()" aria-label="Menyu" aria-expanded="false" id="burger-btn"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div>
-</nav>
+<nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div></nav>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><span style="color:#fff;">Blog</span></div></div>
 <div class="page-hero">
   <span class="tag">Blog &amp; Məqalələr</span>
   <h1>Reklam Dünyasından <span class="grad">Faydalı Məqalələr</span></h1>
-  <p>Azərbaycanda reklam, digital marketing, sosial media haqqında peşəkar məqalələr. Biznesinizi böyütmək üçün hər şey burada.</p>
+  <p>Azərbaycanda reklam, digital marketing, sosial media haqqında peşəkar məqalələr.</p>
 </div>
 <main>
 <section>
 <div class="s-inner">
   <div class="cat-filter">
-    <button class="cat-btn active">Hamısı</button>
-    <button class="cat-btn">Meta Reklam</button>
-    <button class="cat-btn">Google Ads</button>
-    <button class="cat-btn">TikTok</button>
-    <button class="cat-btn">SMM</button>
-    <button class="cat-btn">LinkedIn</button>
-    <button class="cat-btn">Satış Məsləhəti</button>
+    <button class="cat-btn active" data-cat="">Hamısı</button>
+    <button class="cat-btn" data-cat="Meta Reklam">Meta Reklam</button>
+    <button class="cat-btn" data-cat="Google Ads">Google Ads</button>
+    <button class="cat-btn" data-cat="TikTok Ads">TikTok Ads</button>
+    <button class="cat-btn" data-cat="SMM">SMM</button>
+    <button class="cat-btn" data-cat="LinkedIn Ads">LinkedIn Ads</button>
+    <button class="cat-btn" data-cat="Satış Məsləhəti">Satış Məsləhəti</button>
   </div>
-  <div class="blog-full-grid stagger">
-    <a href="/blog/facebook-reklam-necedir.html" class="blog-card">
-      <div class="blog-img">📱</div>
-      <div class="blog-body">
-        <span class="blog-cat">Meta Reklam</span>
-        <h3>Facebook Reklam Nədir? 2025-ci İldə Azərbaycanda Necə İşləyir?</h3>
-        <p>Facebook reklamlarının Azərbaycan bazarında necə işlədiyini, hansı bizneslərin faydalandığını öyrənin.</p>
-        <div class="blog-meta"><span>5 dəq oxu</span><span>•</span><span>Yanvar 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/google-ads-vs-meta-ads.html" class="blog-card">
-      <div class="blog-img">🔍</div>
-      <div class="blog-body">
-        <span class="blog-cat">Google Ads</span>
-        <h3>Google Ads vs Meta Ads: Azərbaycanda Hansını Seçməli?</h3>
-        <p>Hər iki platformanın üstünlükləri, zəiflikləri və hansı biznes növü üçün uyğun olduğunu müqayisə edirik.</p>
-        <div class="blog-meta"><span>7 dəq oxu</span><span>•</span><span>Yanvar 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/tiktok-reklam-azerbaycan.html" class="blog-card">
-      <div class="blog-img">🎵</div>
-      <div class="blog-body">
-        <span class="blog-cat">TikTok Ads</span>
-        <h3>TikTok Reklamı Azərbaycanda: 2025-ci İldə İmkanlar</h3>
-        <p>TikTok Azərbaycanda sürətlə böyüyür. Bu platformada reklam verməyin faydaları haqqında.</p>
-        <div class="blog-meta"><span>6 dəq oxu</span><span>•</span><span>Fevral 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/instagram-satish-artirma.html" class="blog-card">
-      <div class="blog-img">🛍️</div>
-      <div class="blog-body">
-        <span class="blog-cat">Meta Reklam</span>
-        <h3>Instagram Reklamı ilə Satışları Artırmağın 7 Yolu</h3>
-        <p>Instagram reklamlarından maksimum nəticə almaq üçün sübut edilmiş 7 strategiya.</p>
-        <div class="blog-meta"><span>6 dəq oxu</span><span>•</span><span>Fevral 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/whatsapp-reklam.html" class="blog-card">
-      <div class="blog-img">💬</div>
-      <div class="blog-body">
-        <span class="blog-cat">Meta Reklam</span>
-        <h3>WhatsApp Reklamı: Click-to-WhatsApp ilə Daha Çox Müştəri</h3>
-        <p>WhatsApp mesaj reklamları Azərbaycanda ən effektiv reklam növlərindən biridir. Necə işlədiyini öyrənin.</p>
-        <div class="blog-meta"><span>4 dəq oxu</span><span>•</span><span>Mart 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/smm-azerbaycan.html" class="blog-card">
-      <div class="blog-img">📊</div>
-      <div class="blog-body">
-        <span class="blog-cat">SMM</span>
-        <h3>Azərbaycanda SMM Niyə Vacibdir? Sosial Media Strategiyası</h3>
-        <p>Sosial mediada ardıcıl və peşəkar məzmun paylaşmağın bizneslərə necə fayda verdiyini öyrənin.</p>
-        <div class="blog-meta"><span>5 dəq oxu</span><span>•</span><span>Mart 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/reklam-budjesi.html" class="blog-card">
-      <div class="blog-img">💰</div>
-      <div class="blog-body">
-        <span class="blog-cat">Satış Məsləhəti</span>
-        <h3>Reklam Büdcəsi Necə Planlaşdırılır? Azərbaycan Bazarı üçün Bələdçi</h3>
-        <p>Kiçik büdcə ilə böyük nəticə almaq mümkündürmü? Büdcə planlaşdırması haqqında hər şey.</p>
-        <div class="blog-meta"><span>8 dəq oxu</span><span>•</span><span>Aprel 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/linkedin-b2b.html" class="blog-card">
-      <div class="blog-img">💼</div>
-      <div class="blog-body">
-        <span class="blog-cat">LinkedIn Ads</span>
-        <h3>LinkedIn ilə B2B Satış: Azərbaycanda Korporativ Müştəri Tapın</h3>
-        <p>LinkedIn reklamları ilə şirkətlərə, rəhbərlərə, peşəkarlara çatın. B2B satış strategiyaları.</p>
-        <div class="blog-meta"><span>7 dəq oxu</span><span>•</span><span>Aprel 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
-    <a href="/blog/remarketing-nedir.html" class="blog-card">
-      <div class="blog-img">🔄</div>
-      <div class="blog-body">
-        <span class="blog-cat">Meta Reklam</span>
-        <h3>Remarketing Nədir? Saytı Ziyarət Edən Müştəriləri Geri Qazanın</h3>
-        <p>Saytınıza gəlib alış etməyən müştərilərə yenidən çatmağın ən effektiv yolu — remarketing.</p>
-        <div class="blog-meta"><span>5 dəq oxu</span><span>•</span><span>May 2025</span></div>
-        <span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span>
-      </div>
-    </a>
+  <div class="blog-full-grid" id="blog-grid">
+    <a href="/blog/facebook-reklam-necedir.html" class="blog-card" data-cat="Meta Reklam"><div class="blog-img">📱</div><div class="blog-body"><span class="blog-cat">Meta Reklam</span><h3>Facebook Reklam Nədir? 2025-ci İldə Azərbaycanda Necə İşləyir?</h3><p>Facebook reklamlarının Azərbaycan bazarında necə işlədiyini öyrənin.</p><div class="blog-meta">5 dəq oxu · Yanvar 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/google-ads-vs-meta-ads.html" class="blog-card" data-cat="Google Ads"><div class="blog-img">🔍</div><div class="blog-body"><span class="blog-cat">Google Ads</span><h3>Google Ads vs Meta Ads: Azərbaycanda Hansını Seçməli?</h3><p>Hər iki platformanın üstünlüklərini müqayisə edirik.</p><div class="blog-meta">7 dəq oxu · Yanvar 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/tiktok-reklam-azerbaycan.html" class="blog-card" data-cat="TikTok Ads"><div class="blog-img">🎵</div><div class="blog-body"><span class="blog-cat">TikTok Ads</span><h3>TikTok Reklamı Azərbaycanda: 2025-ci İldə İmkanlar</h3><p>TikTok Azərbaycanda reklam verməyin faydaları haqqında.</p><div class="blog-meta">6 dəq oxu · Fevral 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/instagram-satish-artirma.html" class="blog-card" data-cat="Meta Reklam"><div class="blog-img">🛍️</div><div class="blog-body"><span class="blog-cat">Meta Reklam</span><h3>Instagram Reklamı ilə Satışları Artırmağın 7 Yolu</h3><p>Instagram reklamlarından maksimum nəticə almaq üçün strategiyalar.</p><div class="blog-meta">6 dəq oxu · Fevral 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/whatsapp-reklam.html" class="blog-card" data-cat="Meta Reklam"><div class="blog-img">💬</div><div class="blog-body"><span class="blog-cat">Meta Reklam</span><h3>WhatsApp Reklamı: Click-to-WhatsApp ilə Daha Çox Müştəri</h3><p>WhatsApp mesaj reklamları Azərbaycanda ən effektiv reklam növlərindən biridir.</p><div class="blog-meta">4 dəq oxu · Mart 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/smm-azerbaycan.html" class="blog-card" data-cat="SMM"><div class="blog-img">📊</div><div class="blog-body"><span class="blog-cat">SMM</span><h3>Azərbaycanda SMM Niyə Vacibdir? Sosial Media Strategiyası</h3><p>Sosial mediada ardıcıl məzmun paylaşmağın bizneslərə necə fayda verdiyini öyrənin.</p><div class="blog-meta">5 dəq oxu · Mart 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/reklam-budjesi.html" class="blog-card" data-cat="Satış Məsləhəti"><div class="blog-img">💰</div><div class="blog-body"><span class="blog-cat">Satış Məsləhəti</span><h3>Reklam Büdcəsi Necə Planlaşdırılır? Azərbaycan Bazarı üçün Bələdçi</h3><p>Kiçik büdcə ilə böyük nəticə almaq mümkündürmü? Büdcə planlaşdırması.</p><div class="blog-meta">8 dəq oxu · Aprel 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/linkedin-b2b.html" class="blog-card" data-cat="LinkedIn Ads"><div class="blog-img">💼</div><div class="blog-body"><span class="blog-cat">LinkedIn Ads</span><h3>LinkedIn ilə B2B Satış: Azərbaycanda Korporativ Müştəri Tapın</h3><p>LinkedIn reklamları ilə şirkətlərə, rəhbərlərə çatın.</p><div class="blog-meta">7 dəq oxu · Aprel 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
+    <a href="/blog/remarketing-nedir.html" class="blog-card" data-cat="Meta Reklam"><div class="blog-img">🔄</div><div class="blog-body"><span class="blog-cat">Meta Reklam</span><h3>Remarketing Nədir? Saytı Ziyarət Edən Müştəriləri Geri Qazanın</h3><p>Saytınıza gəlib alış etməyən müştərilərə yenidən çatmağın yolu.</p><div class="blog-meta">5 dəq oxu · May 2025</div><span class="blog-read" style="margin-top:10px;display:inline-flex;">Oxu →</span></div></a>
   </div>
 </div>
 </section>
 </main>
-<footer>
-  <div class="ft-inner">
-    <div class="ft-top">
-      <div class="ft-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2B5EF7"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name" style="font-size:16px;"><em>Ads</em>OnUs</span></a><p>Azərbaycanda reklam agentliyi.</p></div>
-      <div class="ft-col"><h5>Xidmətlər</h5><a href="/pages/xidmetler.html#meta">Meta Reklam</a><a href="/pages/xidmetler.html#google">Google Ads</a><a href="/pages/xidmetler.html#tiktok">TikTok Ads</a><a href="/pages/xidmetler.html#smm">SMM</a></div>
-      <div class="ft-col"><h5>Şirkət</h5><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="/blog/">Blog</a><a href="/pages/qiymetler.html">Qiymətlər</a></div>
-      <div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a></div>
-    </div>
-    <div class="ft-bottom"><p>© 2025 AdsOnUs.</p><span class="ft-contact"><a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span></div>
-  </div>
-</footer>
+<footer><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100" style="width:28px;height:28px;"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><p>Azərbaycanda reklam agentliyi.</p></div><div class="ft-col"><h5>Xidmətlər</h5><a href="/pages/xidmetler.html#meta">Meta Reklam</a><a href="/pages/xidmetler.html#google">Google Ads</a><a href="/pages/xidmetler.html#tiktok">TikTok Ads</a><a href="/pages/xidmetler.html#smm">SMM</a></div><div class="ft-col"><h5>Şirkət</h5><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/pages/elaqe.html">Əlaqə</a></div><div class="ft-col"><h5>Əlaqə</h5><a href="https://wa.me/994773698929" rel="noopener">WhatsApp</a><a href="tel:+994773698929">+994 77 369 89 29</a></div></div><div class="ft-bottom"><p>© 2025 AdsOnUs.</p><span class="ft-contact"><a href="/pages/mexfilik.html">Məxfilik Siyasəti</a></span></div></div></footer>
 <script src="/js/shared.js"></script>
+<script src="/js/cta.js"></script>
 <script>
 document.querySelectorAll('.cat-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
     document.querySelectorAll('.cat-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
+    var cat=btn.dataset.cat;
+    document.querySelectorAll('.blog-card').forEach(function(card){
+      card.style.display=(!cat||card.dataset.cat===cat)?'':'none';
+    });
   });
 });
 </script>
