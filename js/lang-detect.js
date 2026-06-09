@@ -76,9 +76,5 @@
   tryApi(0);
 })();
 
-/* Language switcher — runs on all language versions */
-window.switchLang = function(lang){
-  localStorage.setItem('adsonus_lang', lang);
-  var paths = { az:'/', en:'/en/', ru:'/ru/', tr:'/tr/' };
   window.location.href = paths[lang] || '/';
 };

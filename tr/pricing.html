@@ -26,6 +26,14 @@
 .addon-card p{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:10px;}
 .addon-price{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;color:#4D94FF;}
 @media(max-width:700px){.compare-table{font-size:11px;}.compare-table td,.compare-table th{padding:9px 8px;}.addons-grid{grid-template-columns:1fr;}}
+
+/* Mobile menu close btn + lang switcher */
+.mob-close-btn{position:absolute;top:22px;right:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);width:38px;height:38px;border-radius:50%;font-size:16px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;line-height:1;}
+.mob-close-btn:hover{background:rgba(255,255,255,.16);color:#fff;}
+.mob-lang{display:flex;gap:7px;padding:20px 0 16px;border-bottom:1px solid rgba(255,255,255,.07);}
+.mls-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:9px 18px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s;}
+.mls-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
+.mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 </style>
 </head>
 <body>
@@ -35,8 +43,17 @@
     <div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html" class="active">Qiymətlər</a><a href="/blog/">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div>
     <button class="burger" onclick="toggleMenu()" aria-label="Menyu" aria-expanded="false" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
-  <div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
-    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div>
+  <div class="mob-menu" id="mobMenu">
+  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Kapat">✕</button>
+  <a href="/" onclick="closeMenu()">Ana Səhifə</a>
+  <div class="mob-lang">
+    <button class="mls-btn" onclick="closeMenu();switchLang('az')">AZ</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('en')">EN</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button>
+    <button class="mls-btn active" onclick="closeMenu()">TR</button>
+  </div><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a>
+</div>
 </nav>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><span style="color:#fff;">Qiymətlər</span></div></div>
 <div class="page-hero">
@@ -99,10 +116,7 @@
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50%,rgba(8,102,255,.14),transparent 65%);"></div>
   <h2 class="reveal" style="font-family:'Manrope',sans-serif;font-size:clamp(24px,4vw,40px);font-weight:800;margin-bottom:12px;position:relative;z-index:1;">Hansı plan sizə uyğundur?</h2>
   <p class="reveal" style="color:rgba(255,255,255,.5);margin-bottom:28px;position:relative;z-index:1;">Pulsuz məsləhət alın — birlikdə ən yaxşı həlli tapaq.</p>
-  <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;">
-    <a href="https://wa.me/994773698929" class="btn-primary" rel="noopener">WhatsApp ilə Əlaqə →</a>
-    <a href="tel:+994773698929" class="btn-sec">Zəng Et</a>
-  </div>
+  
 </section>
 </main>
 <footer>

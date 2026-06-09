@@ -112,3 +112,10 @@ window.toggleFaq = window.toggleFaq || function(el){
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* ── LANGUAGE SWITCHER (available on every page) ── */
+window.switchLang = function(lang){
+  localStorage.setItem('adsonus_lang', lang);
+  var paths = { az:'/', en:'/en/', ru:'/ru/', tr:'/tr/' };
+  window.location.href = paths[lang] || '/';
+};

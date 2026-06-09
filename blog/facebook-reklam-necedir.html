@@ -25,8 +25,17 @@
       <a href="/pages/hesablayici.html">Kalkulyator</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div>
     <button class="burger" onclick="toggleMenu()" aria-label="Menyu" aria-expanded="false" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
-  <div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
-    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div>
+  <div class="mob-menu" id="mobMenu">
+  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Bağla">✕</button>
+  <a href="/" onclick="closeMenu()">Ana Səhifə</a>
+  <div class="mob-lang">
+    <button class="mls-btn active" onclick="closeMenu()">AZ</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('en')">EN</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button>
+  </div><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a>
+</div>
 </nav>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span style="color:#fff;">Facebook Reklam Nədir?</span></div></div>
 <main>

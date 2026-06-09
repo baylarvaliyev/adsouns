@@ -189,3 +189,39 @@ footer{background:rgba(2,5,12,.96);border-top:1px solid rgba(255,255,255,.06);pa
 
 /* ── NEW LOGO MARK ── */
 .logo-mark{width:34px;height:34px;flex-shrink:0;}
+
+/* ── MOBILE MENU CLOSE + LANG SWITCHER ── */
+.mob-close-btn{
+  position:absolute;top:22px;right:24px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.6);width:38px;height:38px;border-radius:50%;
+  font-size:16px;cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+}
+.mob-close-btn:hover{background:rgba(255,255,255,.16);color:#fff;}
+.mob-lang{
+  display:flex;gap:7px;padding:18px 0 16px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.mls-btn{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:50px;padding:9px 18px;
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
+  color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s;
+}
+.mls-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
+.mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
+
+/* Language switcher in desktop nav */
+.lang-sw{
+  display:flex;align-items:center;background:rgba(255,255,255,.07);
+  border-radius:50px;padding:3px;gap:1px;margin-left:4px;
+}
+.ls-btn{
+  padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;
+  text-decoration:none;background:none;border:none;
+  font-family:'Manrope',sans-serif;
+}
+.ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
+.ls-btn.active{background:#2563EB;color:#fff;}

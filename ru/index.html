@@ -224,6 +224,14 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
   .nums-g{grid-template-columns:1fr;}.n-cell{border-right:none;border-bottom:1px solid var(--border);}
   .ft-top{grid-template-columns:1fr;}section{padding:80px 24px;}
 }
+
+/* Mobile menu close btn + lang switcher */
+.mob-close-btn{position:absolute;top:22px;right:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);width:38px;height:38px;border-radius:50%;font-size:16px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;line-height:1;}
+.mob-close-btn:hover{background:rgba(255,255,255,.16);color:#fff;}
+.mob-lang{display:flex;gap:7px;padding:20px 0 16px;border-bottom:1px solid rgba(255,255,255,.07);}
+.mls-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:9px 18px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s;}
+.mls-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
+.mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 </style>
 </head>
 <body>
@@ -254,14 +262,21 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
     <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-menu" id="mobMenu">
-    <a href="/ru/" onclick="closeMenu()">Главная</a>
+  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Закрыть">✕</button>
+  <a href="/ru/" onclick="closeMenu()">Главная</a>
+  <div class="mob-lang">
+    <button class="mls-btn" onclick="closeMenu();switchLang('az')">AZ</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('en')">EN</button>
+    <button class="mls-btn active" onclick="closeMenu()">RU</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button>
+  </div>
     <a href="/pages/xidmetler.html" onclick="closeMenu()">Services</a>
     <a href="/en/pricing.html" onclick="closeMenu()">Pricing</a>
     <a href="/pages/hesablayici.html" onclick="closeMenu()">Calculator</a>
     <a href="/blog/" onclick="closeMenu()">Blog</a>
-    <div style="display:flex;gap:8px;margin:16px 0;"><button class="ls-btn" onclick="switchLang('az')">AZ</button><button class="ls-btn" onclick="switchLang('en')">EN</button><button class="ls-btn active">RU</button><button class="ls-btn" onclick="switchLang('tr')">TR</button></div>
+    
     <a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Бесплатный тест →</a>
-  </div>
+</div>
 </nav>
 
 <main>
@@ -395,10 +410,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
         <a href="https://wa.me/994773698929" class="p-btn gh nav-cta" rel="noopener">Начать бесплатный тест</a>
       </article>
     </div>
-    <div style="margin-top:24px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.15);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:12px;" class="au">
-      <span style="font-size:20px;">ℹ️</span>
-      <p style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.65;margin:0;"><strong style="color:var(--blue-l);">Ad spend not included.</strong> The monthly fee is our management cost only. You pay your ad budget directly to Meta, Google, TikTok or LinkedIn. Minimum recommended: $200–500/month.</p>
-    </div>
+    
   </div>
 </section>
 

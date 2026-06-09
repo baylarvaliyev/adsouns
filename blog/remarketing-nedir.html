@@ -19,8 +19,17 @@
 </head>
 <body>
 <nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#04080F"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a>
-      <a href="/pages/hesablayici.html">Kalkulyator</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu"><a href="/" onclick="closeMenu()">Ana Səhifə</a><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
-    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a></div></nav>
+      <a href="/pages/hesablayici.html">Kalkulyator</a><a href="/blog/" class="active">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu">
+  <button class="mob-close-btn" onclick="closeMenu()" aria-label="Bağla">✕</button>
+  <a href="/" onclick="closeMenu()">Ana Səhifə</a>
+  <div class="mob-lang">
+    <button class="mls-btn active" onclick="closeMenu()">AZ</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('en')">EN</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button>
+    <button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button>
+  </div><a href="/pages/xidmetler.html" onclick="closeMenu()">Xidmətlər</a><a href="/pages/qiymetler.html" onclick="closeMenu()">Qiymətlər</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Kalkulyator</a><a href="/blog/" onclick="closeMenu()">Blog</a><a href="/pages/haqqimizda.html" onclick="closeMenu()">Haqqımızda</a><a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Pulsuz Sınaq →</a>
+</div></nav>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Ana Səhifə</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span style="color:#fff;">Remarketing Nədir</span></div></div>
 <main>
 <article class="article-wrap" itemscope itemtype="https://schema.org/Article">
