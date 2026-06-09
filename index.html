@@ -8,12 +8,17 @@
 <meta name="keywords" content="reklam agentliyi Azərbaycan, Meta reklam Bakı, Facebook reklam, Google Ads Azərbaycan, TikTok reklam, AdsOnUs"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://adsonus.com/"/>
+<meta property="og:image" content="https://adsonus.com/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="theme-color" content="#060A12"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://adsonus.com/"/>
 <meta property="og:title" content="AdsOnUs — Azərbaycanda #1 Reklam Agentliyi"/>
 <meta property="og:description" content="Meta, Google, TikTok reklamları. 2 həftəlik PULSUZ sınaq!"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"AdsOnUs","url":"https://adsonus.com","telephone":"+994773698929","address":{"@type":"PostalAddress","addressLocality":"Bakı","addressCountry":"AZ"},"priceRange":"300-2000 AZN","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"87"}}</script>
 
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&display=swap" as="style"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet"/>
@@ -66,11 +71,11 @@ body.hov #cur-ring{width:56px;height:56px;border-color:rgba(91,142,255,.65);}
 .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px;}
 .burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
-.mob-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(6,10,18,.98);backdrop-filter:blur(24px);flex-direction:column;padding:36px 48px;z-index:499;}
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
 .mob-menu.open{display:flex;}
-.mob-menu a{font-family:'Manrope',sans-serif;font-size:clamp(26px,6vw,42px);font-weight:700;color:rgba(255,255,255,.45);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s,padding-left .3s var(--expo);}
+.mob-menu a{font-family:"Manrope",sans-serif;font-size:clamp(24px,6vw,38px);font-weight:700;color:rgba(255,255,255,.45);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;transition:color .25s,padding-left .3s cubic-bezier(0.16,1,0.3,1);}
 .mob-menu a:hover{color:#fff;padding-left:8px;}
-.mob-menu a:last-child{border:none;margin-top:20px;background:var(--blue);color:#fff!important;font-size:16px;text-align:center;padding:16px;border-radius:50px;}
+.mob-menu a:last-child{border:none;background:#2563EB;color:#fff!important;text-align:center;padding:16px!important;border-radius:50px;margin-top:24px;font-size:16px!important;font-family:"Manrope",sans-serif;font-weight:700;}
 
 /* ── HERO ── */
 .hero{
@@ -419,7 +424,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
   .pg{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
   .ft-top{grid-template-columns:1fr 1fr;gap:24px;}
   .faq-split{grid-template-columns:1fr;}
-  .mob-menu{padding:32px 24px;}
+  .mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
 }
 @media(max-width:600px){
   .hero-btns{flex-direction:column;}.btn-fill,.btn-out{text-align:center;width:100%;}
@@ -892,11 +897,11 @@ window.toggleFaq=function(el){
 };
 
 /* ── MOBILE NAV ── */
-window.toggleMenu=function(){document.getElementById('mobMenu').classList.toggle('open');};
-window.closeMenu=function(){document.getElementById('mobMenu').classList.remove('open');};
+/* nav handled by shared.js */
 </script>
 <script src="/js/cta.js"></script>
 <script src="/js/features.js"></script>
 <script src="/js/form.js"></script>
+<script src="/js/analytics.js"></script>
 </body>
 </html>
