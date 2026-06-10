@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+import os
+
+html = open('C:/Users/Baylar/Documents/GitHub/adsouns/blog/index.html', encoding='utf-8').read() if False else None
+
+# Write blog index
+index_html = '''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -60,4 +65,15 @@
 <script src="/js/shared.js"></script><script src="/js/cta.js"></script><script src="/js/features.js"></script><script src="/js/form.js"></script><script src="/js/analytics.js"></script>
 <script>window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('stuck',window.scrollY>50);},{passive:true});</script>
 </body>
-</html>
+</html>'''
+
+with open('C:/Users/Baylar/Documents/GitHub/adsouns/blog/index.html', 'w', encoding='utf-8') as f:
+    f.write(index_html)
+
+# cleanup
+try:
+    os.remove('C:/Users/Baylar/Documents/GitHub/adsouns/make_blogs.py')
+except:
+    pass
+
+print('Blog index written:', index_html.count('\n'), 'lines')
