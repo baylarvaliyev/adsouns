@@ -70,7 +70,7 @@ body.hov #cur-ring{width:56px;height:56px;border-color:rgba(91,142,255,.65);}
 .nav-cta{background:var(--blue);color:#fff!important;padding:10px 22px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s var(--expo),box-shadow .3s;display:inline-block;}
 .nav-cta::after{display:none!important;}
 .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
 .mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
 .mob-menu.open{display:flex;}
@@ -931,8 +931,30 @@ window.toggleFaq=function(el){
 };
 
 /* ── MOBILE NAV ── */
-/* nav handled by shared.js */
+/* toggleMenu/closeMenu/switchLang come from shared.js below */
+
+/* ── BLANK-PAGE FAILSAFE ── */
+/* If GSAP CDN is slow/blocked, reveal #main after 4s no matter what */
+setTimeout(function(){
+  var m = document.getElementById('main');
+  if(m && (m.style.opacity === '0' || m.style.visibility === 'hidden')){
+    m.style.opacity = '1';
+    m.style.visibility = 'visible';
+    /* Also unhide any elements still invisible */
+    document.querySelectorAll('.au,.at,.ar,.title-anim').forEach(function(el){
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.clipPath = 'none';
+    });
+    document.querySelectorAll('.h1-inner').forEach(function(el){
+      el.style.transform = 'translateY(0)';
+    });
+    var loader = document.getElementById('loader');
+    if(loader) loader.style.display = 'none';
+  }
+}, 4000);
 </script>
+<script src="/js/shared.js"></script>
 <script src="/js/cta.js"></script>
 <script src="/js/features.js"></script>
 <script src="/js/form.js"></script>

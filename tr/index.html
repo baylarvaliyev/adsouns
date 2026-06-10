@@ -522,6 +522,8 @@ setTimeout(function(){
   ScrollTrigger.refresh();
 }, 200);
 window.toggleFaq=function(el){var it=el.parentElement,op=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});if(!op)it.classList.add('open');};
+/* FAILSAFE */
+setTimeout(function(){document.querySelectorAll('.au,.at,.ar').forEach(function(el){if(getComputedStyle(el).opacity==='0'){el.style.opacity='1';el.style.transform='none';el.style.clipPath='none';}});document.querySelectorAll('.h1-inner,.hero-desc,.hero-btns,.hero-trust,.title-anim').forEach(function(el){el.style.opacity='1';el.style.transform='none';el.style.clipPath='none';});},3000);
 </script>
 </body>
 </html>
