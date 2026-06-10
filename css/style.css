@@ -187,156 +187,36 @@ footer{background:rgba(2,5,12,.96);border-top:1px solid rgba(255,255,255,.06);pa
   section{padding:65px 4%;}
 }
 
-/* ── NEW LOGO MARK ── */
-.logo-mark{width:34px;height:34px;flex-shrink:0;}
+/* ── LOGO MARK ── */
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
 
 /* ── MOBILE MENU CLOSE + LANG SWITCHER ── */
 .mob-close-btn{
-  position:absolute;top:22px;right:24px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.6);width:38px;height:38px;border-radius:50%;
-  font-size:16px;cursor:pointer;transition:all .25s;
-  display:flex;align-items:center;justify-content:center;line-height:1;
-}
-.mob-close-btn:hover{background:rgba(255,255,255,.16);color:#fff;}
-.mob-lang{
-  display:flex;gap:7px;padding:18px 0 16px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.mls-btn{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:50px;padding:9px 18px;
-  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
-  color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s;
-}
-.mls-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
-.mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
-
-/* Language switcher in desktop nav */
-.lang-sw{
-  display:flex;align-items:center;background:rgba(255,255,255,.07);
-  border-radius:50px;padding:3px;gap:1px;margin-left:4px;
-}
-.ls-btn{
-  padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;
-  color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;
-  text-decoration:none;background:none;border:none;
-  font-family:'Manrope',sans-serif;
-}
-.ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
-.ls-btn.active{background:#2563EB;color:#fff;}
-
-/* ── MOBILE NAV FIXES v5 ── */
-
-/* Burger: guaranteed 44px tap target (Apple HIG) */
-.burger{
-  display:none;flex-direction:column;gap:5px;
-  background:none;border:none;
-  cursor:pointer;
-  min-width:44px;min-height:44px;
-  align-items:center;justify-content:center;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-}
-.burger span{
-  display:block;width:22px;height:2px;
-  background:rgba(255,255,255,.8);border-radius:2px;
-  transition:all .3s;pointer-events:none;
-}
-
-/* Mobile menu — solid, full-screen */
-.mob-menu{
-  display:none;
-  position:fixed;top:0;left:0;right:0;bottom:0;
-  background:#04080F;
-  flex-direction:column;
-  padding:76px 28px 32px;
-  z-index:8002;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.mob-menu.open{ display:flex; }
-
-/* Nav links in mobile menu */
-.mob-menu > a{
-  font-family:'Manrope',sans-serif;
-  font-size:clamp(18px,5.5vw,30px);
-  font-weight:700;
-  color:rgba(255,255,255,.5);
-  padding:13px 0;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  display:block;
-  transition:color .2s,padding-left .3s cubic-bezier(0.16,1,0.3,1);
-  text-decoration:none;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-}
-.mob-menu > a:hover,
-.mob-menu > a:active{ color:#fff; padding-left:8px; }
-.mob-menu > a:last-child{
-  border:none;margin-top:20px;
-  background:#2563EB;color:#fff!important;
-  font-size:16px!important;text-align:center;
-  padding:16px!important;border-radius:50px;
-}
-
-/* Close button */
-.mob-close-btn{
   position:absolute;top:20px;right:20px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.65);
-  width:40px;height:40px;border-radius:50%;
-  font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .25s;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.65);width:40px;height:40px;border-radius:50%;
+  font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .25s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
 }
-.mob-close-btn:hover,.mob-close-btn:active{
-  background:rgba(255,255,255,.18);color:#fff;
-}
+.mob-close-btn:hover,.mob-close-btn:active{background:rgba(255,255,255,.18);color:#fff;}
 
-/* Mobile lang buttons */
-.mob-lang{
-  display:flex;gap:8px;
-  padding:16px 0;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
+.mob-lang{display:flex;gap:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);}
 .mls-btn{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:50px;
-  padding:9px 18px;
-  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
-  color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:50px;padding:9px 18px;font-family:'Manrope',sans-serif;
+  font-size:13px;font-weight:700;color:rgba(255,255,255,.55);
   cursor:pointer;transition:all .25s;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
 }
 .mls-btn:hover,.mls-btn:active{color:#fff;background:rgba(255,255,255,.14);}
 .mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 
-/* Desktop lang switcher */
-.lang-sw{
-  display:flex;align-items:center;
-  background:rgba(255,255,255,.07);
-  border-radius:50px;padding:3px;gap:1px;margin-left:4px;
-}
-.ls-btn{
-  padding:5px 10px;border-radius:50px;
-  font-size:11px;font-weight:700;
-  color:rgba(255,255,255,.45);
-  cursor:pointer;transition:all .25s;
-  background:none;border:none;
-  font-family:'Manrope',sans-serif;
-  -webkit-tap-highlight-color:transparent;
-}
+.lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.07);border-radius:50px;padding:3px;gap:1px;margin-left:4px;}
+.ls-btn{padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;background:none;border:none;font-family:'Manrope',sans-serif;-webkit-tap-highlight-color:transparent;}
 .ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
 .ls-btn.active{background:#2563EB;color:#fff;}
 
-/* Show burger, hide nav links at mobile */
-@media(max-width:960px){
-  .nav-links{ display:none!important; }
-  .burger{ display:flex!important; }
-}
+/* ── TOUCH TARGETS ── */
+.burger{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:44px;min-height:44px;}
+.burger span{pointer-events:none;}
+button,a{-webkit-tap-highlight-color:transparent;}

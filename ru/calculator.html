@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Калькулятор ROAS — Сколько заработает ваша реклама | AdsOnUs</title>
+<meta name="description" content="Free ROAS calculator for businesses. Select your business type — cosmetics, restaurant, gym, fashion — and see exactly how much your ad spend can return with AdsOnUs."/>
+<link rel="canonical" href="https://adsonus.com/ru/calculator.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+:root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);--expo:cubic-bezier(0.16,1,0.3,1);}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(6,10,18,.92);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo svg.lm{width:30px;height:30px;}
+.logo-t{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;color:#fff;}
+.logo-t em{color:var(--blue-l);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);transition:color .25s;text-decoration:none;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue);color:#fff!important;padding:10px 20px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s,box-shadow .3s;display:inline-block;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
+.calc-page{max-width:1100px;margin:0 auto;padding:110px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.calc-left{}
+.calc-eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.calc-eyebrow::before{content:'';width:22px;height:1px;background:rgba(255,255,255,.2);}
+.calc-left h1{font-family:'Manrope',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:18px;}
+.grad{background:linear-gradient(115deg,#5B8EFF,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.calc-left p{font-size:15px;color:var(--text);line-height:1.88;margin-bottom:28px;}
+.biz-pills{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.biz-pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;transition:background .25s;}
+.biz-pill:hover{background:rgba(255,255,255,.07);}
+.biz-pill-name{color:rgba(255,255,255,.55);}
+.biz-pill-roas{font-family:'Manrope',sans-serif;font-weight:800;color:var(--blue-l);}
+.calc-card{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:14px;}
+.calc-card h2{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;margin-bottom:18px;}
+.cf{margin-bottom:16px;}
+.cf label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:7px;}
+.cf select,.cf input[type=number]{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;padding:12px 15px;color:#fff;font-size:14px;font-family:'Noto Sans',sans-serif;outline:none;transition:border-color .25s;appearance:none;-webkit-appearance:none;}
+.cf select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.cf select:focus,.cf input:focus{border-color:#2563EB;background:rgba(37,99,235,.08);}
+.cf select option{background:#0B1020;}
+.result-card{background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.2);border-radius:20px;padding:24px;margin-bottom:14px;}
+.result-empty{font-size:14px;color:rgba(255,255,255,.3);text-align:center;padding:16px 0;}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.r-cell{background:rgba(0,0,0,.25);border-radius:12px;padding:14px 16px;}
+.r-label{font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px;}
+.r-value{font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;color:#fff;}
+.r-value.good{color:#4ade80;}
+.r-value.great{background:linear-gradient(115deg,#5B8EFF,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.comp-bar-row{margin-bottom:10px;}
+.comp-bar-label{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:4px;}
+.comp-bar-label strong{font-family:'Manrope',sans-serif;color:#fff;}
+.comp-bar-track{height:8px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden;}
+.comp-bar-fill{height:100%;border-radius:50px;transition:width .7s cubic-bezier(0.16,1,0.3,1);}
+.bar-c{background:rgba(255,255,255,.2);}
+.bar-a{background:linear-gradient(90deg,#2563EB,#38BDF8);}
+.trial-note{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.2);border-radius:11px;padding:13px 15px;font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-top:4px;}
+.trial-note strong{color:#4ade80;}
+.calc-cta{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.2);border-radius:18px;padding:22px;text-align:center;}
+.calc-cta h3{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;margin-bottom:7px;}
+.calc-cta p{font-size:13px;color:var(--text);margin-bottom:16px;line-height:1.65;}
+.btn-pr{background:var(--blue);color:#fff;padding:12px 24px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block;transition:box-shadow .3s,transform .3s;}
+.btn-pr:hover{box-shadow:0 0 24px rgba(37,99,235,.55);transform:translateY(-2px);}
+.disclaimer{font-size:12px;color:rgba(255,255,255,.25);line-height:1.7;margin-top:10px;padding:0 2px;}
+footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28px 48px;}
+.ft-btm{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
+.ft-btm a{color:var(--blue-l);}
+@media(max-width:900px){.calc-page{grid-template-columns:1fr;padding:100px 24px 60px;gap:32px;}#nav,footer{padding-left:24px;padding-right:24px;}.nav-links{display:none;}.burger{display:flex;}.biz-pills{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.r-grid{grid-template-columns:1fr;}.biz-pills{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="prog" style="position:fixed;top:0;left:0;height:2px;z-index:600;width:0;background:linear-gradient(90deg,#2563EB,#38BDF8);pointer-events:none;"></div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/ru/"><svg class="lm" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-t"><em>Ads</em>OnUs</span></a>
+    <div class="nav-links">
+      <a href="/ru/">Главная</a><a href="/ru/services.html">Услуги</a><a href="/ru/pricing.html">Цены</a><a href="/ru/calculator.html" class="active">Калькулятор</a><a href="/ru/about.html">О нас</a>
+      <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Бесплатный тест →</a>
+      <div class="lang-sw"><button class="ls-btn" onclick="switchLang('az')">AZ</button><button class="ls-btn" onclick="switchLang('en')">EN</button><button class="ls-btn active">RU</button><button class="ls-btn" onclick="switchLang('tr')">TR</button></div>
+    </div>
+    <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close-btn" onclick="closeMenu()">✕</button>
+    <a href="/ru/" onclick="closeMenu()">Главная</a>
+    <div class="mob-lang"><button class="mls-btn" onclick="closeMenu();switchLang('az')">AZ</button><button class="mls-btn active">EN</button><button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button><button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button></div>
+    <a href="/ru/services.html" onclick="closeMenu()">Услуги</a>
+    <a href="/ru/pricing.html" onclick="closeMenu()">Цены</a>
+    <a href="/ru/calculator.html" onclick="closeMenu()">Калькулятор</a>
+    <a href="/ru/about.html" onclick="closeMenu()">О нас</a>
+    <a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Бесплатный тест →</a>
+  </div>
+</nav>
+
+<div class="calc-page">
+  <div class="calc-left">
+    <div class="calc-eyebrow">Бесплатный инструмент</div>
+    <h1>Рассчитайте свой<br><span class="grad">рекламный доход</span></h1>
+    <p>Выберите тип бизнеса, введите бюджет и узнайте, какой ROAS вы можете ожидать с AdsOnUs. Основано на реальных данных клиентов.</p>
+    <div class="biz-pills">
+      <div class="biz-pill"><span class="biz-pill-name">💄 Cosmetics</span><span class="biz-pill-roas">×30</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">🍰 Bakery</span><span class="biz-pill-roas">×22</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">💍 Jewelry</span><span class="biz-pill-roas">×20</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">📚 Education</span><span class="biz-pill-roas">×15</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">👗 Fashion</span><span class="biz-pill-roas">×12</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">🍕 Restaurant</span><span class="biz-pill-roas">×8</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">🏋️ Fitness</span><span class="biz-pill-roas">×7</span></div>
+      <div class="biz-pill"><span class="biz-pill-name">🏠 Real Estate</span><span class="biz-pill-roas">×4</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:14px 16px;">
+      <p style="font-size:13px;color:rgba(255,255,255,.38);line-height:1.7;margin:0;"><strong style="color:rgba(255,255,255,.55);"><strong>Что такое ROAS?</strong> Окупаемость рекламных расходов — сколько выручки вы получаете на каждый потраченный рубль. ROAS 8× означает: ₽100 рекламы → ₽800 дохода.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="calc-card">
+      <h2>📊 Введите данные</h2>
+      <div class="cf">
+        <label>Тип бизнеса</label>
+        <select id="calc-biz" onchange="calculate()">
+          <option value="">Выберите бизнес...</option>
+          <option value="kosmetika" data-roas="30">💄 Cosmetics Store — ×30 ROAS</option>
+          <option value="tort" data-roas="22">🍰 Bakery / Sweets — ×22 ROAS</option>
+          <option value="zergerlik" data-roas="20">💍 Jewelry / Accessories — ×20 ROAS</option>
+          <option value="usaq" data-roas="18">👶 Baby Products — ×18 ROAS</option>
+          <option value="kurslar" data-roas="15">📚 Education / Courses — ×15 ROAS</option>
+          <option value="eczaciliq" data-roas="14">💊 Pharmacy / Supplements — ×14 ROAS</option>
+          <option value="geyim" data-roas="12">👗 Fashion / Clothing — ×12 ROAS</option>
+          <option value="fastfood" data-roas="11">🍦 Fast Food / Cafe — ×11 ROAS</option>
+          <option value="ev-dekor" data-roas="10">🛋️ Home Decor / Furniture — ×10 ROAS</option>
+          <option value="toy" data-roas="9">💒 Wedding / Event Services — ×9 ROAS</option>
+          <option value="guzellik" data-roas="9">💇 Beauty Salon / Spa — ×9 ROAS</option>
+          <option value="restoran" data-roas="8">🍕 Restaurant / Delivery — ×8 ROAS</option>
+          <option value="avtomobil" data-roas="8">🚗 Auto Accessories / Service — ×8 ROAS</option>
+          <option value="fitness" data-roas="7">🏋️ Fitness / Gym — ×7 ROAS</option>
+          <option value="turizm" data-roas="7">🏨 Tourism / Hotel — ×7 ROAS</option>
+          <option value="tibb" data-roas="6">🦷 Medical / Dental — ×6 ROAS</option>
+          <option value="ev-xidmet" data-roas="6">🧹 Home Services — ×6 ROAS</option>
+          <option value="elektronika" data-roas="5">📱 Electronics / Tech — ×5 ROAS</option>
+          <option value="emlak" data-roas="4">🏠 Real Estate — ×4 ROAS</option>
+          <option value="b2b" data-roas="3">💼 B2B / Corporate — ×3 ROAS</option>
+        </select>
+      </div>
+      <div class="cf">
+        <label>Ежемесячный рекламный бюджет (₽)</label>
+        <input type="number" id="calc-budget" placeholder="напр. 50000" min="100" oninput="calculate()"/>
+      </div>
+      <div class="cf" style="margin-bottom:0;">
+        <label>Текущий ежемесячный доход от рекламы (₽) <span style="color:rgba(255,255,255,.25);font-size:10px;letter-spacing:0;text-transform:none;font-weight:400;">— Введите 0, если рекламы нет</span></label>
+        <input type="number" id="calc-current" placeholder="напр. 80000" min="0" oninput="calculate()"/>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-empty" id="result-empty">Введите данные выше, чтобы увидеть результаты →</div>
+      <div id="result-content" style="display:none;">
+        <div class="r-grid">
+          <div class="r-cell"><div class="r-label">Ваш текущий ROAS</div><div class="r-value" id="r-cur">–</div></div>
+          <div class="r-cell"><div class="r-label">ROAS с AdsOnUs</div><div class="r-value great" id="r-ads">–</div></div>
+          <div class="r-cell"><div class="r-label">Дополнительный ежемесячный доход</div><div class="r-value good" id="r-mo">–</div></div>
+          <div class="r-cell"><div class="r-label">Дополнительный годовой доход</div><div class="r-value good" id="r-yr">–</div></div>
+        </div>
+        <div class="comp-bar-row">
+          <div class="comp-bar-label"><span>Текущий доход</span><strong id="b-cur-v">$0</strong></div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-c" id="b-cur" style="width:0%"></div></div>
+        </div>
+        <div class="comp-bar-row" style="margin-bottom:14px;">
+          <div class="comp-bar-label"><span>Доход с AdsOnUs</span><strong id="b-new-v">$0</strong></div>
+          <div class="comp-bar-track"><div class="comp-bar-fill bar-a" id="b-new" style="width:0%"></div></div>
+        </div>
+        <div class="trial-note"><strong>Бесплатный 2-недельный тест:</strong> В период теста вы платите ₽0 за управление. Весь дополнительный доход остаётся вашим.</div>
+      </div>
+    </div>
+
+    <div class="calc-cta">
+      <h3>Хотите таких результатов для вашего бизнеса?</h3>
+      <p>Начните бесплатный 2-недельный тест. Без карты. Без обязательств. Сначала результаты.</p>
+      <a href="https://wa.me/994773698929" class="btn-pr nav-cta" rel="noopener" id="wa-calc-btn">Написать в WhatsApp →</a>
+    </div>
+    <div class="disclaimer">* ROAS figures based on AdsOnUs client averages in Azerbaijan and globally. Individual results vary by budget, creative quality, seasonality and market conditions.</div>
+  </div>
+</div>
+
+<footer><div class="ft-btm"><p>© 2025 AdsOnUs. Все права защищены.</p><span><a href="/ru/">Главная</a> · <a href="/ru/pricing.html">Цены</a> · <a href="/pages/mexfilik.html">Privacy Policy</a></span></div></footer>
+
+<script src="/js/shared.js"></script><script src="/js/cta.js"></script><script src="/js/features.js"></script><script src="/js/form.js"></script>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('stuck',window.scrollY>50);
+  var p=Math.min(window.scrollY/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
+  document.getElementById('prog').style.width=p+'%';
+},{passive:true});
+
+var ROAS_DATA={kosmetika:{r:30},tort:{r:22},zergerlik:{r:20},usaq:{r:18},kurslar:{r:15},eczaciliq:{r:14},geyim:{r:12},fastfood:{r:11},'ev-dekor':{r:10},toy:{r:9},guzellik:{r:9},restoran:{r:8},avtomobil:{r:8},fitness:{r:7},turizm:{r:7},tibb:{r:6},'ev-xidmet':{r:6},elektronika:{r:5},emlak:{r:4},b2b:{r:3}};
+
+function fmt(n){return'₽'+Math.round(n).toLocaleString('ru-RU');}
+
+function calculate(){
+  var biz=document.getElementById('calc-biz').value;
+  var budget=parseFloat(document.getElementById('calc-budget').value)||0;
+  var cur=parseFloat(document.getElementById('calc-current').value)||0;
+  if(!biz||budget<=0){document.getElementById('result-empty').style.display='block';document.getElementById('result-content').style.display='none';return;}
+  var d=ROAS_DATA[biz];if(!d)return;
+  var newRev=budget*d.r;
+  var extraM=newRev-(cur>0?cur:0);
+  var curROAS=cur>0?(cur/budget).toFixed(1)+'×':'Реклама не запускалась';
+  document.getElementById('result-empty').style.display='none';
+  document.getElementById('result-content').style.display='block';
+  document.getElementById('r-cur').textContent=curROAS;
+  document.getElementById('r-ads').textContent=d.r+'×';
+  document.getElementById('r-mo').textContent='+'+fmt(extraM);
+  document.getElementById('r-yr').textContent='+'+fmt(extraM*12);
+  var maxV=Math.max(newRev,cur>0?cur:1);
+  document.getElementById('b-cur-v').textContent=fmt(cur>0?cur:0);
+  document.getElementById('b-new-v').textContent=fmt(newRev);
+  setTimeout(function(){
+    document.getElementById('b-cur').style.width=(cur>0?Math.max(cur/maxV*100,4):0)+'%';
+    document.getElementById('b-new').style.width=Math.min(newRev/maxV*100,100)+'%';
+  },100);
+  var sel=document.getElementById('calc-biz');
+  var bizName=sel.options[sel.selectedIndex].text.split('—')[0].trim();
+  var msg='Здравствуйте! Я использовал калькулятор ROAS and saw ×'+d.r+' ROAS potential for my '+bizName+' бизнес. Ежемесячный бюджет: '+fmt(budget)+'. Хочу начать бесплатный тест.';
+  document.getElementById('wa-calc-btn').href='https://wa.me/994773698929?text='+encodeURIComponent(msg);
+}
+</script>
+</body>
+</html>

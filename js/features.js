@@ -58,12 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var btn = document.getElementById('burger-btn');
   if(!btn) return;
 
-  /* Ensure minimum 44×44 tap target (Apple HIG) */
-  btn.style.minWidth  = '44px';
-  btn.style.minHeight = '44px';
-  btn.style.display   = btn.style.display || 'flex';
-  btn.style.alignItems = 'center';
-  btn.style.justifyContent = 'center';
+  /* 44×44 tap target via CSS — don't touch display via JS */
 
   /* touchend fires before click — handle it explicitly */
   btn.addEventListener('touchend', function(e){
