@@ -100,6 +100,66 @@
 .mls-btn:hover{color:#fff;background:rgba(255,255,255,.12);}
 .mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 </style>
+
+<script>
+/* Calculator multilingual text */
+var CALC_LANG = (function(){
+  var lp = window.location.pathname.match(/^\/(en|ru|tr)\//);
+  var hl = (document.documentElement.lang||'').slice(0,2).toLowerCase();
+  return lp ? lp[1] : (['en','ru','tr'].indexOf(hl)>-1 ? hl : 'az');
+})();
+var CALC_TX = {
+  az:{ title:'ROAS Kalkulyatoru — Reklamdan Nə Qədər Qazanacağınızı Hesablayın',
+       h1:'Reklamınızdan<br>nə qədər <span class="grad">qazanacağınızı</span><br>hesablayın',
+       tag:'Pulsuz Alət', bizLabel:'Biznes növünüz', budgetLabel:'Aylıq reklam büdcəniz (₼)',
+       currentLabel:'Hazırkı aylıq reklamdan gəliriniz (₼)', resultTag:'Nəticə',
+       cur_lbl:'Hazırkı ROAS-ınız', adsonus_lbl:'AdsOnUs ilə ROAS',
+       extra_m:'Əlavə aylıq gəlir', extra_y:'Əlavə illik gəlir',
+       cta_h:'Bu nəticəni əldə etmək istəyirsiniz?',
+       cta_p:'2 həftəlik pulsuz sınaq ilə başlayın. Nəticə görməsəniz, heç bir ödəniş yoxdur.',
+       cta_btn:'WhatsApp ilə Başla →', currency:'₼' },
+  en:{ title:'ROAS Calculator — See How Much Your Ads Can Earn',
+       h1:'Calculate how much your<br><span class="grad">ads can earn</span><br>for your business',
+       tag:'Free Tool', bizLabel:'Your business type', budgetLabel:'Monthly ad budget ($)',
+       currentLabel:'Current monthly revenue from ads ($)', resultTag:'Your Results',
+       cur_lbl:'Your Current ROAS', adsonus_lbl:'ROAS with AdsOnUs',
+       extra_m:'Extra monthly revenue', extra_y:'Extra annual revenue',
+       cta_h:'Want these results?',
+       cta_p:'Start with a free 2-week trial. No results, no payment.',
+       cta_btn:'Start on WhatsApp →', currency:'$' },
+  ru:{ title:'Калькулятор ROAS — Сколько можно заработать на рекламе',
+       h1:'Рассчитайте, сколько может<br><span class="grad">заработать</span><br>ваша реклама',
+       tag:'Бесплатный инструмент', bizLabel:'Тип вашего бизнеса', budgetLabel:'Ежемесячный рекламный бюджет (₽)',
+       currentLabel:'Текущий ежемесячный доход от рекламы (₽)', resultTag:'Ваши результаты',
+       cur_lbl:'Ваш текущий ROAS', adsonus_lbl:'ROAS с AdsOnUs',
+       extra_m:'Дополнительный ежемесячный доход', extra_y:'Дополнительный годовой доход',
+       cta_h:'Хотите таких результатов?',
+       cta_p:'Начните с бесплатного 2-недельного теста. Нет результатов — нет оплаты.',
+       cta_btn:'Написать в WhatsApp →', currency:'₽' },
+  tr:{ title:'ROAS Hesaplayıcı — Reklamınızın Ne Kadar Kazanacağını Görün',
+       h1:'Reklamınızın<br><span class="grad">ne kadar kazanacağını</span><br>hesaplayın',
+       tag:'Ücretsiz Araç', bizLabel:'İşletme türünüz', budgetLabel:'Aylık reklam bütçeniz (₺)',
+       currentLabel:'Reklamdan mevcut aylık geliriniz (₺)', resultTag:'Sonuçlarınız',
+       cur_lbl:'Mevcut ROAS'ınız', adsonus_lbl:'AdsOnUs ile ROAS',
+       extra_m:'Ek aylık gelir', extra_y:'Ek yıllık gelir',
+       cta_h:'Bu sonuçlara ulaşmak ister misiniz?',
+       cta_p:'2 haftalık ücretsiz denemeyle başlayın. Sonuç yok, ödeme yok.',
+       cta_btn:"WhatsApp'ta Başla →", currency:'₺' }
+};
+var CT = CALC_TX[CALC_LANG] || CALC_TX.az;
+/* Apply translations after DOM is ready */
+document.addEventListener('DOMContentLoaded', function(){
+  var t = document.title;
+  if(CT.title) document.title = CT.title;
+  /* Update labels if elements exist */
+  function setText(id, val){ var el=document.getElementById(id); if(el) el.innerHTML=val; }
+  function setLabel(sel, val){ var el=document.querySelector(sel); if(el) el.innerHTML=val; }
+  /* Currency symbol update in result cells */
+  if(CALC_LANG !== 'az'){
+    window._calcCurrency = CT.currency;
+  }
+});
+</script>
 </head>
 <body>
 <nav id="nav"><div class="nav-inner"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-name"><em>Ads</em>OnUs</span></a><div class="nav-links"><a href="/">Ana Səhifə</a><a href="/pages/xidmetler.html">Xidmətlər</a><a href="/pages/qiymetler.html">Qiymətlər</a><a href="/blog/">Blog</a><a href="/pages/haqqimizda.html">Haqqımızda</a><a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Pulsuz Sınaq →</a></div><button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button></div><div class="mob-menu" id="mobMenu">

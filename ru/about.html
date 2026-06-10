@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>О нас — AdsOnUs | Сертифицированное агентство Meta и Google</title>
+<meta name="description" content="AdsOnUs is a certified Meta Business Partner and Google Partner agency based in Baku, Azerbaijan. We manage performance advertising for 150+ clients globally."/>
+<link rel="canonical" href="https://adsonus.com/ru/about.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+:root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);--expo:cubic-bezier(0.16,1,0.3,1);}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(6,10,18,.92);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo svg.lm{width:30px;height:30px;}
+.logo-t{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;color:#fff;}
+.logo-t em{color:var(--blue-l);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);transition:color .25s;text-decoration:none;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue);color:#fff!important;padding:10px 20px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s,box-shadow .3s;display:inline-block;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
+.page-hero{padding:140px 48px 80px;background:radial-gradient(ellipse 60% 40% at 60% 0,rgba(37,99,235,.12),transparent 65%),var(--dark);text-align:center;}
+.page-hero h1{font-family:'Manrope',sans-serif;font-size:clamp(36px,5.5vw,68px);font-weight:900;letter-spacing:-2px;margin-bottom:20px;}
+.page-hero p{font-size:16px;color:var(--text);max-width:580px;margin:0 auto;line-height:1.88;}
+.about-wrap{max-width:960px;margin:0 auto;padding:80px 48px;}
+.about-section{margin-bottom:72px;}
+.about-section h2{font-family:'Manrope',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:18px;}
+.about-section p{font-size:15px;color:var(--text);line-height:1.9;margin-bottom:14px;}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:48px 0;}
+.stat-cell{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;}
+.stat-cell .sv{font-family:'Manrope',sans-serif;font-size:40px;font-weight:900;letter-spacing:-2px;background:linear-gradient(115deg,#5B8EFF,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;}
+.stat-cell .sl{font-size:12px;color:rgba(255,255,255,.38);margin-top:6px;display:block;}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.val-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:24px;}
+.val-card h3{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;}
+.val-card p{font-size:14px;color:var(--text);line-height:1.75;margin:0;}
+.cert-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
+.cert-badge{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.25);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:600;color:var(--blue-l);}
+.cta-block{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.2);border-radius:20px;padding:48px;text-align:center;}
+.cta-block h2{font-family:'Manrope',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:12px;}
+.cta-block p{font-size:15px;color:var(--text);margin-bottom:24px;}
+.btn-fill{background:var(--blue);color:#fff;padding:14px 28px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;display:inline-block;transition:transform .3s,box-shadow .3s;text-decoration:none;}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.55);}
+footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:32px 48px;}
+.ft-btm{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
+.ft-btm a{color:var(--blue-l);}
+@media(max-width:900px){#nav,.page-hero,.about-wrap,footer{padding-left:24px;padding-right:24px;}.stat-grid{grid-template-columns:1fr 1fr;}.values-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.stat-grid{grid-template-columns:1fr 1fr;}.cert-row{gap:8px;}}
+</style>
+</head>
+<body>
+<div id="prog" style="position:fixed;top:0;left:0;height:2px;z-index:600;width:0;background:linear-gradient(90deg,#2563EB,#38BDF8);pointer-events:none;"></div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/ru/"><svg class="lm" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-t"><em>Ads</em>OnUs</span></a>
+    <div class="nav-links">
+      <a href="/ru/">Главная</a><a href="/ru/services.html">Услуги</a><a href="/ru/pricing.html">Цены</a><a href="/ru/about.html" class="active">О нас</a><a href="/blog/">Блог</a>
+      <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Бесплатный тест →</a>
+      <div class="lang-sw"><button class="ls-btn" onclick="switchLang('az')">AZ</button><button class="ls-btn" onclick="switchLang('en')">EN</button><button class="ls-btn active">RU</button><button class="ls-btn" onclick="switchLang('tr')">TR</button></div>
+    </div>
+    <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close-btn" onclick="closeMenu()">✕</button>
+    <a href="/ru/" onclick="closeMenu()">Главная</a>
+    <div class="mob-lang"><button class="mls-btn" onclick="closeMenu();switchLang('az')">AZ</button><button class="mls-btn active">EN</button><button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button><button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button></div>
+    <a href="/ru/services.html" onclick="closeMenu()">Услуги</a>
+    <a href="/ru/pricing.html" onclick="closeMenu()">Цены</a>
+    <a href="/ru/about.html" onclick="closeMenu()">О нас</a>
+    <a href="/blog/" onclick="closeMenu()">Блог</a>
+    <a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Бесплатный тест →</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Превращаем рекламный бюджет<br>в реальную выручку.</h1>
+  <p>AdsOnUs — сертифицированное агентство Meta Business Partner и Google Partner с офисом в Баку. Мы созданы для того, чтобы малый и средний бизнес получал рекламу корпоративного уровня по доступной цене.</p>
+</div>
+
+<div class="about-wrap">
+  <div class="about-section">
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="sv">150+</span><span class="sl">Активных клиентов</span></div>
+      <div class="stat-cell"><span class="sv">3×</span><span class="sl">Средний ROAS</span></div>
+      <div class="stat-cell"><span class="sv">5</span><span class="sl">Платформ</span></div>
+      <div class="stat-cell"><span class="sv">2 wks</span><span class="sl">Бесплатный тест</span></div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>Почему мы существуем</h2>
+    <p>Когда AdsOnUs только появился, большинство бизнесов не могли позволить себе качественное агентство или работали с фрилансерами, которые запускали кампании без стратегии. Они платили за активность, а не за результаты.</p>
+    <p>Мы создали AdsOnUs именно для этого. Наша модель проста: сертифицированные специалисты, прозрачная отчётность, помесячная оплата и бесплатный тест. Over 150 businesses have trusted us with their ad budgets — and we take that responsibility seriously.</p>
+    <p>Сегодня мы обслуживаем клиентов по всему Азербайджану и международно, управляя кампаниями в Meta, Google, TikTok, LinkedIn и соцсетях из нашего офиса в Баку.</p>
+  </div>
+
+  <div class="about-section">
+    <h2>Наши сертификаты</h2>
+    <p>Мы имеем официальные сертификаты платформ, что означает доступ к лучшей поддержке, бета-функциям и проверенным практикам.</p>
+    <div class="cert-row">
+      <div class="cert-badge">✓ Meta Business Partner</div>
+      <div class="cert-badge">✓ Google Partner</div>
+      <div class="cert-badge">✓ TikTok For Business</div>
+      <div class="cert-badge">✓ LinkedIn Marketing</div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>Что мы считаем важным</h2>
+    <div class="values-grid">
+      <div class="val-card"><h3>Результат прежде всего</h3><p>Каждое решение проверяется одним вопросом: улучшает ли оно ROI клиента? Мы не запускаем кампании ради активности.</p></div>
+      <div class="val-card"><h3>Полная прозрачность</h3><p>Вы всегда знаете, куда уходит каждый рубль бюджета. Наш гонорар отделён от рекламного бюджета.</p></div>
+      <div class="val-card"><h3>Без обязательств</h3><p>Только помесячная оплата. Хотите остановиться — можете. Клиенты остаются ради результатов.</p></div>
+      <div class="val-card"><h3>Экспертиза по платформам</h3><p>Алгоритмы меняются каждую неделю. Наша команда всегда впереди — тестирует новые функции, постоянно оптимизирует структуры кампаний.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>Готовы к сотрудничеству?</h2>
+    <p>Начните с бесплатного 2-недельного теста. Увидьте реальные результаты до оплаты.</p>
+    <a href="https://wa.me/994773698929" class="btn-fill nav-cta" rel="noopener">Написать в WhatsApp →</a>
+  </div>
+</div>
+
+<footer><div class="ft-btm"><p>© 2025 AdsOnUs. Все права защищены.</p><span><a href="/ru/">Главная</a> · <a href="/ru/pricing.html">Цены</a> · <a href="/pages/mexfilik.html">Политика конфиденциальности</a></span></div></footer>
+
+<script src="/js/shared.js"></script>
+<script src="/js/cta.js"></script>
+<script src="/js/features.js"></script>
+<script src="/js/form.js"></script>
+<script>
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('nav');
+  if(nav) nav.classList.toggle('stuck',window.scrollY>50);
+  var p=Math.min(window.scrollY/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
+  document.getElementById('prog').style.width=p+'%';
+},{passive:true});
+</script>
+</body>
+</html>
