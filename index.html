@@ -726,18 +726,26 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── LENIS ── */
-var lenis = new Lenis({
-  duration:1.35,
-  easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
-  smoothWheel:true,wheelMultiplier:.88
-});
-gsap.ticker.add(function(t){lenis.raf(t*1000);});
-gsap.ticker.lagSmoothing(0);
-lenis.on('scroll',function(e){
-  var p=Math.min(e.scroll/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
-  document.getElementById('prog').style.width=p+'%';
-});
+/* ── LENIS — desktop only, mobile uses native scroll ── */
+var lenis = null;
+if(window.innerWidth > 1000 && !('ontouchstart' in window)){
+  lenis = new Lenis({
+    duration:1.35,
+    easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
+    smoothWheel:true,wheelMultiplier:.88
+  });
+  gsap.ticker.add(function(t){lenis.raf(t*1000);});
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll',function(e){
+    var p=Math.min(e.scroll/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
+    document.getElementById('prog').style.width=p+'%';
+  });
+} else {
+  window.addEventListener('scroll',function(){
+    var p=Math.min(window.scrollY/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
+    document.getElementById('prog').style.width=p+'%';
+  },{passive:true});
+}
 
 /* ── NAV ── */
 ScrollTrigger.create({start:'top -80',onEnter:function(){document.getElementById('nav').classList.add('stuck');},onLeaveBack:function(){document.getElementById('nav').classList.remove('stuck');}});

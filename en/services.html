@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Services — Meta, Google, TikTok, LinkedIn Advertising | AdsOnUs</title>
+<meta name="description" content="Professional ad management across Meta, Google, TikTok, LinkedIn and Social Media. Learn what's included in each service and how we deliver results."/>
+<link rel="canonical" href="https://adsonus.com/en/services.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<style>
+:root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);--expo:cubic-bezier(0.16,1,0.3,1);}
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Manrope',sans-serif;font-size:clamp(22px,5vw,36px);font-weight:700;color:rgba(255,255,255,.5);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;transition:color .25s;}
+.mob-menu a:hover{color:#fff;}
+.mob-menu a:last-child{border:none;margin-top:20px;background:#2563EB;color:#fff!important;font-size:16px!important;text-align:center;padding:16px!important;border-radius:50px;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(6,10,18,.92);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo svg.lm{width:30px;height:30px;}
+.logo-t{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;}
+.logo-t em{color:var(--blue-l);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);transition:color .25s;position:relative;text-decoration:none;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue-l);transition:width .3s var(--expo);}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue);color:#fff!important;padding:10px 20px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s,box-shadow .3s;display:inline-block;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
+.lang-sw{display:flex;align-items:center;background:rgba(255,255,255,.07);border-radius:50px;padding:3px;gap:1px;margin-left:4px;}
+.ls-btn{padding:5px 10px;border-radius:50px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;background:none;border:none;font-family:'Manrope',sans-serif;}
+.ls-btn:hover{color:#fff;background:rgba(255,255,255,.1);}
+.ls-btn.active{background:#2563EB;color:#fff;}
+.page-hero{padding:130px 48px 60px;background:radial-gradient(ellipse 60% 40% at 60% 0,rgba(37,99,235,.12),transparent 65%),var(--dark);text-align:center;}
+.page-hero h1{font-family:'Manrope',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-2px;margin-bottom:16px;}
+.page-hero p{font-size:16px;color:var(--text);max-width:560px;margin:0 auto;line-height:1.85;}
+.svcs-wrap{max-width:1100px;margin:0 auto;padding:80px 48px;}
+.svc-block{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:72px 0;border-bottom:1px solid var(--border);}
+.svc-block:last-child{border-bottom:none;}
+.svc-block.rev{direction:rtl;}
+.svc-block.rev > *{direction:ltr;}
+.svc-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);border-radius:50px;padding:5px 14px;font-size:11px;font-weight:700;color:var(--blue-l);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+.svc-block h2{font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-1px;margin-bottom:14px;}
+.svc-block p{font-size:15px;color:var(--text);line-height:1.88;margin-bottom:20px;}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
+.svc-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.7);}
+.svc-features li::before{content:'✓';color:var(--blue-l);font-weight:700;flex-shrink:0;}
+.svc-cta{display:inline-block;background:var(--blue);color:#fff;padding:12px 24px;border-radius:50px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;transition:transform .3s,box-shadow .3s;text-decoration:none;}
+.svc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.55);}
+.svc-visual{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;}
+.svc-icon{font-size:56px;margin-bottom:16px;display:block;}
+.svc-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ss{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:left;}
+.ss-v{font-family:'Manrope',sans-serif;font-size:24px;font-weight:900;color:#fff;display:block;letter-spacing:-.5px;}
+.ss-l{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;display:block;}
+.ss-g{font-size:11px;color:#4ade80;display:block;}
+footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:32px 48px;}
+.ft-btm{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:rgba(255,255,255,.2);}
+.ft-btm a{color:var(--blue-l);}
+@media(max-width:900px){#nav,.svcs-wrap,.page-hero{padding-left:24px;padding-right:24px;}.nav-links{display:none;}.burger{display:flex;}.svc-block{grid-template-columns:1fr;gap:32px;}.svc-block.rev{direction:ltr;}}
+</style>
+</head>
+<body>
+<div id="prog" style="position:fixed;top:0;left:0;height:2px;z-index:600;width:0;background:linear-gradient(90deg,#2563EB,#38BDF8);pointer-events:none;"></div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="/en/"><svg class="lm" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-t"><em>Ads</em>OnUs</span></a>
+    <div class="nav-links">
+      <a href="/en/">Home</a><a href="/en/services.html" class="active">Services</a><a href="/en/pricing.html">Pricing</a><a href="/pages/hesablayici.html">Calculator</a><a href="/blog/">Blog</a>
+      <a href="https://wa.me/994773698929" class="nav-cta" rel="noopener">Free Trial →</a>
+      <div class="lang-sw"><button class="ls-btn" onclick="switchLang('az')">AZ</button><button class="ls-btn active">EN</button><button class="ls-btn" onclick="switchLang('ru')">RU</button><button class="ls-btn" onclick="switchLang('tr')">TR</button></div>
+    </div>
+    <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close-btn" onclick="closeMenu()">✕</button>
+    <a href="/en/" onclick="closeMenu()">Home</a>
+    <div class="mob-lang"><button class="mls-btn" onclick="closeMenu();switchLang('az')">AZ</button><button class="mls-btn active">EN</button><button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button><button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button></div>
+    <a href="/en/services.html" onclick="closeMenu()">Services</a>
+    <a href="/en/pricing.html" onclick="closeMenu()">Pricing</a>
+    <a href="/pages/hesablayici.html" onclick="closeMenu()">Calculator</a>
+    <a href="/blog/" onclick="closeMenu()">Blog</a>
+    <a href="https://wa.me/994773698929" onclick="closeMenu()" rel="noopener">Free Trial →</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>All platforms.<br>One agency.</h1>
+  <p>We manage paid advertising across Meta, Google, TikTok, LinkedIn and Social Media — with a results-first approach and full transparency.</p>
+</div>
+
+<div class="svcs-wrap">
+
+  <div class="svc-block" id="meta">
+    <div>
+      <div class="svc-tag">📱 Meta Advertising</div>
+      <h2>Facebook, Instagram &amp; WhatsApp Ads</h2>
+      <p>Meta's ad platform reaches 3+ billion people monthly. We use its full power — from Click-to-WhatsApp campaigns that drive direct conversations to sophisticated remarketing funnels that recover lost sales.</p>
+      <ul class="svc-features">
+        <li>Campaign strategy &amp; audience research</li>
+        <li>Click-to-WhatsApp &amp; Click-to-Message ads</li>
+        <li>Remarketing &amp; Lookalike audiences</li>
+        <li>Meta Pixel setup &amp; conversion tracking</li>
+        <li>Creative testing (A/B)</li>
+        <li>Weekly reporting</li>
+      </ul>
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">Get Started →</a>
+    </div>
+    <div class="svc-visual">
+      <span class="svc-icon">📱</span>
+      <div class="svc-stats">
+        <div class="ss"><span class="ss-v">3.0×</span><span class="ss-l">Avg. ROAS</span><span class="ss-g">↑ Industry avg</span></div>
+        <div class="ss"><span class="ss-v">$1.80</span><span class="ss-l">Avg. Cost/Lead</span><span class="ss-g">↓ Optimized</span></div>
+        <div class="ss"><span class="ss-v">312%</span><span class="ss-l">Sales lift</span><span class="ss-g">↑ Case study</span></div>
+        <div class="ss"><span class="ss-v">5+</span><span class="ss-l">Ad formats</span><span class="ss-g">↑ Full coverage</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-block rev" id="google">
+    <div>
+      <div class="svc-tag">🔍 Google Ads</div>
+      <h2>Search, Display &amp; YouTube</h2>
+      <p>Capture customers who are actively searching for your product or service. Google Search puts your business at the top when intent is highest — the most efficient use of ad budget.</p>
+      <ul class="svc-features">
+        <li>Search campaign setup &amp; keyword research</li>
+        <li>Display &amp; Remarketing networks</li>
+        <li>YouTube video ads</li>
+        <li>Google Analytics 4 integration</li>
+        <li>Conversion tracking</li>
+        <li>Monthly ROI reporting</li>
+      </ul>
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">Get Started →</a>
+    </div>
+    <div class="svc-visual">
+      <span class="svc-icon">🔍</span>
+      <div class="svc-stats">
+        <div class="ss"><span class="ss-v">4.1×</span><span class="ss-l">Avg. ROAS</span><span class="ss-g">↑ Search intent</span></div>
+        <div class="ss"><span class="ss-v">890</span><span class="ss-l">Monthly leads</span><span class="ss-g">↑ Restaurant case</span></div>
+        <div class="ss"><span class="ss-v">Top 3</span><span class="ss-l">Avg. position</span><span class="ss-g">↑ Consistent</span></div>
+        <div class="ss"><span class="ss-v">-28%</span><span class="ss-l">CPC after 3mo</span><span class="ss-g">↓ Optimized</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-block" id="tiktok">
+    <div>
+      <div class="svc-tag">🎵 TikTok Ads</div>
+      <h2>Reach the Next Generation</h2>
+      <p>TikTok is now the world's most-downloaded app. Its algorithm-driven discovery means your brand can reach millions of new potential customers — at CPMs significantly lower than Meta.</p>
+      <ul class="svc-features">
+        <li>TikTok For Business account setup</li>
+        <li>In-Feed, TopView &amp; Spark Ads</li>
+        <li>Creative brief &amp; video guidance</li>
+        <li>Demographic &amp; interest targeting</li>
+        <li>TikTok Pixel implementation</li>
+        <li>Performance reports</li>
+      </ul>
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">Get Started →</a>
+    </div>
+    <div class="svc-visual">
+      <span class="svc-icon">🎵</span>
+      <div class="svc-stats">
+        <div class="ss"><span class="ss-v">-40%</span><span class="ss-l">vs Meta CPM</span><span class="ss-g">↓ Lower cost</span></div>
+        <div class="ss"><span class="ss-v">247%</span><span class="ss-l">Booking increase</span><span class="ss-g">↑ Case study</span></div>
+        <div class="ss"><span class="ss-v">18-34</span><span class="ss-l">Prime audience</span><span class="ss-g">↑ High intent</span></div>
+        <div class="ss"><span class="ss-v">6.8×</span><span class="ss-l">Best ROAS</span><span class="ss-g">↑ Beauty sector</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-block rev" id="linkedin">
+    <div>
+      <div class="svc-tag">💼 LinkedIn Ads</div>
+      <h2>B2B Lead Generation</h2>
+      <p>LinkedIn's targeting is unmatched for B2B: reach decision-makers by job title, company, industry, or seniority. The platform where your CFO, procurement manager, or CEO is already spending work time.</p>
+      <ul class="svc-features">
+        <li>Sponsored Content &amp; Message Ads</li>
+        <li>Lead Gen Forms (auto-filled from profile)</li>
+        <li>Job title &amp; company targeting</li>
+        <li>Lookalike audiences from CRM</li>
+        <li>Document &amp; Carousel ads</li>
+        <li>Pipeline reporting</li>
+      </ul>
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">Get Started →</a>
+    </div>
+    <div class="svc-visual">
+      <span class="svc-icon">💼</span>
+      <div class="svc-stats">
+        <div class="ss"><span class="ss-v">C-Suite</span><span class="ss-l">Audience access</span><span class="ss-g">↑ Precise</span></div>
+        <div class="ss"><span class="ss-v">4×</span><span class="ss-l">Avg. ROAS</span><span class="ss-g">↑ B2B</span></div>
+        <div class="ss"><span class="ss-v">-60%</span><span class="ss-l">Sales cycle</span><span class="ss-g">↓ Shortened</span></div>
+        <div class="ss"><span class="ss-v">LTV</span><span class="ss-l">High-value clients</span><span class="ss-g">↑ Long-term</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-block" id="smm">
+    <div>
+      <div class="svc-tag">📊 Social Media Management</div>
+      <h2>Consistent Presence, Every Day</h2>
+      <p>A dead Instagram or Facebook page destroys trust instantly. Our SMM service ensures your brand stays active and professional — 1 post per business day, every working day.</p>
+      <ul class="svc-features">
+        <li>1 post per business day</li>
+        <li>Professional caption writing</li>
+        <li>Hashtag strategy</li>
+        <li>Comment &amp; DM management</li>
+        <li>Monthly analytics report</li>
+        <li>Optimal posting time scheduling</li>
+      </ul>
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">Get Started →</a>
+    </div>
+    <div class="svc-visual">
+      <span class="svc-icon">📊</span>
+      <div class="svc-stats">
+        <div class="ss"><span class="ss-v">1/day</span><span class="ss-l">Posts guaranteed</span><span class="ss-g">↑ Consistent</span></div>
+        <div class="ss"><span class="ss-v">+78%</span><span class="ss-l">Trust increase</span><span class="ss-g">↑ Active profile</span></div>
+        <div class="ss"><span class="ss-v">5×</span><span class="ss-l">Cheaper than hire</span><span class="ss-g">↓ vs in-house</span></div>
+        <div class="ss"><span class="ss-v">2 lang</span><span class="ss-l">AZ &amp; EN captions</span><span class="ss-g">↑ Bilingual</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.2);border-radius:20px;padding:48px;text-align:center;margin-top:24px;">
+    <h2 style="font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1.5px;margin-bottom:12px;">Start with a free trial</h2>
+    <p style="font-size:15px;color:var(--text);margin-bottom:28px;">14 days. No credit card. Full service. See results before paying.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/994773698929" class="svc-cta nav-cta" rel="noopener">WhatsApp →</a>
+      <a href="/en/pricing.html" style="display:inline-block;padding:12px 24px;border-radius:50px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.6);font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:all .3s;">View Pricing</a>
+    </div>
+  </div>
+
+</div>
+
+<footer><div class="ft-btm"><p>© 2025 AdsOnUs. All rights reserved.</p><span><a href="/en/">Home</a> · <a href="/en/pricing.html">Pricing</a> · <a href="/pages/mexfilik.html">Privacy Policy</a></span></div></footer>
+
+<script src="/js/shared.js"></script>
+<script src="/js/cta.js"></script>
+<script src="/js/features.js"></script>
+<script src="/js/form.js"></script>
+<script>
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('nav');
+  if(nav) nav.classList.toggle('stuck',window.scrollY>50);
+  var p=Math.min(window.scrollY/Math.max(document.body.scrollHeight-window.innerHeight,1)*100,100);
+  document.getElementById('prog').style.width=p+'%';
+},{passive:true});
+</script>
+</body>
+</html>

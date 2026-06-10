@@ -106,20 +106,62 @@ window.declineCookies = function(){
 /* ══════════════════════════════════════════════
    3. SOCIAL PROOF TOASTS
 ══════════════════════════════════════════════ */
-var proofs = [
-  {name:'Cavid M.',city:'Bakı',action:'pulsuz sınağa başladı',min:2},
-  {name:'Aytən H.',city:'Sumqayıt',action:'WhatsApp-a yazdı',min:5},
-  {name:'Elçin B.',city:'Bakı',action:'ROAS kalkulyatorunu istifadə etdi',min:9},
-  {name:'Lala Q.',city:'Gəncə',action:'qiymət siyahısına baxdı',min:14},
-  {name:'Tural A.',city:'Bakı',action:'sorğu göndərdi',min:21},
-  {name:'Günel R.',city:'Bakı',action:'Google Ads paketi seçdi',min:28},
-  {name:'Murad S.',city:'Sumqayıt',action:'Meta Growth planını aldı',min:35},
-  {name:'Sevinc K.',city:'Bakı',action:'pulsuz konsultasiya aldı',min:42},
-  {name:'Fərid N.',city:'Bakı',action:'TikTok kampaniyası başlatdı',min:4},
-  {name:'Nigar M.',city:'Bakı',action:'2 həftəlik sınağa başladı',min:16},
-  {name:'Rauf H.',city:'Bakı',action:'SMM paketi sifariş etdi',min:31},
-  {name:'Lalə İ.',city:'Lənkəran',action:'WhatsApp-dan əlaqə saxladı',min:47}
-];
+/* Multilingual social proof */
+var lp2 = window.location.pathname.match(/^\/(en|ru|tr)\//);
+var hl2 = (document.documentElement.lang||'').slice(0,2).toLowerCase();
+var SP_LANG = lp2 ? lp2[1] : (['en','ru','tr'].indexOf(hl2)>-1 ? hl2 : 'az');
+
+var ALL_PROOFS = {
+  az:[
+    {name:'Cavid M.',city:'Bakı',action:'pulsuz sınağa başladı',min:2},
+    {name:'Aytən H.',city:'Sumqayıt',action:'WhatsApp-a yazdı',min:5},
+    {name:'Elçin B.',city:'Bakı',action:'ROAS kalkulyatorunu istifadə etdi',min:9},
+    {name:'Lala Q.',city:'Gəncə',action:'qiymət siyahısına baxdı',min:14},
+    {name:'Tural A.',city:'Bakı',action:'sorğu göndərdi',min:21},
+    {name:'Günel R.',city:'Bakı',action:'Google Ads paketi seçdi',min:28},
+    {name:'Murad S.',city:'Sumqayıt',action:'Meta Growth planını aldı',min:35},
+    {name:'Sevinc K.',city:'Bakı',action:'pulsuz konsultasiya aldı',min:42},
+    {name:'Nigar M.',city:'Bakı',action:'2 həftəlik sınağa başladı',min:16},
+    {name:'Rauf H.',city:'Bakı',action:'SMM paketi sifariş etdi',min:31}
+  ],
+  en:[
+    {name:'James R.',city:'London',action:'started free trial',min:3},
+    {name:'Sarah K.',city:'Dubai',action:'sent a WhatsApp inquiry',min:7},
+    {name:'Michael T.',city:'New York',action:'used the ROAS calculator',min:11},
+    {name:'Emma W.',city:'Berlin',action:'viewed pricing plans',min:18},
+    {name:'David L.',city:'Toronto',action:'submitted a request',min:25},
+    {name:'Sophia M.',city:'Amsterdam',action:'selected Google Ads plan',min:33},
+    {name:'Oliver B.',city:'Sydney',action:'started Meta Growth plan',min:40},
+    {name:'Chloe P.',city:'Paris',action:'booked free consultation',min:14},
+    {name:'Ryan S.',city:'Singapore',action:'started 2-week trial',min:22},
+    {name:'Anna F.',city:'Stockholm',action:'requested SMM package',min:37}
+  ],
+  ru:[
+    {name:'Иван К.',city:'Москва',action:'начал бесплатный тест',min:4},
+    {name:'Анна С.',city:'Алматы',action:'написал в WhatsApp',min:8},
+    {name:'Михаил Д.',city:'Тбилиси',action:'использовал калькулятор ROAS',min:12},
+    {name:'Елена В.',city:'Минск',action:'просмотрел тарифы',min:19},
+    {name:'Сергей П.',city:'Баку',action:'отправил заявку',min:26},
+    {name:'Наталья Р.',city:'Ташкент',action:'выбрал Google Ads план',min:34},
+    {name:'Алексей Б.',city:'Астана',action:'оформил Growth план',min:41},
+    {name:'Мария Ф.',city:'Ереван',action:'получил консультацию',min:15},
+    {name:'Дмитрий Л.',city:'Баку',action:'начал 2-недельный тест',min:23},
+    {name:'Ольга К.',city:'Тбилиси',action:'заказал SMM пакет',min:38}
+  ],
+  tr:[
+    {name:'Ahmet Y.',city:'İstanbul',action:'ücretsiz deneme başlattı',min:3},
+    {name:'Fatma K.',city:'Ankara',action:'WhatsApp'a yazdı',min:8},
+    {name:'Mehmet D.',city:'İzmir',action:'ROAS hesaplayıcısını kullandı',min:13},
+    {name:'Ayşe T.',city:'Bakü',action:'fiyat listesini inceledi',min:20},
+    {name:'Mustafa S.',city:'Bursa',action:'talep gönderdi',min:27},
+    {name:'Zeynep A.',city:'İstanbul',action:'Google Ads planı seçti',min:35},
+    {name:'Ali R.',city:'Antalya',action:'Growth planına geçti',min:42},
+    {name:'Elif B.',city:'Bakü',action:'ücretsiz danışmanlık aldı',min:16},
+    {name:'Can O.',city:'İstanbul',action:'2 haftalık deneme başlattı',min:24},
+    {name:'Selin P.',city:'Ankara',action:'SMM paketi sipariş etti',min:39}
+  ]
+};
+var proofs = ALL_PROOFS[SP_LANG] || ALL_PROOFS.az;
 
 var spCSS = document.createElement('style');
 spCSS.textContent = [

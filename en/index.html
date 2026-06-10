@@ -247,7 +247,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
     </a>
     <div class="nav-links">
       <a href="/en/" class="active">Home</a>
-      <a href="/pages/xidmetler.html">Services</a>
+      <a href="/en/services.html">Services</a>
       <a href="/en/pricing.html">Pricing</a>
       <a href="/pages/hesablayici.html">Calculator</a>
       <a href="/blog/">Blog</a>
@@ -270,7 +270,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
     <button class="mls-btn" onclick="closeMenu();switchLang('ru')">RU</button>
     <button class="mls-btn" onclick="closeMenu();switchLang('tr')">TR</button>
   </div>
-    <a href="/pages/xidmetler.html" onclick="closeMenu()">Services</a>
+    <a href="/en/services.html" onclick="closeMenu()">Services</a>
     <a href="/en/pricing.html" onclick="closeMenu()">Pricing</a>
     <a href="/pages/hesablayici.html" onclick="closeMenu()">Calculator</a>
     <a href="/blog/" onclick="closeMenu()">Blog</a>
@@ -485,10 +485,14 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
 <script src="/js/analytics.js"></script>
 <script>
 gsap.registerPlugin(ScrollTrigger);
-var lenis = new Lenis({ duration:1.35, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, wheelMultiplier:.88 });
-gsap.ticker.add(function(t){ lenis.raf(t*1000); });
-gsap.ticker.lagSmoothing(0);
-lenis.on('scroll', function(e){ document.getElementById('prog').style.width=Math.min(e.scroll/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'; });
+/* Lenis only on desktop — mobile uses native scroll to prevent tap interference */
+var lenis = null;
+if(window.innerWidth > 1000 && !('ontouchstart' in window)){
+  lenis = new Lenis({ duration:1.35, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, wheelMultiplier:.88 });
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
+}
+if(lenis){ lenis.on('scroll', function(e){ document.getElementById('prog').style.width=Math.min(e.scroll/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'; }); } else { window.addEventListener('scroll',function(){ document.getElementById('prog').style.width=Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%';},{passive:true}); }
 ScrollTrigger.create({start:'top -80',onEnter:function(){document.getElementById('nav').classList.add('stuck');},onLeaveBack:function(){document.getElementById('nav').classList.remove('stuck');}});
 gsap.set('.h1-inner',{y:'105%'});
 gsap.set('.h-eye span',{y:20,opacity:0});
