@@ -1,4 +1,4 @@
-/* shared.js v6 - AdsOnUs */
+/* shared.js v7 - AdsOnUs */
 
 /* -- NAV SCROLL -- */
 window.addEventListener('scroll', function(){
@@ -7,12 +7,10 @@ window.addEventListener('scroll', function(){
 }, { passive: true });
 
 /* -- MOBILE MENU --
-   iOS Safari fix: when body has overflow:hidden after scroll,
-   the page shifts and fixed elements appear at wrong position.
-   Solution: use position:fixed + negative top = scroll offset.
+   Cleanest iOS-safe approach:
+   Toggle overflow:hidden on <html> (not body position:fixed).
+   This prevents scroll jump and works on all iOS versions.
 */
-var _menuScrollY = 0;
-
 window.toggleMenu = function(){
   var m = document.getElementById('mobMenu');
   var b = document.getElementById('burger-btn');
@@ -20,34 +18,20 @@ window.toggleMenu = function(){
   var opening = !m.classList.contains('open');
 
   if(opening){
-    /* Save scroll position BEFORE locking */
-    _menuScrollY = window.scrollY || window.pageYOffset || 0;
-    document.body.style.position   = 'fixed';
-    document.body.style.top        = '-' + _menuScrollY + 'px';
-    document.body.style.left       = '0';
-    document.body.style.right      = '0';
-    document.body.style.overflow   = 'hidden';
-    document.body.style.width      = '100%';
+    document.documentElement.classList.add('nav-open');
+    m.classList.add('open');
   } else {
-    /* Restore scroll position AFTER unlocking */
-    document.body.style.position   = '';
-    document.body.style.top        = '';
-    document.body.style.left       = '';
-    document.body.style.right      = '';
-    document.body.style.overflow   = '';
-    document.body.style.width      = '';
-    window.scrollTo(0, _menuScrollY);
+    document.documentElement.classList.remove('nav-open');
+    m.classList.remove('open');
   }
 
-  m.classList.toggle('open', opening);
   if(b) b.setAttribute('aria-expanded', String(opening));
 
   /* Hide/show floating elements */
   ['wa-float','back-top','sp-toast','cta-bar'].forEach(function(id){
     var el = document.getElementById(id);
     if(!el) return;
-    el.style.opacity = opening ? '0' : '';
-    el.style.pointerEvents = opening ? 'none' : '';
+    el.style.display = opening ? 'none' : '';
   });
 
   /* Burger X animation */
@@ -66,18 +50,8 @@ window.toggleMenu = function(){
 window.closeMenu = function(){
   var m = document.getElementById('mobMenu');
   if(!m || !m.classList.contains('open')) return;
-
-  /* Restore scroll */
-  document.body.style.position   = '';
-  document.body.style.top        = '';
-  document.body.style.left       = '';
-  document.body.style.right      = '';
-  document.body.style.overflow   = '';
-  document.body.style.width      = '';
-  window.scrollTo(0, _menuScrollY);
-
+  document.documentElement.classList.remove('nav-open');
   m.classList.remove('open');
-
   var b = document.getElementById('burger-btn');
   if(b){
     b.setAttribute('aria-expanded','false');
@@ -87,8 +61,7 @@ window.closeMenu = function(){
   ['wa-float','back-top','sp-toast','cta-bar'].forEach(function(id){
     var el = document.getElementById(id);
     if(!el) return;
-    el.style.opacity = '';
-    el.style.pointerEvents = '';
+    el.style.display = '';
   });
 };
 
@@ -111,41 +84,50 @@ window.toggleFaq = window.toggleFaq || function(el){
   if(!isOpen) item.classList.add('open');
 };
 
-/* -- SCROLL REVEAL FALLBACK --
-   Runs alongside GSAP. If GSAP ScrollTrigger doesn't fire
-   (e.g. CDN slow, desktop rendering issue), IntersectionObserver
-   still reveals .au/.at/.ar elements as they enter the viewport.
-*/
+/* -- SCROLL REVEAL FALLBACK (IntersectionObserver alongside GSAP) -- */
 (function(){
   if(!window.IntersectionObserver) return;
   var ro = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
       var el = e.target;
-      var st = getComputedStyle(el);
-      /* Only intervene if GSAP hasn't already animated this element */
-      if(parseFloat(st.opacity) < 0.5){
-        el.style.transition = el.style.transition || 'opacity .7s ease, transform .7s ease, clip-path .7s ease';
-        el.style.opacity    = '1';
-        el.style.transform  = 'none';
-        el.style.clipPath   = 'none';
+      if(parseFloat(getComputedStyle(el).opacity) < 0.5){
+        el.style.transition = 'opacity .7s ease, transform .7s ease, clip-path .7s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.clipPath = 'none';
       }
       ro.unobserve(el);
     });
-  }, { threshold:0.08, rootMargin:'0px 0px -30px 0px' });
+  }, { threshold:0.05, rootMargin:'0px 0px -20px 0px' });
 
   function initReveal(){
-    document.querySelectorAll('.au,.at,.ar,.title-anim,.rule-anim').forEach(function(el){
+    /* Also ensure #main is visible */
+    var main = document.getElementById('main');
+    if(main && main.style.visibility === 'hidden'){
+      main.style.opacity = '1';
+      main.style.visibility = 'visible';
+    }
+    document.querySelectorAll('.au,.at,.ar,.title-anim,.rule-anim,.reveal,.reveal-l,.reveal-r').forEach(function(el){
       ro.observe(el);
     });
   }
-  if(document.readyState==='loading'){
+
+  if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', initReveal);
   } else {
     initReveal();
   }
-  /* Re-run after 1s to catch elements hidden after initial load */
-  setTimeout(initReveal, 1200);
+  /* Re-observe after 1.5s in case GSAP hid elements after our first pass */
+  setTimeout(initReveal, 1500);
+  /* Emergency fallback at 5s — show everything */
+  setTimeout(function(){
+    var main = document.getElementById('main');
+    if(main){ main.style.opacity='1'; main.style.visibility='visible'; }
+    document.querySelectorAll('.au,.at,.ar,.title-anim,.h1-inner').forEach(function(el){
+      el.style.opacity='1'; el.style.transform='none'; el.style.clipPath='none';
+    });
+  }, 5000);
 })();
 
 /* -- COUNTER -- */
