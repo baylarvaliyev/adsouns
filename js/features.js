@@ -1,53 +1,13 @@
-/* features.js v5 — AdsOnUs
-   Key fix: overlay starts ABOVE viewport (translateY(-100%))
-   so if animation fails, page is NEVER blocked.
-   Added touchend to burger as belt-and-suspenders on iOS.
-*/
+/* features.js v6 - AdsOnUs */
 (function(){
 
 var WA_MSG = encodeURIComponent('Salam! AdsOnUs saytından yazıram. Pulsuz sınaq barədə məlumat almaq istəyirdim.');
 var WA_BASE = 'https://wa.me/994773698929?text=' + WA_MSG;
 
 /* Detect language */
-var lp = window.location.pathname.match(/^\/(en|ru|tr)\//);
+var lp = window.location.pathname.match(/^\/(az|en|ru|tr)\//);
 var hl = (document.documentElement.lang||'').slice(0,2).toLowerCase();
-var L  = lp ? lp[1] : (['en','ru','tr'].indexOf(hl)>-1 ? hl : 'az');
-
-/* ══════════════════════════════════════════
-   1. PAGE TRANSITIONS
-   CRITICAL: start translateY(-100%) — ABOVE viewport.
-   If animation fails, overlay is INVISIBLE, not blocking.
-══════════════════════════════════════════ */
-var overlay = document.createElement('div');
-overlay.id = 'pg-overlay';
-overlay.style.cssText = [
-  'position:fixed;inset:0;z-index:9500',
-  'background:#060A12',
-  'transform:translateY(-100%)',   /* starts ABOVE viewport — safe */
-  'transition:transform .5s cubic-bezier(0.76,0,0.24,1)',
-  'pointer-events:none',
-  'will-change:transform'
-].join(';');
-document.body.appendChild(overlay);
-
-/* On link click: slide overlay DOWN from top, then navigate */
-document.addEventListener('click', function(e){
-  var a = e.target.closest('a[href]');
-  if(!a) return;
-  if(a.classList.contains('nav-cta')) return;
-  if(a.dataset.form) return;
-  var href = a.getAttribute('href') || '';
-  if(!href || href.startsWith('#') || href.startsWith('tel:') ||
-     href.startsWith('mailto:') || href.includes('wa.me') ||
-     a.target === '_blank') return;
-  if(href.startsWith('http') && !href.includes('adsonus.com')) return;
-  e.preventDefault();
-  overlay.style.transform = 'translateY(0)';
-  setTimeout(function(){ window.location.href = href; }, 520);
-}, true);
-
-/* On new page load: overlay is already at -100% (above), nothing to do */
-/* No revealPage animation needed — page is already visible */
+var L  = lp ? lp[1] : (['az','en','ru','tr'].indexOf(hl)>-1 ? hl : 'az');
 
 
 /* ══════════════════════════════════════════
