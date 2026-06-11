@@ -91,6 +91,9 @@ window.toggleFaq = window.toggleFaq || function(el){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
       var el = e.target;
+      /* Add .on class — works for CSS-based .reveal/.reveal-l/.reveal-r animations */
+      el.classList.add('on');
+      /* Also set inline styles for GSAP-based .au/.at/.ar elements */
       if(parseFloat(getComputedStyle(el).opacity) < 0.5){
         el.style.transition = 'opacity .7s ease, transform .7s ease, clip-path .7s ease';
         el.style.opacity = '1';
