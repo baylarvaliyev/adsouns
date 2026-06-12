@@ -1,37 +1,43 @@
-/* features.js v6 - AdsOnUs */
+/* features.js v7 - AdsOnUs — fully multilingual */
 (function(){
 
-var WA_MSG = encodeURIComponent('Salam! AdsOnUs saytından yazıram. Pulsuz sınaq barədə məlumat almaq istəyirdim.');
-var WA_BASE = 'https://wa.me/994773698929?text=' + WA_MSG;
-
-/* Detect language */
+/* ── Detect language ── */
 var lp = window.location.pathname.match(/^\/(az|en|ru|tr)\//);
 var hl = (document.documentElement.lang||'').slice(0,2).toLowerCase();
 var L  = lp ? lp[1] : (['az','en','ru','tr'].indexOf(hl)>-1 ? hl : 'az');
 
+/* ── WhatsApp base URL with language-matched pre-fill ── */
+var WA_NUM = 'https://wa.me/994773698929';
+var WA_TEXTS = {
+  az: 'Salam! AdsOnUs saytından yazıram. Pulsuz sınaq barədə məlumat almaq istəyirdim.',
+  en: 'Hi! I found AdsOnUs online and I\'m interested in a free trial. Can you tell me more?',
+  ru: 'Здравствуйте! Нашёл AdsOnUs в интернете. Хотел бы узнать о бесплатном тесте.',
+  tr: 'Merhaba! AdsOnUs\'u çevrimiçi buldum. Ücretsiz deneme hakkında bilgi almak istiyorum.'
+};
+var WA_BASE = WA_NUM + '?text=' + encodeURIComponent(WA_TEXTS[L] || WA_TEXTS.az);
 
-/* ══════════════════════════════════════════
-   2. BURGER BUTTON — explicit touch support
-   iOS Safari belt-and-suspenders fix
-══════════════════════════════════════════ */
+
+/* ══ 1. BURGER BUTTON — iOS touch fix ══ */
 document.addEventListener('DOMContentLoaded', function(){
   var btn = document.getElementById('burger-btn');
   if(!btn) return;
-
-  /* 44×44 tap target via CSS — don't touch display via JS */
-
-  /* touchend fires before click — handle it explicitly */
   btn.addEventListener('touchend', function(e){
-    e.preventDefault();   /* stop ghost click */
+    e.preventDefault();
     e.stopPropagation();
     if(typeof window.toggleMenu === 'function') window.toggleMenu();
   }, { passive: false });
 });
 
 
-/* ══════════════════════════════════════════
-   3. COOKIE CONSENT BANNER
-══════════════════════════════════════════ */
+/* ══ 2. COOKIE CONSENT — multilingual ══ */
+var COOKIE_TX = {
+  az:{ text:'Bu sayt Meta Pixel, analitika və xidmət üçün cookie istifadə edir.', linkText:'Ətraflı', link:'/pages/mexfilik.html', accept:'Qəbul Et', decline:'Rədd Et' },
+  en:{ text:'This site uses cookies for analytics, Meta Pixel, and core functionality.', linkText:'Privacy Policy', link:'/pages/mexfilik.html', accept:'Accept', decline:'Decline' },
+  ru:{ text:'Этот сайт использует файлы cookie для аналитики, Meta Pixel и работы сервиса.', linkText:'Подробнее', link:'/pages/mexfilik.html', accept:'Принять', decline:'Отклонить' },
+  tr:{ text:'Bu site analitik, Meta Pixel ve temel işlevler için çerez kullanır.', linkText:'Gizlilik', link:'/pages/mexfilik.html', accept:'Kabul Et', decline:'Reddet' }
+};
+var ct = COOKIE_TX[L] || COOKIE_TX.az;
+
 if(!localStorage.getItem('cookie_ok')){
   var cbStyle = document.createElement('style');
   cbStyle.textContent = [
@@ -54,9 +60,10 @@ if(!localStorage.getItem('cookie_ok')){
   document.head.appendChild(cbStyle);
   var cb = document.createElement('div');
   cb.id = 'cookie-banner';
-  cb.innerHTML = '<div id="cb-inner"><p>Bu sayt Meta Pixel, analitika və xidmət üçün cookie istifadə edir. <a href="/pages/mexfilik.html" style="color:#5B8EFF;text-decoration:none;">Ətraflı</a></p>'
-    + '<div id="cb-btns"><button id="cb-accept" onclick="acceptCookies()">Qəbul Et</button>'
-    + '<button id="cb-decline" onclick="declineCookies()">Rədd Et</button></div></div>';
+  cb.innerHTML = '<div id="cb-inner"><p>' + ct.text
+    + ' <a href="' + ct.link + '" style="color:#5B8EFF;text-decoration:none;">' + ct.linkText + '</a></p>'
+    + '<div id="cb-btns"><button id="cb-accept" onclick="acceptCookies()">' + ct.accept + '</button>'
+    + '<button id="cb-decline" onclick="declineCookies()">' + ct.decline + '</button></div></div>';
   document.body.appendChild(cb);
   setTimeout(function(){ cb.classList.add('show'); }, 2200);
 }
@@ -72,9 +79,10 @@ window.declineCookies = function(){
 };
 
 
-/* ══════════════════════════════════════════
-   4. SOCIAL PROOF TOASTS — multilingual
-══════════════════════════════════════════ */
+/* ══ 3. SOCIAL PROOF TOASTS — multilingual ══ */
+var TIME_AGO = { az:'dəq əvvəl', en:'min ago', ru:'мин назад', tr:'dk önce' };
+var timeAgo = TIME_AGO[L] || TIME_AGO.en;
+
 var ALL_PROOFS = {
   az:[
     {name:'Cavid M.',city:'Bakı',action:'pulsuz sınağa başladı',min:2},
@@ -153,10 +161,11 @@ function showProof(){
   var menu = document.getElementById('mobMenu');
   if(menu && menu.classList.contains('open')){ setTimeout(showProof,5000); return; }
   var p = proofs[spIdx % proofs.length]; spIdx++;
-  spToast.innerHTML = '<div class="sp-av">'+p.name[0]+(p.name.split(' ')[1]||'?')[0]+'</div>'
-    + '<div><span class="sp-name">'+p.name+', '+p.city+'</span>'
-    + '<span class="sp-detail">'+p.action+'</span>'
-    + '<span class="sp-time">'+p.min+' min ago</span></div>';
+  var initials = p.name[0] + (p.name.split(' ')[1]||'?')[0];
+  spToast.innerHTML = '<div class="sp-av">' + initials + '</div>'
+    + '<div><span class="sp-name">' + p.name + ', ' + p.city + '</span>'
+    + '<span class="sp-detail">' + p.action + '</span>'
+    + '<span class="sp-time">' + p.min + ' ' + timeAgo + '</span></div>';
   spToast.classList.add('show');
   setTimeout(function(){
     spToast.classList.remove('show');
@@ -166,9 +175,7 @@ function showProof(){
 setTimeout(showProof, 15000);
 
 
-/* ══════════════════════════════════════════
-   5. READING PROGRESS BAR
-══════════════════════════════════════════ */
+/* ══ 4. READING PROGRESS BAR (blog pages) ══ */
 if(document.querySelector('.article-wrap')){
   var rp = document.createElement('div');
   rp.id = 'read-prog';
@@ -186,9 +193,7 @@ if(document.querySelector('.article-wrap')){
 }
 
 
-/* ══════════════════════════════════════════
-   6. BACK TO TOP
-══════════════════════════════════════════ */
+/* ══ 5. BACK TO TOP ══ */
 var bttCSS = document.createElement('style');
 bttCSS.textContent = '#back-top{position:fixed;bottom:28px;left:24px;z-index:792;'
   + 'width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.11);'
@@ -203,23 +208,23 @@ btt.id = 'back-top';
 btt.setAttribute('aria-label','Top');
 btt.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>';
 document.body.appendChild(btt);
-btt.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-btt.addEventListener('touchend', function(e){ e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }, { passive: false });
+btt.addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+btt.addEventListener('touchend', function(e){ e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); }, { passive:false });
 window.addEventListener('scroll', function(){
   var show = window.scrollY > 450;
   btt.style.opacity = show ? '1' : '0';
   btt.style.transform = show ? 'translateY(0)' : 'translateY(10px)';
   btt.style.pointerEvents = show ? 'auto' : 'none';
-}, { passive: true });
+}, { passive:true });
 
 
-/* ══════════════════════════════════════════
-   7. WA LINK PRE-FILL
-══════════════════════════════════════════ */
+/* ══ 6. UPDATE ALL WA LINKS WITH LANGUAGE-MATCHED PRE-FILL ══ */
 document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a[href="https://wa.me/994773698929"]').forEach(function(a){
-    if(a.classList.contains('nav-cta')) return;
-    a.href = WA_BASE;
+  document.querySelectorAll('a[href*="wa.me/994773698929"]').forEach(function(a){
+    /* Don't override if it already has a custom text param */
+    if(a.href.indexOf('?text=') === -1){
+      a.href = WA_BASE;
+    }
   });
 });
 

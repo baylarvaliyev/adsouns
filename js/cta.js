@@ -1,12 +1,19 @@
 /* cta.js — Floating WhatsApp + scroll CTA bar — multilingual */
 (function(){
 
-  var WA = 'https://wa.me/994773698929';
-
-  /* Detect language from path or html[lang] */
+  /* Detect language FIRST */
   var lp = window.location.pathname.match(/^\/(en|ru|tr)\//);
   var hl = (document.documentElement.lang || '').slice(0,2).toLowerCase();
   var L  = lp ? lp[1] : (['en','ru','tr'].indexOf(hl) > -1 ? hl : 'az');
+
+  /* Language-matched WhatsApp pre-fill */
+  var WA_TEXTS = {
+    az: 'Salam! AdsOnUs saytından yazıram. Pulsuz sınaq barədə məlumat almaq istəyirdim.',
+    en: 'Hi! I found AdsOnUs online and I\'m interested in a free trial. Can you tell me more?',
+    ru: 'Здравствуйте! Нашёл AdsOnUs в интернете. Хотел бы узнать о бесплатном тесте.',
+    tr: 'Merhaba! AdsOnUs\'u çevrimiçi buldum. Ücretsiz deneme hakkında bilgi almak istiyorum.'
+  };
+  var WA = 'https://wa.me/994773698929?text=' + encodeURIComponent(WA_TEXTS[L] || WA_TEXTS.az);
 
   var TX = {
     az:{ tip:'Pulsuz Sınaq üçün yazın', bar:'<strong>2 Həftəlik Pulsuz Sınaq</strong> — Kredit kartı tələb olunmur.', btn:'Pulsuz Başla →' },
