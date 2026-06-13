@@ -69,14 +69,7 @@ body.hov #cur-ring{width:56px;height:56px;border-color:rgba(91,142,255,.65);}
 .nav-cta{background:var(--blue);color:#fff!important;padding:10px 22px;border-radius:50px;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;transition:transform .3s var(--expo),box-shadow .3s;display:inline-block;}
 .nav-cta::after{display:none!important;}
 .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 8px 28px rgba(37,99,235,.55)!important;}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
-.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
-.mob-menu.open{display:flex;}
-.mob-menu a{font-family:"Manrope",sans-serif;font-size:clamp(24px,6vw,38px);font-weight:700;color:rgba(255,255,255,.45);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;transition:color .25s,padding-left .3s cubic-bezier(0.16,1,0.3,1);}
-.mob-menu a:hover{color:#fff;padding-left:8px;}
-.mob-menu a:last-child{border:none;background:#2563EB;color:#fff!important;text-align:center;padding:16px!important;border-radius:50px;margin-top:24px;font-size:16px!important;font-family:"Manrope",sans-serif;font-weight:700;}
-
 /* ── HERO ── */
 .hero{
   min-height:100vh;position:relative;overflow:hidden;
@@ -428,8 +421,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
   .pg{grid-template-columns:1fr;max-width:400px;margin:0 auto;}
   .ft-top{grid-template-columns:1fr 1fr;gap:24px;}
   .faq-split{grid-template-columns:1fr;}
-  .mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#04080F;flex-direction:column;padding:80px 5% 36px;z-index:8002;overflow-y:auto;}
-}
+  }
 @media(max-width:600px){
   .hero-btns{flex-direction:column;}.btn-fill,.btn-out{text-align:center;width:100%;}
   .hero-stats{gap:20px;}
@@ -490,7 +482,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
   </div>
   <div class="mob-menu" id="mobMenu">
   <button class="mob-close-btn" onclick="closeMenu()" aria-label="Bağla">✕</button>
-  <a href="/" onclick="closeMenu()">Ana Səhifə</a>
+  <a href="/az/" onclick="closeMenu()">Ana Səhifə</a>
   <div class="mob-lang">
     <button class="mls-btn active" onclick="closeMenu()">AZ</button>
     <button class="mls-btn" onclick="closeMenu();switchLang('en')">EN</button>

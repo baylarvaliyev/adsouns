@@ -30,24 +30,20 @@ nav{position:sticky;top:0;z-index:500;padding:0 5%;background:rgba(5,13,31,.92);
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .burger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;pointer-events:none;}
 
-/* Prevent scroll when menu open - use html class (iOS-safe, no scroll jump) */
+/* Prevent scroll when menu is open */
 html.nav-open,
 html.nav-open body {
   overflow: hidden !important;
-  height: 100% !important;
 }
 
-/* Mobile menu - truly fullscreen on all devices */
+/* Mobile menu — height set by JS (window.innerHeight px) for iOS reliability */
 .mob-menu{
   display:none;
   position:fixed;
-  top:0;left:0;right:0;bottom:0;
+  top:0;left:0;right:0;
   width:100%;
-  /* Multiple height declarations for iOS compatibility */
-  height:100%;
+  /* CSS height is the fallback; JS overrides this with exact px on open */
   height:100vh;
-  height:100dvh;
-  min-height:-webkit-fill-available;
   background:#04080F;
   flex-direction:column;
   padding:72px 24px 28px;
@@ -55,6 +51,8 @@ html.nav-open body {
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   box-sizing:border-box;
+  /* Prevent content from going behind notch/home indicator on iOS */
+  padding-bottom:max(28px, env(safe-area-inset-bottom));
 }
 .mob-menu.open{display:flex;}
 
