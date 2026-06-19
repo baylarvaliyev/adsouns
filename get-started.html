@@ -201,23 +201,38 @@ textarea{min-height:88px;resize:vertical;font-family:inherit;}
       notes: document.getElementById('notes').value.trim()
     };
 
-    /* Store lead locally for now + route to WhatsApp with prefilled context */
-    try{ localStorage.setItem('adsonus_last_lead', JSON.stringify(data)); }catch(e){}
-
-    var waText = 'New audit request from website:\n'
-      + 'Name: ' + data.fname + ' ' + data.lname + '\n'
-      + 'Email: ' + data.email + '\n'
-      + (data.company ? 'Company: ' + data.company + '\n' : '')
-      + (data.phone ? 'Phone: ' + data.phone + '\n' : '')
-      + 'Needs: ' + data.needs + '\n'
-      + (data.budget ? 'Budget: ' + data.budget + '\n' : '')
-      + (data.notes ? 'Notes: ' + data.notes : '');
-
-    sessionStorage.setItem('adsonus_thankyou_name', data.fname);
-
-    setTimeout(function(){
+    /* Send to Web3Forms -> emails baylarv@gmail.com directly, reply-to set to lead's email */
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: 'ef4328e5-9f87-4b48-b570-ade6af479224',
+        subject: 'New Lead: ' + data.fname + ' ' + data.lname + (data.company ? ' (' + data.company + ')' : ''),
+        from_name: 'AdsOnUs Website',
+        email: data.email,
+        replyto: data.email,
+        'First Name': data.fname,
+        'Last Name': data.lname,
+        'Email': data.email,
+        'Company': data.company || 'Not provided',
+        'Phone / WhatsApp': data.phone || 'Not provided',
+        'Services Needed': data.needs,
+        'Monthly Budget': data.budget || 'Not specified',
+        'Notes': data.notes || 'None',
+        'Source Page': window.location.href
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(){
+      sessionStorage.setItem('adsonus_thankyou_name', data.fname);
       window.location.href = '/thank-you.html?n=' + encodeURIComponent(data.fname);
-    }, 400);
+    })
+    .catch(function(){
+      /* Network failure fallback - still let them through, don't lose the lead experience */
+      btn.disabled = false;
+      btn.textContent = 'Request Free Audit →';
+      alert('Something went wrong sending your request. Please try again, or message us directly on WhatsApp.');
+    });
   });
 })();
 </script>
