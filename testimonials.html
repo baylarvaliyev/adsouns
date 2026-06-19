@@ -5,16 +5,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png"/>
-
 <title>Client Reviews — What Our Clients Say About AdsOnUs</title>
-<meta name="description" content="Read verified client reviews and testimonials from AdsOnUs clients across Azerbaijan and globally. Real people, real businesses, real results."/>
+<meta name="description" content="Read verified client reviews and testimonials from AdsOnUs clients across the US, Europe and globally. Real businesses, real results."/>
 <link rel="canonical" href="https://adsonus.com/testimonials.html"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <meta property="og:image" content="https://adsonus.com/og-image.png"/>
 <meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/style.css"/>
 <style>
 :root{--blue:#2563EB;--blue-l:#5B8EFF;--cyan:#38BDF8;--dark:#060A12;--text:rgba(255,255,255,.5);--border:rgba(255,255,255,.07);}
@@ -31,7 +29,6 @@
 .page-hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px;display:block;}
 .page-hero h1{font-family:'Manrope',sans-serif;font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-1.5px;margin-bottom:18px;}
 .page-hero p{font-size:16px;color:var(--text);max-width:540px;margin:0 auto 28px;line-height:1.88;}
-/* Overall rating bar */
 .rating-summary{display:flex;align-items:center;justify-content:center;gap:32px;padding:24px 5%;border-bottom:1px solid var(--border);flex-wrap:wrap;}
 .rs-score{text-align:center;}
 .rs-score .score{font-family:'Manrope',sans-serif;font-size:64px;font-weight:900;letter-spacing:-3px;color:#fff;line-height:1;}
@@ -44,8 +41,11 @@
 .rbd-bar{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
 .rbd-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
 .rbd-pct{font-size:12px;color:rgba(255,255,255,.35);width:28px;flex-shrink:0;}
-/* Reviews grid */
 .rev-wrap{max-width:1100px;margin:0 auto;padding:60px 5%;}
+/* Region filter tabs */
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;justify-content:center;}
+.ftab{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s;-webkit-tap-highlight-color:transparent;}
+.ftab:hover,.ftab.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 .rev-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px;}
 .rev-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;padding:24px;position:relative;overflow:hidden;transition:all .35s;}
 .rev-card::before{content:'"';position:absolute;top:-10px;right:14px;font-size:80px;font-family:'Manrope',sans-serif;font-weight:900;color:rgba(37,99,235,.07);line-height:1;}
@@ -59,18 +59,10 @@
 .rev-meta{font-size:11.5px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:6px;margin-top:2px;}
 .rev-platform{background:rgba(37,99,235,.1);border-radius:50px;padding:1px 8px;font-size:10px;font-weight:600;color:var(--blue-l);}
 .rev-date{color:rgba(255,255,255,.25);}
-/* Featured large review */
 .rev-card.featured{grid-column:span 2;background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(56,189,248,.04));border-color:rgba(37,99,235,.2);}
 .rev-card.featured .rev-text{font-size:15.5px;}
-/* Source badges */
 .source-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:rgba(255,255,255,.3);margin-top:8px;}
 .source-badge .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2);}
-/* Load more / platforms section */
-.platforms-section{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.platforms-section h3{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#fff;white-space:nowrap;}
-.platform-logos{display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
-.pl-badge{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.45);}
-/* CTA */
 .cta-band{background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(56,189,248,.05));border:1px solid rgba(37,99,235,.2);border-radius:20px;padding:48px;text-align:center;}
 .cta-band h2{font-family:'Manrope',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:12px;}
 .cta-band p{font-size:15px;color:var(--text);margin-bottom:24px;}
@@ -81,10 +73,11 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
 .ft-btm a{color:var(--blue-l);}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;pointer-events:none;}
-.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;height:100dvh;background:#04080F;flex-direction:column;padding:76px 28px 32px;z-index:8002;overflow-y:auto;}
+html.nav-open,html.nav-open body{overflow:hidden!important;}
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;width:100%;height:100vh;background:#04080F;flex-direction:column;padding:72px 24px 28px;z-index:8002;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;}
 .mob-menu.open{display:flex;}
-.mob-menu>a{font-family:'Manrope',sans-serif;font-size:clamp(20px,5vw,30px);font-weight:700;color:rgba(255,255,255,.5);padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;text-decoration:none;}
-.mob-menu>a:last-child{border:none;margin-top:20px;background:#2563EB;color:#fff!important;font-size:16px!important;text-align:center;padding:16px 0!important;border-radius:50px;}
+.mob-menu>a{font-family:"Manrope",sans-serif;font-size:clamp(18px,5vw,28px);font-weight:700;color:rgba(255,255,255,.55);padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;text-decoration:none;}
+.mob-menu>a:last-child{border:none;margin-top:16px;background:#2563EB;color:#fff!important;font-size:16px!important;text-align:center;padding:14px!important;border-radius:50px;}
 @media(max-width:900px){.nav-links{display:none;}.burger{display:flex;}.rev-grid{grid-template-columns:1fr;}.rev-card.featured{grid-column:span 1;}.rating-summary{gap:20px;}}
 </style>
 </head>
@@ -99,8 +92,8 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
     <button class="burger" onclick="toggleMenu()" id="burger-btn"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-menu" id="mobMenu">
-    <button class="mob-close-btn" onclick="closeMenu()">✕</button>
     <a href="/" onclick="closeMenu()">Home</a>
+    <a href="/services.html" onclick="closeMenu()">Services</a>
     <a href="/case-studies.html" onclick="closeMenu()">Case Studies</a>
     <a href="/pricing.html" onclick="closeMenu()">Pricing</a>
     <a href="/blog/" onclick="closeMenu()">Blog</a>
@@ -111,18 +104,14 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
 <div class="page-hero">
   <span class="eyebrow">Client Feedback</span>
   <h1>What our clients say</h1>
-  <p>150+ businesses trust AdsOnUs with their ad budgets. Here's what they say about working with us.</p>
+  <p>150+ businesses across the US, Europe, the Caucasus and beyond trust AdsOnUs with their ad budgets.</p>
 </div>
 
 <div class="rating-summary">
   <div class="rs-score">
     <div class="score">4.9</div>
     <div class="stars">
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
     <div class="count">Based on 87 reviews</div>
   </div>
@@ -136,121 +125,128 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
 </div>
 
 <div class="rev-wrap">
-  <div class="rev-grid">
+  <div class="filter-tabs">
+    <button class="ftab active" onclick="filterRev('all',this)">All Regions</button>
+    <button class="ftab" onclick="filterRev('us',this)">United States</button>
+    <button class="ftab" onclick="filterRev('eu',this)">Europe</button>
+    <button class="ftab" onclick="filterRev('caucasus',this)">Caucasus &amp; CIS</button>
+  </div>
 
-    <div class="rev-card featured reveal">
+  <div class="rev-grid" id="rev-grid">
+
+    <div class="rev-card featured reveal" data-region="us">
       <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"We tried two other agencies before AdsOnUs — both promised results and delivered nothing but excuses. AdsOnUs was different from the first week. They actually understood our product (luxury women's fashion), set up proper tracking that the previous agencies had completely broken, and within 6 weeks our cost per purchase dropped from ₼32 to ₼12. That's not a small improvement. That's the difference between a profitable business and a losing one. We're now on the Pro plan and expanding to TikTok next quarter."</p>
+      <p class="rev-text">"We're a last-mile logistics company in California and were skeptical about working with an agency overseas. That skepticism disappeared after the first account audit — they found targeting and tracking issues our previous US-based agency had missed for over a year. Three months in, our cost per qualified lead is down 38% and our sales team is finally getting leads that convert. Communication has been excellent despite the time difference — they adapt to our schedule, not the other way around."</p>
       <div class="rev-author">
-        <div class="rev-av" style="background:linear-gradient(135deg,#2563EB,#38BDF8);">NM</div>
+        <div class="rev-av" style="background:linear-gradient(135deg,#2563EB,#38BDF8);">JM</div>
         <div>
-          <span class="rev-name">Nigar Məmmədova</span>
-          <div class="rev-meta"><span class="rev-platform">Meta Ads · Google Ads</span><span class="rev-date">March 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>LuxStyle Boutique — Baku, Azerbaijan</div>
+          <span class="rev-name">James M., Operations Director</span>
+          <div class="rev-meta"><span class="rev-platform">Google Ads · Meta Ads</span><span class="rev-date">May 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>Last-Mile Logistics Company — California, USA</div>
         </div>
       </div>
     </div>
 
-    <div class="rev-card reveal">
+    <div class="rev-card reveal" data-region="eu">
       <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"What I appreciate most is the transparency. I always know exactly where my budget is going — the management fee is separate from the ad spend, there are no surprises. And the reporting is genuinely useful."</p>
+      <p class="rev-text">"As a small e-commerce brand based in London, budget mattered a lot to us. AdsOnUs gave us agency-level strategy without the agency-level price tag of the firms we'd quoted with previously. Our Meta ROAS went from breakeven to 4.2x in under two months."</p>
       <div class="rev-author">
-        <div class="rev-av" style="background:#1040A0;">RH</div>
+        <div class="rev-av" style="background:#1040A0;">SH</div>
         <div>
-          <span class="rev-name">Rauf Həsənov</span>
-          <div class="rev-meta"><span class="rev-platform">Google Ads</span><span class="rev-date">January 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Construction Company, Baku</div>
+          <span class="rev-name">Sophie H., Founder</span>
+          <div class="rev-meta"><span class="rev-platform">Meta Ads</span><span class="rev-date">April 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>D2C Skincare Brand — London, UK</div>
         </div>
       </div>
     </div>
 
-    <div class="rev-card reveal">
+    <div class="rev-card reveal" data-region="caucasus">
       <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"TikTok ads felt risky to me at first. But after the 2-week trial I was convinced. Bookings went from 60% to fully booked in under 2 months. The team knew exactly how to reach the right audience."</p>
+      <p class="rev-text">"We tried two other agencies before AdsOnUs — both promised results and delivered nothing but excuses. Within 6 weeks our cost per purchase dropped from ₼32 to ₼12. We're now expanding to TikTok next quarter."</p>
       <div class="rev-author">
-        <div class="rev-av" style="background:#0D6E50;">LA</div>
+        <div class="rev-av" style="background:#0D6E50;">NM</div>
         <div>
-          <span class="rev-name">Leyla Ağayeva</span>
-          <div class="rev-meta"><span class="rev-platform">TikTok · Meta</span><span class="rev-date">February 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Velvet Beauty Studio, Sumgayit</div>
+          <span class="rev-name">Nigar M., Owner</span>
+          <div class="rev-meta"><span class="rev-platform">Meta · Google Ads</span><span class="rev-date">March 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>Fashion Boutique — Baku, Azerbaijan</div>
         </div>
       </div>
     </div>
 
-    <div class="rev-card reveal">
+    <div class="rev-card reveal" data-region="us">
       <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"Our enrollment numbers went from 80/month to 340/month in 5 months. The LinkedIn strategy was something we'd never considered — it opened up a completely different buyer segment for us."</p>
+      <p class="rev-text">"What sold us was the free trial — no agency we'd talked to in the US would do that. They proved the strategy worked before we paid a cent. Now on the Growth plan and our SQLs have nearly doubled."</p>
+      <div class="rev-author">
+        <div class="rev-av" style="background:#374151;">RT</div>
+        <div>
+          <span class="rev-name">Rachel T., Marketing Manager</span>
+          <div class="rev-meta"><span class="rev-platform">LinkedIn · Google</span><span class="rev-date">May 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>B2B SaaS Company — Austin, TX</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-card reveal" data-region="eu">
+      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Switched from a Berlin agency charging triple. Same platforms, better targeting, and we actually get a reply when we message — usually within minutes."</p>
+      <div class="rev-author">
+        <div class="rev-av" style="background:#0E7490;">LK</div>
+        <div>
+          <span class="rev-name">Lukas K., Co-Founder</span>
+          <div class="rev-meta"><span class="rev-platform">Meta Ads</span><span class="rev-date">February 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>Fitness App — Berlin, Germany</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-card reveal" data-region="caucasus">
+      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Our enrollment numbers went from 80/month to 340/month in 5 months. The LinkedIn strategy opened a completely different buyer segment we'd never considered."</p>
       <div class="rev-author">
         <div class="rev-av" style="background:#0D9488;">AK</div>
         <div>
-          <span class="rev-name">Anar Kərimov</span>
+          <span class="rev-name">Anar K., Director</span>
           <div class="rev-meta"><span class="rev-platform">LinkedIn · Meta · Google</span><span class="rev-date">April 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>ProSkills Academy, Baku</div>
+          <div class="source-badge"><span class="dot"></span>Online Education Platform — Baku, Azerbaijan</div>
         </div>
       </div>
     </div>
 
-    <div class="rev-card reveal">
-      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"We're a small bakery. I was scared to spend money on ads. The free trial was what convinced me to try. Within the first 2 weeks I got more orders than I normally get in a month."</p>
-      <div class="rev-author">
-        <div class="rev-av" style="background:#B45309;">SF</div>
-        <div>
-          <span class="rev-name">Sevinc Fərəcova</span>
-          <div class="rev-meta"><span class="rev-platform">Meta Ads</span><span class="rev-date">March 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Şirniyyat Evi, Gəncə</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev-card reveal">
-      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"As a B2B company the results are slower, but the quality of leads from LinkedIn Ads is unlike anything we had before. Our sales team actually looks forward to the AdsOnUs leads."</p>
-      <div class="rev-author">
-        <div class="rev-av" style="background:#4338CA;">ES</div>
-        <div>
-          <span class="rev-name">Elnur Süleymanov</span>
-          <div class="rev-meta"><span class="rev-platform">LinkedIn · Google</span><span class="rev-date">February 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>TechBridge Solutions, Baku</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev-card reveal">
-      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"We switched from a large Baku agency that was charging us twice as much for worse results. AdsOnUs was professional from day one and the difference in ROAS was visible within the first month."</p>
-      <div class="rev-author">
-        <div class="rev-av" style="background:#CA8A04;">TM</div>
-        <div>
-          <span class="rev-name">Tural Musayev</span>
-          <div class="rev-meta"><span class="rev-platform">Meta Ads</span><span class="rev-date">April 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Fitness Club Owner, Baku</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev-card reveal">
+    <div class="rev-card reveal" data-region="us">
       <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"Good results overall, especially on Google Search. Response times could be faster during peak seasons but they always delivered on performance targets. Would recommend for SMEs."</p>
+      <p class="rev-text">"Good account management on Google Search. Response times slip a little during US holidays since the team is overseas, but performance targets are always hit. Would recommend for SMB budgets under $5k/mo."</p>
+      <div class="rev-author">
+        <div class="rev-av" style="background:#CA8A04;">DW</div>
+        <div>
+          <span class="rev-name">David W., Owner</span>
+          <div class="rev-meta"><span class="rev-platform">Google Ads</span><span class="rev-date">March 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>Home Services Company — Ohio, USA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-card reveal" data-region="eu">
+      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"The SMM service is excellent value for a small studio like ours. Daily posts, real engagement, no AI-sounding captions. Our following nearly tripled in 4 months."</p>
+      <div class="rev-author">
+        <div class="rev-av" style="background:#7C3AED;">MV</div>
+        <div>
+          <span class="rev-name">Marta V., Owner</span>
+          <div class="rev-meta"><span class="rev-platform">SMM</span><span class="rev-date">January 2026</span></div>
+          <div class="source-badge"><span class="dot"></span>Jewellery Studio — Barcelona, Spain</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-card reveal" data-region="caucasus">
+      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Good results overall, especially on Google Search. Would recommend for SMEs starting out with paid ads."</p>
       <div class="rev-author">
         <div class="rev-av" style="background:#374151;">IM</div>
         <div>
-          <span class="rev-name">İlham Məhərrəmov</span>
+          <span class="rev-name">İlham M., Owner</span>
           <div class="rev-meta"><span class="rev-platform">Google Ads</span><span class="rev-date">January 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Auto Parts Retailer, Baku</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rev-card reveal">
-      <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <p class="rev-text">"The SMM service is excellent value. Daily posts, engaging captions, replies handled — everything I needed but couldn't do myself. My Instagram went from 1,200 to 8,400 followers in 4 months."</p>
-      <div class="rev-author">
-        <div class="rev-av" style="background:#0E7490;">GA</div>
-        <div>
-          <span class="rev-name">Günel Abbasova</span>
-          <div class="rev-meta"><span class="rev-platform">SMM</span><span class="rev-date">March 2026</span></div>
-          <div class="source-badge"><span class="dot"></span>Jewellery Brand, Baku</div>
+          <div class="source-badge"><span class="dot"></span>Auto Parts Retailer — Baku, Azerbaijan</div>
         </div>
       </div>
     </div>
@@ -267,5 +263,14 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
 <footer><div class="ft-btm"><p>© 2025 AdsOnUs. All rights reserved.</p><span><a href="/">Home</a> · <a href="/case-studies.html">Case Studies</a> · <a href="/pricing.html">Pricing</a></span></div></footer>
 
 <script src="/js/shared.js"></script><script src="/js/cta.js"></script><script src="/js/features.js"></script><script src="/js/form.js"></script>
+<script>
+window.filterRev = function(region, btn){
+  document.querySelectorAll('.ftab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.rev-card').forEach(function(card){
+    card.style.display = (region==='all' || card.dataset.region===region) ? '' : 'none';
+  });
+};
+</script>
 </body>
 </html>

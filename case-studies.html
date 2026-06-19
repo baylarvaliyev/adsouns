@@ -123,6 +123,7 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
 <div class="cs-wrap">
   <div class="filter-tabs">
     <button class="ftab active" onclick="filterCS('all',this)">All Industries</button>
+    <button class="ftab" onclick="filterCS('logistics',this)">Logistics &amp; B2B</button>
     <button class="ftab" onclick="filterCS('fashion',this)">Fashion</button>
     <button class="ftab" onclick="filterCS('food',this)">Food & F&B</button>
     <button class="ftab" onclick="filterCS('beauty',this)">Beauty</button>
@@ -132,6 +133,45 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:28p
   </div>
 
   <div class="cs-grid" id="cs-grid">
+
+    <!-- Case 0: US Logistics (featured) -->
+    <div class="cs-card reveal" data-cat="logistics" style="grid-column:span 2;background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(56,189,248,.04));border-color:rgba(37,99,235,.2);">
+      <div class="cs-header">
+        <div class="cs-brand">
+          <div class="cs-logo" style="background:rgba(37,99,235,.15);">🚚</div>
+          <div class="cs-info">
+            <h3>Last-Mile Logistics Co.</h3>
+            <div class="cs-sector">B2B Logistics &amp; Delivery · California, USA</div>
+          </div>
+        </div>
+        <div class="cs-platform-tags"><span class="cs-platform-tag">Google Ads</span><span class="cs-platform-tag">Meta Ads</span></div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-challenge"><span class="label">The Challenge</span><p>A growing last-mile delivery company had been running Google Ads in-house for over a year with no structured account audit. Conversion tracking was broken across multiple campaigns, budget was spread too thin across irrelevant keywords, and the sales team was getting leads with little to no buying intent.</p></div>
+        <ul class="cs-result-list">
+          <li>Full account audit identified $4,200/mo in wasted spend on broad-match keywords</li>
+          <li>Rebuilt conversion tracking from scratch — true cost-per-lead became visible for the first time</li>
+          <li>Restructured campaigns around 3-phase growth plan (foundation → scale → expand)</li>
+          <li>Added Meta retargeting layer for warm prospects who didn't convert on first visit</li>
+        </ul>
+      </div>
+      <div class="cs-metrics">
+        <div class="cs-metric"><span class="cm-v blue">-38%</span><span class="cm-l">Cost Per Qualified Lead</span></div>
+        <div class="cs-metric"><span class="cm-v up">+61%</span><span class="cm-l">Sales-Qualified Leads</span></div>
+        <div class="cs-metric"><span class="cm-v up">$4.2k</span><span class="cm-l">Monthly Waste Eliminated</span></div>
+      </div>
+      <div class="cs-timeline">
+        <div class="tl-bar" style="height:22%;background:rgba(37,99,235,.35);"></div>
+        <div class="tl-bar" style="height:30%;background:rgba(37,99,235,.42);"></div>
+        <div class="tl-bar" style="height:42%;background:rgba(37,99,235,.5);"></div>
+        <div class="tl-bar" style="height:55%;background:rgba(37,99,235,.58);"></div>
+        <div class="tl-bar" style="height:68%;background:rgba(37,99,235,.68);"></div>
+        <div class="tl-bar" style="height:80%;background:rgba(37,99,235,.78);"></div>
+        <div class="tl-bar" style="height:92%;background:rgba(37,99,235,.88);"></div>
+        <div class="tl-bar" style="height:100%;background:linear-gradient(180deg,#38BDF8,#2563EB);box-shadow:0 0 8px rgba(37,99,235,.5);"></div>
+        <div style="padding-left:8px;font-size:10px;color:rgba(255,255,255,.25);align-self:center;flex-shrink:0;">3 months</div>
+      </div>
+    </div>
 
     <!-- Case 1: Fashion -->
     <div class="cs-card reveal" data-cat="fashion">
