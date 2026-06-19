@@ -411,6 +411,18 @@ footer{background:rgba(2,4,9,.98);border-top:1px solid var(--border);padding:60p
 .title-anim{clip-path:inset(0 100% 0 0);}
 
 /* ── RESPONSIVE ── */
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:44px;min-height:44px;align-items:center;justify-content:center;z-index:8003;}
+.burger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;pointer-events:none;}
+html.nav-open,html.nav-open body{overflow:hidden!important;}
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;width:100%;height:100vh;background:#04080F;flex-direction:column;padding:72px 24px 28px;z-index:8002;overflow-y:auto;-webkit-overflow-scrolling:touch;box-sizing:border-box;}
+.mob-menu.open{display:flex;}
+.mob-menu>a{font-family:'Manrope',sans-serif;font-size:clamp(18px,5vw,28px);font-weight:700;color:rgba(255,255,255,.55);padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);display:block;text-decoration:none;transition:color .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.mob-menu>a:hover,.mob-menu>a:active{color:#fff;}
+.mob-menu>a:last-child{border:none;margin-top:16px;background:#2563EB;color:#fff!important;font-size:16px!important;text-align:center;padding:14px!important;border-radius:50px;}
+.mob-close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:rgba(255,255,255,.5);font-size:22px;cursor:pointer;width:40px;height:40px;z-index:8003;}
+.mob-lang{display:flex;gap:8px;margin:18px 0;}
+.mls-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);border-radius:50px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;}
+.mls-btn.active{background:#2563EB;border-color:#2563EB;color:#fff;}
 @media(max-width:1000px){
   body{cursor:auto;}#cur,#cur-ring{display:none;}
   #nav,.hero,.cta-s,section,.nums-s,footer,.proc-head,.proc-row{padding-left:24px;padding-right:24px;}
