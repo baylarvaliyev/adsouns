@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<title>Get Your Free Ad Account Audit — AdsOnUs</title>
+<title id="pageTitle">Get Your Free Ad Account Audit — AdsOnUs</title>
 <meta name="description" content="Request your free Meta or Google Ads account audit. Tell us about your business and a strategist will respond within 24 hours."/>
 <link rel="canonical" href="https://adsonus.com/get-started.html"/>
 <meta property="og:image" content="https://adsonus.com/og-image.png"/>
@@ -33,7 +33,6 @@ body{min-height:100vh;}
 .gs-points li svg{flex-shrink:0;margin-top:2px;width:18px;height:18px;}
 .gs-quote{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:20px;font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.7;font-style:italic;}
 .gs-quote strong{display:block;font-style:normal;color:#fff;font-family:'Manrope',sans-serif;font-size:13px;margin-top:10px;}
-/* Form card */
 .gs-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;padding:36px;}
 .gs-card h2{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px;}
 .gs-card .sub{font-size:13px;color:var(--text);margin-bottom:28px;}
@@ -59,93 +58,101 @@ textarea{min-height:88px;resize:vertical;font-family:inherit;}
 .f-error{color:#F87171;font-size:12px;margin-top:5px;display:none;}
 .f-group.error input,.f-group.error select{border-color:#F87171;}
 .f-group.error .f-error{display:block;}
-@media(max-width:860px){.gs-wrap{grid-template-columns:1fr;gap:36px;}.gs-card{padding:26px;}.f-row{grid-template-columns:1fr;}}
+.lang-pick{display:flex;gap:6px;}
+.lang-pick button{background:rgba(255,255,255,.06);border:1px solid var(--border);color:rgba(255,255,255,.5);border-radius:50px;padding:5px 12px;font-size:11.5px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;}
+.lang-pick button.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+@media(max-width:860px){.gs-wrap{grid-template-columns:1fr;gap:36px;}.gs-card{padding:26px;}.f-row{grid-template-columns:1fr;}.trust-line{display:none;}}
 </style>
 </head>
 <body>
 <nav id="nav">
   <div class="nav-inner">
     <a class="logo" href="/"><svg style="width:28px;height:28px;flex-shrink:0;" viewBox="0 0 100 100"><path d="M50 8C27.9 8 10 25.9 10 48c0 22.1 17.9 40 40 40 7.8 0 15.1-2.2 21.2-6.1V88h14V48C85.2 25.9 72.1 8 50 8zM71 62.4C67.2 69.4 59.2 74 50 74c-14.4 0-26-11.6-26-26s11.6-26 26-26 26 11.6 26 26v.2L71 62.4z" fill="#2563EB"/><circle cx="50" cy="48" r="12" fill="#060A12"/></svg><span class="logo-t"><em>Ads</em>OnUs</span></a>
-    <span class="trust-line">🔒 Your information is never shared</span>
+    <div class="lang-pick" id="langPick">
+      <button data-l="az">AZ</button>
+      <button data-l="en">EN</button>
+      <button data-l="ru">RU</button>
+      <button data-l="tr">TR</button>
+    </div>
   </div>
 </nav>
 
 <div class="gs-wrap">
   <div class="gs-left">
-    <span class="eyebrow">Free Account Audit</span>
-    <h1>Get a real look at what's holding your ads back.</h1>
-    <p>Tell us about your business below. A strategist reviews your current setup (or your goals, if you're starting fresh) and replies within 24 hours with specific next steps — no generic sales pitch.</p>
+    <span class="eyebrow" id="t-eyebrow">Free Account Audit</span>
+    <h1 id="t-h1">Get a real look at what's holding your ads back.</h1>
+    <p id="t-p1">Tell us about your business below. A strategist reviews your current setup and replies within 24 hours with specific next steps.</p>
     <ul class="gs-points">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>No commitment — this is a free audit, not a sales call in disguise</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Response within 24 hours, usually same-day</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>Certified Meta &amp; Google Partner agency</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>150+ businesses served across the US, Europe &amp; globally</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><span id="t-pt1">No commitment — this is a free audit, not a sales call in disguise</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><span id="t-pt2">Response within 24 hours, usually same-day</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><span id="t-pt3">Certified Meta &amp; Google Partner agency</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><span id="t-pt4">150+ businesses served across the US, Europe &amp; globally</span></li>
     </ul>
-    <div class="gs-quote">
+    <div class="gs-quote" id="t-quote">
       "They found tracking issues our previous agency missed for over a year. Our cost per qualified lead is down 38%."
-      <strong>— James M., Operations Director, California Logistics Company</strong>
+      <strong>— James M., Operations Director, Logistics Company, USA</strong>
     </div>
   </div>
 
   <div class="gs-card">
-    <h2>Request your free audit</h2>
-    <p class="sub">Takes about 60 seconds.</p>
+    <h2 id="t-cardh2">Request your free audit</h2>
+    <p class="sub" id="t-cardsub">Takes about 60 seconds.</p>
     <form id="leadForm" novalidate>
       <div class="f-row">
         <div class="f-group">
-          <label for="fname">First name *</label>
-          <input type="text" id="fname" name="fname" placeholder="Jane" required/>
-          <span class="f-error">Please enter your first name</span>
+          <label for="fname" id="t-lfname">First name *</label>
+          <input type="text" id="fname" name="fname" placeholder="Jane"/>
+          <span class="f-error" id="t-efname">Please enter your first name</span>
         </div>
         <div class="f-group">
-          <label for="lname">Last name</label>
+          <label for="lname" id="t-llname">Last name</label>
           <input type="text" id="lname" name="lname" placeholder="Smith"/>
         </div>
       </div>
       <div class="f-group">
-        <label for="email">Work email *</label>
-        <input type="email" id="email" name="email" placeholder="jane@company.com" required/>
-        <span class="f-error">Please enter a valid email</span>
+        <label for="email" id="t-lemail">Work email *</label>
+        <input type="email" id="email" name="email" placeholder="jane@company.com"/>
+        <span class="f-error" id="t-eemail">Please enter a valid email</span>
       </div>
       <div class="f-row">
         <div class="f-group">
-          <label for="company">Company name</label>
+          <label for="company" id="t-lcompany">Company name</label>
           <input type="text" id="company" name="company" placeholder="Acme Inc."/>
         </div>
         <div class="f-group">
-          <label for="phone">Phone / WhatsApp</label>
-          <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567"/>
+          <label for="phone" id="t-lphone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+994 XX XXX XX XX"/>
         </div>
       </div>
       <div class="f-group">
-        <label>What do you need help with? *</label>
+        <label id="t-lneeds">What do you need help with? *</label>
         <div class="pill-group" id="needPills">
-          <div class="pill" data-val="meta">Meta Ads</div>
-          <div class="pill" data-val="google">Google Ads</div>
-          <div class="pill" data-val="tiktok">TikTok Ads</div>
-          <div class="pill" data-val="linkedin">LinkedIn Ads</div>
-          <div class="pill" data-val="smm">Social Media Mgmt</div>
-          <div class="pill" data-val="notsure">Not sure yet</div>
+          <div class="pill" data-val="meta" id="t-pill-meta">Meta Ads</div>
+          <div class="pill" data-val="google" id="t-pill-google">Google Ads</div>
+          <div class="pill" data-val="tiktok" id="t-pill-tiktok">TikTok Ads</div>
+          <div class="pill" data-val="linkedin" id="t-pill-linkedin">LinkedIn Ads</div>
+          <div class="pill" data-val="smm" id="t-pill-smm">Social Media Mgmt</div>
+          <div class="pill" data-val="notsure" id="t-pill-notsure">Not sure yet</div>
         </div>
-        <span class="f-error" id="needError">Please select at least one option</span>
+        <span class="f-error" id="t-eneeds">Please select at least one option</span>
       </div>
       <div class="f-group">
-        <label for="budget">Approximate monthly ad budget</label>
+        <label for="budget" id="t-lbudget">Approximate monthly ad budget</label>
         <select id="budget" name="budget">
-          <option value="">Select a range</option>
-          <option value="<1500">Under $1,500/mo</option>
-          <option value="1500-2500">$1,500 – $2,500/mo</option>
-          <option value="2500-4000">$2,500 – $4,000/mo</option>
-          <option value="4000+">$4,000+/mo</option>
-          <option value="none-yet">Not running ads yet</option>
+          <option value="" id="t-bsel">Select a range</option>
+          <option value="<1500" id="t-b1">Under $1,500/mo</option>
+          <option value="1500-2500" id="t-b2">$1,500 – $2,500/mo</option>
+          <option value="2500-4000" id="t-b3">$2,500 – $4,000/mo</option>
+          <option value="4000+" id="t-b4">$4,000+/mo</option>
+          <option value="none-yet" id="t-b5">Not running ads yet</option>
         </select>
       </div>
       <div class="f-group">
-        <label for="notes">Anything else we should know?</label>
-        <textarea id="notes" name="notes" placeholder="E.g. current challenges, goals, timeline..."></textarea>
+        <label for="notes" id="t-lnotes">Anything else we should know?</label>
+        <textarea id="notes" name="notes" placeholder="..."></textarea>
       </div>
       <button type="submit" class="f-submit" id="submitBtn">Request Free Audit →</button>
-      <p class="f-note">By submitting, you agree to be contacted about your request. We never sell your data. <a href="/pages/mexfilik.html" style="color:#5B8EFF;">Privacy Policy</a></p>
+      <p class="f-note" id="t-fnote">By submitting, you agree to be contacted about your request. We never sell your data. <a href="/pages/mexfilik.html" style="color:#5B8EFF;">Privacy Policy</a></p>
     </form>
   </div>
 </div>
@@ -153,87 +160,234 @@ textarea{min-height:88px;resize:vertical;font-family:inherit;}
 <script src="/js/shared.js"></script>
 <script>
 (function(){
-  var pills = document.querySelectorAll('#needPills .pill');
-  var selected = new Set();
-  pills.forEach(function(p){
-    p.addEventListener('click', function(){
-      var v = p.dataset.val;
-      if(selected.has(v)){ selected.delete(v); p.classList.remove('active'); }
-      else { selected.add(v); p.classList.add('active'); }
-      document.getElementById('needPills').closest('.f-group').classList.remove('error');
-    });
+
+/* ── Detect language: path prefix, URL param ?lang=, or html[lang] ── */
+var pathLang = window.location.pathname.match(/^\/(az|en|ru|tr)\//);
+var qLang = new URLSearchParams(window.location.search).get('lang');
+var stored = localStorage.getItem('adsonus_lang');
+var L = (pathLang && pathLang[1]) || qLang || stored || 'en';
+if(['az','en','ru','tr'].indexOf(L) === -1) L = 'en';
+
+var T = {
+  en: {
+    title: 'Get Your Free Ad Account Audit — AdsOnUs',
+    eyebrow:'Free Account Audit',
+    h1:"Get a real look at what's holding your ads back.",
+    p1:'Tell us about your business below. A strategist reviews your current setup and replies within 24 hours with specific next steps.',
+    pt1:'No commitment — this is a free audit, not a sales call in disguise',
+    pt2:'Response within 24 hours, usually same-day',
+    pt3:'Certified Meta & Google Partner agency',
+    pt4:'150+ businesses served across the US, Europe & globally',
+    cardh2:'Request your free audit', cardsub:'Takes about 60 seconds.',
+    lfname:'First name *', llname:'Last name', lemail:'Work email *',
+    lcompany:'Company name', lphone:'Phone number',
+    lneeds:'What do you need help with? *', lbudget:'Approximate monthly ad budget', lnotes:'Anything else we should know?',
+    efname:'Please enter your first name', eemail:'Please enter a valid email', eneeds:'Please select at least one option',
+    pills:{meta:'Meta Ads',google:'Google Ads',tiktok:'TikTok Ads',linkedin:'LinkedIn Ads',smm:'Social Media Mgmt',notsure:'Not sure yet'},
+    bsel:'Select a range', b1:'Under $1,500/mo', b2:'$1,500 – $2,500/mo', b3:'$2,500 – $4,000/mo', b4:'$4,000+/mo', b5:'Not running ads yet',
+    submit:'Request Free Audit →', sending:'Sending...',
+    fnotePre:'By submitting, you agree to be contacted about your request. We never sell your data.', privacyLabel:'Privacy Policy',
+    errAlert:'Something went wrong sending your request. Please try again in a moment.'
+  },
+  az: {
+    title: 'Pulsuz Reklam Hesabı Auditi — AdsOnUs',
+    eyebrow:'Pulsuz Hesab Auditi',
+    h1:'Reklamlarınızı məhdudlaşdıran nə olduğunu öyrənin.',
+    p1:'Biznesiniz haqqında aşağıdakı formu doldurun. Strategist hazırkı vəziyyətinizi nəzərdən keçirir və 24 saat ərzində konkret addımlarla cavab verir.',
+    pt1:'Heç bir öhdəlik yoxdur — bu pulsuz audit, gizli satış zəngi deyil',
+    pt2:'24 saat ərzində, adətən elə həmin gün cavab',
+    pt3:'Sertifikatlı Meta və Google Partner agentliyi',
+    pt4:'150+ biznes — Azərbaycan, ABŞ, Avropa və qlobal səviyyədə',
+    cardh2:'Pulsuz auditə müraciət edin', cardsub:'Təxminən 60 saniyə çəkir.',
+    lfname:'Ad *', llname:'Soyad', lemail:'E-poçt *',
+    lcompany:'Şirkət adı', lphone:'Telefon nömrəsi',
+    lneeds:'Hansı sahədə köməyə ehtiyacınız var? *', lbudget:'Təxmini aylıq reklam büdcəniz', lnotes:'Bilməyimizi istədiyiniz başqa nə var?',
+    efname:'Zəhmət olmasa adınızı daxil edin', eemail:'Zəhmət olmasa düzgün e-poçt daxil edin', eneeds:'Ən azı bir seçim edin',
+    pills:{meta:'Meta Reklam',google:'Google Ads',tiktok:'TikTok Ads',linkedin:'LinkedIn Ads',smm:'SMM',notsure:'Hələ bilmirəm'},
+    bsel:'Aralığı seçin', b1:'300 AZN-dən az / ay', b2:'300–600 AZN / ay', b3:'600–1000 AZN / ay', b4:'1000+ AZN / ay', b5:'Hələ reklam vermirəm',
+    submit:'Pulsuz Audit Tələb Et →', sending:'Göndərilir...',
+    fnotePre:'Göndərməklə, müraciətinizlə bağlı sizinlə əlaqə saxlanılmasına razılıq verirsiniz. Məlumatlarınızı heç vaxt satmırıq.', privacyLabel:'Məxfilik Siyasəti',
+    errAlert:'Müraciətiniz göndərilərkən xəta baş verdi. Zəhmət olmasa bir az sonra yenidən cəhd edin.'
+  },
+  ru: {
+    title: 'Бесплатный аудит рекламного аккаунта — AdsOnUs',
+    eyebrow:'Бесплатный аудит аккаунта',
+    h1:'Узнайте, что на самом деле тормозит вашу рекламу.',
+    p1:'Расскажите о своём бизнесе ниже. Стратег рассмотрит вашу текущую настройку и ответит в течение 24 часов с конкретными шагами.',
+    pt1:'Без обязательств — это бесплатный аудит, а не скрытый продажный звонок',
+    pt2:'Ответ в течение 24 часов, обычно в тот же день',
+    pt3:'Сертифицированное агентство — партнёр Meta и Google',
+    pt4:'150+ компаний по всему миру — США, Европа и далее',
+    cardh2:'Запросить бесплатный аудит', cardsub:'Займёт около 60 секунд.',
+    lfname:'Имя *', llname:'Фамилия', lemail:'Рабочий email *',
+    lcompany:'Название компании', lphone:'Номер телефона',
+    lneeds:'С чем вам нужна помощь? *', lbudget:'Примерный месячный рекламный бюджет', lnotes:'Что ещё нам стоит знать?',
+    efname:'Пожалуйста, введите имя', eemail:'Пожалуйста, введите корректный email', eneeds:'Выберите хотя бы один вариант',
+    pills:{meta:'Meta Ads',google:'Google Ads',tiktok:'TikTok Ads',linkedin:'LinkedIn Ads',smm:'SMM',notsure:'Пока не уверен'},
+    bsel:'Выберите диапазон', b1:'Менее $1,500/мес', b2:'$1,500 – $2,500/мес', b3:'$2,500 – $4,000/мес', b4:'$4,000+/мес', b5:'Пока не запускали рекламу',
+    submit:'Запросить аудит →', sending:'Отправка...',
+    fnotePre:'Отправляя форму, вы соглашаетесь на то, что с вами свяжутся по поводу вашего запроса. Мы никогда не продаём ваши данные.', privacyLabel:'Политика конфиденциальности',
+    errAlert:'Что-то пошло не так при отправке запроса. Пожалуйста, попробуйте ещё раз через момент.'
+  },
+  tr: {
+    title: 'Ücretsiz Reklam Hesabı Denetimi — AdsOnUs',
+    eyebrow:'Ücretsiz Hesap Denetimi',
+    h1:'Reklamlarınızı neyin engellediğini gerçekten öğrenin.',
+    p1:'İşletmeniz hakkında aşağıdaki formu doldurun. Bir strateji uzmanı mevcut durumunuzu inceler ve 24 saat içinde somut adımlarla yanıt verir.',
+    pt1:'Hiçbir taahhüt yok — bu ücretsiz bir denetim, gizli bir satış görüşmesi değil',
+    pt2:'24 saat içinde, genellikle aynı gün yanıt',
+    pt3:'Sertifikalı Meta ve Google İş Ortağı acentesi',
+    pt4:'150+ işletme — ABD, Avrupa ve dünya çapında',
+    cardh2:'Ücretsiz denetim talep edin', cardsub:'Yaklaşık 60 saniye sürer.',
+    lfname:'Ad *', llname:'Soyad', lemail:'İş e-postası *',
+    lcompany:'Şirket adı', lphone:'Telefon numarası',
+    lneeds:'Hangi konuda yardıma ihtiyacınız var? *', lbudget:'Tahmini aylık reklam bütçeniz', lnotes:'Bilmemiz gereken başka bir şey var mı?',
+    efname:'Lütfen adınızı girin', eemail:'Lütfen geçerli bir e-posta girin', eneeds:'Lütfen en az bir seçenek belirleyin',
+    pills:{meta:'Meta Reklamları',google:'Google Ads',tiktok:'TikTok Reklamları',linkedin:'LinkedIn Ads',smm:'SMM',notsure:'Henüz bilmiyorum'},
+    bsel:'Bir aralık seçin', b1:'Aylık 1.500$\'dan az', b2:'Aylık 1.500–2.500$', b3:'Aylık 2.500–4.000$', b4:'Aylık 4.000$+', b5:'Henüz reklam vermiyorum',
+    submit:'Ücretsiz Denetim Talep Et →', sending:'Gönderiliyor...',
+    fnotePre:"Gönderdiğinizde, talebinizle ilgili sizinle iletişime geçilmesini kabul edersiniz. Verilerinizi asla satmayız.", privacyLabel:'Gizlilik Politikası',
+    errAlert:'Talebiniz gönderilirken bir sorun oluştu. Lütfen birazdan tekrar deneyin.'
+  }
+};
+
+function applyLang(lang){
+  var t = T[lang] || T.en;
+  document.getElementById('htmlRoot').lang = lang;
+  document.getElementById('pageTitle').textContent = t.title;
+  document.getElementById('t-eyebrow').textContent = t.eyebrow;
+  document.getElementById('t-h1').textContent = t.h1;
+  document.getElementById('t-p1').textContent = t.p1;
+  document.getElementById('t-pt1').textContent = t.pt1;
+  document.getElementById('t-pt2').textContent = t.pt2;
+  document.getElementById('t-pt3').textContent = t.pt3;
+  document.getElementById('t-pt4').textContent = t.pt4;
+  document.getElementById('t-cardh2').textContent = t.cardh2;
+  document.getElementById('t-cardsub').textContent = t.cardsub;
+  document.getElementById('t-lfname').textContent = t.lfname;
+  document.getElementById('t-llname').textContent = t.llname;
+  document.getElementById('t-lemail').textContent = t.lemail;
+  document.getElementById('t-lcompany').textContent = t.lcompany;
+  document.getElementById('t-lphone').textContent = t.lphone;
+  document.getElementById('t-lneeds').textContent = t.lneeds;
+  document.getElementById('t-lbudget').textContent = t.lbudget;
+  document.getElementById('t-lnotes').textContent = t.lnotes;
+  document.getElementById('t-efname').textContent = t.efname;
+  document.getElementById('t-eemail').textContent = t.eemail;
+  document.getElementById('t-eneeds').textContent = t.eneeds;
+  Object.keys(t.pills).forEach(function(k){
+    var el = document.getElementById('t-pill-'+k);
+    if(el) el.textContent = t.pills[k];
+  });
+  document.getElementById('t-bsel').textContent = t.bsel;
+  document.getElementById('t-b1').textContent = t.b1;
+  document.getElementById('t-b2').textContent = t.b2;
+  document.getElementById('t-b3').textContent = t.b3;
+  document.getElementById('t-b4').textContent = t.b4;
+  document.getElementById('t-b5').textContent = t.b5;
+  document.getElementById('submitBtn').textContent = t.submit;
+  document.getElementById('t-fnote').innerHTML = t.fnotePre + ' <a href="/pages/mexfilik.html" style="color:#5B8EFF;">' + t.privacyLabel + '</a>';
+
+  document.querySelectorAll('#langPick button').forEach(function(b){
+    b.classList.toggle('active', b.dataset.l === lang);
   });
 
-  var form = document.getElementById('leadForm');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var valid = true;
+  window._currentLang = lang;
+  window._t = t;
+}
 
-    var fname = document.getElementById('fname');
-    if(!fname.value.trim()){
-      fname.closest('.f-group').classList.add('error'); valid = false;
-    } else { fname.closest('.f-group').classList.remove('error'); }
+applyLang(L);
 
-    var email = document.getElementById('email');
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-    if(!emailOk){
-      email.closest('.f-group').classList.add('error'); valid = false;
-    } else { email.closest('.f-group').classList.remove('error'); }
-
-    if(selected.size === 0){
-      document.getElementById('needPills').closest('.f-group').classList.add('error'); valid = false;
-    }
-
-    if(!valid) return;
-
-    var btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    var data = {
-      fname: fname.value.trim(),
-      lname: document.getElementById('lname').value.trim(),
-      email: email.value.trim(),
-      company: document.getElementById('company').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      needs: Array.from(selected).join(', '),
-      budget: document.getElementById('budget').value,
-      notes: document.getElementById('notes').value.trim()
-    };
-
-    /* Send to Web3Forms -> emails baylarv@gmail.com directly, reply-to set to lead's email */
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        access_key: 'ef4328e5-9f87-4b48-b570-ade6af479224',
-        subject: 'New Lead: ' + data.fname + ' ' + data.lname + (data.company ? ' (' + data.company + ')' : ''),
-        from_name: 'AdsOnUs Website',
-        email: data.email,
-        replyto: data.email,
-        'First Name': data.fname,
-        'Last Name': data.lname,
-        'Email': data.email,
-        'Company': data.company || 'Not provided',
-        'Phone / WhatsApp': data.phone || 'Not provided',
-        'Services Needed': data.needs,
-        'Monthly Budget': data.budget || 'Not specified',
-        'Notes': data.notes || 'None',
-        'Source Page': window.location.href
-      })
-    })
-    .then(function(res){ return res.json(); })
-    .then(function(){
-      sessionStorage.setItem('adsonus_thankyou_name', data.fname);
-      window.location.href = '/thank-you.html?n=' + encodeURIComponent(data.fname);
-    })
-    .catch(function(){
-      /* Network failure fallback - still let them through, don't lose the lead experience */
-      btn.disabled = false;
-      btn.textContent = 'Request Free Audit →';
-      alert('Something went wrong sending your request. Please try again, or message us directly on WhatsApp.');
-    });
+document.querySelectorAll('#langPick button').forEach(function(b){
+  b.addEventListener('click', function(){
+    applyLang(b.dataset.l);
   });
+});
+
+/* ── Pills ── */
+var pills = document.querySelectorAll('#needPills .pill');
+var selected = new Set();
+pills.forEach(function(p){
+  p.addEventListener('click', function(){
+    var v = p.dataset.val;
+    if(selected.has(v)){ selected.delete(v); p.classList.remove('active'); }
+    else { selected.add(v); p.classList.add('active'); }
+    document.getElementById('needPills').closest('.f-group').classList.remove('error');
+  });
+});
+
+/* ── Submit ── */
+var form = document.getElementById('leadForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var t = window._t || T.en;
+  var valid = true;
+
+  var fname = document.getElementById('fname');
+  if(!fname.value.trim()){ fname.closest('.f-group').classList.add('error'); valid = false; }
+  else { fname.closest('.f-group').classList.remove('error'); }
+
+  var email = document.getElementById('email');
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+  if(!emailOk){ email.closest('.f-group').classList.add('error'); valid = false; }
+  else { email.closest('.f-group').classList.remove('error'); }
+
+  if(selected.size === 0){
+    document.getElementById('needPills').closest('.f-group').classList.add('error'); valid = false;
+  }
+
+  if(!valid) return;
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = t.sending;
+
+  var data = {
+    fname: fname.value.trim(),
+    lname: document.getElementById('lname').value.trim(),
+    email: email.value.trim(),
+    company: document.getElementById('company').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    needs: Array.from(selected).join(', '),
+    budget: document.getElementById('budget').value,
+    notes: document.getElementById('notes').value.trim(),
+    lang: window._currentLang || 'en'
+  };
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      access_key: 'ef4328e5-9f87-4b48-b570-ade6af479224',
+      subject: 'New Lead (' + data.lang.toUpperCase() + '): ' + data.fname + ' ' + data.lname + (data.company ? ' (' + data.company + ')' : ''),
+      from_name: 'AdsOnUs Website',
+      email: data.email,
+      replyto: data.email,
+      'First Name': data.fname,
+      'Last Name': data.lname,
+      'Email': data.email,
+      'Company': data.company || 'Not provided',
+      'Phone': data.phone || 'Not provided',
+      'Services Needed': data.needs,
+      'Monthly Budget': data.budget || 'Not specified',
+      'Notes': data.notes || 'None',
+      'Language': data.lang,
+      'Source Page': document.referrer || window.location.href
+    })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(){
+    sessionStorage.setItem('adsonus_thankyou_name', data.fname);
+    sessionStorage.setItem('adsonus_thankyou_lang', data.lang);
+    window.location.href = '/thank-you.html?n=' + encodeURIComponent(data.fname) + '&lang=' + data.lang;
+  })
+  .catch(function(){
+    btn.disabled = false;
+    btn.textContent = t.submit;
+    alert(t.errAlert);
+  });
+});
+
 })();
 </script>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
@@ -55,41 +55,79 @@ footer a{color:var(--blue-l);}
       <svg viewBox="0 0 24 24" fill="none" stroke="#5B8EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
     </div>
     <h1 id="tyHeadline">Thanks — your request is in.</h1>
-    <p>A strategist will review your information and reach out within 24 hours, usually sooner.</p>
+    <p id="t-sub">A strategist will review your information and reach out within 24 hours, usually sooner.</p>
 
     <div class="ty-steps">
-      <h3>What happens next</h3>
+      <h3 id="t-stepsh">What happens next</h3>
       <div class="ty-step">
         <div class="ty-step-num">1</div>
-        <div class="ty-step-text"><strong>We review what you shared</strong> — your goals, current setup, and budget range, so the first conversation is useful instead of generic.</div>
+        <div class="ty-step-text" id="t-step1"><strong>We review what you shared</strong> — your goals, current setup, and budget range, so the first conversation is useful instead of generic.</div>
       </div>
       <div class="ty-step">
         <div class="ty-step-num">2</div>
-        <div class="ty-step-text"><strong>You'll hear from us within 24 hours</strong> — by email or WhatsApp, whichever you used to reach us.</div>
+        <div class="ty-step-text" id="t-step2"><strong>You'll hear from us within 24 hours</strong> — by email, whichever you used to reach us.</div>
       </div>
       <div class="ty-step">
         <div class="ty-step-num">3</div>
-        <div class="ty-step-text"><strong>We map out next steps together</strong> — if it's a good fit, we'll outline what the free 2-week trial would look like for your business specifically.</div>
+        <div class="ty-step-text" id="t-step3"><strong>We map out next steps together</strong> — if it's a good fit, we'll outline what the free 2-week trial would look like for your business specifically.</div>
       </div>
     </div>
 
-    <p style="font-size:13.5px;">Want a faster answer? Message us directly on WhatsApp.</p>
     <div class="ty-actions">
-      <a href="/get-started.html" class="btn-p">Talk to Our Team →</a>
-      <a href="/case-studies.html" class="btn-o">See Client Results</a>
+      <a href="/case-studies.html" class="btn-p" id="t-cta1">See Client Results →</a>
+      <a href="/" class="btn-o" id="t-cta2">Back to Home</a>
     </div>
   </div>
 </main>
 
-<footer><p>© 2025 AdsOnUs. <a href="/">Back to home</a></p></footer>
+<footer><p id="t-footer">© 2025 AdsOnUs. <a href="/">Back to home</a></p></footer>
 
 <script>
 (function(){
+  var T = {
+    en:{ greet:'Thanks', sub:'A strategist will review your information and reach out within 24 hours, usually sooner.',
+      stepsh:'What happens next',
+      step1:"<strong>We review what you shared</strong> — your goals, current setup, and budget range, so the first conversation is useful instead of generic.",
+      step2:"<strong>You'll hear from us within 24 hours</strong> — by email, whichever you used to reach us.",
+      step3:"<strong>We map out next steps together</strong> — if it's a good fit, we'll outline what the free 2-week trial would look like for your business specifically.",
+      cta1:'See Client Results →', cta2:'Back to Home', footerPre:'© 2025 AdsOnUs.', footerLink:'Back to home' },
+    az:{ greet:'Təşəkkürlər', sub:'Strategist məlumatlarınızı nəzərdən keçirəcək və 24 saat ərzində, adətən daha tez sizinlə əlaqə saxlayacaq.',
+      stepsh:'Növbəti addımlar',
+      step1:'<strong>Paylaşdıqlarınızı nəzərdən keçiririk</strong> — məqsədləriniz, hazırkı vəziyyət və büdcə aralığı, ilk söhbətin faydalı olması üçün.',
+      step2:'<strong>24 saat ərzində sizinlə əlaqə saxlayacağıq</strong> — e-poçt vasitəsilə.',
+      step3:'<strong>Növbəti addımları birlikdə planlaşdırırıq</strong> — uyğun olarsa, 2 həftəlik pulsuz sınağın sizin biznesiniz üçün necə görünəcəyini izah edirik.',
+      cta1:'Müştəri Nəticələrinə Baxın →', cta2:'Ana Səhifəyə Qayıt', footerPre:'© 2025 AdsOnUs.', footerLink:'Ana səhifəyə qayıt' },
+    ru:{ greet:'Спасибо', sub:'Стратег рассмотрит вашу информацию и свяжется с вами в течение 24 часов, обычно раньше.',
+      stepsh:'Что будет дальше',
+      step1:'<strong>Мы изучаем то, что вы рассказали</strong> — ваши цели, текущую настройку и диапазон бюджета, чтобы первый разговор был полезным, а не общим.',
+      step2:'<strong>Вы услышите от нас в течение 24 часов</strong> — по email.',
+      step3:'<strong>Мы вместе намечаем следующие шаги</strong> — если всё подходит, расскажем, как будет выглядеть бесплатный 2-недельный тест именно для вашего бизнеса.',
+      cta1:'Посмотреть результаты клиентов →', cta2:'На главную', footerPre:'© 2025 AdsOnUs.', footerLink:'На главную' },
+    tr:{ greet:'Teşekkürler', sub:'Bir strateji uzmanı bilgilerinizi inceleyecek ve genellikle daha kısa sürede, en geç 24 saat içinde sizinle iletişime geçecek.',
+      stepsh:'Sıradaki adımlar',
+      step1:'<strong>Paylaştıklarınızı inceliyoruz</strong> — hedeflerinizi, mevcut durumunuzu ve bütçe aralığınızı, ilk görüşmenin genel değil faydalı olması için.',
+      step2:"<strong>24 saat içinde sizinle iletişime geçeceğiz</strong> — e-posta yoluyla.",
+      step3:'<strong>Sonraki adımları birlikte planlıyoruz</strong> — uygunsa, 2 haftalık ücretsiz denemenin işletmeniz için nasıl görüneceğini anlatacağız.',
+      cta1:'Müşteri Sonuçlarını Gör →', cta2:'Ana Sayfaya Dön', footerPre:'© 2025 AdsOnUs.', footerLink:'Ana sayfaya dön' }
+  };
+
   var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') || sessionStorage.getItem('adsonus_thankyou_lang') || 'en';
+  if(['az','en','ru','tr'].indexOf(lang) === -1) lang = 'en';
+  var t = T[lang];
+
+  document.getElementById('htmlRoot').lang = lang;
+  document.getElementById('t-sub').textContent = t.sub;
+  document.getElementById('t-stepsh').textContent = t.stepsh;
+  document.getElementById('t-step1').innerHTML = t.step1;
+  document.getElementById('t-step2').innerHTML = t.step2;
+  document.getElementById('t-step3').innerHTML = t.step3;
+  document.getElementById('t-cta1').textContent = t.cta1;
+  document.getElementById('t-cta2').textContent = t.cta2;
+  document.getElementById('t-footer').innerHTML = t.footerPre + ' <a href="/">' + t.footerLink + '</a>';
+
   var name = params.get('n') || sessionStorage.getItem('adsonus_thankyou_name');
-  if(name){
-    document.getElementById('tyHeadline').textContent = 'Thanks, ' + name + ' — your request is in.';
-  }
+  document.getElementById('tyHeadline').textContent = name ? (t.greet + ', ' + name + '!') : (t.greet + '!');
 })();
 </script>
 </body>
