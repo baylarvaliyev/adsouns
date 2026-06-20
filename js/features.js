@@ -6,16 +6,6 @@ var lp = window.location.pathname.match(/^\/(az|en|ru|tr)\//);
 var hl = (document.documentElement.lang||'').slice(0,2).toLowerCase();
 var L  = lp ? lp[1] : (['az','en','ru','tr'].indexOf(hl)>-1 ? hl : 'az');
 
-/* ── WhatsApp base URL with language-matched pre-fill ── */
-var WA_NUM = 'https://wa.me/994773698929';
-var WA_TEXTS = {
-  az: 'Salam! AdsOnUs saytından yazıram. Pulsuz sınaq barədə məlumat almaq istəyirdim.',
-  en: 'Hi! I found AdsOnUs online and I\'m interested in a free trial. Can you tell me more?',
-  ru: 'Здравствуйте! Нашёл AdsOnUs в интернете. Хотел бы узнать о бесплатном тесте.',
-  tr: 'Merhaba! AdsOnUs\'u çevrimiçi buldum. Ücretsiz deneme hakkında bilgi almak istiyorum.'
-};
-var WA_BASE = WA_NUM + '?text=' + encodeURIComponent(WA_TEXTS[L] || WA_TEXTS.az);
-
 
 /* ══ 1. BURGER BUTTON — iOS touch fix ══ */
 document.addEventListener('DOMContentLoaded', function(){
@@ -218,14 +208,6 @@ window.addEventListener('scroll', function(){
 }, { passive:true });
 
 
-/* ══ 6. UPDATE ALL WA LINKS WITH LANGUAGE-MATCHED PRE-FILL ══ */
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a[href*="wa.me/994773698929"]').forEach(function(a){
-    /* Don't override if it already has a custom text param */
-    if(a.href.indexOf('?text=') === -1){
-      a.href = WA_BASE;
-    }
-  });
-});
+/* WhatsApp link auto-rewriting removed — all CTAs now route to /get-started.html lead form */
 
 })();
