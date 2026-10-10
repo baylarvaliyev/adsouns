@@ -1,4 +1,22 @@
 # Old language versions and removed pages (site rebuilt in English, October 2026)
+# Extension-less and folder-root variants (the host strips .html before matching)
+/az                      /                      301
+/az/                     /                      301
+/ru                      /                      301
+/ru/                     /                      301
+/tr                      /                      301
+/tr/                     /                      301
+/en                      /                      301
+/en/                     /                      301
+/en/about                /about                 301
+/en/services             /finance-operations    301
+/en/pricing              /quote                 301
+/en/calculator           /quote                 301
+/pages/elaqe             /quote                 301
+/pages/haqqimizda        /about                 301
+/blog                    /marketing             301
+/blog/                   /marketing             301
+/admin                   /                      301
 /az/*                    /                      301
 /ru/*                    /                      301
 /tr/*                    /                      301

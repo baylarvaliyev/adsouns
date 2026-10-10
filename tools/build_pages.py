@@ -259,7 +259,7 @@ pages.append(page('security', 'Security and data protection — adsonus',
 <ul><li>We contact business customers only, never consumers.</li>
 <li>We write as part of your team, in a tone you approve. We never threaten legal action; legal steps are your decision.</li></ul>
 </div>
-<aside class="side-box"><p class="label">Questions about security</p><h3>Ask before you start</h3><p>If your business has its own security questionnaire or contract terms, send them with your quote request and we will answer them before the trial.</p><p><strong>info@adsonus.com</strong></p><a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a></aside>
+<aside class="side-box"><p class="label">Questions about security</p><h3>Ask before you start</h3><p>If your business has its own security questionnaire or contract terms, send them with your quote request and we will answer them before the trial.</p><p><strong>baylar@adsonus.com</strong></p><a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a></aside>
 </div></section>'''))
 
 # ---------- About ----------
@@ -297,7 +297,7 @@ pages.append(page('about', 'About adsonus',
 <div class="prose"><p class="label">Where we work from</p><h2>Baku, on your business hours</h2>
 <p>adsonus works from Baku, Azerbaijan, and keeps UK and European business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
 <div class="prose"><p class="label">Contact</p><h2>Talk to us</h2>
-<ul><li>Email: <strong>info@adsonus.com</strong></li><li>Phone: <strong>+994 77 369 89 29</strong></li><li>Location: Baku, Azerbaijan</li></ul></div>
+<ul><li>Email: <strong>baylar@adsonus.com</strong></li><li>Phone: <strong>+994 77 369 89 29</strong></li><li>Location: Baku, Azerbaijan</li></ul></div>
 </div></section>
 ''' + cta()))
 
@@ -331,7 +331,7 @@ pages.append(page('quote', 'Get a quote — adsonus',
 </form>
 <aside class="side-box"><p class="label">What happens next</p><h3>From request to quote</h3>
 <ol class="prose" style="padding-left:1.2em;margin:0"><li>We reply within one working day.</li><li>A 20-minute call to understand your situation.</li><li>A free 2-week trial on real work.</li><li>A fixed monthly quote in writing.</li></ol>
-<p>We take on a limited number of new clients each month, so every account gets proper attention.</p><p>Prefer email? Write to <strong>info@adsonus.com</strong>.</p></aside>
+<p>We take on a limited number of new clients each month, so every account gets proper attention.</p><p>Prefer email? Write to <strong>baylar@adsonus.com</strong>.</p></aside>
 </div></section>
 <script>
 (function(){
@@ -352,14 +352,14 @@ pages.append(page('quote', 'Get a quote — adsonus',
       'Source page':location.href})})
     .then(function(r){return r.json();})
     .then(function(j){ if(j&&j.success){ if(window.dataLayer)dataLayer.push({event:'quote_request'}); location.href='/thank-you'; } else { throw new Error(); } })
-    .catch(function(){ err.textContent='Your request could not be sent. Please email info@adsonus.com instead.'; err.hidden=false; btn.disabled=false; btn.textContent='Send request →'; });
+    .catch(function(){ err.textContent='Your request could not be sent. Please email baylar@adsonus.com instead.'; err.hidden=false; btn.disabled=false; btn.textContent='Send request →'; });
   });
 })();
 </script>'''))
 
 # ---------- Thank you ----------
 pages.append(page('thank-you', 'Thank you — adsonus', 'Your request has been received.',
- hero('Request received', 'Thank you. We will reply within one working day.', 'Your request has reached us. If anything is urgent, email info@adsonus.com or call +994 77 369 89 29.') + '''
+ hero('Request received', 'Thank you. We will reply within one working day.', 'Your request has reached us. If anything is urgent, email baylar@adsonus.com or call +994 77 369 89 29.') + '''
 <section class="section"><div class="wrap"><div class="btn-row"><a class="btn btn-secondary" href="/">Back to the homepage</a><a class="btn btn-secondary" href="/how-we-work">How the trial works</a></div></div></section>''', noindex=True))
 
 # ---------- 404 ----------
@@ -376,7 +376,7 @@ LEGAL_DATE = '10 October 2026'
 pages.append(page('privacy', 'Privacy notice — adsonus', 'How adsonus collects and uses personal data on this website.',
  hero('Legal', 'Privacy notice', f'Last updated {LEGAL_DATE}.') + '''
 <section class="section"><div class="wrap"><div class="prose">
-<h2>Who we are</h2><p>adsonus is a finance operations and marketing services business based in Baku, Azerbaijan. For questions about this notice or your data, contact info@adsonus.com.</p>
+<h2>Who we are</h2><p>adsonus is a finance operations and marketing services business based in Baku, Azerbaijan. For questions about this notice or your data, contact baylar@adsonus.com.</p>
 <h2>What we collect on this website</h2><ul>
 <li><strong>Quote requests:</strong> the details you enter in our form (name, work email, company, country, website, phone and your message). The form is delivered to us by Web3Forms, which processes the submission on our behalf.</li>
 <li><strong>Usage data:</strong> we use Google Tag Manager and Google Analytics to understand how the website is used, such as pages visited and the device type. These tools may set cookies.</li></ul>
@@ -386,7 +386,7 @@ pages.append(page('privacy', 'Privacy notice — adsonus', 'How adsonus collects
 <h2>How long we keep it</h2><p>Quote requests that do not lead to work are deleted within 24 months. Data about clients is kept for the length of the engagement and as required by law and our contract with you.</p>
 <h2>Sharing and transfers</h2><p>We do not sell personal data. We share it only with service providers that help us run the business, such as email, form and analytics providers. Some of them are located outside the UK and European Union; where required, transfers are covered by appropriate safeguards such as standard contractual clauses.</p>
 <h2>Client data</h2><p>When we work for a client, we handle their customers' and suppliers' data as a processor under a separate data processing agreement. That agreement, not this notice, governs that data.</p>
-<h2>Your rights</h2><p>Depending on where you live, you may have the right to access, correct or delete your data, to object to or restrict its use, and to complain to your data protection authority. To exercise these rights, email info@adsonus.com.</p>
+<h2>Your rights</h2><p>Depending on where you live, you may have the right to access, correct or delete your data, to object to or restrict its use, and to complain to your data protection authority. To exercise these rights, email baylar@adsonus.com.</p>
 <h2>Changes</h2><p>We will update this notice when our practices change and show the date of the latest version at the top.</p>
 </div></div></section>'''))
 
@@ -400,7 +400,7 @@ pages.append(page('terms', 'Website terms — adsonus', 'Terms of use for the ad
 <h2>Intellectual property</h2><p>The adsonus name, logo and website content belong to adsonus. You may not copy them for commercial use without permission.</p>
 <h2>Links</h2><p>We are not responsible for the content of other websites linked from this one.</p>
 <h2>Liability</h2><p>We take care to keep this website accurate but do not guarantee that it is complete or always available. To the extent permitted by law, we are not liable for losses arising from use of the website.</p>
-<h2>Contact</h2><p>adsonus, Baku, Azerbaijan · info@adsonus.com</p>
+<h2>Contact</h2><p>adsonus, Baku, Azerbaijan · baylar@adsonus.com</p>
 </div></div></section>'''))
 
 print('built', pages)
