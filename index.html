@@ -20,14 +20,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image" content="https://adsonus.com/og-image.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="theme-color" content="#FFFFFF"/>
+<link rel="icon" type="image/svg+xml" href="/img/logo-mark.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"adsonus","url":"https://adsonus.com","description":"Accounts receivable, accounts payable and paid advertising services for small and medium businesses.","email":"info@adsonus.com","telephone":"+994773698929","address":{"@type":"PostalAddress","addressLocality":"Baku","addressCountry":"AZ"},"areaServed":"Worldwide"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"adsonus","url":"https://adsonus.com","logo":"https://adsonus.com/img/logo-mark.svg","description":"Accounts receivable, accounts payable and paid advertising services for small and medium businesses.","email":"info@adsonus.com","telephone":"+994773698929","address":{"@type":"PostalAddress","addressLocality":"Baku","addressCountry":"AZ"},"areaServed":"Worldwide"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/site-v1.css"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/site-v2.css"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <header class="site-header">
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="adsonus home">adsonus<span>.</span></a>
+    <a class="logo" href="/" aria-label="adsonus home"><img src="/img/logo-mark.svg" alt="" width="30" height="30"/><span>adsonus</span></a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="/finance-operations">Finance operations</a>
@@ -50,157 +50,162 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <main id="main">
 
-<section class="first">
-  <div class="wrap hero">
+<section class="hero">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">For small and medium businesses</p>
+      <p class="label">Finance operations · Marketing</p>
       <h1>Win customers. Get paid for the work.</h1>
-      <p class="lead">adsonus runs your accounts receivable, accounts payable and paid advertising as an extension of your team. You approve what goes out, the money stays in your accounts, and every week you get a report you can read in two minutes.</p>
+      <p class="lead">adsonus runs accounts receivable, accounts payable and paid advertising for small and medium businesses. We work inside your tools, under your name, and you approve everything that goes out.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="/quote">Get a quote</a>
-        <a class="btn btn-ghost" href="/how-we-work">See how it works</a>
+        <a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-secondary" href="/how-we-work">How it works</a>
       </div>
-      <p class="hero-note">Every service starts with a free 2-week trial. No lock-in after that.</p>
+      <ul class="hero-points">
+        <li>Free 2-week trial on every service</li>
+        <li>Your money never passes through us</li>
+        <li>One clear report every week</li>
+      </ul>
     </div>
 
-    <div class="exhibits" aria-label="Sample weekly reports">
-      <figure class="report" style="margin:0">
-        <div class="report-head"><strong>Receivables — week 41</strong><span>Sample report</span></div>
-        <div class="report-body">
-          <table>
-            <thead><tr><th>Customer</th><th class="r">Days late</th><th class="r">Amount</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>Northfield Joinery</td><td class="r num">34</td><td class="r num">£6,400</td><td><span class="pill pill-good">Paid</span></td></tr>
-              <tr><td>Harbour Studio</td><td class="r num">21</td><td class="r num">£3,950</td><td><span class="pill pill-neutral">Promised Fri</span></td></tr>
-              <tr><td>Kellet &amp; Moss</td><td class="r num">58</td><td class="r num">£8,120</td><td><span class="pill pill-warn">Disputed</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figcaption class="sample-tag">Example data. Your report shows your own customers.</figcaption>
-      </figure>
-      <figure class="report" style="margin:0">
-        <div class="report-head"><strong>Paid advertising — September</strong><span>Sample report</span></div>
-        <div class="report-body">
-          <table>
-            <thead><tr><th>Channel</th><th class="r">Spend</th><th class="r">Leads</th><th class="r">Cost / lead</th></tr></thead>
-            <tbody>
-              <tr><td>Google Search</td><td class="r num">$2,100</td><td class="r num">48</td><td class="r num">$43.75</td></tr>
-              <tr><td>LinkedIn</td><td class="r num">$1,200</td><td class="r num">19</td><td class="r num">$63.16</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figcaption class="sample-tag">Example data. Your report shows your own campaigns.</figcaption>
-      </figure>
-    </div>
+    <figure class="panel" style="margin:0" aria-label="Sample weekly report">
+      <div class="panel-top">
+        <div class="t"><img src="/img/logo-mark.svg" alt=""/>Weekly report · Week 41</div>
+        <span class="tag">Sample data</span>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><span class="k">Collected</span><span class="v">£12,640</span><span class="d">7 invoices paid</span></div>
+        <div class="kpi"><span class="k">Overdue now</span><span class="v">£21,380</span><span class="d">down from £33,900</span></div>
+        <div class="kpi"><span class="k">Ad leads</span><span class="v">17</span><span class="d">£38 per lead</span></div>
+      </div>
+      <div class="chart">
+        <div class="chart-cap"><span>Cash collected per week</span><span>last 6 weeks</span></div>
+        <svg viewBox="0 0 480 120" role="img" aria-label="Cash collected per week, sample data"><line x1="0" x2="480" y1="96.0" y2="96.0" stroke="#DFE5EE" stroke-width="1"/><line x1="0" x2="480" y1="52.0" y2="52.0" stroke="#DFE5EE" stroke-width="1"/><line x1="0" x2="480" y1="8.0" y2="8.0" stroke="#DFE5EE" stroke-width="1"/><rect x="17.0" y="69.6" width="46" height="26.4" rx="3" fill="#C9D7FC"/><text x="40.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W36</text><rect x="97.0" y="57.7" width="46" height="38.3" rx="3" fill="#C9D7FC"/><text x="120.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W37</text><rect x="177.0" y="62.7" width="46" height="33.3" rx="3" fill="#C9D7FC"/><text x="200.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W38</text><rect x="257.0" y="43.2" width="46" height="52.8" rx="3" fill="#C9D7FC"/><text x="280.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W39</text><rect x="337.0" y="50.7" width="46" height="45.3" rx="3" fill="#C9D7FC"/><text x="360.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W40</text><rect x="417.0" y="16.8" width="46" height="79.2" rx="3" fill="#3367F7"/><text x="440.0" y="114" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#556275">W41</text><text x="440.0" y="10.8" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="500" fill="#0B1730">£12.6k</text></svg>
+      </div>
+      <div class="rows">
+        <table>
+          <thead><tr><th>Customer</th><th class="r">Days late</th><th class="r">Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Northfield Joinery</td><td class="r num">34</td><td class="r num">£6,400</td><td><span class="pill pill-good">Paid</span></td></tr>
+            <tr><td>Harbour Studio</td><td class="r num">21</td><td class="r num">£3,950</td><td><span class="pill pill-info">Promised Fri</span></td></tr>
+            <tr><td>Kellet &amp; Moss</td><td class="r num">58</td><td class="r num">£8,120</td><td><span class="pill pill-warn">Needs you</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption class="panel-foot">Example of the report you receive every Monday. All figures are illustrative.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="services">
+<section class="section" id="services">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">What we do</p>
+      <p class="label">Services</p>
       <h2>Two sides of the same cash flow</h2>
       <p class="lead">Marketing brings new revenue in. Finance operations make sure it is collected and that your own bills are paid on time. Use one side or both.</p>
     </div>
-    <div class="halves">
-      <div class="half">
-        <div class="half-title">
-          <h3>Finance operations</h3>
-          <p>The work your team never has time for, done every day and reported every week.</p>
-        </div>
-        <ul class="svc-list">
-          <li><a href="/accounts-receivable">Accounts receivable</a><p>Reminders before and after the due date from your own accounts address, calls on the largest balances, and disputes passed back to you.</p></li>
-          <li><a href="/accounts-payable">Accounts payable</a><p>Supplier bills captured, coded and matched, then a payment run prepared for you to approve.</p></li>
-          <li><a href="/finance-reporting">Finance reporting</a><p>A weekly view of what came in, what is owed to you, what you owe and what is due next.</p></li>
-        </ul>
+    <div class="svc-grid">
+      <div class="svc-col">
+        <div class="svc-col-head"><h3>Finance operations</h3><p>Done daily, reported weekly</p></div>
+        <a class="svc" href="/accounts-receivable">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v11"/><path d="m7.5 9.5 4.5 4.5 4.5-4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
+          <span><h3>Accounts receivable</h3><p>Reminders from your own accounts address, calls on the largest balances, and disputes passed back to you.</p></span>
+        </a>
+        <a class="svc" href="/accounts-payable">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg></span>
+          <span><h3>Accounts payable</h3><p>Supplier bills captured, coded and matched, then a payment run prepared for you to approve.</p></span>
+        </a>
+        <a class="svc" href="/finance-reporting">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg></span>
+          <span><h3>Finance reporting</h3><p>A weekly view of what came in, what is owed to you, what you owe and what is due next.</p></span>
+        </a>
       </div>
-      <div class="half">
-        <div class="half-title">
-          <h3>Marketing</h3>
-          <p>Paid advertising managed against the number that matters to you: qualified leads, not clicks.</p>
-        </div>
-        <ul class="svc-list">
-          <li><a href="/marketing#google-ads">Google Ads</a><p>Search campaigns built around what your buyers actually type, with budgets you set and approve.</p></li>
-          <li><a href="/marketing#meta-linkedin">Meta and LinkedIn Ads</a><p>Campaigns aimed at the companies and roles you sell to, with creative and copy prepared for your sign-off.</p></li>
-          <li><a href="/marketing#tracking">Tracking and reporting</a><p>Conversion tracking set up properly, and a monthly report on spend, leads and cost per lead.</p></li>
-        </ul>
+      <div class="svc-col">
+        <div class="svc-col-head"><h3>Marketing</h3><p>Measured in leads, not clicks</p></div>
+        <a class="svc" href="/marketing#google-ads">
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
+          <span><h3>Google Ads</h3><p>Search campaigns built around what your buyers actually type, with budgets you set and approve.</p></span>
+        </a>
+        <a class="svc" href="/marketing#meta-linkedin">
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+          <span><h3>Meta and LinkedIn Ads</h3><p>Campaigns aimed at the companies and roles you sell to, with creative prepared for your sign-off.</p></span>
+        </a>
+        <a class="svc" href="/marketing#tracking">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+          <span><h3>Tracking and reporting</h3><p>Conversion tracking set up properly, and a monthly report on spend, leads and cost per lead.</p></span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="how">
+<section class="section band" id="how">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">How we work</p>
-      <h2>From first call to a weekly routine</h2>
+    <div class="statement" style="margin-bottom:56px">
+      <h2>No contracts to sign blind. <em>See the work first.</em></h2>
+      <p class="lead">Every engagement starts with two weeks of real work on your real accounts, free. You decide after you have seen the results.</p>
     </div>
     <ol class="steps">
-      <li><h3>A 20-minute call</h3><p>We learn how you work today, which tools you use, and what you want fixed first.</p></li>
-      <li><h3>Free 2-week trial</h3><p>We do the work on a real slice of it: your overdue invoices, a batch of bills or one campaign.</p></li>
-      <li><h3>You see the results</h3><p>A short update every working day during the trial, and a full summary at the end.</p></li>
-      <li><h3>A quote that fits</h3><p>If it works for you, we agree a monthly fee for your volume. If it does not, you owe nothing.</p></li>
+      <li><span class="meta">Day 0 · 20 minutes</span><h3>Intro call</h3><p>We learn how you work today, which tools you use, and what you want fixed first.</p></li>
+      <li><span class="meta">Days 1–14 · free</span><h3>Trial on real work</h3><p>Your overdue invoices, a batch of supplier bills, or one live campaign.</p></li>
+      <li><span class="meta">Day 14</span><h3>Results review</h3><p>A short update every working day during the trial, and a full summary at the end.</p></li>
+      <li><span class="meta">Then monthly</span><h3>A quote that fits</h3><p>A fixed monthly fee for your volume, in writing. If it does not work for you, you owe nothing.</p></li>
     </ol>
   </div>
 </section>
 
-<section id="rules">
+<section class="section dark" id="rules">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Our rules</p>
+      <p class="label">Our rules</p>
       <h2>What we will and won't do with your business</h2>
-      <p class="lead">You are giving us access to your customers, your suppliers and your numbers. These rules apply to every client, on every service.</p>
+      <p class="lead">You give us access to your customers, your suppliers and your numbers. These rules apply to every client and every service.</p>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Your money never passes through us</h3><p>Customers pay you directly, and payments to suppliers leave from your bank, released by you.</p></div>
-      <div class="rule"><h3>You approve before anything goes out</h3><p>Email templates, payment runs and ad budgets are signed off by you before they are used.</p></div>
-      <div class="rule"><h3>Least access needed</h3><p>Read-only or limited user roles wherever your software allows it. Passwords are never shared by email or chat.</p></div>
-      <div class="rule"><h3>A data agreement from day one</h3><p>We sign a data processing agreement covering what we hold, why, for how long and how it is deleted.</p></div>
-      <div class="rule"><h3>Your name, your tone</h3><p>We write to your customers as part of your team and in your style. No threats, and legal steps stay your decision.</p></div>
-      <div class="rule"><h3>No lock-in</h3><p>Monthly engagement with 30 days' notice. Everything we produce for you is yours to keep.</p></div>
+      <div class="rule"><span class="no">01</span><h3>Your money never passes through us</h3><p>Customers pay you directly. Payments to suppliers leave from your bank and are released by you.</p></div>
+      <div class="rule"><span class="no">02</span><h3>You approve before anything goes out</h3><p>Email templates, payment runs and ad budgets are signed off by you before they are used.</p></div>
+      <div class="rule"><span class="no">03</span><h3>The least access we need</h3><p>Read-only or limited roles wherever your software allows. Passwords are never sent by email or chat.</p></div>
+      <div class="rule"><span class="no">04</span><h3>A data agreement from day one</h3><p>We sign a data processing agreement covering what we hold, why, for how long and how it is deleted.</p></div>
+      <div class="rule"><span class="no">05</span><h3>Your name, your tone</h3><p>We write as part of your team and in your style. No threats, and any legal step stays your decision.</p></div>
+      <div class="rule"><span class="no">06</span><h3>No lock-in</h3><p>Monthly engagement with 30 days' notice. Everything we produce for you is yours to keep.</p></div>
     </div>
-    <p style="margin-top:28px"><a href="/security">Read how we handle access and data</a></p>
+    <p style="margin-top:32px"><a href="/security">How we handle access and data →</a></p>
   </div>
 </section>
 
-<section id="founder">
+<section class="section" id="founder">
   <div class="wrap founder">
-    <div class="photo" role="img" aria-label="Photo of Baylar Valiyev">Photo coming soon</div>
+    <div class="photo" role="img" aria-label="Baylar Valiyev">Photo of Baylar Valiyev</div>
     <div class="founder-copy">
-      <p class="eyebrow">Who you work with</p>
-      <h2>Baylar Valiyev, founder</h2>
-      <p>I started adsonus to give small businesses the back-office and marketing support that larger companies take for granted. You deal with me directly, and I am responsible for every piece of work that goes out under your name.</p>
-      <ul class="facts">
-        <li><span>Before adsonus</span><span>Accounts Manager at Accenture, managing advertising for 120+ corporate accounts</span></li>
-        <li><span>Finance background</span><span>Loans Specialist at Express Bank</span></li>
-        <li><span>Based in</span><span>Baku, Azerbaijan, working UK and European business hours</span></li>
+      <p class="label">Who you work with</p>
+      <blockquote>“Small businesses deserve the same back-office and marketing discipline that large companies take for granted. You deal with me directly, and I am responsible for every piece of work that goes out under your name.”</blockquote>
+      <p class="sig">Baylar Valiyev<span>Founder, adsonus</span></p>
+      <ul class="cv">
+        <li><span class="k">Accenture</span>Accounts Manager, advertising for 120+ corporate accounts</li>
+        <li><span class="k">Express Bank</span>Loans Specialist</li>
+        <li><span class="k">Based in</span>Baku, working UK and European hours</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="tools">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Tools</p>
-      <h2>We work inside the tools you already use</h2>
-      <p class="lead">No new software to buy. We work in your accounts with the access level you choose.</p>
-    </div>
-    <div class="tools">
-      <div><h3>Finance</h3><div class="tool-list"><span>Xero</span><span>QuickBooks</span><span>Sage</span><span>FreeAgent</span><span>Microsoft 365</span><span>Google Workspace</span></div></div>
-      <div><h3>Marketing</h3><div class="tool-list"><span>Google Ads</span><span>Google Analytics</span><span>Google Tag Manager</span><span>Meta Ads</span><span>LinkedIn Ads</span></div></div>
-    </div>
+<div class="wrap">
+  <div class="tools" aria-label="Tools we work in">
+    <span class="k">Finance tools</span>
+    <div class="tool-list"><span>Xero</span><span>QuickBooks</span><span>Sage</span><span>FreeAgent</span><span>Microsoft 365</span><span>Google Workspace</span></div>
+    <span class="k">Marketing tools</span>
+    <div class="tool-list"><span>Google Ads</span><span>Google Analytics</span><span>Tag Manager</span><span>Meta Ads</span><span>LinkedIn Ads</span></div>
   </div>
-</section>
+</div>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Questions</p>
-      <h2>Common questions</h2>
+<section class="section" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="label">Questions</p>
+      <h2>Before you ask</h2>
+      <p class="lead">Anything else, write to <strong>info@adsonus.com</strong> and you will get an answer the same working day.</p>
     </div>
     <div class="faq">
-      <details><summary>How much does it cost?</summary><p>Every engagement is quoted for your volume: how many invoices or bills, or how much ad spend we manage. After a short call you get a fixed monthly fee in writing. The 2-week trial is free.</p></details>
+      <details open><summary>How much does it cost?</summary><p>Every engagement is quoted for your volume: how many invoices or bills, or how much ad spend we manage. After a short call you get a fixed monthly fee in writing. The 2-week trial is free.</p></details>
       <details><summary>Who is this for?</summary><p>Small and medium businesses that sell to other businesses on invoice, typically 5 to 200 people, without a full finance team or an in-house marketing specialist.</p></details>
       <details><summary>Do you ever handle our money?</summary><p>No. Your customers pay you directly. For accounts payable we prepare the payment run and you release it from your own bank.</p></details>
       <details><summary>What access do you need?</summary><p>For receivables: a mailbox on your domain (for example accounts@yourcompany.com) and read-only access to your accounting software. For payables: a limited user role. For advertising: access to your ad accounts, which stay in your name.</p></details>
@@ -210,14 +215,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
-<section class="cta-band">
+<section class="cta">
   <div class="wrap">
-    <div>
-      <h2>Tell us what you need</h2>
-      <p>Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.</p>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="/quote">Get a quote</a>
+    <div class="cta-box">
+      <div>
+        <h2>Tell us what you need</h2>
+        <p>Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.</p>
+      </div>
+      <a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -227,17 +232,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div>
-        <a class="wordmark" href="/">adsonus<span>.</span></a>
-        <p style="margin-top:10px">Finance operations and marketing for small and medium businesses.</p>
+      <div class="footer-about">
+        <a class="logo" href="/"><img src="/img/logo-mark.svg" alt="" width="30" height="30"/><span>adsonus</span></a>
+        <p>Finance operations and marketing for small and medium businesses.</p>
       </div>
       <div><h4>Finance</h4><ul><li><a href="/accounts-receivable">Accounts receivable</a></li><li><a href="/accounts-payable">Accounts payable</a></li><li><a href="/finance-reporting">Finance reporting</a></li></ul></div>
       <div><h4>Marketing</h4><ul><li><a href="/marketing#google-ads">Google Ads</a></li><li><a href="/marketing#meta-linkedin">Meta and LinkedIn Ads</a></li><li><a href="/marketing#tracking">Tracking and reporting</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/security">Security</a></li><li><a href="/quote">Get a quote</a></li><li>info@adsonus.com</li><li>+994 77 369 89 29</li></ul></div>
+      <div><h4>Contact</h4><ul><li>info@adsonus.com</li><li>+994 77 369 89 29</li><li>Baku, Azerbaijan</li><li><a href="/quote">Get a quote</a></li></ul></div>
     </div>
     <div class="footer-base">
-      <span>© 2026 adsonus · Baku, Azerbaijan</span>
-      <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+      <span>© 2026 adsonus</span>
+      <span><a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
     </div>
   </div>
 </footer>
