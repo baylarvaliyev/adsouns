@@ -286,3 +286,4 @@ fieldset.field{border:0;padding:0;margin:0}
 .footer-base a{color:#AEBBD0;text-decoration:none}
 .footer-base a:hover{color:#fff}
 .photo:has(img){padding:0;background:none}
+@media (min-width:901px){.cv{grid-template-columns:repeat(2,1fr)}}
