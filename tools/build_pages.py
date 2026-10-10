@@ -75,7 +75,7 @@ pages.append(page('finance-operations', 'Finance operations for small businesses
 </div></div></section>
 <section class="section band"><div class="wrap split">
 <div class="prose"><p class="label">Who it suits</p><h2>Built for businesses without a full finance team</h2>
-<p>Most of our clients have between 5 and 200 people and sell to other businesses on invoice. They usually have an accountant or bookkeeper for the year-end, but nobody whose job is to chase late payers or keep supplier bills under control day to day.</p>
+<p>We work best with businesses of 5 to 200 people that sell to other businesses on invoice. They usually have an accountant or bookkeeper for the year-end, but nobody whose job is to chase late payers or keep supplier bills under control day to day.</p>
 <p>We fill that gap. We are not a replacement for your accountant: we work alongside them, in the same accounting software, and keep your records tidy for them.</p></div>
 <div>''' + checks([
  ('Works in your software', 'Xero, QuickBooks, Sage or FreeAgent. No new system to buy.'),
@@ -242,7 +242,7 @@ pages.append(page('security', 'Security and data protection — adsonus',
 <div class="prose">
 <h2>Access</h2>
 <ul><li>We ask for the lowest access level that does the job: read-only or limited roles in your accounting software, and only the mailboxes we send from.</li>
-<li>Each person at adsonus has their own login. Shared logins are not used.</li>
+<li>Every login we use is personal and named. Shared logins are not used.</li>
 <li>Two-factor authentication is switched on for every account we use, where the software supports it.</li>
 <li>Passwords are never sent by email or chat. Where a login must be shared, it is shared through a password manager.</li>
 <li>When an engagement ends, you remove our access and we confirm in writing that we have.</li></ul>
@@ -265,7 +265,7 @@ pages.append(page('security', 'Security and data protection — adsonus',
 # ---------- About ----------
 pages.append(page('about', 'About adsonus',
  'adsonus provides finance operations and marketing for small and medium businesses. Founded by Baylar Valiyev, based in Baku, Azerbaijan.',
- hero('About', 'Back-office and marketing discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by a small team you deal with directly.') + '''
+ hero('About', 'Back-office and marketing discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by its founder, whom you deal with directly.') + '''
 <section class="section"><div class="wrap founder">
 <div class="photo"><img src="/img/baylar-valiyev.jpg" alt="Baylar Valiyev, founder of adsonus" width="800" height="1000" loading="lazy"/></div>
 <div class="founder-copy">
@@ -274,6 +274,18 @@ pages.append(page('about', 'About adsonus',
 <p>adsonus brings those two sides together. You deal with me directly, and I am responsible for every piece of work that goes out under your name.</p>
 <ul class="cv"><li><span class="k">Express Bank</span>Loans Specialist</li><li><span class="k">Based in</span>Baku, Azerbaijan</li></ul>
 </div></div></section>
+<section class="section dark"><div class="wrap split">
+<div class="prose"><p class="label">Being straight with you</p><h2>We are a new business</h2>
+<p>adsonus started in 2026. Our marketing work so far covers a small number of clients, including a business-to-business logistics company in California. Our finance operations service is newer still: we are taking on our first clients now.</p>
+<p>That means we cannot show you years of case studies or hundreds of reviews, and we will not pretend otherwise. Anything you read on this site describes how we work, not results we have not yet earned.</p></div>
+<div class="prose"><p class="label">What we do about it</p><h2>You should not have to take our word for it</h2>
+<ul><li><strong>Two weeks of real work, free.</strong> You judge us on your own invoices, bills or campaigns before you pay anything.</li>
+<li><strong>No lock-in.</strong> Month to month, 30 days' notice, and everything we produce is yours.</li>
+<li><strong>Direct access to the founder.</strong> Your account is not passed to a junior team.</li>
+<li><strong>Founding-client terms.</strong> Our first clients get their monthly fee fixed for 12 months, in exchange for honest feedback.</li>
+<li><strong>A limited number of clients.</strong> We only take on what we can do properly, and say so when we are full.</li>
+<li><strong>Modern tools, human checks.</strong> We use good software, including AI-assisted drafting, so a small business can afford careful work. A person reviews everything before it goes out.</li></ul></div>
+</div></section>
 <section class="section band"><div class="wrap">
 <div class="section-head"><p class="label">What we stand for</p><h2>Three things we will not compromise on</h2></div>
 <div class="cards">
@@ -283,7 +295,7 @@ pages.append(page('about', 'About adsonus',
 </div></div></section>
 <section class="section"><div class="wrap split">
 <div class="prose"><p class="label">Where we work from</p><h2>Baku, on your business hours</h2>
-<p>Our team works from Baku, Azerbaijan, and keeps UK and European business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
+<p>adsonus works from Baku, Azerbaijan, and keeps UK and European business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
 <div class="prose"><p class="label">Contact</p><h2>Talk to us</h2>
 <ul><li>Email: <strong>info@adsonus.com</strong></li><li>Phone: <strong>+994 77 369 89 29</strong></li><li>Location: Baku, Azerbaijan</li></ul></div>
 </div></section>
