@@ -285,3 +285,4 @@ fieldset.field{border:0;padding:0;margin:0}
 .prose .checks{padding-left:0}
 .footer-base a{color:#AEBBD0;text-decoration:none}
 .footer-base a:hover{color:#fff}
+.photo:has(img){padding:0;background:none}
