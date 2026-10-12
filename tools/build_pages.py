@@ -78,7 +78,7 @@ pages.append(page('finance-operations', 'Finance operations for small businesses
 <p>We work best with businesses of 5 to 200 people that sell to other businesses on invoice. They usually have an accountant or bookkeeper for the year-end, but nobody whose job is to chase late payers or keep supplier bills under control day to day.</p>
 <p>We fill that gap. We are not a replacement for your accountant: we work alongside them, in the same accounting software, and keep your records tidy for them.</p></div>
 <div>''' + checks([
- ('Works in your software', 'Xero, QuickBooks, Sage or FreeAgent. No new system to buy.'),
+ ('Works in your software', 'QuickBooks Online, Xero, Bill.com or NetSuite. No new system to buy.'),
  ('Your name on everything', 'Emails go from your domain, signed as part of your team.'),
  ('You stay in control', 'Templates, payment runs and anything unusual are approved by you.'),
  ('Clear weekly numbers', 'The same short report every Monday, whichever services you use.'),
@@ -86,9 +86,9 @@ pages.append(page('finance-operations', 'Finance operations for small businesses
 ''' + cta()))
 
 # ---------- Accounts receivable ----------
-pages.append(page('accounts-receivable', 'Accounts receivable and credit control — adsonus',
+pages.append(page('accounts-receivable', 'Accounts receivable and collections — adsonus',
  'Outsourced accounts receivable for small businesses: polite reminders from your own mailbox, calls on large balances, dispute handling and a weekly report.',
- hero('Accounts receivable', 'Get paid on time without chasing customers yourself', 'We run your credit control from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts receivable',None)]) + '''
+ hero('Accounts receivable', 'Get paid on time without chasing customers yourself', 'We run your collections from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts receivable',None)]) + '''
 <section class="section"><div class="wrap split">
 <div class="prose"><p class="label">What we do</p><h2>Every overdue invoice followed up, every week</h2>
 ''' + checks([
@@ -228,7 +228,7 @@ pages.append(page('how-we-work', 'How we work — adsonus',
 <p>Engagements run month to month with 30 days' notice. There are no setup fees for the trial.</p></div>
 <div class="prose"><p class="label">Working together</p><h2>How we keep in touch</h2>
 <ul><li>A weekly report every Monday morning.</li>
-<li>Replies the same working day, during UK and European business hours.</li>
+<li>Replies the same working day, during US Eastern business hours (morning to mid-afternoon ET).</li>
 <li>One named person responsible for your account.</li>
 <li>Email, phone or WhatsApp, whichever you prefer.</li></ul></div>
 </div></section>
@@ -295,7 +295,7 @@ pages.append(page('about', 'About adsonus',
 </div></div></section>
 <section class="section"><div class="wrap split">
 <div class="prose"><p class="label">Where we work from</p><h2>Baku, on your business hours</h2>
-<p>adsonus works from Baku, Azerbaijan, and keeps UK and European business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
+<p>adsonus works from Baku, Azerbaijan, and its working day overlaps with US Eastern business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
 <div class="prose"><p class="label">Contact</p><h2>Talk to us</h2>
 <ul><li>Email: <strong>baylar@adsonus.com</strong></li><li>Phone: <strong>+994 77 369 89 29</strong></li><li>Location: Baku, Azerbaijan</li></ul></div>
 </div></section>
@@ -323,7 +323,7 @@ pages.append(page('quote', 'Get a quote — adsonus',
 </div></fieldset>
 <div class="row"><div class="field"><label for="f-size">Company size</label><select id="f-size" name="size"><option value="">Select</option><option>1–4 people</option><option>5–20 people</option><option>21–50 people</option><option>51–200 people</option><option>200+ people</option></select></div>
 <div class="field"><label for="f-volume">Monthly volume <span class="hint">(optional)</span></label><input id="f-volume" name="volume" placeholder="e.g. 60 invoices, or $3,000 ad spend"/></div></div>
-<div class="field"><label for="f-msg">What would you like fixed first?</label><textarea id="f-msg" name="message" placeholder="For example: about £40k is overdue across 25 invoices and nobody has time to chase it."></textarea></div>
+<div class="field"><label for="f-msg">What would you like fixed first?</label><textarea id="f-msg" name="message" placeholder="For example: about $40k is overdue across 25 invoices and nobody has time to chase it."></textarea></div>
 <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
 <p class="form-msg err" id="form-err" hidden></p>
 <div class="btn-row"><button class="btn btn-primary" type="submit" id="f-submit">Send request <span class="arr" aria-hidden="true">→</span></button></div>
