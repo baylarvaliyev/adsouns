@@ -9,7 +9,7 @@
 /en                      /                      301
 /en/                     /                      301
 /en/about                /about                 301
-/en/services             /finance-operations    301
+/en/services             /services              301
 /en/pricing              /quote                 301
 /en/calculator           /quote                 301
 /pages/elaqe             /quote                 301
@@ -21,7 +21,7 @@
 /ru/*                    /                      301
 /tr/*                    /                      301
 /en/about.html           /about                 301
-/en/services.html        /finance-operations    301
+/en/services.html        /services              301
 /en/pricing.html         /quote                 301
 /en/calculator.html      /quote                 301
 /en/*                    /                      301
@@ -30,8 +30,6 @@
 /pages/*                 /                      301
 /blog/*                  /marketing             301
 /admin/*                 /                      301
-/services.html           /finance-operations    301
-/services                /finance-operations    301
 /pricing.html            /quote                 301
 /pricing                 /quote                 301
 /get-started.html        /quote                 301

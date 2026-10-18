@@ -39,7 +39,8 @@
     });
 
     // Lists, tiles, steps and rule cards arrive one after another.
-    ['.v4p .checks > li', '.v4p .cards > .card', '.v4p .how-steps > li', '.v4p .rules > li', '.v4p .table tbody tr'].forEach(function (sel) {
+    ['.v4p .checks > li', '.v4p .cards > .card', '.v4p .how-steps > li', '.v4p .rules > li', '.v4p .table tbody tr',
+     '.v4p .nots > li', '.v4p .resps > .resp', '.v4p .p-faq > details', '.v4p .who-box li'].forEach(function (sel) {
       ScrollTrigger.batch(sel, { start: 'top 90%', once: true,
         onEnter: function (els) { gsap.from(els, { y: 60, scale: 0.96, autoAlpha: 0, duration: 1, stagger: 0.09, ease: ease }); } });
     });

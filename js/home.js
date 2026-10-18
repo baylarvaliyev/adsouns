@@ -16,11 +16,12 @@
     $$('[data-node]', svg).forEach(function (g) { gsap.set(g, { svgOrigin: origin(g), opacity: 0.22, scale: 0.9 }); });
     gsap.set(node('hub'), { scale: 0.7, opacity: 0.3 });
 
-    ['in', 'out'].forEach(function (lane, li) {
+    var lanes = $$('.edge', svg).map(function (e) { return e.dataset.lane; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+    lanes.forEach(function (lane, li) {
       var edges = $$('.edge-' + lane, svg), head = svg.querySelector('.head-' + lane);
-      var at = li * 0.9;                       // the out lane starts a little later
-      var first = lane === 'in' ? 'ads' : 'bill';
-      tl.to(node(first), { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, at);
+      var at = li * 0.6;                       // each lane starts a little after the one above
+      var firstNode = svg.querySelector('[data-first="' + lane + '"]');
+      tl.to(firstNode, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, at);
       tl.to(head, { opacity: 1, duration: 0.2 }, at + 0.3);
       at += 0.4;
       edges.forEach(function (edge) {
