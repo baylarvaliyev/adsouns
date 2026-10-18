@@ -27,8 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/site-v3.css?v=12"/>
-<link rel="stylesheet" href="/css/pages.css?v=3"/>
+<link rel="stylesheet" href="/css/site-v3.css?v=15"/>
+<link rel="stylesheet" href="/css/pages.css?v=4"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -40,8 +40,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="logo" href="/" aria-label="adsonus home"><img src="/img/logo-mark.svg" alt="" width="30" height="30"/><span>adsonus</span></a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="/finance-operations">Finance operations</a>
-      <a href="/marketing">Marketing</a>
+      <div class="nav-svc">
+        <button class="nav-svc-btn" id="svc-btn" aria-expanded="false" aria-controls="svc-menu">Services<span class="chev" aria-hidden="true"></span></button>
+        <div class="svc-menu" id="svc-menu"><div class="menu-col"><p class="svc-pillar">Grow<span>Bring revenue in</span></p><a href="/marketing"><b>Marketing</b><span>Google, Meta and LinkedIn ads</span></a><a href="/sales-crm-operations"><b>Sales &amp; CRM operations</b><span>Lead routing, CRM upkeep, pipeline reports</span></a></div><div class="menu-col"><p class="svc-pillar">Get paid<span>Collect it and control costs</span></p><a href="/billing-invoicing"><b>Billing &amp; invoicing</b><span>Invoices raised on time, every time</span></a><a href="/accounts-receivable"><b>Accounts receivable</b><span>Overdue invoices followed up</span></a><a href="/accounts-payable"><b>Accounts payable</b><span>Bills processed, payment runs prepared</span></a><a href="/bookkeeping"><b>Bookkeeping &amp; month-end close</b><span>Clean books, closed every month</span></a><a href="/finance-reporting"><b>Finance reporting</b><span>Your cash position every Monday</span></a></div><div class="menu-col"><p class="svc-pillar">Run<span>Keep the business running</span></p><a href="/customer-operations"><b>Customer operations</b><span>Inbox, tickets and order questions</span></a><a href="/customer-success"><b>Customer onboarding &amp; success</b><span>Onboarding, check-ins and renewals</span></a><a href="/hr-recruiting"><b>HR &amp; recruiting operations</b><span>Hiring admin, onboarding, HR records</span></a><a href="/it-help-desk"><b>IT help desk</b><span>Remote first-line support and accounts</span></a></div><a class="svc-all" href="/services">All services <span aria-hidden="true">→</span></a></div>
+      </div>
       <a href="/how-we-work">How we work</a>
       <a href="/security">Security</a>
       <a href="/about">About</a>
@@ -51,54 +53,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main id="main" class="v4p">
-<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><nav class="p-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav><h1 class="p-title"><span class="x-line"><span>Supplier bills paid on time, never twice</span></span></h1><p class="p-lead">Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card" aria-label="Sample payment run ready for release">
-<div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Payment run · Friday<em>Sample figures</em></div>
-<table><thead><tr><th>Supplier</th><th class="r hide-sm">Due</th><th class="r">Amount</th><th class="r">Check</th></tr></thead><tbody>
-<tr><td>Harlow Timber</td><td class="r hide-sm">Fri</td><td class="r">$4,860</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
-<tr><td>Brightline Freight</td><td class="r hide-sm">Fri</td><td class="r">$1,940</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
-<tr><td>Office Supply Co.</td><td class="r hide-sm">Mon</td><td class="r">$385</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
-<tr><td>Northside Print</td><td class="r hide-sm">Mon</td><td class="r">$1,215</td><td class="r"><span class="pill pill-warn">Duplicate?</span></td></tr></tbody></table>
-<div class="pc-total"><span>Ready to release</span><span>$7,185</span></div>
-<div class="pc-acts"><span class="yes">Release from your bank</span><span>Review</span></div>
-<p class="pc-note">We prepare the run. Only you release it.</p></figure></div></section>
+<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><nav class="p-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav><h1 class="p-title"><span class="x-line"><span>Supplier bills paid on time, never twice</span></span></h1><p class="p-lead">Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card" aria-label="Sample payment run ready for release"><div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Payment run · Friday<em>Sample figures</em></div><table><thead><tr><th class="">Supplier</th><th class="r hide-sm">Due</th><th class="r ">Amount</th><th class="r ">Check</th></tr></thead><tbody><tr><td class="">Harlow Timber</td><td class="r hide-sm">Fri</td><td class="r ">$4,860</td><td class="r "><span class="pill pill-good">Matched</span></td></tr><tr><td class="">Brightline Freight</td><td class="r hide-sm">Fri</td><td class="r ">$1,940</td><td class="r "><span class="pill pill-good">Matched</span></td></tr><tr><td class="">Office Supply Co.</td><td class="r hide-sm">Mon</td><td class="r ">$385</td><td class="r "><span class="pill pill-good">Matched</span></td></tr><tr><td class="">Northside Print</td><td class="r hide-sm">Mon</td><td class="r ">$1,215</td><td class="r "><span class="pill pill-warn">Duplicate?</span></td></tr></tbody></table><div class="pc-total"><span>Ready to release</span><span>$7,185</span></div><div class="pc-acts"><span class="yes">Release from your bank</span><span>Review</span></div><p class="pc-note">We prepare the run. Only you release it.</p></figure></div></section>
 <section class="section"><div class="wrap split">
-<div class="prose"><h2>From inbox to approved payment run</h2>
-<ul class="checks" data-r><li style="--i:0"><span class="mk" aria-hidden="true"></span><span><strong>One inbox for every bill</strong><span>Suppliers send to a dedicated address on your domain. Paper bills can be photographed and forwarded.</span></span></li><li style="--i:1"><span class="mk" aria-hidden="true"></span><span><strong>Captured and coded</strong><span>Supplier, amount, dates and account code entered in your accounting software, with the bill attached.</span></span></li><li style="--i:2"><span class="mk" aria-hidden="true"></span><span><strong>Checked before anything is due</strong><span>Matched against purchase orders or delivery notes where you use them, and checked for duplicates.</span></span></li><li style="--i:3"><span class="mk" aria-hidden="true"></span><span><strong>Payment run prepared</strong><span>A list of what to pay this week, ready for you to approve. You release it from your bank.</span></span></li><li style="--i:4"><span class="mk" aria-hidden="true"></span><span><strong>Supplier statements reconciled</strong><span>Monthly statements compared with your records, so differences are found early.</span></span></li></ul></div>
-<aside class="side-box"><h3>We process two weeks of your supplier bills, free</h3><p>We set up the bills inbox, process everything that arrives for two weeks and prepare your first payment run.</p><a class="btn btn-primary" href="/quote">Start with a quote <span class="arr" aria-hidden="true">→</span></a><p class="small">No payment details needed for the trial.</p></aside>
+<div class="prose"><h2>From inbox to approved payment run</h2><ul class="checks" data-r><li><span class="mk" aria-hidden="true"></span><span><strong>One inbox for every bill</strong><span>Suppliers send to a dedicated address on your domain. Paper bills can be photographed and forwarded.</span></span></li><li><span class="mk" aria-hidden="true"></span><span><strong>Captured and coded</strong><span>Supplier, amount, dates and account code entered in your accounting software, with the bill attached.</span></span></li><li><span class="mk" aria-hidden="true"></span><span><strong>Checked before anything is due</strong><span>Matched against purchase orders or delivery notes where you use them, and checked for duplicates.</span></span></li><li><span class="mk" aria-hidden="true"></span><span><strong>Payment run prepared</strong><span>A list of what to pay this week, ready for you to approve. You release it from your bank.</span></span></li><li><span class="mk" aria-hidden="true"></span><span><strong>Supplier statements reconciled</strong><span>Monthly statements compared with your records, so differences are found early.</span></span></li></ul></div>
+<aside class="side-box who-box"><h3>Who it is for</h3><ul><li>Businesses with more supplier bills than time to check them</li><li>Owners who approve payments but do not want to prepare them</li><li>Teams that have paid a duplicate or a fake invoice before</li></ul><a class="btn btn-primary" href="/quote">Get a fixed quote <span class="arr" aria-hidden="true">→</span></a><p class="small">A written scope and monthly fee, by email.</p></aside>
 </div></section>
-<section class="section rules-band"><div class="wrap">
-<div class="section-head" data-r><h2>Controls that stop common payment fraud</h2></div>
-<ul class="rules" data-r>
-<li><span class="mk" aria-hidden="true"></span><h3>You release every payment</h3><p>We prepare payment runs. Only you, or someone you name, can send money from your bank.</p></li>
-<li style="--i:1"><span class="mk" aria-hidden="true"></span><h3>Bank detail changes are verified</h3><p>A request to change a supplier's bank details is confirmed by phone on a number we already hold, never on the one in the email.</p></li>
-<li style="--i:2"><span class="mk" aria-hidden="true"></span><h3>Duplicates are flagged</h3><p>Same supplier, same amount, similar date: we stop and ask before it reaches a payment run.</p></li>
-</ul></div></section>
-<a class="cta-band" href="/quote"><span class="cta-note">Tell us what you need. Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.</span><svg class="cta-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg><span class="cta-word" aria-hidden="true">Start</span><span class="skip">Get a quote</span></a>
+<section class="section band"><div class="wrap">
+<div class="section-head"><h2>What is not included</h2><p class="lead">Clear limits, so you always know what we do and what stays with you or another provider.</p></div>
+<ul class="nots"><li>Sending money: you release every payment from your bank</li><li>Tax filings, payroll or year-end accounts, which stay with your accountant</li><li>Negotiating prices with suppliers</li><li>Holding any of your funds</li></ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head"><h2>How it runs</h2><p class="lead">Bills are handled as they arrive, and payments go out on the days you choose.</p></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>When</th><th>What happens</th></tr></thead><tbody><tr><td>Every working day</td><td>New bills captured, coded and attached in your accounting software</td></tr><tr><td>Before due dates</td><td>Bills matched; duplicates and changed bank details checked</td></tr><tr><td>Every week</td><td>Payment run prepared for your approval</td></tr><tr><td>Every month</td><td>Supplier statements reconciled with your records</td></tr></tbody></table></div>
+</div></section>
+<section class="section band"><div class="wrap split">
+<div class="prose"><h2>What you receive</h2><ul><li>A weekly payment run, ready to approve and release</li><li>Bills due in the next 14 days</li><li>Anything blocked: missing approvals, mismatches, disputes</li><li>A monthly statement reconciliation</li></ul></div>
+<div class="prose"><h2>Response times</h2><p>Agreed in writing for your time zone before work starts.</p><div class="resps"><div class="resp"><span>Coverage hours</span><b>Agreed to your time zone</b></div><div class="resp"><span>New bills</span><b>Processed within one working day</b></div><div class="resp"><span>Payment runs</span><b>Ready on the day you choose</b></div></div></div>
+</div></section>
+<section class="section rules-band"><div class="wrap split">
+<div class="prose"><h2>What we need from you</h2><ul><li>A bills inbox on your domain, for example bills@yourcompany.com</li><li>A limited user role in your accounting software</li><li>Your approval rules: who approves what, and up to what amount</li></ul></div>
+<div class="prose"><h2>Security and limits</h2><ul><li>You, or someone you name, release every payment</li><li>Bank detail changes are confirmed by phone on a number already on file, never the one in the email</li><li>Possible duplicates are stopped and checked before they reach a payment run</li></ul></div>
+</div></section>
+<section class="section"><div class="wrap split">
+<div class="prose"><h2>How pricing works</h2><p>A fixed monthly fee based on how many bills and suppliers we process, quoted in writing. Month to month, with 30 days' notice.</p><p><a class="tlink" href="/how-we-work">How every engagement works →</a></p></div>
+<div><h2 class="faq-h">Questions</h2><div class="p-faq"><details open><summary>Can you pay our suppliers for us?<i aria-hidden="true"></i></summary><p>No. We prepare the payment run and you release it from your own bank. Your money never passes through us.</p></details><details><summary>Do you work with our accountant?<i aria-hidden="true"></i></summary><p>Yes. We keep your records tidy in the same software, so year-end work is easier for them.</p></details><details><summary>What if a bill looks wrong?<i aria-hidden="true"></i></summary><p>We hold it, tell you why and ask the supplier for what is missing. Nothing doubtful reaches a payment run.</p></details></div></div>
+</div></section>
+<a class="cta-band" href="/quote"><span class="cta-note">Tell us what you need. How many bills a month and which accounting software you use. We reply within one working day.</span><svg class="cta-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg><span class="cta-word" aria-hidden="true">Start</span><span class="skip">Get a quote</span></a>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="f-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg><span class="word">adsonus</span></div>
-    <div class="footer-grid">
-      <div><h4>Finance</h4><ul><li><a href="/accounts-receivable">Accounts receivable</a></li><li><a href="/accounts-payable">Accounts payable</a></li><li><a href="/finance-reporting">Finance reporting</a></li></ul></div>
-      <div><h4>Marketing</h4><ul><li><a href="/marketing#google-ads">Google Ads</a></li><li><a href="/marketing#meta-linkedin">Meta and LinkedIn Ads</a></li><li><a href="/marketing#tracking">Tracking and reporting</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="/how-we-work">How we work</a></li><li><a href="/security">Security</a></li><li><a href="/about">About</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:baylar@adsonus.com">baylar@adsonus.com</a></li><li><a href="tel:+994773698929">+994 77 369 89 29</a></li><li>Baku, Azerbaijan</li></ul></div>
-      <div><p class="f-tag">Finance operations and marketing for small and medium businesses.</p></div>
-    </div>
+    <div class="footer-grid"><div><h4>Grow</h4><ul><li><a href="/marketing">Marketing</a></li><li><a href="/sales-crm-operations">Sales &amp; CRM operations</a></li></ul></div><div><h4>Get paid</h4><ul><li><a href="/billing-invoicing">Billing &amp; invoicing</a></li><li><a href="/accounts-receivable">Accounts receivable</a></li><li><a href="/accounts-payable">Accounts payable</a></li><li><a href="/bookkeeping">Bookkeeping &amp; month-end close</a></li><li><a href="/finance-reporting">Finance reporting</a></li></ul></div><div><h4>Run</h4><ul><li><a href="/customer-operations">Customer operations</a></li><li><a href="/customer-success">Customer onboarding &amp; success</a></li><li><a href="/hr-recruiting">HR &amp; recruiting operations</a></li><li><a href="/it-help-desk">IT help desk</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/services">All services</a></li><li><a href="/how-we-work">How we work</a></li><li><a href="/security">Security</a></li><li><a href="/about">About</a></li></ul></div><div><h4>Contact</h4><ul><li><a href="mailto:contact@adsonus.com">contact@adsonus.com</a></li><li>Rashid Behbudov 66</li><li>Baku, Azerbaijan</li></ul><p class="f-tag">Back-office operations for small and medium businesses.</p></div></div>
     <div class="footer-base">
-      <span>© 2026 adsonus · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+      <span>© 2026 Adsonus · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
       <a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </footer>
 
 <script>
-(function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
+(function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav'),b=document.getElementById('svc-btn'),m=document.getElementById('svc-menu');
+if(t&&n)t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+if(b&&m){var set=function(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');};
+b.addEventListener('click',function(e){e.stopPropagation();set(!m.classList.contains('open'));});
+document.addEventListener('click',function(e){if(!m.contains(e.target))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){set(false);b.focus();}});}})();
 </script>
-<script src="/js/site-v3.js" defer></script>
+<script src="/js/site-v3.js?v=2" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="/js/pages.js?v=2" defer></script>
+<script src="/js/pages.js?v=3" defer></script>
 </body>
 </html>
