@@ -28,6 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/site-v3.css?v=12"/>
+<link rel="stylesheet" href="/css/pages.css?v=3"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,8 +50,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main id="main">
-<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>Get paid on time without chasing customers</h1><p class="lead">We run your collections from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.</p><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav></div></section>
+<main id="main" class="v4p">
+<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><nav class="p-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav><h1 class="p-title"><span class="x-line"><span>Get paid on time without chasing customers</span></span></h1><p class="p-lead">We run your collections from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card pc-mail" aria-label="Sample reminder waiting for approval">
+<div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Waiting for your approval<em>Sample message</em></div>
+<dl><dt>From</dt><dd>accounts@yourcompany.com</dd><dt>To</dt><dd>Kellet &amp; Moss, accounts payable</dd><dt>Subject</dt><dd>Invoice 1042, $8,120, due 58 days ago</dd></dl>
+<p class="msg">Hi Dana, a quick note on invoice 1042. Could you tell me when it is scheduled for payment, or whether anything is holding it up on your side?</p>
+<div class="pc-acts"><span class="yes">Approve and send</span><span>Edit</span></div>
+<p class="pc-note">Nothing goes out under your name until you approve it.</p></figure></div></section>
 <section class="section"><div class="wrap split">
 <div class="prose"><h2>Every overdue invoice followed up, every week</h2>
 <ul class="checks" data-r><li style="--i:0"><span class="mk" aria-hidden="true"></span><span><strong>Reminders before and after the due date</strong><span>Friendly at first, firmer as time passes, always polite and always in your style.</span></span></li><li style="--i:1"><span class="mk" aria-hidden="true"></span><span><strong>Calls on the largest and oldest balances</strong><span>A real conversation finds out why an invoice is stuck and gets a payment date.</span></span></li><li style="--i:2"><span class="mk" aria-hidden="true"></span><span><strong>Excuses cleared quickly</strong><span>Missing purchase order, wrong address, lost invoice: we resend what is needed the same day.</span></span></li><li style="--i:3"><span class="mk" aria-hidden="true"></span><span><strong>Disputes passed straight to you</strong><span>Anything about the work itself comes back to you with the full history, so nothing is promised on your behalf.</span></span></li><li style="--i:4"><span class="mk" aria-hidden="true"></span><span><strong>A weekly report</strong><span>Paid, promised, overdue and stuck, on one page every Monday.</span></span></li></ul></div>
@@ -104,5 +110,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 <script src="/js/site-v3.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/js/pages.js?v=2" defer></script>
 </body>
 </html>

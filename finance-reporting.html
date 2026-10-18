@@ -28,6 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/site-v3.css?v=12"/>
+<link rel="stylesheet" href="/css/pages.css?v=3"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,8 +50,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main id="main">
-<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>Know where your cash stands every Monday</h1><p class="lead">One page, the same format every week: what came in, what is owed to you, what you owe, and what needs your decision.</p><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav></div></section>
+<main id="main" class="v4p">
+<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><nav class="p-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav><h1 class="p-title"><span class="x-line"><span>Know where your cash stands every Monday</span></span></h1><p class="p-lead">One page, the same format every week: what came in, what is owed to you, what you owe, and what needs your decision.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card" aria-label="Sample weekly report">
+<div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Weekly report · Monday<em>Sample figures</em></div>
+<div class="pc-kpis"><div><span>Collected</span><b data-count="12640" data-prefix="$">$12,640</b><i>7 invoices paid</i></div><div><span>Overdue now</span><b data-count="21380" data-prefix="$">$21,380</b><i>down from $33,900</i></div><div><span>Bills due</span><b data-count="9" >9</b><i>$14,200 this week</i></div></div>
+<div class="pc-bars" role="img" aria-label="Cash collected per week over six weeks, highest this week"><span style="--h:33%"><i>W36</i></span><span style="--h:48%"><i>W37</i></span><span style="--h:42%"><i>W38</i></span><span style="--h:66%"><i>W39</i></span><span style="--h:57%"><i>W40</i></span><span class="hi" style="--h:100%"><i>W41</i></span></div>
+<table><thead><tr><th>Needs you</th><th class="r">Amount</th></tr></thead><tbody>
+<tr><td>Kellet &amp; Moss dispute the April invoice</td><td class="r">$8,120</td></tr>
+<tr><td>New supplier: confirm bank details by phone</td><td class="r">$2,450</td></tr></tbody></table>
+<p class="pc-note">The report you receive every Monday. All figures are illustrative.</p></figure></div></section>
 <section class="section"><div class="wrap split">
 <div class="prose"><h2>Numbers you can act on in two minutes</h2>
 <div class="table-wrap"><table class="table"><thead><tr><th>Section</th><th>What it shows</th></tr></thead><tbody>
@@ -87,5 +95,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 <script src="/js/site-v3.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/js/pages.js?v=2" defer></script>
 </body>
 </html>

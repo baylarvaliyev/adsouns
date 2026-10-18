@@ -28,6 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/site-v3.css?v=12"/>
+<link rel="stylesheet" href="/css/pages.css?v=3"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,8 +50,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main id="main">
-<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>Supplier bills paid on time, never twice</h1><p class="lead">Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.</p><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav></div></section>
+<main id="main" class="v4p">
+<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><nav class="p-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><a href="/finance-operations">Finance operations</a></nav><h1 class="p-title"><span class="x-line"><span>Supplier bills paid on time, never twice</span></span></h1><p class="p-lead">Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card" aria-label="Sample payment run ready for release">
+<div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Payment run · Friday<em>Sample figures</em></div>
+<table><thead><tr><th>Supplier</th><th class="r hide-sm">Due</th><th class="r">Amount</th><th class="r">Check</th></tr></thead><tbody>
+<tr><td>Harlow Timber</td><td class="r hide-sm">Fri</td><td class="r">$4,860</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Brightline Freight</td><td class="r hide-sm">Fri</td><td class="r">$1,940</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Office Supply Co.</td><td class="r hide-sm">Mon</td><td class="r">$385</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Northside Print</td><td class="r hide-sm">Mon</td><td class="r">$1,215</td><td class="r"><span class="pill pill-warn">Duplicate?</span></td></tr></tbody></table>
+<div class="pc-total"><span>Ready to release</span><span>$7,185</span></div>
+<div class="pc-acts"><span class="yes">Release from your bank</span><span>Review</span></div>
+<p class="pc-note">We prepare the run. Only you release it.</p></figure></div></section>
 <section class="section"><div class="wrap split">
 <div class="prose"><h2>From inbox to approved payment run</h2>
 <ul class="checks" data-r><li style="--i:0"><span class="mk" aria-hidden="true"></span><span><strong>One inbox for every bill</strong><span>Suppliers send to a dedicated address on your domain. Paper bills can be photographed and forwarded.</span></span></li><li style="--i:1"><span class="mk" aria-hidden="true"></span><span><strong>Captured and coded</strong><span>Supplier, amount, dates and account code entered in your accounting software, with the bill attached.</span></span></li><li style="--i:2"><span class="mk" aria-hidden="true"></span><span><strong>Checked before anything is due</strong><span>Matched against purchase orders or delivery notes where you use them, and checked for duplicates.</span></span></li><li style="--i:3"><span class="mk" aria-hidden="true"></span><span><strong>Payment run prepared</strong><span>A list of what to pay this week, ready for you to approve. You release it from your bank.</span></span></li><li style="--i:4"><span class="mk" aria-hidden="true"></span><span><strong>Supplier statements reconciled</strong><span>Monthly statements compared with your records, so differences are found early.</span></span></li></ul></div>
@@ -87,5 +97,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 <script src="/js/site-v3.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/js/pages.js?v=2" defer></script>
 </body>
 </html>

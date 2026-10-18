@@ -28,6 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/site-v3.css?v=12"/>
+<link rel="stylesheet" href="/css/pages.css?v=3"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,8 +50,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main id="main">
-<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>Advertising measured in customers, not clicks</h1><p class="lead">We plan, build and manage paid campaigns for businesses that sell to other businesses and to local customers. You set the budget, the ad accounts stay in your name, and every month you see what each lead cost.</p></div></section>
+<main id="main" class="v4p">
+<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap"><h1 class="p-title"><span class="x-line"><span>Advertising measured in customers, not clicks</span></span></h1><p class="p-lead">We plan, build and manage paid campaigns for businesses that sell to other businesses and to local customers. You set the budget, the ad accounts stay in your name, and every month you see what each lead cost.</p></div><div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div><figure class="p-card" aria-label="Sample monthly advertising report">
+<div class="pc-top"><img src="/img/logo-mark.svg" alt=""/>Ads report · September<em>Sample figures</em></div>
+<div class="pc-kpis"><div><span>Spend</span><b data-count="2400" data-prefix="$">$2,400</b><i>within budget</i></div><div><span>Leads</span><b data-count="63">63</b><i>up 18%</i></div><div><span>Cost per lead</span><b data-count="38" data-prefix="$">$38</b><i>down from $46</i></div></div>
+<table><thead><tr><th>Channel</th><th class="r">Leads</th><th class="r">Cost per lead</th></tr></thead><tbody>
+<tr><td>Google Ads</td><td class="r">34</td><td class="r">$31</td></tr>
+<tr><td>LinkedIn Ads</td><td class="r">18</td><td class="r">$52</td></tr>
+<tr><td>Meta Ads</td><td class="r">11</td><td class="r">$36</td></tr></tbody></table>
+<p class="pc-note">The report you receive every month. All figures are illustrative.</p></figure></div></section>
 <section class="section"><div class="wrap">
 <nav class="anchor-nav" aria-label="On this page"><a href="#google-ads">Google Ads</a><a href="#meta-linkedin">Meta and LinkedIn Ads</a><a href="#tracking">Tracking and reporting</a><a href="#approach">How we manage budgets</a></nav>
 </div></section>
@@ -94,5 +102,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 <script src="/js/site-v3.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/js/pages.js?v=2" defer></script>
 </body>
 </html>

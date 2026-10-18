@@ -18,13 +18,60 @@ CTA = '''<a class="cta-band" href="/quote"><span class="cta-note">{h}. {p}</span
 def cta(h='Tell us what you need', p='Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.'):
     return CTA.format(h=h, p=p)
 
-# Page hero: the headline and one sentence, with the mark cropped at the right edge.
-# The label argument is kept for the call sites but no longer printed (no eyebrows in v3).
+# Page hero, as on the homepage: centred headline that rises in, one sentence, and (on
+# service pages) a sample product card on a blue stage, filled in by page() from VISUALS.
+# The label argument is kept for the call sites but no longer printed (no eyebrows).
 def hero(label, h1, lead, crumbs=None):
     c = ''
     if crumbs:
-        c = '<nav class="crumbs" aria-label="Breadcrumb">' + ''.join(f'<a href="{u}">{t}</a>' for t, u in crumbs if u) + '</nav>'
-    return f'<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>{h1}</h1><p class="lead">{lead}</p>{c}</div></section>'
+        c = '<nav class="p-crumbs" aria-label="Breadcrumb">' + ''.join(f'<a href="{u}">{t}</a>' for t, u in crumbs if u) + '</nav>'
+    return (f'<section class="p-hero"><div class="p-glow" aria-hidden="true"></div><div class="wrap">{c}'
+            f'<h1 class="p-title"><span class="x-line"><span>{h1}</span></span></h1><p class="p-lead">{lead}</p></div><!--VISUAL--></section>')
+
+# Sample product cards for the service pages. All figures are illustrative and say so.
+MARK = '<img src="/img/logo-mark.svg" alt=""/>'
+def stage(card):
+    return f'<div class="p-stage"><div class="p-stage-bg" aria-hidden="true"></div>{card}</div>'
+REPORT = stage(f'''<figure class="p-card" aria-label="Sample weekly report">
+<div class="pc-top">{MARK}Weekly report · Monday<em>Sample figures</em></div>
+<div class="pc-kpis"><div><span>Collected</span><b data-count="12640" data-prefix="$">$12,640</b><i>7 invoices paid</i></div><div><span>Overdue now</span><b data-count="21380" data-prefix="$">$21,380</b><i>down from $33,900</i></div><div><span>Bills due</span><b data-count="9" >9</b><i>$14,200 this week</i></div></div>
+<div class="pc-bars" role="img" aria-label="Cash collected per week over six weeks, highest this week"><span style="--h:33%"><i>W36</i></span><span style="--h:48%"><i>W37</i></span><span style="--h:42%"><i>W38</i></span><span style="--h:66%"><i>W39</i></span><span style="--h:57%"><i>W40</i></span><span class="hi" style="--h:100%"><i>W41</i></span></div>
+<table><thead><tr><th>Needs you</th><th class="r">Amount</th></tr></thead><tbody>
+<tr><td>Kellet &amp; Moss dispute the April invoice</td><td class="r">$8,120</td></tr>
+<tr><td>New supplier: confirm bank details by phone</td><td class="r">$2,450</td></tr></tbody></table>
+<p class="pc-note">The report you receive every Monday. All figures are illustrative.</p></figure>''')
+VISUALS = {
+  'finance-operations': REPORT,
+  'finance-reporting': REPORT,
+  'accounts-receivable': stage(f'''<figure class="p-card pc-mail" aria-label="Sample reminder waiting for approval">
+<div class="pc-top">{MARK}Waiting for your approval<em>Sample message</em></div>
+<dl><dt>From</dt><dd>accounts@yourcompany.com</dd><dt>To</dt><dd>Kellet &amp; Moss, accounts payable</dd><dt>Subject</dt><dd>Invoice 1042, $8,120, due 58 days ago</dd></dl>
+<p class="msg">Hi Dana, a quick note on invoice 1042. Could you tell me when it is scheduled for payment, or whether anything is holding it up on your side?</p>
+<div class="pc-acts"><span class="yes">Approve and send</span><span>Edit</span></div>
+<p class="pc-note">Nothing goes out under your name until you approve it.</p></figure>'''),
+  'accounts-payable': stage(f'''<figure class="p-card" aria-label="Sample payment run ready for release">
+<div class="pc-top">{MARK}Payment run · Friday<em>Sample figures</em></div>
+<table><thead><tr><th>Supplier</th><th class="r hide-sm">Due</th><th class="r">Amount</th><th class="r">Check</th></tr></thead><tbody>
+<tr><td>Harlow Timber</td><td class="r hide-sm">Fri</td><td class="r">$4,860</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Brightline Freight</td><td class="r hide-sm">Fri</td><td class="r">$1,940</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Office Supply Co.</td><td class="r hide-sm">Mon</td><td class="r">$385</td><td class="r"><span class="pill pill-good">Matched</span></td></tr>
+<tr><td>Northside Print</td><td class="r hide-sm">Mon</td><td class="r">$1,215</td><td class="r"><span class="pill pill-warn">Duplicate?</span></td></tr></tbody></table>
+<div class="pc-total"><span>Ready to release</span><span>$7,185</span></div>
+<div class="pc-acts"><span class="yes">Release from your bank</span><span>Review</span></div>
+<p class="pc-note">We prepare the run. Only you release it.</p></figure>'''),
+  'marketing': stage(f'''<figure class="p-card" aria-label="Sample monthly advertising report">
+<div class="pc-top">{MARK}Ads report · September<em>Sample figures</em></div>
+<div class="pc-kpis"><div><span>Spend</span><b data-count="2400" data-prefix="$">$2,400</b><i>within budget</i></div><div><span>Leads</span><b data-count="63">63</b><i>up 18%</i></div><div><span>Cost per lead</span><b data-count="38" data-prefix="$">$38</b><i>down from $46</i></div></div>
+<table><thead><tr><th>Channel</th><th class="r">Leads</th><th class="r">Cost per lead</th></tr></thead><tbody>
+<tr><td>Google Ads</td><td class="r">34</td><td class="r">$31</td></tr>
+<tr><td>LinkedIn Ads</td><td class="r">18</td><td class="r">$52</td></tr>
+<tr><td>Meta Ads</td><td class="r">11</td><td class="r">$36</td></tr></tbody></table>
+<p class="pc-note">The report you receive every month. All figures are illustrative.</p></figure>'''),
+}
+PAGE_ASSETS = '<link rel="stylesheet" href="/css/pages.css?v=3"/>'
+PAGE_JS = ('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>\n'
+           '<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>\n'
+           '<script src="/js/pages.js?v=2" defer></script>')
 
 def checks(items):
     return '<ul class="checks" data-r>' + ''.join(f'<li style="--i:{i}"><span class="mk" aria-hidden="true"></span><span><strong>{a}</strong><span>{b}</span></span></li>' for i, (a, b) in enumerate(items)) + '</ul>'
@@ -50,6 +97,7 @@ def page(slug, title, desc, body, noindex=False):
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 {FONTS}
+{PAGE_ASSETS}
 </head>
 <body>
 {GTM_NS}
@@ -58,14 +106,15 @@ def page(slug, title, desc, body, noindex=False):
 
 {HEADER}
 
-<main id="main">
-{unlabel(body)}
+<main id="main" class="v4p">
+{unlabel(body).replace('<!--VISUAL-->', VISUALS.get(slug, ''))}
 </main>
 
 {FOOTER}
 
 {NAVJS}
 {SITEJS}
+{PAGE_JS}
 </body>
 </html>
 '''
