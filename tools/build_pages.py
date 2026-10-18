@@ -280,7 +280,7 @@ pages.append(page('about', 'About adsonus',
  'adsonus provides finance operations and marketing for small and medium businesses. Founded by Baylar Valiyev, based in Baku, Azerbaijan.',
  hero('About', 'Big-company discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by its founder, whom you deal with directly.') + '''
 <section class="section"><div class="wrap founder">
-<div class="photo"><img src="/img/baylar-valiyev.jpg" alt="Baylar Valiyev, founder of adsonus" width="800" height="1000" loading="lazy"/></div>
+<div class="photo"><img src="/img/baylar-valiyev-sketch.jpg" alt="Pencil drawing of Baylar Valiyev, founder of adsonus" width="922" height="1152" loading="lazy"/></div>
 <div class="founder-copy">
 <p class="label">Founder</p><h2>Baylar Valiyev</h2>
 <p>I started adsonus after years of working on both sides of what keeps a small business alive: winning customers and getting paid. I have managed advertising for businesses of many sizes, and as a loans specialist at Express Bank I saw how often healthy businesses run short of cash simply because invoices are paid late.</p>

@@ -147,11 +147,15 @@
     gsap.from('.x-mail', { y: 60, rotate: -3, autoAlpha: 0, duration: 1.2, ease: 'expo.out',
       scrollTrigger: { trigger: '.x-mail', start: 'top 85%', once: true } });
 
-    // 6. Founder: the portrait opens out of the shape; the photo drifts inside it.
-    gsap.from('#portrait', { scale: 0.75, rotate: -6, ease: 'none',
-      scrollTrigger: { trigger: '#portrait', start: 'top bottom', end: 'center center', scrub: 1 } });
-    gsap.to('#portrait img', { yPercent: -12, ease: 'none',
-      scrollTrigger: { trigger: '#portrait', start: 'top bottom', end: 'bottom top', scrub: true } });
+    // 6. Founder: the drawing sketches itself in from the top as you scroll; then the signature writes itself.
+    gsap.fromTo('#sketch img', { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
+      scrollTrigger: { trigger: '#sketch', start: 'top 85%', end: 'center 45%', scrub: 1 } });
+    gsap.from('#sketch', { rotate: -5, y: 60, ease: 'none',
+      scrollTrigger: { trigger: '#sketch', start: 'top bottom', end: 'center center', scrub: 1 } });
+    gsap.fromTo('.x-signature', { clipPath: 'inset(-20% 100% -20% 0)' }, { clipPath: 'inset(-20% 0% -20% 0)', duration: 1.8, ease: 'power2.inOut',
+      scrollTrigger: { trigger: '.x-sign', start: 'top 85%', once: true } });
+    gsap.from('.x-role', { autoAlpha: 0, x: -16, duration: 0.8, delay: 1.2, ease: 'expo.out',
+      scrollTrigger: { trigger: '.x-sign', start: 'top 85%', once: true } });
 
     // Generic entrances outside the hero.
     $$('.v4 [data-up]').forEach(function (el) {
