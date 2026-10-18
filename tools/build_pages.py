@@ -15,7 +15,7 @@ GTM_NS = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM
 
 # Closing band, same as the homepage: the whole band is the link.
 CTA = '''<a class="cta-band" href="/quote"><span class="cta-note">{h}. {p}</span><svg class="cta-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg><span class="cta-word" aria-hidden="true">Start</span><span class="skip">Get a quote</span></a>'''
-def cta(h='Tell us what you need', p='Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.'):
+def cta(h='Tell us what you need', p='Describe your situation in a few lines. You get a reply within one working day and a written quote by email.'):
     return CTA.format(h=h, p=p)
 
 # Page hero, as on the homepage: centred headline that rises in, one sentence, and (on
@@ -176,10 +176,10 @@ pages.append(page('accounts-receivable', 'Accounts receivable and collections �
 </tbody></table></div>
 </div></section>
 <section class="section"><div class="wrap split">
-<div class="prose"><p class="label">What we need from you</p><h2>One export, one mailbox, one call</h2>
+<div class="prose"><p class="label">What we need from you</p><h2>One export, one mailbox, one email</h2>
 <ul><li>An aged receivables report from your accounting software, or read-only access to it.</li>
 <li>A mailbox on your domain, for example accounts@yourcompany.com, that we send from.</li>
-<li>A 20-minute call to agree tone, sensitive customers and open disputes.</li></ul></div>
+<li>A short email exchange to agree tone, sensitive customers and open disputes.</li></ul></div>
 <div class="prose"><p class="label">What we never do</p><h2>Clear limits</h2>
 <ul><li>We never collect money into our own account. Customers pay you, as they do today.</li>
 <li>We never threaten, and any legal step is your decision.</li>
@@ -262,17 +262,17 @@ pages.append(page('marketing', 'Google, Meta and LinkedIn advertising for small 
 <div class="prose svc-block" id="approach"><p class="label">How we manage budgets</p><h2>Your accounts, your card, your limits</h2>
 <ul><li>Ad accounts are created in your name and paid with your card. You can see everything at any time.</li>
 <li>Monthly budgets are agreed in writing, and we do not exceed them.</li>
-<li>Our fee is separate from your ad spend and quoted after a short call.</li></ul></div>
+<li>Our fee is separate from your ad spend and quoted in writing once we know your spend.</li></ul></div>
 </div></section>
 ''' + cta('Ask for an account review', 'Tell us what you are spending now and what a good lead is worth to you. We reply within one working day.')))
 
 # ---------- How we work ----------
 pages.append(page('how-we-work', 'How we work — adsonus',
- 'How an engagement with adsonus works: a short call, a free 2-week trial on real work, a results review and a fixed monthly quote.',
- hero('How we work', 'See the work before you commit to anything', 'Every engagement starts the same way, whichever service you choose: a short call, two weeks of real work for free, and a written quote only if you want to continue.') + '''
+ 'How an engagement with adsonus works: a short email introduction, a free 2-week trial on real work, a results review and a fixed monthly quote.',
+ hero('How we work', 'See the work before you commit to anything', 'Every engagement starts the same way, whichever service you choose: a short email introduction, two weeks of real work for free, and a written quote only if you want to continue.') + '''
 <section class="section"><div class="wrap">
 <ol class="how-steps steps-4" data-r>
-<li><span class="when">Day 0 · 20 minutes</span><h3>Intro call</h3><p>How you work today, your tools, what you want fixed first and any customers or suppliers that need special care.</p></li>
+<li><span class="when">Day 0 · by email</span><h3>Introduction</h3><p>How you work today, your tools, what you want fixed first and any customers or suppliers that need special care.</p></li>
 <li style="--i:1"><span class="when">Days 1–3</span><h3>Setup</h3><p>Access agreed at the lowest level that works, templates written and approved by you, data agreement signed.</p></li>
 <li style="--i:2"><span class="when">Days 1–14 · free</span><h3>Trial on real work</h3><p>We do the work and send a short update every working day.</p></li>
 <li style="--i:3"><span class="when">Day 14</span><h3>Review and quote</h3><p>A one-page summary of results and a fixed monthly quote for your volume.</p></li>
@@ -292,7 +292,7 @@ pages.append(page('how-we-work', 'How we work — adsonus',
 <ul><li>A weekly report every Monday morning.</li>
 <li>Replies the same working day, during US Eastern business hours (morning to mid-afternoon ET).</li>
 <li>One named person responsible for your account.</li>
-<li>Email, phone or WhatsApp, whichever you prefer.</li></ul></div>
+<li>Everything in writing, by email.</li></ul></div>
 </div></section>
 ''' + cta()))
 
@@ -327,13 +327,13 @@ pages.append(page('security', 'Security and data protection — adsonus',
 # ---------- About ----------
 pages.append(page('about', 'About adsonus',
  'adsonus provides finance operations and marketing for small and medium businesses. Founded by Baylar Valiyev, based in Baku, Azerbaijan.',
- hero('About', 'Big-company discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by its founder, whom you deal with directly.') + '''
+ hero('About', 'Big-company discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by people you deal with directly.') + '''
 <section class="section"><div class="wrap founder">
 <div class="photo"><img src="/img/baylar-valiyev-sketch.jpg" alt="Pencil drawing of Baylar Valiyev, founder of adsonus" width="922" height="1152" loading="lazy"/></div>
 <div class="founder-copy">
 <p class="label">Founder</p><h2>Baylar Valiyev</h2>
-<p>I started adsonus after years of working on both sides of what keeps a small business alive: winning customers and getting paid. I have managed advertising for businesses of many sizes, and as a loans specialist at Express Bank I saw how often healthy businesses run short of cash simply because invoices are paid late.</p>
-<p>adsonus brings those two sides together. You deal with me directly, and I am responsible for every piece of work that goes out under your name.</p>
+<p>adsonus was started after years of working on both sides of what keeps a small business alive: winning customers and getting paid. That experience covers managing advertising for businesses of many sizes and lending at Express Bank, which showed how often healthy businesses run short of cash simply because invoices are paid late.</p>
+<p>adsonus brings those two sides together. You deal with us directly, and we are responsible for every piece of work that goes out under your name.</p>
 </div></div></section>
 <section class="section rules-band"><div class="wrap split">
 <div class="prose"><p class="label">Being straight with you</p><h2>We are a new business</h2>
@@ -342,7 +342,7 @@ pages.append(page('about', 'About adsonus',
 <div class="prose"><p class="label">What we do about it</p><h2>You should not have to take our word for it</h2>
 <ul><li><strong>Two weeks of real work, free.</strong> You judge us on your own invoices, bills or campaigns before you pay anything.</li>
 <li><strong>No lock-in.</strong> Month to month, 30 days' notice, and everything we produce is yours.</li>
-<li><strong>Direct access to the founder.</strong> Your account is not passed to a junior team.</li>
+<li><strong>Direct access to the people doing the work.</strong> Your account is not passed to a junior team.</li>
 <li><strong>Founding-client terms.</strong> Our first clients get their monthly fee fixed for 12 months, in exchange for honest feedback.</li>
 <li><strong>A limited number of clients.</strong> We only take on what we can do properly, and say so when we are full.</li>
 <li><strong>Modern tools, human checks.</strong> We use good software, including AI-assisted drafting, so a small business can afford careful work. A person reviews everything before it goes out.</li></ul></div>
@@ -358,14 +358,14 @@ pages.append(page('about', 'About adsonus',
 <div class="prose"><p class="label">Where we work from</p><h2>Baku, on your business hours</h2>
 <p>adsonus works from Baku, Azerbaijan, and its working day overlaps with US Eastern business hours. Working from Baku keeps our costs lower than a local agency, and that is reflected in our quotes.</p></div>
 <div class="prose"><p class="label">Contact</p><h2>Talk to us</h2>
-<ul><li>Email: <strong>baylar@adsonus.com</strong></li><li>Phone: <strong>+994 77 369 89 29</strong></li><li>Location: Baku, Azerbaijan</li></ul></div>
+<ul><li>Email: <strong>baylar@adsonus.com</strong></li><li>Address: Rashid Behbudov 66, Baku, Azerbaijan</li></ul></div>
 </div></section>
 ''' + cta()))
 
 # ---------- Quote ----------
 pages.append(page('quote', 'Get a quote — adsonus',
  'Request a quote for accounts receivable, accounts payable or paid advertising. Reply within one working day.',
- hero('Get a quote', 'Tell us what you need', 'A few details help us prepare. You get a reply within one working day, then a short call and a written quote.') + '''
+ hero('Get a quote', 'Tell us what you need', 'A few details help us prepare. You get a reply within one working day, then a written quote.') + '''
 <section class="section"><div class="wrap split">
 <form class="form" id="quote-form" novalidate>
 <div class="row"><div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required/></div>
@@ -391,7 +391,7 @@ pages.append(page('quote', 'Get a quote — adsonus',
 <p class="small">We use these details only to reply to your request. See our <a href="/privacy">privacy notice</a>.</p>
 </form>
 <aside class="side-box"><p class="label">What happens next</p><h3>From request to quote</h3>
-<ol class="prose" style="padding-left:1.2em;margin:0"><li>We reply within one working day.</li><li>A 20-minute call to understand your situation.</li><li>A free 2-week trial on real work.</li><li>A fixed monthly quote in writing.</li></ol>
+<ol class="prose" style="padding-left:1.2em;margin:0"><li>We reply within one working day.</li><li>A few questions by email to understand your situation.</li><li>A free 2-week trial on real work.</li><li>A fixed monthly quote in writing.</li></ol>
 <p>We take on a limited number of new clients each month, so every account gets proper attention.</p><p>Prefer email? Write to <strong>baylar@adsonus.com</strong>.</p></aside>
 </div></section>
 <script>
@@ -420,7 +420,7 @@ pages.append(page('quote', 'Get a quote — adsonus',
 
 # ---------- Thank you ----------
 pages.append(page('thank-you', 'Thank you — adsonus', 'Your request has been received.',
- hero('Request received', 'Thank you. We reply within a working day.', 'Your request has reached us. If anything is urgent, email baylar@adsonus.com or call +994 77 369 89 29.') + '''
+ hero('Request received', 'Thank you. We reply within a working day.', 'Your request has reached us. If anything is urgent, email baylar@adsonus.com.') + '''
 <section class="section"><div class="wrap"><div class="btn-row"><a class="btn btn-quiet" href="/">Back to the homepage</a><a class="btn btn-quiet" href="/how-we-work">How the trial works</a></div></div></section>''', noindex=True))
 
 # ---------- 404 ----------
@@ -437,7 +437,7 @@ LEGAL_DATE = '10 October 2026'
 pages.append(page('privacy', 'Privacy notice — adsonus', 'How adsonus collects and uses personal data on this website.',
  hero('Legal', 'Privacy notice', f'Last updated {LEGAL_DATE}.') + '''
 <section class="section"><div class="wrap"><div class="prose doc">
-<h2>Who we are</h2><p>adsonus is a finance operations and marketing services business based in Baku, Azerbaijan. For questions about this notice or your data, contact baylar@adsonus.com.</p>
+<h2>Who we are</h2><p>adsonus (Adsonus) is a finance operations and marketing services business at Rashid Behbudov 66, Baku, Azerbaijan. For questions about this notice or your data, contact baylar@adsonus.com.</p>
 <h2>What we collect on this website</h2><ul>
 <li><strong>Quote requests:</strong> the details you enter in our form (name, work email, company, country, website, phone and your message). The form is delivered to us by Web3Forms, which processes the submission on our behalf.</li>
 <li><strong>Usage data:</strong> we use Google Tag Manager and Google Analytics to understand how the website is used, such as pages visited and the device type. These tools may set cookies.</li></ul>
@@ -461,7 +461,7 @@ pages.append(page('terms', 'Website terms — adsonus', 'Terms of use for the ad
 <h2>Intellectual property</h2><p>The adsonus name, logo and website content belong to adsonus. You may not copy them for commercial use without permission.</p>
 <h2>Links</h2><p>We are not responsible for the content of other websites linked from this one.</p>
 <h2>Liability</h2><p>We take care to keep this website accurate but do not guarantee that it is complete or always available. To the extent permitted by law, we are not liable for losses arising from use of the website.</p>
-<h2>Contact</h2><p>adsonus, Baku, Azerbaijan · baylar@adsonus.com</p>
+<h2>Contact</h2><p>Adsonus, Rashid Behbudov 66, Baku, Azerbaijan · baylar@adsonus.com</p>
 </div></div></section>'''))
 
 print('built', pages)
