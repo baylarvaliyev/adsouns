@@ -7,26 +7,58 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  // Statement: wrap each word so it can brighten on its own (text stays selectable).
-  var words = $('#words');
-  if (words) {
-    $$('#words').forEach(function (p) {
-      var out = [];
-      p.childNodes.forEach(function (n) {
-        if (n.nodeType === 3) {
-          n.textContent.split(/(\s+)/).forEach(function (t) {
-            out.push(/^\s+$/.test(t) || !t ? document.createTextNode(t) : Object.assign(document.createElement('span'), { className: 'w', textContent: t }));
-          });
-        } else { n.classList.add('w'); out.push(n); }
+  // Cash flow: each lane draws hop by hop, a glowing head rides the tip of the line,
+  // and each card lights up as the head reaches it. Returns a timeline for scrubbing.
+  function flowTimeline(svg) {
+    var tl = gsap.timeline({ paused: true });
+    var origin = function (g) { var b = g.getBBox(); return (b.x + b.width / 2) + ' ' + (b.y + b.height / 2); };
+    var node = function (id) { return svg.querySelector('[data-node="' + id + '"]'); };
+    $$('[data-node]', svg).forEach(function (g) { gsap.set(g, { svgOrigin: origin(g), opacity: 0.22, scale: 0.9 }); });
+    gsap.set(node('hub'), { scale: 0.7, opacity: 0.3 });
+
+    ['in', 'out'].forEach(function (lane, li) {
+      var edges = $$('.edge-' + lane, svg), head = svg.querySelector('.head-' + lane);
+      var at = li * 0.9;                       // the out lane starts a little later
+      var first = lane === 'in' ? 'ads' : 'bill';
+      tl.to(node(first), { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, at);
+      tl.to(head, { opacity: 1, duration: 0.2 }, at + 0.3);
+      at += 0.4;
+      edges.forEach(function (edge) {
+        var len = edge.getTotalLength(), p = { v: 0 };
+        gsap.set(edge, { strokeDasharray: len, strokeDashoffset: len });
+        tl.to(edge, { strokeDashoffset: 0, duration: 1, ease: 'none' }, at);
+        tl.to(p, { v: 1, duration: 1, ease: 'none', onUpdate: function () {
+          var pt = edge.getPointAtLength(len * p.v); head.setAttribute('cx', pt.x); head.setAttribute('cy', pt.y);
+        } }, at);
+        at += 1;
+        var to = edge.dataset.to;
+        if (to === 'hub') {
+          tl.to(node('hub'), { opacity: 1, scale: 1.12, duration: 0.25, ease: 'power2.out' }, at - 0.05)
+            .to(node('hub'), { scale: 1, duration: 0.35, ease: 'power2.inOut' }, at + 0.2);
+        } else {
+          tl.to(node(to), { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, at - 0.1);
+        }
       });
-      p.textContent = '';
-      out.forEach(function (n) { p.appendChild(n); });
+      tl.to(head, { opacity: 0, duration: 0.3 }, at);
     });
+
+    // Once fully drawn, small dots keep flowing along both lanes.
+    var started = false;
+    tl.eventCallback('onUpdate', function () {
+      if (started || tl.progress() < 0.999) return;
+      started = true;
+      svg.classList.add('live');
+      $$('animateMotion', svg).forEach(function (m) {
+        var dur = parseFloat(m.getAttribute('dur')), k = +(m.dataset.delay || 0);
+        setTimeout(function () { try { m.beginElement(); } catch (e) {} }, k * dur * 1000 / 3);
+      });
+    });
+    return tl;
   }
 
   var mm = gsap.matchMedia();
 
-  mm.add({ motion: '(prefers-reduced-motion: no-preference)', wide: '(min-width: 981px)' }, function (ctx) {
+  mm.add({ motion: '(prefers-reduced-motion: no-preference)', wide: '(min-width: 981px)', phone: '(max-width: 620px)' }, function (ctx) {
     if (!ctx.conditions.motion) return;
     var wide = ctx.conditions.wide;
     var ease = 'power3.out';
@@ -61,16 +93,18 @@
       }
     });
 
-    // 2. Statement: pinned while every word brightens in turn.
-    if (words) {
-      gsap.fromTo('#words .w', { opacity: 0.12 }, {
-        opacity: 1, stagger: 0.1, ease: 'none',
-        scrollTrigger: wide
-          ? { trigger: '#statement', start: 'top top', end: '+=140%', pin: true, scrub: 0.6 }
-          : { trigger: '#words', start: 'top 80%', end: 'bottom 40%', scrub: 0.6 }
+    // 2. Cash flow: pinned on wide screens while the diagram draws; scrubbed in place on smaller ones.
+    var flowSvg = $(ctx.conditions.phone ? '.flow-v' : '.flow-h');
+    if (flowSvg) {
+      var ftl = flowTimeline(flowSvg);
+      gsap.from('.x-flow-head > *', { y: 40, autoAlpha: 0, duration: 1, stagger: 0.1, ease: 'expo.out',
+        scrollTrigger: { trigger: '#flow', start: 'top 75%', once: true } });
+      ScrollTrigger.create({
+        trigger: wide ? '#flow' : '.x-flow-stage',
+        start: wide ? 'top top' : 'top 80%',
+        end: wide ? '+=160%' : 'bottom 45%',
+        pin: wide, scrub: 0.8, animation: ftl
       });
-      gsap.from('.x-inline-mark', { rotate: -90, scale: 0.3, ease: 'none',
-        scrollTrigger: { trigger: '#words', start: 'top 85%', end: 'top 30%', scrub: 1 } });
     }
 
     // 3. Bento tiles rise in, slightly scaled, one after another.

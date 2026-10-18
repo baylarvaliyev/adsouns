@@ -58,14 +58,41 @@
 .xr-right .r{text-align:right}
 .xr-note{margin-top:18px;font-size:.875rem;color:var(--muted)}
 
-/* ---------- 2. Statement ---------- */
-.x-statement{min-height:100svh;display:flex;align-items:center;padding-block:clamp(120px,14vw,200px)}
-.x-words{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,1rem + 3.6vw,5.25rem);line-height:1.08;letter-spacing:-.04em;color:var(--ink);max-width:22ch}
-.x-words .w{display:inline}
-.x-words .x-inline-mark{display:inline-block}
-.x-inline-mark{display:inline-block;width:.82em;height:.82em;vertical-align:-.08em;margin:0 .08em;color:var(--brand)}
-.x-inline-mark svg{width:100%;height:100%;fill:currentColor}
-
+/* ---------- 2. Cash flow diagram ---------- */
+.x-flow{padding-block:clamp(110px,13vw,200px) clamp(40px,5vw,80px);min-height:100svh;display:flex;align-items:center}
+.x-flow>.wrap{width:100%}
+.x-flow-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(40px,5vw,72px)}
+.x-flow-head .x-h2{max-width:12ch}
+.x-flow-stage{position:relative}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.flow{width:100%;height:auto;overflow:visible;font-family:var(--font-body)}
+.flow-v{display:none}
+.flow .lane-track{fill:none;stroke:none}
+.flow .edge{fill:none;stroke:#C9D6F6;stroke-width:3;stroke-linecap:round}
+.flow .edge-in{stroke:var(--brand)}
+.flow .edge-out{stroke:var(--ink)}
+.flow .head{fill:var(--brand);filter:drop-shadow(0 0 8px rgba(51,103,247,.8));opacity:0}
+.flow .head-out{fill:var(--ink);filter:drop-shadow(0 0 6px rgba(11,23,48,.5))}
+.flow .amb{fill:var(--brand);opacity:0}
+.flow .amb-out{fill:var(--ink)}
+.flow.live .amb{opacity:.9}
+.flow .node rect{fill:#fff;stroke:#E1E8F4;stroke-width:1.5}
+.flow .node .pip{fill:var(--brand)}
+.flow .node .t{font-weight:600;fill:var(--ink)}
+.flow .node .m{fill:var(--muted)}
+.flow .node-bill .pip,.flow .node-run .pip,.flow .node-approve .pip{fill:var(--ink)}
+.flow .node-paid rect{fill:#E3F3EA;stroke:#BFE3CD}
+.flow .node-paid .pip{fill:var(--good)}
+.flow .node-paid .t{fill:var(--good)}
+.flow .node-approve rect{fill:var(--ink);stroke:var(--ink)}
+.flow .node-approve .t{fill:#fff}
+.flow .node-approve .m{fill:var(--on-dark-soft)}
+.flow .node-approve .pip{fill:var(--brand)}
+.flow .node,.flow .hub{transform-box:view-box}
+.flow .hub use{color:var(--brand);fill:var(--brand)}
+.flow .hub-ring{fill:#EEF3FF}
+.flow .cap{fill:var(--muted);font-weight:600;letter-spacing:.01em}
+.x-services{padding-top:clamp(40px,5vw,80px)}
 /* ---------- 3. Bento ---------- */
 .x-section>.wrap>.x-h2{margin-bottom:clamp(40px,5vw,72px);max-width:16ch}
 .x-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(260px,auto);grid-auto-flow:dense;gap:16px}
@@ -87,7 +114,7 @@
 
 .xb-cols{display:grid}
 .xb-blue{background:var(--brand);color:#fff;justify-content:flex-end}
-.xb-blue p{color:#E6ECFF}
+.xb-blue p{color:#fff}
 .xb-mark{position:absolute;right:-8%;top:-40%;width:52%;aspect-ratio:202/200;color:rgba(255,255,255,.16);transition:transform 1s var(--ease-out)}
 .xb-mark svg{width:100%;height:100%;fill:currentColor}
 .xb-blue:hover .xb-mark{transform:rotate(-8deg) scale(1.06)}
@@ -146,7 +173,7 @@
 .x-rev .x-track{animation-direction:reverse;animation-duration:44s}
 .x-track span{font-family:var(--font-display);font-weight:700;font-size:clamp(2.25rem,1.2rem + 3.6vw,5rem);letter-spacing:-.045em;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:clamp(32px,4vw,72px)}
 .x-track span::after{content:"";width:.42em;height:.42em;border-radius:var(--m-shape);background:var(--brand)}
-.x-rev .x-track span{color:#C5D2EE}
+.x-rev .x-track span{color:#6F82A8}
 .x-marquee:hover .x-track{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
 
@@ -188,6 +215,8 @@
 /* ---------- Tablet and phone ---------- */
 @media (max-width:980px){
   .xr-body{grid-template-columns:1fr}
+  .x-flow{min-height:0}
+  .x-flow-head{grid-template-columns:1fr;gap:16px}
   .x-bento{grid-template-columns:1fr 1fr}
   .xb-fin,.xb-mkt{grid-column:span 2;grid-row:auto}
   .xb-blue,.xb-navy{grid-column:span 1}
@@ -205,6 +234,8 @@
   .xr-kpis div{padding:10px}
   .xr-right th:nth-child(2),.xr-right td:nth-child(2){display:none}
   .x-bento{grid-template-columns:1fr}
+  .flow-h{display:none}
+  .flow-v{display:block;max-width:420px;margin:0 auto}
   .xb-fin,.xb-mkt,.xb-blue,.xb-navy{grid-column:auto}
   .xb{border-radius:26px}
   .x-stage-mark{width:130vw;top:-2%}
