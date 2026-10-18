@@ -5,22 +5,33 @@ INDEX = open('index.html', encoding='utf-8').read()
 HEAD_TOP = INDEX.split('<title>')[0]
 HEADER = re.search(r'(<header class="site-header">.*?</header>)', INDEX, re.S).group(1)
 FOOTER = re.search(r'(<footer class="site-footer">.*?</footer>)', INDEX, re.S).group(1)
+# The image credits belong to the homepage, where the ledger pictures are.
+FOOTER = re.sub(r'<p class="credits">.*?</p>\s*', '', FOOTER, flags=re.S)
+SPRITE = re.search(r'(<svg width="0" height="0".*?</svg>)', INDEX, re.S).group(1)
 NAVJS = re.search(r'(<script>\n\(function\(\)\{var t=document.*?</script>)', INDEX, re.S).group(1)
-FONTS = re.search(r'(<link rel="preconnect".*?<link rel="stylesheet" href="/css/site-v2.css"/>)', INDEX, re.S).group(1)
+SITEJS = '<script src="/js/site-v3.js" defer></script>'
+FONTS = re.search(r'(<link rel="preconnect".*?<link rel="stylesheet" href="/css/site-v3.css[^"]*"/>)', INDEX, re.S).group(1)
 GTM_NS = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>'
 
-CTA = '''<section class="cta"><div class="wrap"><div class="cta-box"><div><h2>{h}</h2><p>{p}</p></div><a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a></div></div></section>'''
+# Closing band, same as the homepage: the whole band is the link.
+CTA = '''<a class="cta-band" href="/quote"><span class="cta-note">{h}. {p}</span><svg class="cta-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg><span class="cta-word" aria-hidden="true">Start</span><span class="skip">Get a quote</span></a>'''
 def cta(h='Tell us what you need', p='Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.'):
     return CTA.format(h=h, p=p)
 
+# Page hero: the headline and one sentence, with the mark cropped at the right edge.
+# The label argument is kept for the call sites but no longer printed (no eyebrows in v3).
 def hero(label, h1, lead, crumbs=None):
     c = ''
     if crumbs:
-        c = '<p class="crumbs">' + ' / '.join(f'<a href="{u}">{t}</a>' if u else t for t, u in crumbs) + '</p>'
-    return f'<section class="page-hero"><div class="wrap">{c}<p class="label">{label}</p><h1>{h1}</h1><p class="lead">{lead}</p></div></section>'
+        c = '<nav class="crumbs" aria-label="Breadcrumb">' + ''.join(f'<a href="{u}">{t}</a>' for t, u in crumbs if u) + '</nav>'
+    return f'<section class="page-hero"><div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div><div class="wrap"><h1>{h1}</h1><p class="lead">{lead}</p>{c}</div></section>'
 
 def checks(items):
-    return '<ul class="checks">' + ''.join(f'<li><span><strong>{a}</strong><span>{b}</span></span></li>' for a, b in items) + '</ul>'
+    return '<ul class="checks" data-r>' + ''.join(f'<li style="--i:{i}"><span class="mk" aria-hidden="true"></span><span><strong>{a}</strong><span>{b}</span></span></li>' for i, (a, b) in enumerate(items)) + '</ul>'
+
+def unlabel(body):
+    """v3 has no eyebrow labels: drop <p class="label"> lines left in section markup."""
+    return re.sub(r'<p class="label">.*?</p>', '', body)
 
 def page(slug, title, desc, body, noindex=False):
     url = 'https://adsonus.com/' + ('' if slug == 'index' else slug)
@@ -43,30 +54,32 @@ def page(slug, title, desc, body, noindex=False):
 <body>
 {GTM_NS}
 <a class="skip" href="#main">Skip to content</a>
+{SPRITE}
 
 {HEADER}
 
 <main id="main">
-{body}
+{unlabel(body)}
 </main>
 
 {FOOTER}
 
 {NAVJS}
+{SITEJS}
 </body>
 </html>
 '''
     open(f'{slug}.html', 'w', encoding='utf-8').write(out)
     return slug
 
-TRIAL_BOX = '''<aside class="side-box"><p class="label">Free 2-week trial</p><h3>{h}</h3><p>{p}</p><a class="btn btn-primary" href="/quote">Start with a quote <span class="arr" aria-hidden="true">→</span></a><p class="small">No payment details needed for the trial.</p></aside>'''
+TRIAL_BOX = '''<aside class="side-box"><h3>{h}</h3><p>{p}</p><a class="btn btn-primary" href="/quote">Start with a quote <span class="arr" aria-hidden="true">→</span></a><p class="small">No payment details needed for the trial.</p></aside>'''
 
 pages = []
 
 # ---------- Finance operations overview ----------
 pages.append(page('finance-operations', 'Finance operations for small businesses — adsonus',
  'Accounts receivable, accounts payable and weekly finance reporting run for small and medium businesses, inside your own tools.',
- hero('Finance operations', 'The back office your business keeps putting off', 'We take on the daily finance work that slips when everyone is busy: chasing what you are owed, processing what you owe, and showing you where the cash stands every week.') + '''
+ hero('Finance operations', 'The back office you keep putting off', 'We take on the daily finance work that slips when everyone is busy: chasing what you are owed, processing what you owe, and showing you where the cash stands every week.') + '''
 <section class="section"><div class="wrap">
 <div class="cards">
 <a class="card" href="/accounts-receivable"><h3>Accounts receivable</h3><p>Reminders, follow-ups and calls on overdue invoices, from your own accounts address. Disputes come straight back to you.</p></a>
@@ -74,7 +87,7 @@ pages.append(page('finance-operations', 'Finance operations for small businesses
 <a class="card" href="/finance-reporting"><h3>Finance reporting</h3><p>One short report every Monday: cash collected, what is overdue, what is due to suppliers and what needs your decision.</p></a>
 </div></div></section>
 <section class="section band"><div class="wrap split">
-<div class="prose"><p class="label">Who it suits</p><h2>Built for businesses without a full finance team</h2>
+<div class="prose"><p class="label">Who it suits</p><h2>For businesses without a finance team</h2>
 <p>We work best with businesses of 5 to 200 people that sell to other businesses on invoice. They usually have an accountant or bookkeeper for the year-end, but nobody whose job is to chase late payers or keep supplier bills under control day to day.</p>
 <p>We fill that gap. We are not a replacement for your accountant: we work alongside them, in the same accounting software, and keep your records tidy for them.</p></div>
 <div>''' + checks([
@@ -88,7 +101,7 @@ pages.append(page('finance-operations', 'Finance operations for small businesses
 # ---------- Accounts receivable ----------
 pages.append(page('accounts-receivable', 'Accounts receivable and collections — adsonus',
  'Outsourced accounts receivable for small businesses: polite reminders from your own mailbox, calls on large balances, dispute handling and a weekly report.',
- hero('Accounts receivable', 'Get paid on time without chasing customers yourself', 'We run your collections from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts receivable',None)]) + '''
+ hero('Accounts receivable', 'Get paid on time without chasing customers', 'We run your collections from your own accounts address, in your tone. Your customers deal with your accounts team. You keep the relationship and get the cash.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts receivable',None)]) + '''
 <section class="section"><div class="wrap split">
 <div class="prose"><p class="label">What we do</p><h2>Every overdue invoice followed up, every week</h2>
 ''' + checks([
@@ -101,16 +114,16 @@ pages.append(page('accounts-receivable', 'Accounts receivable and collections �
 ''' + TRIAL_BOX.format(h='We chase your overdue invoices for two weeks, free', p='Give us up to 20 overdue invoices. You see every email before it is sent, and a short update every working day.') + '''
 </div></section>
 <section class="section band"><div class="wrap">
-<div class="section-head"><p class="label">The routine</p><h2>A standard follow-up sequence, adjusted to you</h2><p class="lead">You approve the wording once. Customers you mark as sensitive are handled by hand or not contacted at all.</p></div>
+<div class="section-head"><p class="label">The routine</p><h2>A standard follow-up, adjusted to you</h2><p class="lead">You approve the wording once. Customers you mark as sensitive are handled by hand or not contacted at all.</p></div>
 <div class="table-wrap"><table class="table">
 <thead><tr><th>When</th><th>What happens</th><th>Tone</th></tr></thead>
 <tbody>
-<tr><td class="num">3 days before due</td><td>Courtesy reminder with the invoice attached</td><td>Friendly</td></tr>
-<tr><td class="num">1 day after due</td><td>Payment reminder and a request to confirm a date</td><td>Friendly</td></tr>
-<tr><td class="num">7 days overdue</td><td>Second reminder and statement of account</td><td>Firm</td></tr>
-<tr><td class="num">10–14 days overdue</td><td>Phone call to the person responsible for payment</td><td>Firm</td></tr>
-<tr><td class="num">21 days overdue</td><td>Final notice, sent only with your approval</td><td>Formal</td></tr>
-<tr><td class="num">30+ days overdue</td><td>We agree the next step with you: hold, payment plan or referral</td><td>Your decision</td></tr>
+<tr><td>3 days before due</td><td>Courtesy reminder with the invoice attached</td><td>Friendly</td></tr>
+<tr><td>1 day after due</td><td>Payment reminder and a request to confirm a date</td><td>Friendly</td></tr>
+<tr><td>7 days overdue</td><td>Second reminder and statement of account</td><td>Firm</td></tr>
+<tr><td>10–14 days overdue</td><td>Phone call to the person responsible for payment</td><td>Firm</td></tr>
+<tr><td>21 days overdue</td><td>Final notice, sent only with your approval</td><td>Formal</td></tr>
+<tr><td>30+ days overdue</td><td>We agree the next step with you: hold, payment plan or referral</td><td>Your decision</td></tr>
 </tbody></table></div>
 </div></section>
 <section class="section"><div class="wrap split">
@@ -129,7 +142,7 @@ pages.append(page('accounts-receivable', 'Accounts receivable and collections �
 # ---------- Accounts payable ----------
 pages.append(page('accounts-payable', 'Accounts payable for small businesses — adsonus',
  'Outsourced accounts payable: supplier bills captured, coded and matched, and payment runs prepared for your approval. Your bank, your release.',
- hero('Accounts payable', 'Supplier bills under control, paid on time, never paid twice', 'Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts payable',None)]) + '''
+ hero('Accounts payable', 'Supplier bills paid on time, never twice', 'Bills arrive in one inbox. We capture, code and check them, then prepare a payment run that you approve and release from your own bank.', [('Home','/'),('Finance operations','/finance-operations'),('Accounts payable',None)]) + '''
 <section class="section"><div class="wrap split">
 <div class="prose"><p class="label">What we do</p><h2>From inbox to approved payment run</h2>
 ''' + checks([
@@ -141,13 +154,13 @@ pages.append(page('accounts-payable', 'Accounts payable for small businesses —
 ]) + '''</div>
 ''' + TRIAL_BOX.format(h='We process two weeks of your supplier bills, free', p='We set up the bills inbox, process everything that arrives for two weeks and prepare your first payment run.') + '''
 </div></section>
-<section class="section dark"><div class="wrap">
-<div class="section-head"><p class="label">Payment safety</p><h2>Controls that stop the most common payment fraud</h2></div>
-<div class="rules">
-<div class="rule"><span class="no">01</span><h3>You release every payment</h3><p>We prepare payment runs. Only you, or someone you name, can send money from your bank.</p></div>
-<div class="rule"><span class="no">02</span><h3>Bank detail changes are verified</h3><p>A request to change a supplier's bank details is confirmed by phone on a number we already hold, never on the one in the email.</p></div>
-<div class="rule"><span class="no">03</span><h3>Duplicates are flagged</h3><p>Same supplier, same amount, similar date: we stop and ask before it reaches a payment run.</p></div>
-</div></div></section>
+<section class="section rules-band"><div class="wrap">
+<div class="section-head" data-r><h2>Controls that stop common payment fraud</h2></div>
+<ul class="rules" data-r>
+<li><span class="mk" aria-hidden="true"></span><h3>You release every payment</h3><p>We prepare payment runs. Only you, or someone you name, can send money from your bank.</p></li>
+<li style="--i:1"><span class="mk" aria-hidden="true"></span><h3>Bank detail changes are verified</h3><p>A request to change a supplier's bank details is confirmed by phone on a number we already hold, never on the one in the email.</p></li>
+<li style="--i:2"><span class="mk" aria-hidden="true"></span><h3>Duplicates are flagged</h3><p>Same supplier, same amount, similar date: we stop and ask before it reaches a payment run.</p></li>
+</ul></div></section>
 ''' + cta()))
 
 # ---------- Finance reporting ----------
@@ -176,7 +189,7 @@ pages.append(page('marketing', 'Google, Meta and LinkedIn advertising for small 
 <nav class="anchor-nav" aria-label="On this page"><a href="#google-ads">Google Ads</a><a href="#meta-linkedin">Meta and LinkedIn Ads</a><a href="#tracking">Tracking and reporting</a><a href="#approach">How we manage budgets</a></nav>
 </div></section>
 <section class="section svc-block" id="google-ads" style="padding-top:0"><div class="wrap split">
-<div class="prose"><p class="label">Google Ads</p><h2>Be found when buyers are already looking</h2>
+<div class="prose"><h2>Google Ads</h2><p class="lead">Be found when buyers are already looking.</p>
 <p>Search campaigns built around the words your customers actually type, with landing pages that answer the question they asked.</p>''' + checks([
  ('Keyword and competitor research', 'Before any money is spent, so the budget goes to searches with buying intent.'),
  ('Campaign build and copy', 'Search ads, extensions and negative keywords, prepared for your sign-off.'),
@@ -185,14 +198,14 @@ pages.append(page('marketing', 'Google, Meta and LinkedIn advertising for small 
 ''' + TRIAL_BOX.format(h='Two weeks of management, free', p='We audit your existing account or build a first campaign, and run it for two weeks on your budget.') + '''
 </div></section>
 <section class="section band svc-block" id="meta-linkedin"><div class="wrap split">
-<div class="prose"><p class="label">Meta and LinkedIn Ads</p><h2>Reach the companies and roles you sell to</h2>
+<div class="prose"><h2>Meta and LinkedIn Ads</h2><p class="lead">Reach the companies and roles you sell to.</p>
 <p>LinkedIn targets by company, industry and job title, which suits business-to-business offers. Meta (Facebook and Instagram) reaches local and consumer audiences at a lower cost per lead.</p>''' + checks([
  ('Audience planning', 'Who to reach, who to exclude and how much each audience is worth to you.'),
  ('Creative and copy', 'Ad text and simple visuals prepared with you and approved before launch.'),
  ('Lead handling', 'Lead forms connected to your inbox or CRM, so no enquiry sits unanswered.'),
 ]) + '''</div><div></div></div></section>
 <section class="section svc-block" id="tracking"><div class="wrap split">
-<div class="prose"><p class="label">Tracking and reporting</p><h2>Know which money brought customers</h2>
+<div class="prose"><h2>Tracking and reporting</h2><p class="lead">Know which money brought customers.</p>
 <p>Most small business ad accounts report clicks, not enquiries. We set up conversion tracking properly, so every campaign is judged on leads and sales.</p>''' + checks([
  ('Conversion tracking', 'Google Tag Manager, Google Analytics and platform tags configured and tested.'),
  ('Monthly report', 'Spend, leads, cost per lead and what we will change next month, on one page.'),
@@ -209,11 +222,11 @@ pages.append(page('how-we-work', 'How we work — adsonus',
  'How an engagement with adsonus works: a short call, a free 2-week trial on real work, a results review and a fixed monthly quote.',
  hero('How we work', 'See the work before you commit to anything', 'Every engagement starts the same way, whichever service you choose: a short call, two weeks of real work for free, and a written quote only if you want to continue.') + '''
 <section class="section"><div class="wrap">
-<ol class="steps">
-<li><span class="meta">Day 0 · 20 minutes</span><h3>Intro call</h3><p>How you work today, your tools, what you want fixed first and any customers or suppliers that need special care.</p></li>
-<li><span class="meta">Days 1–3</span><h3>Setup</h3><p>Access agreed at the lowest level that works, templates written and approved by you, data agreement signed.</p></li>
-<li><span class="meta">Days 1–14 · free</span><h3>Trial on real work</h3><p>We do the work and send a short update every working day.</p></li>
-<li><span class="meta">Day 14</span><h3>Review and quote</h3><p>A one-page summary of results and a fixed monthly quote for your volume.</p></li>
+<ol class="how-steps steps-4" data-r>
+<li><span class="when">Day 0 · 20 minutes</span><h3>Intro call</h3><p>How you work today, your tools, what you want fixed first and any customers or suppliers that need special care.</p></li>
+<li style="--i:1"><span class="when">Days 1–3</span><h3>Setup</h3><p>Access agreed at the lowest level that works, templates written and approved by you, data agreement signed.</p></li>
+<li style="--i:2"><span class="when">Days 1–14 · free</span><h3>Trial on real work</h3><p>We do the work and send a short update every working day.</p></li>
+<li style="--i:3"><span class="when">Day 14</span><h3>Review and quote</h3><p>A one-page summary of results and a fixed monthly quote for your volume.</p></li>
 </ol></div></section>
 <section class="section band"><div class="wrap">
 <div class="section-head"><p class="label">The trial</p><h2>What the free two weeks covers</h2></div>
@@ -239,7 +252,7 @@ pages.append(page('security', 'Security and data protection — adsonus',
  'How adsonus handles access, passwords, client data and payments: least access, no client money, a data processing agreement and verified bank detail changes.',
  hero('Security', 'How we handle your access and your data', 'You give us access to your customers, suppliers and numbers. This page sets out exactly how we protect them.') + '''
 <section class="section"><div class="wrap split">
-<div class="prose">
+<div class="prose doc">
 <h2>Access</h2>
 <ul><li>We ask for the lowest access level that does the job: read-only or limited roles in your accounting software, and only the mailboxes we send from.</li>
 <li>Every login we use is personal and named. Shared logins are not used.</li>
@@ -265,7 +278,7 @@ pages.append(page('security', 'Security and data protection — adsonus',
 # ---------- About ----------
 pages.append(page('about', 'About adsonus',
  'adsonus provides finance operations and marketing for small and medium businesses. Founded by Baylar Valiyev, based in Baku, Azerbaijan.',
- hero('About', 'Back-office and marketing discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by its founder, whom you deal with directly.') + '''
+ hero('About', 'Big-company discipline for small businesses', 'adsonus gives small and medium businesses the kind of finance operations and marketing support that larger companies take for granted, delivered by its founder, whom you deal with directly.') + '''
 <section class="section"><div class="wrap founder">
 <div class="photo"><img src="/img/baylar-valiyev.jpg" alt="Baylar Valiyev, founder of adsonus" width="800" height="1000" loading="lazy"/></div>
 <div class="founder-copy">
@@ -274,7 +287,7 @@ pages.append(page('about', 'About adsonus',
 <p>adsonus brings those two sides together. You deal with me directly, and I am responsible for every piece of work that goes out under your name.</p>
 <ul class="cv"><li><span class="k">Express Bank</span>Loans Specialist</li><li><span class="k">Based in</span>Baku, Azerbaijan</li></ul>
 </div></div></section>
-<section class="section dark"><div class="wrap split">
+<section class="section rules-band"><div class="wrap split">
 <div class="prose"><p class="label">Being straight with you</p><h2>We are a new business</h2>
 <p>adsonus started in 2026. Our marketing work so far covers a small number of clients, including a business-to-business logistics company in California. Our finance operations service is newer still: we are taking on our first clients now.</p>
 <p>That means we cannot show you years of case studies or hundreds of reviews, and we will not pretend otherwise. Anything you read on this site describes how we work, not results we have not yet earned.</p></div>
@@ -359,8 +372,8 @@ pages.append(page('quote', 'Get a quote — adsonus',
 
 # ---------- Thank you ----------
 pages.append(page('thank-you', 'Thank you — adsonus', 'Your request has been received.',
- hero('Request received', 'Thank you. We will reply within one working day.', 'Your request has reached us. If anything is urgent, email baylar@adsonus.com or call +994 77 369 89 29.') + '''
-<section class="section"><div class="wrap"><div class="btn-row"><a class="btn btn-secondary" href="/">Back to the homepage</a><a class="btn btn-secondary" href="/how-we-work">How the trial works</a></div></div></section>''', noindex=True))
+ hero('Request received', 'Thank you. We reply within a working day.', 'Your request has reached us. If anything is urgent, email baylar@adsonus.com or call +994 77 369 89 29.') + '''
+<section class="section"><div class="wrap"><div class="btn-row"><a class="btn btn-quiet" href="/">Back to the homepage</a><a class="btn btn-quiet" href="/how-we-work">How the trial works</a></div></div></section>''', noindex=True))
 
 # ---------- 404 ----------
 pages.append(page('404', 'Page not found — adsonus', 'This page does not exist.',
@@ -375,7 +388,7 @@ pages.append(page('404', 'Page not found — adsonus', 'This page does not exist
 LEGAL_DATE = '10 October 2026'
 pages.append(page('privacy', 'Privacy notice — adsonus', 'How adsonus collects and uses personal data on this website.',
  hero('Legal', 'Privacy notice', f'Last updated {LEGAL_DATE}.') + '''
-<section class="section"><div class="wrap"><div class="prose">
+<section class="section"><div class="wrap"><div class="prose doc">
 <h2>Who we are</h2><p>adsonus is a finance operations and marketing services business based in Baku, Azerbaijan. For questions about this notice or your data, contact baylar@adsonus.com.</p>
 <h2>What we collect on this website</h2><ul>
 <li><strong>Quote requests:</strong> the details you enter in our form (name, work email, company, country, website, phone and your message). The form is delivered to us by Web3Forms, which processes the submission on our behalf.</li>
@@ -393,7 +406,7 @@ pages.append(page('privacy', 'Privacy notice — adsonus', 'How adsonus collects
 # ---------- Terms ----------
 pages.append(page('terms', 'Website terms — adsonus', 'Terms of use for the adsonus website.',
  hero('Legal', 'Website terms of use', f'Last updated {LEGAL_DATE}.') + '''
-<section class="section"><div class="wrap"><div class="prose">
+<section class="section"><div class="wrap"><div class="prose doc">
 <h2>About these terms</h2><p>These terms apply to your use of adsonus.com. Our services are provided under a separate written agreement with each client, which takes precedence over anything on this website.</p>
 <h2>Information on this website</h2><p>The content is general information about our services. Sample reports and figures are illustrative and do not describe any real client. Nothing on this website is financial, legal or tax advice.</p>
 <h2>Quotes</h2><p>Prices are given only in a written quote. A quote is valid for 30 days unless it says otherwise.</p>

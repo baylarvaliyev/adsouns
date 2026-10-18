@@ -28,7 +28,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/site-v3.css"/>
+<link rel="stylesheet" href="/css/site-v3.css?v=4"/>
+<link rel="stylesheet" href="/css/home.css?v=4"/>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGJCN4HG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -50,197 +51,193 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main id="main">
+<main id="main" class="v4">
 
-<section class="hero" id="hero">
-  <div class="hero-shape" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1><span class="line"><span>Win customers.</span></span><span class="line"><span>Get paid for the work.</span></span></h1>
-      <p class="lead rise">adsonus runs accounts receivable, accounts payable and paid advertising for small and medium businesses. We work inside your tools, under your name, and you approve everything that goes out.</p>
-      <div class="btn-row rise" style="--i:1">
-        <a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
-        <a class="tlink" href="/how-we-work">How it works</a>
-      </div>
-      <ul class="hero-points rise" style="--i:2">
-        <li><span class="mk" aria-hidden="true"></span>Free 2-week trial on every service</li>
-        <li><span class="mk" aria-hidden="true"></span>Your money never passes through us</li>
-        <li><span class="mk" aria-hidden="true"></span>One clear report every week</li>
-      </ul>
+<!-- 1. Hero: centred statement, then the report rises and settles over the mark -->
+<section class="x-hero" id="hero">
+  <div class="x-glow" aria-hidden="true"></div>
+  <div class="wrap x-hero-copy">
+    <h1 class="x-title"><span class="x-line"><span>Win customers.</span></span><span class="x-line"><span>Get paid for the work.</span></span></h1>
+    <p class="x-lead" data-up>adsonus runs accounts receivable, accounts payable and paid advertising for small and medium businesses. We work inside your tools, under your name, and you approve everything that goes out.</p>
+    <div class="x-ctas" data-up>
+      <a class="btn btn-primary btn-lg" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="/how-we-work">How it works</a>
     </div>
+    <ul class="x-points" data-up>
+      <li>Free 2-week trial on every service</li>
+      <li>Your money never passes through us</li>
+      <li>One clear report every week</li>
+    </ul>
+  </div>
 
-    <figure class="hero-stage rise" style="--i:3">
-      <div class="stage-shape" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div>
-      <div class="ui" data-ui aria-label="Sample weekly report">
-        <div class="ui-top"><img src="/img/logo-mark.svg" alt=""/>Weekly report<span class="when">Monday, week 41</span></div>
-        <div class="kpis">
-          <div class="kpi"><span class="k">Collected</span><span class="v">$12,640</span><span class="d">7 invoices paid</span></div>
-          <div class="kpi"><span class="k">Overdue</span><span class="v">$21,380</span><span class="d">was $33,900</span></div>
-          <div class="kpi"><span class="k">Ad leads</span><span class="v">17</span><span class="d">$38 per lead</span></div>
+  <div class="x-stage" id="stage">
+    <div class="x-stage-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div>
+    <figure class="x-report" id="report" aria-label="Sample weekly report">
+      <div class="xr-top">
+        <img src="/img/logo-mark.svg" alt="" width="26" height="26"/>
+        <b>Weekly report</b><span>Monday, week 41</span>
+        <em>Sample figures</em>
+      </div>
+      <div class="xr-body">
+        <div class="xr-left">
+          <div class="xr-kpis">
+            <div><span>Collected</span><b data-count="12640" data-prefix="$">$12,640</b><i class="good">7 invoices paid</i></div>
+            <div><span>Overdue now</span><b data-count="21380" data-prefix="$">$21,380</b><i class="good">down from $33,900</i></div>
+            <div><span>Ad leads</span><b data-count="17">17</b><i class="good">$38 per lead</i></div>
+          </div>
+          <div class="xr-chart">
+            <p>Cash collected per week <span>last 6 weeks</span></p>
+            <div class="xr-bars" role="img" aria-label="Cash collected per week, rising to $12.6k in week 41">
+              <span style="--h:33%"><i>W36</i></span><span style="--h:48%"><i>W37</i></span><span style="--h:42%"><i>W38</i></span><span style="--h:66%"><i>W39</i></span><span style="--h:57%"><i>W40</i></span><span class="hi" style="--h:100%"><i>W41</i><em>$12.6k</em></span>
+            </div>
+          </div>
         </div>
-        <div class="bars" role="img" aria-label="Cash collected per week over the last six weeks, rising to $12.6k this week">
-          <span style="--h:33%;--i:0"></span><span style="--h:48%;--i:1"></span><span style="--h:42%;--i:2"></span><span style="--h:66%;--i:3"></span><span style="--h:57%;--i:4"></span><span class="hi" style="--h:100%;--i:5"></span>
+        <div class="xr-right">
+          <table>
+            <thead><tr><th>Customer</th><th class="r">Days late</th><th class="r">Amount</th><th class="r">Status</th></tr></thead>
+            <tbody>
+              <tr><td>Northfield Joinery</td><td class="r">34</td><td class="r">$6,400</td><td class="r"><span class="pill pill-good">Paid</span></td></tr>
+              <tr><td>Harbour Studio</td><td class="r">21</td><td class="r">$3,950</td><td class="r"><span class="pill pill-info">Promised Fri</span></td></tr>
+              <tr><td>Kellet &amp; Moss</td><td class="r">58</td><td class="r">$8,120</td><td class="r"><span class="pill pill-warn">Needs you</span></td></tr>
+            </tbody>
+          </table>
+          <p class="xr-note">The report you receive every Monday. All figures are illustrative.</p>
         </div>
-        <table>
-          <thead><tr><th>Customer</th><th class="r late">Days late</th><th class="r">Amount</th><th class="r">Status</th></tr></thead>
-          <tbody>
-            <tr><td>Northfield Joinery</td><td class="r late">34</td><td class="r">$6,400</td><td class="r"><span class="pill pill-good">Paid</span></td></tr>
-            <tr><td>Harbour Studio</td><td class="r late">21</td><td class="r">$3,950</td><td class="r"><span class="pill pill-info">Promised Fri</span></td></tr>
-            <tr><td>Kellet &amp; Moss</td><td class="r late">58</td><td class="r">$8,120</td><td class="r"><span class="pill pill-warn">Needs you</span></td></tr>
-          </tbody>
-        </table>
-        <p class="ui-note">The report you receive every Monday. Sample figures.</p>
       </div>
     </figure>
   </div>
 </section>
 
-<section class="section svc" id="services">
+<!-- 2. Statement: pinned, words brighten as you scroll -->
+<section class="x-statement" id="statement">
   <div class="wrap">
-    <div class="svc-photo">
-      <div class="frame" data-fade>
-        <img class="on" src="/img/ledger-pittsboro.jpg" alt="A merchant's ledger page from Pittsborough, North Carolina, September 1833, listing what each customer owes" width="1000" height="1250" loading="lazy"/>
-        <img src="/img/ledger-blacksmith.jpg" alt="A blacksmith's account book from Stanly County, North Carolina: 'January the 3 1887. Received payment in full of the above account'" width="1000" height="1250" loading="lazy"/>
-      </div>
-      <p class="small">Small businesses have kept this book for two hundred years: a merchant's ledger, 1833, and a blacksmith's, 1887.</p>
-    </div>
-    <div class="svc-body" data-r>
-      <h2>Two sides of the same cash flow</h2>
-      <p class="lead" style="--i:1">Marketing brings new revenue in. Finance operations make sure it is collected and that your own bills are paid on time. Use one side or both.</p>
-      <div class="points" style="--i:2">
-        <div class="col col-1">
-          <h3>Finance operations</h3>
-          <p>Done daily, reported weekly</p>
-          <a class="pt" href="/accounts-receivable"><span class="t"><span class="mk" aria-hidden="true"></span>Accounts receivable<span class="arr" aria-hidden="true">→</span></span>Reminders from your own accounts address, calls on the largest balances, and disputes passed back to you.</a>
-          <a class="pt" href="/accounts-payable"><span class="t"><span class="mk" aria-hidden="true"></span>Accounts payable<span class="arr" aria-hidden="true">→</span></span>Supplier bills captured, coded and matched, then a payment run prepared for you to approve.</a>
-          <a class="pt" href="/finance-reporting"><span class="t"><span class="mk" aria-hidden="true"></span>Finance reporting<span class="arr" aria-hidden="true">→</span></span>A weekly view of what came in, what is owed to you, what you owe and what is due next.</a>
+    <p class="x-words" id="words">Marketing brings new revenue in. <span class="x-inline-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></span> Finance operations make sure it is collected and that your own bills are paid on time. Use one side or both.</p>
+  </div>
+</section>
+
+<!-- 3. Services: a gapless grid of four tiles -->
+<section class="x-section" id="services">
+  <div class="wrap">
+    <h2 class="x-h2" data-up>Two sides of the same cash flow</h2>
+    <div class="x-bento">
+      <article class="xb xb-fin" data-tile>
+        <div class="xb-head"><h3>Finance operations</h3><p>Done daily, reported weekly</p></div>
+        <a class="xb-row" href="/accounts-receivable"><b>Accounts receivable</b><span>Reminders from your own accounts address, calls on the largest balances, and disputes passed back to you.</span><i aria-hidden="true">→</i></a>
+        <a class="xb-row" href="/accounts-payable"><b>Accounts payable</b><span>Supplier bills captured, coded and matched, then a payment run prepared for you to approve.</span><i aria-hidden="true">→</i></a>
+        <a class="xb-row" href="/finance-reporting"><b>Finance reporting</b><span>A weekly view of what came in, what is owed to you, what you owe and what is due next.</span><i aria-hidden="true">→</i></a>
+      </article>
+      <article class="xb xb-mkt" data-tile>
+        <div class="xb-head"><h3>Marketing</h3><p>Measured in leads, not clicks</p></div>
+        <div class="xb-cols">
+          <a class="xb-row" href="/marketing#google-ads"><b>Google Ads</b><span>Search campaigns built around what your buyers actually type, with budgets you set and approve.</span><i aria-hidden="true">→</i></a>
+          <a class="xb-row" href="/marketing#meta-linkedin"><b>Meta and LinkedIn Ads</b><span>Campaigns aimed at the companies and roles you sell to, with creative prepared for your sign-off.</span><i aria-hidden="true">→</i></a>
+          <a class="xb-row" href="/marketing#tracking"><b>Tracking and reporting</b><span>Conversion tracking set up properly, and a monthly report on spend, leads and cost per lead.</span><i aria-hidden="true">→</i></a>
         </div>
-        <div class="col col-2">
-          <h3>Marketing</h3>
-          <p>Measured in leads, not clicks</p>
-          <a class="pt" href="/marketing#google-ads"><span class="t"><span class="mk" aria-hidden="true"></span>Google Ads<span class="arr" aria-hidden="true">→</span></span>Search campaigns built around what your buyers actually type, with budgets you set and approve.</a>
-          <a class="pt" href="/marketing#meta-linkedin"><span class="t"><span class="mk" aria-hidden="true"></span>Meta and LinkedIn Ads<span class="arr" aria-hidden="true">→</span></span>Campaigns aimed at the companies and roles you sell to, with creative prepared for your sign-off.</a>
-          <a class="pt" href="/marketing#tracking"><span class="t"><span class="mk" aria-hidden="true"></span>Tracking and reporting<span class="arr" aria-hidden="true">→</span></span>Conversion tracking set up properly, and a monthly report on spend, leads and cost per lead.</a>
-        </div>
-        <div class="col col-3">
-          <h3>Every service</h3>
-          <p>The same terms on both sides</p>
-          <div class="pt"><span class="t"><span class="mk" aria-hidden="true"></span>Two free weeks first</span>Real work on your real accounts before you pay anything.</div>
-          <div class="pt"><span class="t"><span class="mk" aria-hidden="true"></span>Your approval</span>Templates, payment runs and ad budgets are signed off by you before they are used.</div>
-          <div class="pt"><span class="t"><span class="mk" aria-hidden="true"></span>One report on Monday</span>Finance and marketing in the same weekly format, whichever you use.</div>
-        </div>
-      </div>
+      </article>
+      <article class="xb xb-blue" data-tile>
+        <div class="xb-mark" aria-hidden="true"><svg viewBox="0 0 202 200"><use href="#mark"/></svg></div>
+        <h3>Your money never passes through us</h3>
+        <p>Customers pay you directly. Payments to suppliers leave from your bank and are released by you.</p>
+      </article>
+      <a class="xb xb-navy" href="/how-we-work" data-tile>
+        <span class="xb-big">2 weeks</span>
+        <h3>Free trial on every service</h3>
+        <p>Real work on your real accounts before you pay anything.</p>
+        <i aria-hidden="true">→</i>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="section how" id="how">
-  <div class="wrap">
-    <div class="how-head" data-r>
-      <h2>See the work before you sign</h2>
-      <p class="lead" style="--i:1">No contracts to sign blind. Every engagement starts with two weeks of real work on your real accounts, free. You decide after you have seen the results.</p>
+<!-- 4. Trial: the heading and a day counter stay put while the steps pass -->
+<section class="x-section x-trial" id="how">
+  <div class="wrap x-trial-grid">
+    <div class="x-trial-side">
+      <div class="x-trial-sticky">
+        <h2 class="x-h2">No contracts to sign blind. See the work first.</h2>
+        <p class="x-sub">Every engagement starts with two weeks of real work on your real accounts, free. You decide after you have seen the results.</p>
+        <div class="x-day" aria-hidden="true"><span id="day-k">Day</span> <b id="day-v">0</b></div>
+        <div class="x-progress" aria-hidden="true"><span id="trial-bar"></span></div>
+      </div>
     </div>
-    <!--DOTS--><svg class="dots dots-h" data-dots viewBox="0 0 1200 270" role="img" aria-label="Scattered dots on the left are pulled into a tight ribbon in the middle and leave on the right as neat rows"><circle cx="14.1" cy="109.1" r="7" fill="#8EA8EF" style="--d:13ms"/><circle cx="303.7" cy="218.1" r="7" fill="#8EA8EF" style="--d:273ms"/><circle cx="348.4" cy="215.7" r="7" fill="#8EA8EF" style="--d:314ms"/><circle cx="130.1" cy="189.1" r="7" fill="#B7C8F6" style="--d:117ms"/><circle cx="39.0" cy="115.0" r="7" fill="#B7C8F6" style="--d:35ms"/><circle cx="272.4" cy="139.1" r="7" fill="#B7C8F6" style="--d:245ms"/><circle cx="273.2" cy="193.2" r="7" fill="#B7C8F6" style="--d:246ms"/><circle cx="70.8" cy="49.8" r="7" fill="#B7C8F6" style="--d:64ms"/><circle cx="263.4" cy="160.2" r="7" fill="#8EA8EF" style="--d:237ms"/><circle cx="305.8" cy="27.5" r="7" fill="#8EA8EF" style="--d:275ms"/><circle cx="130.3" cy="74.5" r="7" fill="#8EA8EF" style="--d:117ms"/><circle cx="354.6" cy="57.4" r="7" fill="#B7C8F6" style="--d:319ms"/><circle cx="351.7" cy="17.1" r="7" fill="#8EA8EF" style="--d:317ms"/><circle cx="366.4" cy="45.1" r="7" fill="#B7C8F6" style="--d:330ms"/><circle cx="240.5" cy="228.8" r="7" fill="#8EA8EF" style="--d:216ms"/><circle cx="366.8" cy="231.1" r="7" fill="#B7C8F6" style="--d:330ms"/><circle cx="79.2" cy="230.1" r="7" fill="#B7C8F6" style="--d:71ms"/><circle cx="225.3" cy="195.2" r="7" fill="#B7C8F6" style="--d:203ms"/><circle cx="276.8" cy="214.1" r="7" fill="#8EA8EF" style="--d:249ms"/><circle cx="303.4" cy="81.2" r="7" fill="#B7C8F6" style="--d:273ms"/><circle cx="46.7" cy="179.9" r="7" fill="#B7C8F6" style="--d:42ms"/><circle cx="42.9" cy="123.5" r="7" fill="#B7C8F6" style="--d:39ms"/><circle cx="342.3" cy="188.3" r="7" fill="#8EA8EF" style="--d:308ms"/><circle cx="22.5" cy="142.0" r="7" fill="#8EA8EF" style="--d:20ms"/><circle cx="143.7" cy="126.9" r="7" fill="#8EA8EF" style="--d:129ms"/><circle cx="29.2" cy="154.4" r="7" fill="#B7C8F6" style="--d:26ms"/><circle cx="94.0" cy="154.0" r="7" fill="#8EA8EF" style="--d:85ms"/><circle cx="64.4" cy="171.4" r="7" fill="#B7C8F6" style="--d:58ms"/><circle cx="229.3" cy="210.3" r="7" fill="#B7C8F6" style="--d:206ms"/><circle cx="281.1" cy="250.6" r="7" fill="#B7C8F6" style="--d:253ms"/><circle cx="216.0" cy="149.3" r="7" fill="#B7C8F6" style="--d:194ms"/><circle cx="29.9" cy="71.0" r="7" fill="#8EA8EF" style="--d:27ms"/><circle cx="336.3" cy="135.5" r="7" fill="#B7C8F6" style="--d:303ms"/><circle cx="25.2" cy="21.1" r="7" fill="#B7C8F6" style="--d:23ms"/><circle cx="293.3" cy="89.4" r="7" fill="#B7C8F6" style="--d:264ms"/><circle cx="171.6" cy="231.5" r="7" fill="#B7C8F6" style="--d:154ms"/><circle cx="342.5" cy="119.9" r="7" fill="#B7C8F6" style="--d:308ms"/><circle cx="258.8" cy="192.6" r="7" fill="#8EA8EF" style="--d:233ms"/><circle cx="236.8" cy="140.7" r="7" fill="#8EA8EF" style="--d:213ms"/><circle cx="274.2" cy="87.4" r="7" fill="#B7C8F6" style="--d:247ms"/><circle cx="277.0" cy="76.5" r="7" fill="#B7C8F6" style="--d:249ms"/><circle cx="369.0" cy="38.7" r="7" fill="#B7C8F6" style="--d:332ms"/><circle cx="177.4" cy="216.4" r="7" fill="#B7C8F6" style="--d:160ms"/><circle cx="20.9" cy="102.7" r="7" fill="#8EA8EF" style="--d:19ms"/><circle cx="72.9" cy="240.3" r="7" fill="#8EA8EF" style="--d:66ms"/><circle cx="336.8" cy="132.4" r="7" fill="#B7C8F6" style="--d:303ms"/><circle cx="40.9" cy="175.8" r="7" fill="#B7C8F6" style="--d:37ms"/><circle cx="75.8" cy="208.1" r="7" fill="#B7C8F6" style="--d:68ms"/><circle cx="127.6" cy="197.8" r="7" fill="#8EA8EF" style="--d:115ms"/><circle cx="71.9" cy="95.6" r="7" fill="#B7C8F6" style="--d:65ms"/><circle cx="23.1" cy="112.0" r="7" fill="#B7C8F6" style="--d:21ms"/><circle cx="82.4" cy="35.6" r="7" fill="#8EA8EF" style="--d:74ms"/><circle cx="84.3" cy="183.7" r="7" fill="#B7C8F6" style="--d:76ms"/><circle cx="347.4" cy="53.1" r="7" fill="#8EA8EF" style="--d:313ms"/><circle cx="420.0" cy="117.0" r="7" fill="#6F91F2" style="--d:378ms"/><circle cx="441.2" cy="117.0" r="7" fill="#6F91F2" style="--d:397ms"/><circle cx="462.4" cy="117.0" r="7" fill="#6F91F2" style="--d:416ms"/><circle cx="483.6" cy="117.0" r="7" fill="#6F91F2" style="--d:435ms"/><circle cx="504.8" cy="117.0" r="7" fill="#6F91F2" style="--d:454ms"/><circle cx="526.0" cy="117.0" r="7" fill="#6F91F2" style="--d:473ms"/><circle cx="547.2" cy="117.0" r="7" fill="#6F91F2" style="--d:492ms"/><circle cx="568.4" cy="117.0" r="7" fill="#6F91F2" style="--d:512ms"/><circle cx="589.6" cy="117.0" r="7" fill="#6F91F2" style="--d:531ms"/><circle cx="610.8" cy="117.0" r="7" fill="#6F91F2" style="--d:550ms"/><circle cx="632.0" cy="117.0" r="7" fill="#6F91F2" style="--d:569ms"/><circle cx="653.2" cy="117.0" r="7" fill="#6F91F2" style="--d:588ms"/><circle cx="674.4" cy="117.0" r="7" fill="#6F91F2" style="--d:607ms"/><circle cx="695.6" cy="117.0" r="7" fill="#6F91F2" style="--d:626ms"/><circle cx="716.8" cy="117.0" r="7" fill="#6F91F2" style="--d:645ms"/><circle cx="738.0" cy="117.0" r="7" fill="#6F91F2" style="--d:664ms"/><circle cx="759.2" cy="117.0" r="7" fill="#6F91F2" style="--d:683ms"/><circle cx="780.4" cy="117.0" r="7" fill="#6F91F2" style="--d:702ms"/><circle cx="430.0" cy="135.0" r="7" fill="#6F91F2" style="--d:387ms"/><circle cx="451.2" cy="135.0" r="7" fill="#6F91F2" style="--d:406ms"/><circle cx="472.4" cy="135.0" r="7" fill="#6F91F2" style="--d:425ms"/><circle cx="493.6" cy="135.0" r="7" fill="#6F91F2" style="--d:444ms"/><circle cx="514.8" cy="135.0" r="7" fill="#6F91F2" style="--d:463ms"/><circle cx="536.0" cy="135.0" r="7" fill="#6F91F2" style="--d:482ms"/><circle cx="557.2" cy="135.0" r="7" fill="#6F91F2" style="--d:501ms"/><circle cx="578.4" cy="135.0" r="7" fill="#6F91F2" style="--d:521ms"/><circle cx="599.6" cy="135.0" r="7" fill="#6F91F2" style="--d:540ms"/><circle cx="620.8" cy="135.0" r="7" fill="#6F91F2" style="--d:559ms"/><circle cx="642.0" cy="135.0" r="7" fill="#6F91F2" style="--d:578ms"/><circle cx="663.2" cy="135.0" r="7" fill="#6F91F2" style="--d:597ms"/><circle cx="684.4" cy="135.0" r="7" fill="#6F91F2" style="--d:616ms"/><circle cx="705.6" cy="135.0" r="7" fill="#6F91F2" style="--d:635ms"/><circle cx="726.8" cy="135.0" r="7" fill="#6F91F2" style="--d:654ms"/><circle cx="748.0" cy="135.0" r="7" fill="#6F91F2" style="--d:673ms"/><circle cx="769.2" cy="135.0" r="7" fill="#6F91F2" style="--d:692ms"/><circle cx="790.4" cy="135.0" r="7" fill="#6F91F2" style="--d:711ms"/><circle cx="420.0" cy="153.0" r="7" fill="#6F91F2" style="--d:378ms"/><circle cx="441.2" cy="153.0" r="7" fill="#6F91F2" style="--d:397ms"/><circle cx="462.4" cy="153.0" r="7" fill="#6F91F2" style="--d:416ms"/><circle cx="483.6" cy="153.0" r="7" fill="#6F91F2" style="--d:435ms"/><circle cx="504.8" cy="153.0" r="7" fill="#6F91F2" style="--d:454ms"/><circle cx="526.0" cy="153.0" r="7" fill="#6F91F2" style="--d:473ms"/><circle cx="547.2" cy="153.0" r="7" fill="#6F91F2" style="--d:492ms"/><circle cx="568.4" cy="153.0" r="7" fill="#6F91F2" style="--d:512ms"/><circle cx="589.6" cy="153.0" r="7" fill="#6F91F2" style="--d:531ms"/><circle cx="610.8" cy="153.0" r="7" fill="#6F91F2" style="--d:550ms"/><circle cx="632.0" cy="153.0" r="7" fill="#6F91F2" style="--d:569ms"/><circle cx="653.2" cy="153.0" r="7" fill="#6F91F2" style="--d:588ms"/><circle cx="674.4" cy="153.0" r="7" fill="#6F91F2" style="--d:607ms"/><circle cx="695.6" cy="153.0" r="7" fill="#6F91F2" style="--d:626ms"/><circle cx="716.8" cy="153.0" r="7" fill="#6F91F2" style="--d:645ms"/><circle cx="738.0" cy="153.0" r="7" fill="#6F91F2" style="--d:664ms"/><circle cx="759.2" cy="153.0" r="7" fill="#6F91F2" style="--d:683ms"/><circle cx="780.4" cy="153.0" r="7" fill="#6F91F2" style="--d:702ms"/><circle cx="836.0" cy="30.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="30.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="30.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="30.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="30.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="30.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="30.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="30.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="30.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="836.0" cy="72.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="72.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="72.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="72.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="72.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="72.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="72.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="72.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="72.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="836.0" cy="114.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="114.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="114.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="114.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="114.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="114.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="114.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="114.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="114.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="836.0" cy="156.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="156.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="156.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="156.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="156.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="156.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="156.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="156.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="156.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="836.0" cy="198.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="198.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="198.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="198.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="198.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="198.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="198.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="198.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="198.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="836.0" cy="240.0" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="877.0" cy="240.0" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="918.0" cy="240.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="959.0" cy="240.0" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="1000.0" cy="240.0" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="1041.0" cy="240.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="1082.0" cy="240.0" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="1123.0" cy="240.0" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="1164.0" cy="240.0" r="7" fill="#3367F7" style="--d:1048ms"/></svg><svg class="dots dots-v" data-dots viewBox="0 0 300 410" role="img" aria-label="Scattered dots at the top are pulled into a ribbon and end as neat rows at the bottom"><circle cx="123.5" cy="11.7" r="7" fill="#8EA8EF" style="--d:13ms"/><circle cx="235.0" cy="108.2" r="7" fill="#8EA8EF" style="--d:273ms"/><circle cx="232.5" cy="123.1" r="7" fill="#8EA8EF" style="--d:314ms"/><circle cx="205.3" cy="50.4" r="7" fill="#B7C8F6" style="--d:117ms"/><circle cx="129.6" cy="20.0" r="7" fill="#B7C8F6" style="--d:35ms"/><circle cx="154.2" cy="97.8" r="7" fill="#B7C8F6" style="--d:245ms"/><circle cx="209.5" cy="98.1" r="7" fill="#B7C8F6" style="--d:246ms"/><circle cx="62.9" cy="30.6" r="7" fill="#B7C8F6" style="--d:64ms"/><circle cx="175.7" cy="94.8" r="7" fill="#8EA8EF" style="--d:237ms"/><circle cx="40.2" cy="108.9" r="7" fill="#8EA8EF" style="--d:275ms"/><circle cx="88.2" cy="50.4" r="7" fill="#8EA8EF" style="--d:117ms"/><circle cx="70.7" cy="125.2" r="7" fill="#B7C8F6" style="--d:319ms"/><circle cx="29.5" cy="124.2" r="7" fill="#8EA8EF" style="--d:317ms"/><circle cx="58.1" cy="129.1" r="7" fill="#B7C8F6" style="--d:330ms"/><circle cx="245.9" cy="87.2" r="7" fill="#8EA8EF" style="--d:216ms"/><circle cx="248.2" cy="129.3" r="7" fill="#B7C8F6" style="--d:330ms"/><circle cx="247.2" cy="33.4" r="7" fill="#B7C8F6" style="--d:71ms"/><circle cx="211.5" cy="82.1" r="7" fill="#B7C8F6" style="--d:203ms"/><circle cx="230.8" cy="99.3" r="7" fill="#8EA8EF" style="--d:249ms"/><circle cx="95.0" cy="108.1" r="7" fill="#B7C8F6" style="--d:273ms"/><circle cx="195.9" cy="22.6" r="7" fill="#B7C8F6" style="--d:42ms"/><circle cx="138.2" cy="21.3" r="7" fill="#B7C8F6" style="--d:39ms"/><circle cx="204.4" cy="121.1" r="7" fill="#8EA8EF" style="--d:308ms"/><circle cx="157.2" cy="14.5" r="7" fill="#8EA8EF" style="--d:20ms"/><circle cx="141.7" cy="54.9" r="7" fill="#8EA8EF" style="--d:129ms"/><circle cx="169.8" cy="16.7" r="7" fill="#B7C8F6" style="--d:26ms"/><circle cx="169.4" cy="38.3" r="7" fill="#8EA8EF" style="--d:85ms"/><circle cx="187.2" cy="28.5" r="7" fill="#B7C8F6" style="--d:58ms"/><circle cx="227.0" cy="83.4" r="7" fill="#B7C8F6" style="--d:206ms"/><circle cx="268.2" cy="100.7" r="7" fill="#B7C8F6" style="--d:253ms"/><circle cx="164.6" cy="79.0" r="7" fill="#B7C8F6" style="--d:194ms"/><circle cx="84.6" cy="17.0" r="7" fill="#8EA8EF" style="--d:27ms"/><circle cx="150.5" cy="119.1" r="7" fill="#B7C8F6" style="--d:303ms"/><circle cx="33.6" cy="15.4" r="7" fill="#B7C8F6" style="--d:23ms"/><circle cx="103.4" cy="104.8" r="7" fill="#B7C8F6" style="--d:264ms"/><circle cx="248.6" cy="64.2" r="7" fill="#B7C8F6" style="--d:154ms"/><circle cx="134.6" cy="121.2" r="7" fill="#B7C8F6" style="--d:308ms"/><circle cx="208.9" cy="93.3" r="7" fill="#8EA8EF" style="--d:233ms"/><circle cx="155.8" cy="85.9" r="7" fill="#8EA8EF" style="--d:213ms"/><circle cx="101.3" cy="98.4" r="7" fill="#B7C8F6" style="--d:247ms"/><circle cx="90.2" cy="99.3" r="7" fill="#B7C8F6" style="--d:249ms"/><circle cx="51.5" cy="130.0" r="7" fill="#B7C8F6" style="--d:332ms"/><circle cx="233.2" cy="66.1" r="7" fill="#B7C8F6" style="--d:160ms"/><circle cx="117.0" cy="14.0" r="7" fill="#8EA8EF" style="--d:19ms"/><circle cx="257.7" cy="31.3" r="7" fill="#8EA8EF" style="--d:66ms"/><circle cx="147.4" cy="119.3" r="7" fill="#B7C8F6" style="--d:303ms"/><circle cx="191.7" cy="20.6" r="7" fill="#B7C8F6" style="--d:37ms"/><circle cx="224.7" cy="32.3" r="7" fill="#B7C8F6" style="--d:68ms"/><circle cx="214.2" cy="49.5" r="7" fill="#8EA8EF" style="--d:115ms"/><circle cx="109.7" cy="31.0" r="7" fill="#B7C8F6" style="--d:65ms"/><circle cx="126.5" cy="14.7" r="7" fill="#B7C8F6" style="--d:21ms"/><circle cx="48.4" cy="34.5" r="7" fill="#8EA8EF" style="--d:74ms"/><circle cx="199.8" cy="35.1" r="7" fill="#B7C8F6" style="--d:76ms"/><circle cx="66.3" cy="122.8" r="7" fill="#8EA8EF" style="--d:313ms"/><circle cx="131.6" cy="147.0" r="7" fill="#6F91F2" style="--d:378ms"/><circle cx="131.6" cy="154.1" r="7" fill="#6F91F2" style="--d:397ms"/><circle cx="131.6" cy="161.1" r="7" fill="#6F91F2" style="--d:416ms"/><circle cx="131.6" cy="168.2" r="7" fill="#6F91F2" style="--d:435ms"/><circle cx="131.6" cy="175.3" r="7" fill="#6F91F2" style="--d:454ms"/><circle cx="131.6" cy="182.3" r="7" fill="#6F91F2" style="--d:473ms"/><circle cx="131.6" cy="189.4" r="7" fill="#6F91F2" style="--d:492ms"/><circle cx="131.6" cy="196.5" r="7" fill="#6F91F2" style="--d:512ms"/><circle cx="131.6" cy="203.5" r="7" fill="#6F91F2" style="--d:531ms"/><circle cx="131.6" cy="210.6" r="7" fill="#6F91F2" style="--d:550ms"/><circle cx="131.6" cy="217.7" r="7" fill="#6F91F2" style="--d:569ms"/><circle cx="131.6" cy="224.7" r="7" fill="#6F91F2" style="--d:588ms"/><circle cx="131.6" cy="231.8" r="7" fill="#6F91F2" style="--d:607ms"/><circle cx="131.6" cy="238.9" r="7" fill="#6F91F2" style="--d:626ms"/><circle cx="131.6" cy="245.9" r="7" fill="#6F91F2" style="--d:645ms"/><circle cx="131.6" cy="253.0" r="7" fill="#6F91F2" style="--d:664ms"/><circle cx="131.6" cy="260.1" r="7" fill="#6F91F2" style="--d:683ms"/><circle cx="131.6" cy="267.1" r="7" fill="#6F91F2" style="--d:702ms"/><circle cx="150.0" cy="150.3" r="7" fill="#6F91F2" style="--d:387ms"/><circle cx="150.0" cy="157.4" r="7" fill="#6F91F2" style="--d:406ms"/><circle cx="150.0" cy="164.5" r="7" fill="#6F91F2" style="--d:425ms"/><circle cx="150.0" cy="171.5" r="7" fill="#6F91F2" style="--d:444ms"/><circle cx="150.0" cy="178.6" r="7" fill="#6F91F2" style="--d:463ms"/><circle cx="150.0" cy="185.7" r="7" fill="#6F91F2" style="--d:482ms"/><circle cx="150.0" cy="192.7" r="7" fill="#6F91F2" style="--d:501ms"/><circle cx="150.0" cy="199.8" r="7" fill="#6F91F2" style="--d:521ms"/><circle cx="150.0" cy="206.9" r="7" fill="#6F91F2" style="--d:540ms"/><circle cx="150.0" cy="213.9" r="7" fill="#6F91F2" style="--d:559ms"/><circle cx="150.0" cy="221.0" r="7" fill="#6F91F2" style="--d:578ms"/><circle cx="150.0" cy="228.1" r="7" fill="#6F91F2" style="--d:597ms"/><circle cx="150.0" cy="235.1" r="7" fill="#6F91F2" style="--d:616ms"/><circle cx="150.0" cy="242.2" r="7" fill="#6F91F2" style="--d:635ms"/><circle cx="150.0" cy="249.3" r="7" fill="#6F91F2" style="--d:654ms"/><circle cx="150.0" cy="256.3" r="7" fill="#6F91F2" style="--d:673ms"/><circle cx="150.0" cy="263.4" r="7" fill="#6F91F2" style="--d:692ms"/><circle cx="150.0" cy="270.5" r="7" fill="#6F91F2" style="--d:711ms"/><circle cx="168.4" cy="147.0" r="7" fill="#6F91F2" style="--d:378ms"/><circle cx="168.4" cy="154.1" r="7" fill="#6F91F2" style="--d:397ms"/><circle cx="168.4" cy="161.1" r="7" fill="#6F91F2" style="--d:416ms"/><circle cx="168.4" cy="168.2" r="7" fill="#6F91F2" style="--d:435ms"/><circle cx="168.4" cy="175.3" r="7" fill="#6F91F2" style="--d:454ms"/><circle cx="168.4" cy="182.3" r="7" fill="#6F91F2" style="--d:473ms"/><circle cx="168.4" cy="189.4" r="7" fill="#6F91F2" style="--d:492ms"/><circle cx="168.4" cy="196.5" r="7" fill="#6F91F2" style="--d:512ms"/><circle cx="168.4" cy="203.5" r="7" fill="#6F91F2" style="--d:531ms"/><circle cx="168.4" cy="210.6" r="7" fill="#6F91F2" style="--d:550ms"/><circle cx="168.4" cy="217.7" r="7" fill="#6F91F2" style="--d:569ms"/><circle cx="168.4" cy="224.7" r="7" fill="#6F91F2" style="--d:588ms"/><circle cx="168.4" cy="231.8" r="7" fill="#6F91F2" style="--d:607ms"/><circle cx="168.4" cy="238.9" r="7" fill="#6F91F2" style="--d:626ms"/><circle cx="168.4" cy="245.9" r="7" fill="#6F91F2" style="--d:645ms"/><circle cx="168.4" cy="253.0" r="7" fill="#6F91F2" style="--d:664ms"/><circle cx="168.4" cy="260.1" r="7" fill="#6F91F2" style="--d:683ms"/><circle cx="168.4" cy="267.1" r="7" fill="#6F91F2" style="--d:702ms"/><circle cx="42.7" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="42.7" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="42.7" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="42.7" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="42.7" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="42.7" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="42.7" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="42.7" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="42.7" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="85.6" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="85.6" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="85.6" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="85.6" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="85.6" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="85.6" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="85.6" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="85.6" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="85.6" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="128.5" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="128.5" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="128.5" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="128.5" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="128.5" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="128.5" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="128.5" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="128.5" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="128.5" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="171.5" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="171.5" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="171.5" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="171.5" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="171.5" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="171.5" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="171.5" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="171.5" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="171.5" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="214.4" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="214.4" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="214.4" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="214.4" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="214.4" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="214.4" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="214.4" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="214.4" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="214.4" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/><circle cx="257.3" cy="285.7" r="7" fill="#3367F7" style="--d:752ms"/><circle cx="257.3" cy="299.3" r="7" fill="#3367F7" style="--d:789ms"/><circle cx="257.3" cy="313.0" r="7" fill="#3367F7" style="--d:826ms"/><circle cx="257.3" cy="326.7" r="7" fill="#3367F7" style="--d:863ms"/><circle cx="257.3" cy="340.3" r="7" fill="#3367F7" style="--d:900ms"/><circle cx="257.3" cy="354.0" r="7" fill="#3367F7" style="--d:937ms"/><circle cx="257.3" cy="367.7" r="7" fill="#3367F7" style="--d:974ms"/><circle cx="257.3" cy="381.3" r="7" fill="#3367F7" style="--d:1011ms"/><circle cx="257.3" cy="395.0" r="7" fill="#3367F7" style="--d:1048ms"/></svg><!--/DOTS-->
-    <ol class="how-steps" data-r>
-      <li><span class="when">Day 0 · 20 minutes</span><h3>Intro call</h3><p>We learn how you work today, which tools you use, and what you want fixed first.</p></li>
-      <li style="--i:1"><span class="when">Days 1–14 · free</span><h3>Trial on real work</h3><p>Your overdue invoices, a batch of supplier bills, or one live campaign, with a short update every working day.</p></li>
-      <li style="--i:2"><span class="when">Day 14</span><h3>Results review</h3><p>A full summary at the end of the trial, then a fixed monthly fee for your volume, in writing.</p></li>
+    <ol class="x-steps">
+      <li data-step data-k="Day" data-v="0"><span class="x-when">Day 0 · 20 minutes</span><h3>Intro call</h3><p>We learn how you work today, which tools you use, and what you want fixed first.</p></li>
+      <li data-step data-k="Days" data-v="1–14"><span class="x-when">Days 1–14 · free</span><h3>Trial on real work</h3><p>Your overdue invoices, a batch of supplier bills, or one live campaign.</p></li>
+      <li data-step data-k="Day" data-v="14"><span class="x-when">Day 14</span><h3>Results review</h3><p>A short update every working day during the trial, and a full summary at the end.</p></li>
+      <li data-step data-k="Then" data-v="monthly"><span class="x-when">Then monthly</span><h3>A quote that fits</h3><p>A fixed monthly fee for your volume, in writing. If it does not work for you, you owe nothing.</p></li>
     </ol>
-    <div class="how-foot" data-r>
-      <p>If it does not work for you, you owe nothing.</p>
-      <a class="btn btn-primary" href="/how-we-work" style="--i:1">How we work <span class="arr" aria-hidden="true">→</span></a>
-    </div>
   </div>
 </section>
 
-<section class="section rules-band" id="rules">
-  <div class="wrap">
-    <div class="rules-top">
-      <div data-r>
-        <h2>What we will and won't do</h2>
-        <p class="lead" style="--i:1">You give us access to your customers, your suppliers and your numbers. These rules apply to every client and every service.</p>
-        <a class="tlink" href="/security" style="--i:2">How we handle access and data →</a>
+<!-- 5. Rules: a dark chapter, cards stack as you scroll -->
+<section class="x-rules" id="rules">
+  <div class="wrap x-rules-grid">
+    <div class="x-rules-side">
+      <div class="x-rules-sticky">
+        <h2 class="x-h2">What we will and won't do with your business</h2>
+        <p class="x-sub">You give us access to your customers, your suppliers and your numbers. These rules apply to every client and every service.</p>
+        <figure class="x-mail" aria-label="Sample reminder waiting for approval">
+          <div class="xm-top"><img src="/img/logo-mark.svg" alt="" width="22" height="22"/>Waiting for your approval</div>
+          <dl><dt>From</dt><dd>accounts@yourcompany.com</dd><dt>To</dt><dd>Kellet &amp; Moss</dd><dt>Subject</dt><dd>Invoice 1042, $8,120, due 58 days ago</dd></dl>
+          <p>Hi Dana, a quick note on invoice 1042. Could you tell me when it is scheduled for payment, or whether anything is holding it up on your side?</p>
+          <div class="xm-acts"><span class="yes">Approve and send</span><span>Edit</span></div>
+        </figure>
+        <a class="x-link-light" href="/security">How we handle access and data →</a>
       </div>
-      <figure class="approve" data-r>
-        <div class="ui mail" data-ui aria-label="Sample reminder waiting for approval">
-          <div class="ui-top"><img src="/img/logo-mark.svg" alt=""/>Waiting for your approval</div>
-          <dl><dt>From</dt><dd>accounts@yourcompany.com</dd><dt>To</dt><dd>Kellet &amp; Moss, accounts payable</dd><dt>Subject</dt><dd>Invoice 1042, $8,120, due 58 days ago</dd></dl>
-          <div class="body">Hi Dana, a quick note on invoice 1042. Could you tell me when it is scheduled for payment, or whether anything is holding it up on your side?</div>
-          <div class="acts"><span class="yes">Approve and send</span><span class="no">Edit</span></div>
-        </div>
-        <figcaption>Nothing goes out under your name until you approve it. Sample message.</figcaption>
-      </figure>
     </div>
-    <ul class="rules" data-r>
-      <li><span class="mk" aria-hidden="true"></span><h3>Your money never passes through us</h3><p>Customers pay you directly. Payments to suppliers leave from your bank and are released by you.</p></li>
-      <li style="--i:1"><span class="mk" aria-hidden="true"></span><h3>You approve before anything goes out</h3><p>Email templates, payment runs and ad budgets are signed off by you before they are used.</p></li>
-      <li style="--i:2"><span class="mk" aria-hidden="true"></span><h3>The least access we need</h3><p>Read-only or limited roles wherever your software allows. Passwords are never sent by email or chat.</p></li>
-      <li style="--i:3"><span class="mk" aria-hidden="true"></span><h3>A data agreement from day one</h3><p>We sign a data processing agreement covering what we hold, why, for how long and how it is deleted.</p></li>
-      <li style="--i:4"><span class="mk" aria-hidden="true"></span><h3>Your name, your tone</h3><p>We write as part of your team and in your style. No threats, and any legal step stays your decision.</p></li>
-      <li style="--i:5"><span class="mk" aria-hidden="true"></span><h3>No lock-in</h3><p>Monthly engagement with 30 days' notice. Everything we produce for you is yours to keep.</p></li>
+    <ul class="x-stack">
+      <li class="x-card"><h3>Your money never passes through us</h3><p>Customers pay you directly. Payments to suppliers leave from your bank and are released by you.</p></li>
+      <li class="x-card"><h3>You approve before anything goes out</h3><p>Email templates, payment runs and ad budgets are signed off by you before they are used.</p></li>
+      <li class="x-card"><h3>The least access we need</h3><p>Read-only or limited roles wherever your software allows. Passwords are never sent by email or chat.</p></li>
+      <li class="x-card"><h3>A data agreement from day one</h3><p>We sign a data processing agreement covering what we hold, why, for how long and how it is deleted.</p></li>
+      <li class="x-card"><h3>Your name, your tone</h3><p>We write as part of your team and in your style. No threats, and any legal step stays your decision.</p></li>
+      <li class="x-card"><h3>No lock-in</h3><p>Monthly engagement with 30 days' notice. Everything we produce for you is yours to keep.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="section" id="tools">
-  <div class="wrap">
-    <div class="tiles" data-r>
-      <div class="tile tile-head"><h2>We work inside your tools</h2><p>No new software for your team. Your accounts stay in your name.</p></div>
-      <div class="tile" style="--i:1"><b>QuickBooks Online</b></div>
-      <div class="tile" style="--i:2"><b>Xero</b></div>
-      <div class="tile" style="--i:3"><b>Bill.com</b></div>
-      <div class="tile extra" style="--i:4"><b>NetSuite</b></div>
-      <div class="tile extra" style="--i:5"><b>Microsoft 365</b></div>
-      <div class="tile extra" style="--i:6"><b>Google Workspace</b></div>
-      <div class="tile" style="--i:7"><b>Google Ads</b></div>
-      <div class="tile" style="--i:8"><b>Meta Ads</b></div>
-      <div class="tile" style="--i:9"><b>LinkedIn Ads</b></div>
-      <div class="tile extra" style="--i:10"><b>Google Analytics</b></div>
+<!-- 6. Tools: two rows gliding in opposite directions -->
+<section class="x-tools" aria-label="Tools we work in">
+  <h2 class="x-h2 wrap" data-up>We work inside your tools</h2>
+  <div class="x-marquee"><div class="x-track"><span>QuickBooks Online</span><span>Xero</span><span>Bill.com</span><span>NetSuite</span><span>Microsoft 365</span><span>Google Workspace</span><span aria-hidden="true">QuickBooks Online</span><span aria-hidden="true">Xero</span><span aria-hidden="true">Bill.com</span><span aria-hidden="true">NetSuite</span><span aria-hidden="true">Microsoft 365</span><span aria-hidden="true">Google Workspace</span></div></div>
+  <div class="x-marquee x-rev"><div class="x-track"><span>Google Ads</span><span>Google Analytics</span><span>Tag Manager</span><span>Meta Ads</span><span>LinkedIn Ads</span><span aria-hidden="true">Google Ads</span><span aria-hidden="true">Google Analytics</span><span aria-hidden="true">Tag Manager</span><span aria-hidden="true">Meta Ads</span><span aria-hidden="true">LinkedIn Ads</span></div></div>
+</section>
+
+<!-- 7. Founder -->
+<section class="x-section x-founder" id="founder">
+  <div class="wrap x-founder-grid">
+    <div class="x-portrait" id="portrait"><img src="/img/baylar-valiyev.jpg" alt="Baylar Valiyev, founder of adsonus" width="800" height="1000" loading="lazy"/></div>
+    <div class="x-founder-copy">
+      <blockquote data-up>“Small businesses deserve the same back-office and marketing discipline that large companies take for granted. You deal with me directly, and I am responsible for every piece of work that goes out under your name.”</blockquote>
+      <p class="x-sig" data-up><b>Baylar Valiyev</b>Founder, adsonus</p>
+      <dl class="x-cv" data-up><dt>Express Bank</dt><dd>Loans Specialist</dd><dt>Based in</dt><dd>Baku, overlapping US Eastern hours</dd></dl>
+      <p class="clock x-clock" data-clock data-up></p>
     </div>
   </div>
 </section>
 
-<section class="about" id="founder">
-  <div class="about-panel">
-    <div class="about-left">
-      <h2 data-r><span style="display:block">You deal with me directly.</span></h2>
-      <div class="portrait"><img src="/img/baylar-valiyev.jpg" alt="Baylar Valiyev, founder of adsonus" width="800" height="1000" loading="lazy"/></div>
+<!-- 8. FAQ -->
+<section class="x-section x-faq" id="faq">
+  <div class="wrap x-faq-grid">
+    <div class="x-faq-side">
+      <h2 class="x-h2">Before you ask</h2>
+      <p class="x-sub">Anything else, write to <a href="mailto:baylar@adsonus.com">baylar@adsonus.com</a> and you will get an answer the same working day.</p>
     </div>
-    <div class="about-right" data-r>
-      <div>
-        <blockquote>“Small businesses deserve the same back-office and marketing discipline that large companies take for granted. I am responsible for every piece of work that goes out under your name.”</blockquote>
-        <p class="sig"><b>Baylar Valiyev</b>, founder. Previously a loans specialist at Express Bank.</p>
-      </div>
-      <div style="--i:1">
-        <h3>Based in Baku, on US hours</h3>
-        <p>Our working day overlaps with US Eastern business hours, and we reply to messages the same business day.</p>
-        <p class="clock" data-clock aria-live="off"></p>
-      </div>
-      <div style="--i:2"><a class="btn btn-light" href="/about">More about adsonus <span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="x-acc">
+      <details open><summary>How much does it cost?<i aria-hidden="true"></i></summary><div class="x-ans"><p>Every engagement is quoted for your volume: how many invoices or bills, or how much ad spend we manage. After a short call you get a fixed monthly fee in writing. The 2-week trial is free.</p></div></details>
+      <details><summary>Who is this for?<i aria-hidden="true"></i></summary><div class="x-ans"><p>Small and medium businesses that sell to other businesses on invoice, typically 5 to 200 people, without a full finance team or an in-house marketing specialist.</p></div></details>
+      <details><summary>Why not just turn on reminders in QuickBooks or Xero?<i aria-hidden="true"></i></summary><div class="x-ans"><p>Automatic reminders are a good start, and we use them where they help. But software only sends emails. It does not call the person who approves payments, find out why an invoice is stuck, resend a missing purchase order or tell you which customers are getting slower. That is the part we do.</p></div></details>
+      <details><summary>Do you ever handle our money?<i aria-hidden="true"></i></summary><div class="x-ans"><p>No. Your customers pay you directly. For accounts payable we prepare the payment run and you release it from your own bank.</p></div></details>
+      <details><summary>What access do you need?<i aria-hidden="true"></i></summary><div class="x-ans"><p>For receivables: a mailbox on your domain (for example accounts@yourcompany.com) and read-only access to your accounting software. For payables: a limited user role. For advertising: access to your ad accounts, which stay in your name.</p></div></details>
+      <details><summary>Where are you based?<i aria-hidden="true"></i></summary><div class="x-ans"><p>In Baku, Azerbaijan. Our working day overlaps with US Eastern business hours, and we reply to messages the same business day.</p></div></details>
+      <details><summary>Can we use only one service?<i aria-hidden="true"></i></summary><div class="x-ans"><p>Yes. Many businesses start with one. The services work independently and share the same weekly reporting format.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="faq-head" data-r>
-      <h2>Before you ask</h2>
-      <p class="lead" style="--i:1">Anything else, write to <a href="mailto:baylar@adsonus.com">baylar@adsonus.com</a> and you will get an answer the same working day.</p>
-    </div>
-    <div class="drawer">
-      <details class="card" name="faq" open style="--i:0"><summary><span class="tab">Cost</span><span class="q">How much does it cost?</span></summary><p class="a">Every engagement is quoted for your volume: how many invoices or bills, or how much ad spend we manage. After a short call you get a fixed monthly fee in writing. The 2-week trial is free.</p></details>
-      <details class="card" name="faq" style="--i:1"><summary><span class="tab">Who it's for</span><span class="q">Who is this for?</span></summary><p class="a">Small and medium businesses that sell to other businesses on invoice, typically 5 to 200 people, without a full finance team or an in-house marketing specialist.</p></details>
-      <details class="card" name="faq" style="--i:2"><summary><span class="tab">Software</span><span class="q">Why not just turn on reminders in QuickBooks or Xero?</span></summary><p class="a">Automatic reminders are a good start, and we use them where they help. But software only sends emails. It does not call the person who approves payments, find out why an invoice is stuck, resend a missing purchase order or tell you which customers are getting slower. That is the part we do.</p></details>
-      <details class="card" name="faq" style="--i:3"><summary><span class="tab">Money</span><span class="q">Do you ever handle our money?</span></summary><p class="a">No. Your customers pay you directly. For accounts payable we prepare the payment run and you release it from your own bank.</p></details>
-      <details class="card" name="faq" style="--i:4"><summary><span class="tab">Access</span><span class="q">What access do you need?</span></summary><p class="a">For receivables: a mailbox on your domain (for example accounts@yourcompany.com) and read-only access to your accounting software. For payables: a limited user role. For advertising: access to your ad accounts, which stay in your name.</p></details>
-      <details class="card" name="faq" style="--i:5"><summary><span class="tab">Location</span><span class="q">Where are you based?</span></summary><p class="a">In Baku, Azerbaijan. Our working day overlaps with US Eastern business hours, and we reply to messages the same business day.</p></details>
-      <details class="card" name="faq" style="--i:6"><summary><span class="tab">One service</span><span class="q">Can we use only one service?</span></summary><p class="a">Yes. Many businesses start with one. The services work independently and share the same weekly reporting format.</p></details>
-    </div>
-  </div>
-</section>
-
+<!-- 9. Close -->
 <a class="cta-band" href="/quote">
-  <span class="cta-note">Tell us what you need. You get a reply within one working day and a written quote after a short call.</span>
+  <span class="cta-note">Tell us what you need. Describe your situation in a few lines. You get a reply within one working day and a written quote after a short call.</span>
   <svg class="cta-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg>
   <span class="cta-word" aria-hidden="true">Start</span>
   <span class="skip">Get a quote</span>
@@ -258,7 +255,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div><h4>Contact</h4><ul><li><a href="mailto:baylar@adsonus.com">baylar@adsonus.com</a></li><li><a href="tel:+994773698929">+994 77 369 89 29</a></li><li>Baku, Azerbaijan</li></ul></div>
       <div><p class="f-tag">Finance operations and marketing for small and medium businesses.</p></div>
     </div>
-    <p class="credits">Ledger images: <a href="https://commons.wikimedia.org/wiki/File:Pittsboro_Merchant_Business_Ledger_-_DPLA_-_4cbfce8f8f08c14f851ab74af046c082_(page_258).jpg">Pittsboro Merchant Business Ledger</a> and <a href="https://commons.wikimedia.org/wiki/File:Unnamed_Blacksmith%27s_Business_Ledger_or_Account_Book_from_the_Ridenhour_District,_Stanly_County,_N.C._-_DPLA_-_17c6d0858f8eb29c3bc840fc1af3f62b_(page_69).jpg">a blacksmith's account book, Stanly County, N.C.</a>, public domain, via Wikimedia Commons.</p>
     <div class="footer-base">
       <span>© 2026 adsonus · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
       <a class="btn btn-primary" href="/quote">Get a quote <span class="arr" aria-hidden="true">→</span></a>
@@ -270,5 +266,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){var t=document.getElementById('nav-toggle'),n=document.getElementById('nav');if(!t||!n)return;t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});})();
 </script>
 <script src="/js/site-v3.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/js/home.js?v=4" defer></script>
 </body>
 </html>

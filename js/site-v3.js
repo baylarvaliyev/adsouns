@@ -24,22 +24,10 @@
     targets.forEach(function (t) { t.classList.add('in'); });
   }
 
-  // Slow crossfade between the two ledger pages; pauses when the tab is hidden.
-  var frame = document.querySelector('[data-fade]');
-  if (frame && !reduce) {
-    var imgs = frame.querySelectorAll('img'), k = 0;
-    setInterval(function () {
-      if (document.hidden) return;
-      imgs[k].classList.remove('on');
-      k = (k + 1) % imgs.length;
-      imgs[k].classList.add('on');
-    }, 6500);
-  }
-
-  // Header gains a tone once the page scrolls.
+  // Header pill tightens once the page scrolls.
   var header = document.querySelector('.site-header');
   if (header) {
-    var onScroll = function () { header.style.backgroundColor = window.scrollY > 8 ? '#F3F6FB' : '#FFFFFF'; };
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 40); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
