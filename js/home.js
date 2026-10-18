@@ -45,9 +45,10 @@
     // Once fully drawn, small dots keep flowing along both lanes.
     var started = false;
     tl.eventCallback('onUpdate', function () {
+      // dots only while the diagram is fully drawn; hidden again when scrolling back up
+      svg.classList.toggle('live', tl.progress() >= 0.999);
       if (started || tl.progress() < 0.999) return;
       started = true;
-      svg.classList.add('live');
       $$('animateMotion', svg).forEach(function (m) {
         var dur = parseFloat(m.getAttribute('dur')), k = +(m.dataset.delay || 0);
         setTimeout(function () { try { m.beginElement(); } catch (e) {} }, k * dur * 1000 / 3);
@@ -67,15 +68,16 @@
     var tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
     tl.from('.x-line > span', { yPercent: 115, duration: 1.1, stagger: 0.12 })
       .from('.x-hero [data-up]', { y: 24, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: ease }, '-=0.6')
-      .from('.x-stage-mark', { scale: 0.6, rotate: -14, autoAlpha: 0, duration: 1.4, ease: 'expo.out' }, '-=0.9');
+      .from('.x-stage-bg', { autoAlpha: 0, y: 60, duration: 1.2, ease: 'expo.out' }, '-=0.8');
 
     // The report is tilted back and settles flat as you scroll, like a product shot.
     gsap.fromTo('#report',
       { rotateX: 32, scale: 0.84, y: 60 },
       { rotateX: 0, scale: 1, y: 0, ease: 'none',
         scrollTrigger: { trigger: '#stage', start: 'top 95%', end: 'top 25%', scrub: 0.8 } });
-    gsap.to('.x-stage-mark', { rotate: 10, scale: 1.08, yPercent: 8, ease: 'none',
-      scrollTrigger: { trigger: '#stage', start: 'top 80%', end: 'bottom top', scrub: 1 } });
+    // The blue stage opens out a little as the report lands; it stays inside the hero.
+    gsap.fromTo('.x-stage-bg', { scaleX: 0.9, borderRadius: 64 }, { scaleX: 1, borderRadius: 40, ease: 'none',
+      scrollTrigger: { trigger: '#stage', start: 'top 95%', end: 'top 25%', scrub: 0.8 } });
     gsap.to('.x-glow', { yPercent: 30, ease: 'none',
       scrollTrigger: { trigger: '.x-hero', start: 'top top', end: 'bottom top', scrub: true } });
 
