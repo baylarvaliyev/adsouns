@@ -285,7 +285,6 @@ pages.append(page('about', 'About adsonus',
 <p class="label">Founder</p><h2>Baylar Valiyev</h2>
 <p>I started adsonus after years of working on both sides of what keeps a small business alive: winning customers and getting paid. I have managed advertising for businesses of many sizes, and as a loans specialist at Express Bank I saw how often healthy businesses run short of cash simply because invoices are paid late.</p>
 <p>adsonus brings those two sides together. You deal with me directly, and I am responsible for every piece of work that goes out under your name.</p>
-<ul class="cv"><li><span class="k">Express Bank</span>Loans Specialist</li><li><span class="k">Based in</span>Baku, Azerbaijan</li></ul>
 </div></div></section>
 <section class="section rules-band"><div class="wrap split">
 <div class="prose"><p class="label">Being straight with you</p><h2>We are a new business</h2>

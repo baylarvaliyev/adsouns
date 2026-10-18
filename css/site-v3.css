@@ -239,13 +239,14 @@ a.pt:hover .t .arr{opacity:1;transform:none}
 .qcard:nth-child(3n){--c:var(--panel-3)}
 
 /* ---------- CTA: one word is the button ---------- */
-.cta-band{display:block;position:relative;margin:0 20px;min-height:60svh;background:var(--brand);color:#fff;text-decoration:none;border-radius:var(--m-block);overflow:hidden;padding:clamp(24px,3vw,44px)}
+/* sentence on top, the word underneath, both in normal flow so they can never overlap */
+.cta-band{display:flex;flex-direction:column;justify-content:space-between;gap:clamp(24px,5vh,64px);position:relative;margin:0 20px;min-height:min(60svh,680px);background:var(--brand);color:#fff;text-decoration:none;border-radius:var(--m-block);overflow:hidden;padding:clamp(24px,3vw,44px) clamp(24px,3vw,44px) 0}
 .cta-band:hover,.cta-band:focus-visible{background:var(--ink)}
 .cta-band:hover .cta-word,.cta-band:focus-visible .cta-word{color:var(--brand)}
 .cta-note{display:block;font-size:var(--s-lead);max-width:30ch;line-height:1.4;padding-right:clamp(48px,6vw,80px)}
 .cta-arrow{position:absolute;top:clamp(24px,3vw,44px);right:clamp(24px,3vw,44px);width:clamp(32px,4vw,56px);transition:transform .3s var(--ease-out)}
 .cta-band:hover .cta-arrow{transform:translate(6px,-6px)}
-.cta-word{position:absolute;left:clamp(16px,2.4vw,36px);bottom:-.17em;font-family:var(--font-display);font-weight:700;font-size:clamp(7rem,27vw,26rem);line-height:1;letter-spacing:-.06em}
+.cta-word{display:block;margin:0 0 -.19em -.04em;font-family:var(--font-display);font-weight:700;font-size:clamp(5rem,min(27vw,40svh),26rem);line-height:.9;letter-spacing:-.06em}
 
 /* ---------- Footer: the mark, built large ---------- */
 .site-footer{overflow:hidden;background:var(--panel);margin-top:20px;padding:clamp(56px,7vw,104px) 0 32px;color:var(--ink)}
